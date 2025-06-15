@@ -1,0 +1,16 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+
+<!-- CSS -->
+<link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+
+<!-- Favicon -->
+<link rel="icon" href="{{ "/assets/images/favicon.ico" | relative_url }}">
+
+<!-- SEO -->
+{% seo %}
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">

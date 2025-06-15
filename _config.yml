@@ -1,0 +1,25 @@
+title: "Your Name - PhD Research"
+description: "Exploring [your research area] at [your university]"
+url: "https://yourusername.github.io"
+baseurl: ""
+
+# Jekyll settings
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Site settings
+email: your.email@university.edu
+university: Your University Name
+department: Your Department
+advisor: Your Advisor's Name
+github_username: yourusername
+twitter_username: yourhandle
+linkedin_username: yourprofile
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+sass:
+  style: compressed
