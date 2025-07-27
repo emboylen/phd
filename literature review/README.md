@@ -8,3 +8,4 @@ This folder contains scripts and files for preprocessing raw exported literature
 - Prepare screened datasets for import into Biblioshiny.
 - Enable efficient bibliometric and systematic review analyses.
 
+![Literature Review Overview - Bibliometrix](lit-review-overview-biblio.drawio.png "Bibliometrix Flowchart")
