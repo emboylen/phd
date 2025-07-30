@@ -17,7 +17,7 @@ screened_broad  <- read.csv("broad.csv", stringsAsFactors = FALSE)  # to be upda
 # -----------------------------------------------------------------------------
 
 # Set working directory to folder containing raw data files
-setwd("C:/Users/ellen/OneDrive - Murdoch University/Literature review/data")
+setwd("C:/Users/")
 
 # Umbrella review raw data  
 scholar         <- "scholar.enw"              # EndNote file from Scholar
