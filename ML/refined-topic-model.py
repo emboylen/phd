@@ -53,11 +53,14 @@ LOG_FILE = f"topic_modeling_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
 # Advanced Parameters
 MIN_DOC_COUNT = 5          # min_df: word must appear in at least 5 documents
 MAX_DOC_FRACTION = 0.85    # max_df: word can't appear in more than 85% of documents
-BIGRAM_MIN_COUNT = 5       # Minimum count for bigram formation
-BIGRAM_THRESHOLD = 100     # Threshold for bigram scoring
+BIGRAM_MIN_COUNT = 3       # Minimum count for bigram formation (lowered from 5 to catch more phrases)
+BIGRAM_THRESHOLD = 50      # Threshold for bigram scoring (lowered from 100 for more phrases)
+TRIGRAM_MIN_COUNT = 3      # Minimum count for trigram formation
+TRIGRAM_THRESHOLD = 50     # Threshold for trigram scoring
 TOPIC_RANGE_START = 2      # Test topics from k=2
-TOPIC_RANGE_END = 21       # Test topics up to k=20
-TOPIC_STEP = 1
+TOPIC_RANGE_END = 51       # Test topics up to k=50
+TOPIC_STEP = 2             # Test every 2nd value for speed (2,4,6,8...48,50)
+                           # Set to 1 to test every value (slower but more precise)
 
 # LDA Training Parameters (optimized for balance between quality and speed)
 LDA_PASSES = 10            # Total training passes
@@ -337,7 +340,7 @@ if __name__ == '__main__':
 
     # Train trigram model on bigram output
     print("Training trigram model...")
-    trigram_model = Phrases(docs_with_bigrams, min_count=BIGRAM_MIN_COUNT, threshold=BIGRAM_THRESHOLD)
+    trigram_model = Phrases(docs_with_bigrams, min_count=TRIGRAM_MIN_COUNT, threshold=TRIGRAM_THRESHOLD)
     trigram_phraser = Phraser(trigram_model)
 
     # Apply trigram model
@@ -807,7 +810,7 @@ if __name__ == '__main__':
         G.add_node(
             f"Topic_{topic_id}",
             type='topic',
-            size=max(doc_count * 3, 20),
+            size=int(max(doc_count * 3, 20)),
             title=topic_label,
             color='#f08080',
             label=f"T{topic_id}"
