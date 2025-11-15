@@ -1,6 +1,11 @@
 #You can copy and paste this entire block into a text editor (like VS Code, Notepad, etc.) and save it as run_bertopic_kg.py.
 #run_bertopic_kg.py
 
+# Fix Unicode encoding issues on Windows
+import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
 import fitz  # PyMuPDF
 import glob
@@ -13,7 +18,7 @@ import pandas as pd
 
 # --- Configuration ---
 # *** Replace this with the path to your PDF folder ***
-PDF_FOLDER_PATH = "my_screened_pdfs" 
+PDF_FOLDER_PATH = r"D:\Github\phd\ML\included" 
 OUTPUT_FILENAME = "pdf_knowledge_graph.html"
 MIN_TOPIC_SIZE = 10 # Adjust this to get more (lower) or fewer (higher) topics
 
@@ -84,7 +89,9 @@ print("\n--- Step 3: Preparing Data for Knowledge Graph ---")
 
 # 1. Get Document-to-Topic Mappings (using our filenames)
 print("Getting document info...")
-doc_info = topic_model.get_document_info(documents, doc_names=doc_names)
+doc_info = topic_model.get_document_info(documents)
+# Add the filenames to the dataframe
+doc_info['Name'] = doc_names
 
 # 2. Get Topic-to-Keyword Mappings
 print("Getting topic keywords...")
@@ -94,6 +101,182 @@ topic_keywords = topic_model.get_topics()
 topic_info = topic_model.get_topic_info()
 
 print(f"Loaded {len(doc_info)} documents and {len(topic_info)} topics (including outliers).")
+
+# ==============================================================================
+# STEP 3.5: CREATE TOPICS SUMMARY HTML TABLE
+# ==============================================================================
+print("\n--- Creating Topics Summary Table ---")
+
+# Calculate statistics
+total_topics_count = len(topic_info) - 1  # Exclude outlier topic
+total_docs_count = len(doc_info[doc_info['Topic'] != -1])
+
+# Add rows for each topic (excluding outliers)
+topic_rows = ""
+total_keywords_count = 0
+
+for index, row in topic_info.iterrows():
+    topic_id = row['Topic']
+    if topic_id == -1:  # Skip outliers
+        continue
+    
+    # Get keywords for this topic
+    keywords = topic_keywords.get(topic_id, [])
+    keywords_str = ", ".join([f"{word}" for word, score in keywords[:10]])  # Top 10 keywords
+    total_keywords_count += len(keywords)
+    
+    # Get documents for this topic
+    topic_docs = doc_info[doc_info['Topic'] == topic_id]['Name'].tolist()
+    docs_html = "<ul class='documents-list'>"
+    for doc in topic_docs[:10]:  # Show first 10 documents
+        docs_html += f"<li>{doc}</li>"
+    if len(topic_docs) > 10:
+        docs_html += f"<li><em>... and {len(topic_docs) - 10} more</em></li>"
+    docs_html += "</ul>"
+    
+    topic_rows += f"""
+        <tr>
+            <td class="topic-id">Topic {topic_id}</td>
+            <td class="topic-name">{row['Name']}</td>
+            <td class="keywords">{keywords_str}</td>
+            <td class="doc-count">{row['Count']}</td>
+            <td class="documents">{docs_html}</td>
+        </tr>
+    """
+
+# Build complete HTML
+html_table = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Topic Analysis - Topics Summary</title>
+    <style>
+        body {{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }}
+        h1 {{
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+        }}
+        .subtitle {{
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }}
+        .stats {{
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            text-align: center;
+        }}
+        .stats span {{
+            display: inline-block;
+            margin: 0 20px;
+            font-size: 18px;
+        }}
+        .stats strong {{
+            color: #2c3e50;
+            font-size: 24px;
+        }}
+        table {{
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }}
+        thead {{
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }}
+        th {{
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }}
+        td {{
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }}
+        tr:hover {{
+            background-color: #f8f9fa;
+        }}
+        .topic-id {{
+            font-weight: bold;
+            color: #667eea;
+            font-size: 16px;
+        }}
+        .topic-name {{
+            color: #2c3e50;
+            font-weight: 500;
+        }}
+        .keywords {{
+            color: #27ae60;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }}
+        .doc-count {{
+            text-align: center;
+            font-weight: bold;
+            color: #e74c3c;
+        }}
+        .documents {{
+            font-size: 12px;
+            color: #7f8c8d;
+            max-height: 100px;
+            overflow-y: auto;
+        }}
+        .documents-list {{
+            margin: 5px 0;
+            padding-left: 20px;
+        }}
+        .documents-list li {{
+            margin: 3px 0;
+        }}
+    </style>
+</head>
+<body>
+    <h1>📊 PDF Topic Analysis Summary</h1>
+    <div class="subtitle">Topics and Keywords extracted from PDF documents</div>
+    
+    <div class="stats">
+        <span><strong>{total_topics_count}</strong> Topics</span>
+        <span><strong>{total_docs_count}</strong> Documents</span>
+        <span><strong>{total_keywords_count}</strong> Unique Keywords</span>
+    </div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Topic ID</th>
+                <th>Topic Name</th>
+                <th>Top Keywords</th>
+                <th>Docs</th>
+                <th>Documents</th>
+            </tr>
+        </thead>
+        <tbody>
+{topic_rows}
+        </tbody>
+    </table>
+</body>
+</html>
+"""
+
+# Save the HTML table
+table_filename = "topics_summary.html"
+with open(table_filename, 'w', encoding='utf-8') as f:
+    f.write(html_table)
+
+print(f"✓ Topics summary table saved to: {Path(table_filename).resolve()}")
 
 
 # ==============================================================================
@@ -236,24 +419,14 @@ var options = {
 }
 """)
 
-# Save and show the interactive HTML file
-nt.show(OUTPUT_FILENAME)
+# Save the interactive HTML file with UTF-8 encoding
+# We need to manually write with UTF-8 to avoid encoding issues
+html_content = nt.generate_html()
+with open(OUTPUT_FILENAME, 'w', encoding='utf-8') as f:
+    f.write(html_content)
 
 print(f"\n--- Script Finished ---")
 print(f"Successfully created and saved interactive knowledge graph to:")
 print(f"{Path(OUTPUT_FILENAME).resolve()}")
 
 #----------------------------------
-#How to Run This File
-#Install all dependencies:
-
-#Bash
-pip install bertopic "scikit-learn>=1.3.0" PyMuPDF networkx pyvis pandas
-#Save the Code: Save the code block above as run_bertopic_kg.py.
-
-#Set Your Folder: Change the PDF_FOLDER_PATH = "my_screened_pdfs" variable at the top of the file to point to your actual folder of PDFs.
-#Run the Script: Open your terminal or command prompt, navigate to the directory where you saved the file, and run:
-
-#Bash
-python run_bertopic_kg.py
-#The script will print its progress to the terminal. When it's finished, it will automatically open the interactive pdf_knowledge_graph.html file in your default web browser.
