@@ -212,16 +212,18 @@ print(f"✓ Allowed POS tags: {ALLOWED_POSTAGS}")
 # MAIN EXECUTION
 # ==============================================================================
 if __name__ == '__main__':
+    # Required for Windows multiprocessing support
     from multiprocessing import freeze_support
-    freeze_support()
-    
-    # ==============================================================================
-    # DATA LOADING: EXTRACT TEXT FROM PDFs
-    # ==============================================================================
-    print("\n" + "=" * 80)
-    print("DATA LOADING: Extracting Text from PDFs")
-    print("=" * 80)
-    
+
+        freeze_support()
+
+        # ==============================================================================
+        # DATA LOADING: EXTRACT TEXT FROM PDFs
+        # ==============================================================================
+        print("\n" + "=" * 80)
+        print("DATA LOADING: Extracting Text from PDFs")
+        print("=" * 80)
+
     # Validate PDF folder
     pdf_folder = Path(PDF_FOLDER_PATH)
     if not pdf_folder.exists():
@@ -255,11 +257,11 @@ if __name__ == '__main__':
         try:
             doc = fitz.open(pdf_path)
             full_text = ""
-
+        
             for page_num in range(doc.page_count):
                 page = doc.load_page(page_num)
                 full_text += page.get_text("text")
-
+        
             # Validate document has content
             if len(full_text.strip()) < 100:  # Require at least 100 characters
                 tqdm.write(f"  [Warning] Skipping {pdf_path.name}: insufficient content")
@@ -268,9 +270,9 @@ if __name__ == '__main__':
             else:
                 documents.append(full_text)
                 doc_names.append(pdf_path.name)
-
+        
             doc.close()
-
+            
         except Exception as e:
             error_msg = f"Failed to read {pdf_path.name}: {e}"
             tqdm.write(f"  [Error] {error_msg}")
@@ -403,7 +405,7 @@ if __name__ == '__main__':
         """
         Compute C_v coherence for various numbers of topics.
         Saves each model to disk and only keeps the best one in memory.
-
+    
         Returns:
             best_model: The LDA model with highest coherence
             coherence_values: Coherence values corresponding to each k tested
@@ -414,21 +416,21 @@ if __name__ == '__main__':
         best_coherence = -1
         best_model = None
         best_k = None
-
+    
         topic_range = range(start, limit, step)
         print(f"Testing topic counts from k={start} to k={limit-1}...")
         print(f"Total models to train: {len(list(topic_range))}")
         print("Note: Each model takes several minutes. Please be patient.")
         print(f"Checkpoints will be saved to: {CHECKPOINT_DIR}\n")
         logger.info(f"Training {len(list(topic_range))} models from k={start} to k={limit-1}")
-
+    
         # Create progress bar for overall process
         for num_topics in tqdm(topic_range, desc="Training LDA models", unit="model"):
             checkpoint_path = os.path.join(CHECKPOINT_DIR, f"lda_model_k{num_topics}.pkl")
-
+        
             tqdm.write(f"  → Training LDA with k={num_topics} topics...")
             logger.info(f"Training model with k={num_topics}")
-
+        
             # Train LDA model
             model = LdaModel(
                 corpus=corpus,
@@ -442,22 +444,21 @@ if __name__ == '__main__':
                 eta='auto',            # Auto-learn topic-word density
                 per_word_topics=True
             )
-
+        
             tqdm.write(f"  → Computing coherence score for k={num_topics}...")
-
+        
             # Compute coherence score
             coherence_model = CoherenceModel(
                 model=model,
                 texts=texts,
                 dictionary=dictionary,
-                coherence='c_v',
-                processes=1  # Disable multiprocessing for Windows compatibility
+                coherence='c_v'
             )
-
+        
             coh_score = coherence_model.get_coherence()
             coherence_values.append(coh_score)
             topic_counts.append(num_topics)
-
+        
             # Save model checkpoint
             try:
                 model.save(checkpoint_path)
@@ -466,10 +467,10 @@ if __name__ == '__main__':
             except Exception as e:
                 tqdm.write(f"  [Warning] Failed to save checkpoint: {e}")
                 logger.warning(f"Failed to save checkpoint for k={num_topics}: {e}")
-
+        
             tqdm.write(f"  ✓ k={num_topics} complete. Coherence: {coh_score:.4f}")
             logger.info(f"k={num_topics} - Coherence: {coh_score:.4f}")
-
+        
             # Keep track of best model in memory
             if coh_score > best_coherence:
                 if best_model is not None:
@@ -483,9 +484,9 @@ if __name__ == '__main__':
             else:
                 # Clear current model from memory if it's not the best
                 del model
-
+        
             tqdm.write("")  # Empty line for readability
-
+    
         logger.info(f"Best model: k={best_k} with coherence {best_coherence:.4f}")
         return best_model, coherence_values, topic_counts, best_k
 
@@ -571,10 +572,10 @@ if __name__ == '__main__':
     for topic_id in range(optimal_k):
         # Get top words
         top_words = [word for word, _ in final_model.show_topic(topic_id, topn=15)]
-
+    
         # Get documents for this topic
         topic_docs = [d for d in doc_topics if d['topic_id'] == topic_id]
-
+    
         topic_summary.append({
             'topic_id': topic_id,
             'keywords': ', '.join(top_words),
@@ -715,7 +716,7 @@ if __name__ == '__main__':
         <div class="container">
             <h1>🔬 Refined Topic Analysis Summary</h1>
             <div class="subtitle">6-Stage Methodological Framework for Enhanced Coherence</div>
-
+        
             <div class="stats">
                 <div class="stat-item">
                     <span class="stat-value">{optimal_k}</span>
@@ -734,7 +735,7 @@ if __name__ == '__main__':
                     <span class="stat-label">Coherence Score (C_v)</span>
                 </div>
             </div>
-
+        
             <div class="methodology">
                 <h3>Methodological Framework Applied:</h3>
                 <strong>Stage 1:</strong> Custom stop-word list ({len(custom_stop_words)} terms) - Generic + Academic + Corpus-specific<br>
@@ -744,7 +745,7 @@ if __name__ == '__main__':
                 <strong>Stage 5:</strong> Coherence-based evaluation (C_v metric, tested k={TOPIC_RANGE_START}-{TOPIC_RANGE_END-1})<br>
                 <strong>Stage 6:</strong> Optimal model training (k={optimal_k}, alpha=auto, eta=auto, 10 passes)
             </div>
-
+        
             <table>
                 <thead>
                     <tr>
@@ -761,10 +762,10 @@ if __name__ == '__main__':
         docs_html = ""
         for i, doc in enumerate(sorted(topic['documents'], key=lambda x: x['topic_prob'], reverse=True)[:10]):
             docs_html += f'<div class="doc-item"><span class="doc-name">{doc["doc_name"]}</span> <span class="doc-prob">({doc["topic_prob"]:.2%})</span></div>'
-
+    
         if len(topic['documents']) > 10:
             docs_html += f'<div class="doc-item"><em>... and {len(topic["documents"]) - 10} more documents</em></div>'
-
+    
         html_content += f"""
                     <tr>
                         <td class="topic-id">Topic {topic['topic_id']}</td>
@@ -801,9 +802,9 @@ if __name__ == '__main__':
     for topic_id in range(optimal_k):
         topic_words = [word for word, _ in final_model.show_topic(topic_id, topn=5)]
         topic_label = f"Topic {topic_id}: {' '.join(topic_words[:3])}"
-
+    
         doc_count = len([d for d in doc_topics if d['topic_id'] == topic_id])
-
+    
         G.add_node(
             f"Topic_{topic_id}",
             type='topic',
@@ -817,7 +818,7 @@ if __name__ == '__main__':
     for doc_data in doc_topics:
         doc_name = doc_data['doc_name']
         topic_id = doc_data['topic_id']
-
+    
         G.add_node(
             doc_name,
             type='document',
@@ -825,8 +826,8 @@ if __name__ == '__main__':
             title=doc_name,
             color='#87ceeb'
         )
-
-        G.add_edge(doc_name, f"Topic_{topic_id}", weight=float(doc_data['topic_prob']))
+    
+        G.add_edge(doc_name, f"Topic_{topic_id}", weight=doc_data['topic_prob'])
 
     # Add top keyword nodes for each topic
     for topic_id in range(optimal_k):
@@ -834,17 +835,17 @@ if __name__ == '__main__':
         for word, score in top_words:
             # Clean the word for display
             word_display = word.replace('_', ' ')
-
+        
             G.add_node(
                 word,
                 type='keyword',
-                size=int(max(score * 80, 5)),
+                size=max(score * 80, 5),
                 title=f"Keyword: {word_display}",
                 color='#90ee90',
                 label=word_display
             )
-
-            G.add_edge(f"Topic_{topic_id}", word, weight=float(score))
+        
+            G.add_edge(f"Topic_{topic_id}", word, weight=score)
 
     print(f"✓ Graph created: {G.number_of_nodes()} nodes, {G.number_of_edges()} edges")
 

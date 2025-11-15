@@ -1,0 +1,228 @@
+2025-11-15 20:16:06,863 - INFO - ================================================================================
+2025-11-15 20:16:06,863 - INFO - REFINED TOPIC MODELING PIPELINE STARTED
+2025-11-15 20:16:06,863 - INFO - ================================================================================
+2025-11-15 20:16:07,493 - INFO - spaCy model loaded successfully
+2025-11-15 20:16:07,513 - INFO - Found 223 PDF files
+2025-11-15 20:16:37,199 - INFO - Successfully extracted 223 documents
+2025-11-15 20:20:13,951 - INFO - collecting all words and their counts
+2025-11-15 20:20:13,951 - INFO - PROGRESS: at sentence #0, processed 0 words and 0 word types
+2025-11-15 20:20:15,179 - INFO - collected 614421 token types (unigram + bigrams) from a corpus of 1327160 words and 223 sentences
+2025-11-15 20:20:15,181 - INFO - merged Phrases<614421 vocab, min_count=5, threshold=100, max_vocab_size=40000000>
+2025-11-15 20:20:15,216 - INFO - Phrases lifecycle event {'msg': 'built Phrases<614421 vocab, min_count=5, threshold=100, max_vocab_size=40000000> in 1.23s', 'datetime': '2025-11-15T20:20:15.181515', 'gensim': '4.4.0', 'python': '3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]', 'platform': 'Windows-11-10.0.26100-SP0', 'event': 'created'}
+2025-11-15 20:20:15,216 - INFO - exporting phrases from Phrases<614421 vocab, min_count=5, threshold=100, max_vocab_size=40000000>
+2025-11-15 20:20:16,022 - INFO - FrozenPhrases lifecycle event {'msg': 'exported FrozenPhrases<2023 phrases, min_count=5, threshold=100> from Phrases<614421 vocab, min_count=5, threshold=100, max_vocab_size=40000000> in 0.81s', 'datetime': '2025-11-15T20:20:16.022350', 'gensim': '4.4.0', 'python': '3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]', 'platform': 'Windows-11-10.0.26100-SP0', 'event': 'created'}
+2025-11-15 20:20:16,732 - INFO - collecting all words and their counts
+2025-11-15 20:20:16,732 - INFO - PROGRESS: at sentence #0, processed 0 words and 0 word types
+2025-11-15 20:20:17,906 - INFO - collected 634154 token types (unigram + bigrams) from a corpus of 1262029 words and 223 sentences
+2025-11-15 20:20:17,906 - INFO - merged Phrases<634154 vocab, min_count=5, threshold=100, max_vocab_size=40000000>
+2025-11-15 20:20:17,906 - INFO - Phrases lifecycle event {'msg': 'built Phrases<634154 vocab, min_count=5, threshold=100, max_vocab_size=40000000> in 1.17s', 'datetime': '2025-11-15T20:20:17.906640', 'gensim': '4.4.0', 'python': '3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]', 'platform': 'Windows-11-10.0.26100-SP0', 'event': 'created'}
+2025-11-15 20:20:17,906 - INFO - exporting phrases from Phrases<634154 vocab, min_count=5, threshold=100, max_vocab_size=40000000>
+2025-11-15 20:20:18,743 - INFO - FrozenPhrases lifecycle event {'msg': 'exported FrozenPhrases<2452 phrases, min_count=5, threshold=100> from Phrases<634154 vocab, min_count=5, threshold=100, max_vocab_size=40000000> in 0.84s', 'datetime': '2025-11-15T20:20:18.743413', 'gensim': '4.4.0', 'python': '3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]', 'platform': 'Windows-11-10.0.26100-SP0', 'event': 'created'}
+2025-11-15 20:20:19,512 - INFO - adding document #0 to Dictionary<0 unique tokens: []>
+2025-11-15 20:20:20,085 - INFO - built Dictionary<36851 unique tokens: ['ability', 'abiotic_stress', 'able', 'absence', 'absolute']...> from 223 documents (total 1245571 corpus positions)
+2025-11-15 20:20:20,085 - INFO - Dictionary lifecycle event {'msg': "built Dictionary<36851 unique tokens: ['ability', 'abiotic_stress', 'able', 'absence', 'absolute']...> from 223 documents (total 1245571 corpus positions)", 'datetime': '2025-11-15T20:20:20.085395', 'gensim': '4.4.0', 'python': '3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]', 'platform': 'Windows-11-10.0.26100-SP0', 'event': 'created'}
+2025-11-15 20:20:20,085 - INFO - Vocabulary pruning: no_below=5, no_above=0.85
+2025-11-15 20:20:20,105 - INFO - discarding 26684 tokens: [('accommodative', 1), ('achieve', 208), ('activity', 196), ('add', 206), ('addition', 208), ('advantage', 196), ('advantageously', 4), ('agal', 2), ('alkanoate', 2), ('allelochemical', 1)]...
+2025-11-15 20:20:20,105 - INFO - keeping 10167 tokens which were in no less than 5 and no more than 189 (=85.0%) documents
+2025-11-15 20:20:20,118 - INFO - resulting dictionary: Dictionary<10167 unique tokens: ['ability', 'abiotic_stress', 'able', 'absence', 'absolute']...>
+2025-11-15 20:20:20,119 - INFO - Final vocabulary size: 10167
+2025-11-15 20:20:20,444 - INFO - Corpus created with 223 documents
+2025-11-15 20:20:20,444 - INFO - Training 19 models from k=2 to k=20
+2025-11-15 20:20:20,445 - INFO - Training model with k=2
+2025-11-15 20:20:20,445 - INFO - using autotuned alpha, starting with [np.float32(0.5), np.float32(0.5)]
+2025-11-15 20:20:20,447 - INFO - using serial LDA version on this node
+2025-11-15 20:20:20,448 - INFO - running online (multi-pass) LDA training, 2 topics, 10 passes over the supplied corpus of 223 documents, updating model once every 100 documents, evaluating perplexity every 223 documents, iterating 400x with a convergence threshold of 0.001000
+2025-11-15 20:20:20,448 - INFO - PROGRESS: pass 0, at document #100/223
+2025-11-15 20:20:20,936 - INFO - optimized alpha [np.float32(0.8609405), np.float32(0.82570946)]
+2025-11-15 20:20:20,938 - INFO - merging changes from 100 documents into a model of 223 documents
+2025-11-15 20:20:20,939 - INFO - topic #0 (0.861): 0.004*"biogas" + 0.004*"catalyst" + 0.004*"removal" + 0.004*"bioresour_technol" + 0.003*"efficiency" + 0.003*"reaction" + 0.003*"anaerobic_digestion" + 0.003*"methane" + 0.003*"hydrogen" + 0.003*"utilize"
+2025-11-15 20:20:20,939 - INFO - topic #1 (0.826): 0.004*"pyrolysis" + 0.003*"crop" + 0.003*"removal" + 0.003*"dioxide" + 0.003*"hydrogen" + 0.003*"ethanol" + 0.003*"acid" + 0.003*"day" + 0.003*"policy" + 0.003*"bioresour_technol"
+2025-11-15 20:20:20,939 - INFO - topic diff=1.364069, rho=1.000000
+2025-11-15 20:20:20,944 - WARNING - updated prior is not positive
+2025-11-15 20:20:20,944 - INFO - PROGRESS: pass 0, at document #200/223
+2025-11-15 20:20:21,390 - INFO - optimized alpha [np.float32(0.58843803), np.float32(0.7011571)]
+2025-11-15 20:20:21,390 - INFO - merging changes from 100 documents into a model of 223 documents
+2025-11-15 20:20:21,391 - INFO - topic #0 (0.588): 0.004*"biogas" + 0.004*"removal" + 0.004*"bioresour_technol" + 0.003*"catalyst" + 0.003*"efficiency" + 0.003*"hydrogen" + 0.003*"biorefinery" + 0.003*"accumulation" + 0.003*"reaction" + 0.003*"utilize"
+2025-11-15 20:20:21,391 - INFO - topic #1 (0.701): 0.004*"hydrogen" + 0.003*"ethanol" + 0.003*"crop" + 0.003*"removal" + 0.003*"pyrolysis" + 0.003*"bioethanol" + 0.003*"policy" + 0.002*"dioxide" + 0.002*"bioresour_technol" + 0.002*"open_pond"
+2025-11-15 20:20:21,391 - INFO - topic diff=0.472064, rho=0.707107
+2025-11-15 20:20:21,519 - INFO - -8.197 per-word bound, 293.4 perplexity estimate based on a held-out corpus of 23 documents with 58046 words
+2025-11-15 20:20:21,519 - INFO - PROGRESS: pass 0, at document #223/223
+2025-11-15 20:20:21,581 - WARNING - updated prior is not positive
+2025-11-15 20:20:21,581 - INFO - optimized alpha [np.float32(0.58843803), np.float32(0.7011571)]
+2025-11-15 20:20:21,581 - INFO - merging changes from 23 documents into a model of 223 documents
+2025-11-15 20:20:21,583 - INFO - topic #0 (0.588): 0.005*"biorefinery" + 0.004*"removal" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.003*"synthesis" + 0.003*"reaction" + 0.003*"utilize" + 0.003*"efficiency" + 0.003*"biogas" + 0.003*"accumulation"
+2025-11-15 20:20:21,583 - INFO - topic #1 (0.701): 0.005*"supply_chain" + 0.004*"scenario" + 0.003*"ethanol" + 0.003*"removal" + 0.003*"crop" + 0.003*"capacity" + 0.003*"parameter" + 0.003*"price" + 0.003*"bioreﬁnery" + 0.003*"location"
+2025-11-15 20:20:21,583 - INFO - topic diff=0.558546, rho=0.577350
+2025-11-15 20:20:21,586 - INFO - PROGRESS: pass 1, at document #100/223
+2025-11-15 20:20:21,812 - INFO - optimized alpha [np.float32(0.43203923), np.float32(0.2480205)]
+2025-11-15 20:20:21,813 - INFO - merging changes from 100 documents into a model of 223 documents
+2025-11-15 20:20:21,813 - INFO - topic #0 (0.432): 0.004*"removal" + 0.004*"catalyst" + 0.004*"biogas" + 0.004*"bioresour_technol" + 0.004*"biorefinery" + 0.003*"efficiency" + 0.003*"reaction" + 0.003*"acid" + 0.003*"utilize" + 0.003*"hydrogen"
+2025-11-15 20:20:21,815 - INFO - topic #1 (0.248): 0.004*"scenario" + 0.003*"crop" + 0.003*"ethanol" + 0.003*"supply_chain" + 0.003*"policy" + 0.003*"pyrolysis" + 0.003*"removal" + 0.002*"diesel" + 0.002*"price" + 0.002*"open_pond"
+2025-11-15 20:20:21,815 - INFO - topic diff=0.324884, rho=0.486217
+2025-11-15 20:20:21,818 - INFO - PROGRESS: pass 1, at document #200/223
+2025-11-15 20:20:22,027 - INFO - optimized alpha [np.float32(0.21293834), np.float32(0.2085301)]
+2025-11-15 20:20:22,027 - INFO - merging changes from 100 documents into a model of 223 documents
+2025-11-15 20:20:22,029 - INFO - topic #0 (0.213): 0.004*"removal" + 0.004*"hydrogen" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.004*"biorefinery" + 0.003*"biogas" + 0.003*"efficiency" + 0.003*"accumulation" + 0.003*"acid" + 0.003*"reaction"
+2025-11-15 20:20:22,029 - INFO - topic #1 (0.209): 0.003*"ethanol" + 0.003*"crop" + 0.003*"policy" + 0.003*"scenario" + 0.003*"diesel" + 0.003*"country" + 0.002*"price" + 0.002*"open_pond" + 0.002*"hydrogen" + 0.002*"bioresour_technol"
+2025-11-15 20:20:22,029 - INFO - topic diff=0.273623, rho=0.486217
+2025-11-15 20:20:22,123 - INFO - -8.034 per-word bound, 262.2 perplexity estimate based on a held-out corpus of 23 documents with 58046 words
+2025-11-15 20:20:22,125 - INFO - PROGRESS: pass 1, at document #223/223
+2025-11-15 20:20:22,154 - INFO - optimized alpha [np.float32(0.1250557), np.float32(0.14029069)]
+2025-11-15 20:20:22,156 - INFO - merging changes from 23 documents into a model of 223 documents
+2025-11-15 20:20:22,156 - INFO - topic #0 (0.125): 0.005*"biorefinery" + 0.004*"removal" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.003*"synthesis" + 0.003*"reaction" + 0.003*"utilize" + 0.003*"efficiency" + 0.003*"acid" + 0.003*"fatty_acid"
+2025-11-15 20:20:22,156 - INFO - topic #1 (0.140): 0.006*"supply_chain" + 0.005*"scenario" + 0.003*"ethanol" + 0.003*"capacity" + 0.003*"crop" + 0.003*"price" + 0.003*"location" + 0.003*"parameter" + 0.003*"diﬀerent" + 0.003*"period"
+2025-11-15 20:20:22,157 - INFO - topic diff=0.403926, rho=0.486217
+2025-11-15 20:20:22,160 - INFO - PROGRESS: pass 2, at document #100/223
+2025-11-15 20:20:22,311 - INFO - optimized alpha [np.float32(0.15247622), np.float32(0.1531128)]
+2025-11-15 20:20:22,311 - INFO - merging changes from 100 documents into a model of 223 documents
+2025-11-15 20:20:22,313 - INFO - topic #0 (0.152): 0.004*"removal" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.004*"biorefinery" + 0.003*"biogas" + 0.003*"efficiency" + 0.003*"hydrogen" + 0.003*"acid" + 0.003*"reaction" + 0.003*"utilize"
+2025-11-15 20:20:22,313 - INFO - topic #1 (0.153): 0.004*"scenario" + 0.004*"supply_chain" + 0.003*"ethanol" + 0.003*"crop" + 0.003*"policy" + 0.003*"diesel" + 0.003*"price" + 0.003*"unit" + 0.002*"country" + 0.002*"open_pond"
+2025-11-15 20:20:22,313 - INFO - topic diff=0.272887, rho=0.437269
+2025-11-15 20:20:22,316 - INFO - PROGRESS: pass 2, at document #200/223
+2025-11-15 20:20:22,461 - INFO - optimized alpha [np.float32(0.16582073), np.float32(0.16505589)]
+2025-11-15 20:20:22,461 - INFO - merging changes from 100 documents into a model of 223 documents
+2025-11-15 20:20:22,461 - INFO - topic #0 (0.166): 0.004*"removal" + 0.004*"hydrogen" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.003*"biorefinery" + 0.003*"biogas" + 0.003*"efficiency" + 0.003*"acid" + 0.003*"accumulation" + 0.003*"reaction"
+2025-11-15 20:20:22,461 - INFO - topic #1 (0.165): 0.003*"ethanol" + 0.003*"scenario" + 0.003*"crop" + 0.003*"policy" + 0.003*"diesel" + 0.003*"country" + 0.003*"price" + 0.003*"supply_chain" + 0.002*"open_pond" + 0.002*"unit"
+2025-11-15 20:20:22,461 - INFO - topic diff=0.234574, rho=0.437269
+2025-11-15 20:20:22,550 - INFO - -8.000 per-word bound, 256.1 perplexity estimate based on a held-out corpus of 23 documents with 58046 words
+2025-11-15 20:20:22,550 - INFO - PROGRESS: pass 2, at document #223/223
+2025-11-15 20:20:22,577 - INFO - optimized alpha [np.float32(0.120561205), np.float32(0.124429256)]
+2025-11-15 20:20:22,577 - INFO - merging changes from 23 documents into a model of 223 documents
+2025-11-15 20:20:22,577 - INFO - topic #0 (0.121): 0.004*"biorefinery" + 0.004*"removal" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.003*"reaction" + 0.003*"synthesis" + 0.003*"utilize" + 0.003*"hydrogen" + 0.003*"acid" + 0.003*"fatty_acid"
+2025-11-15 20:20:22,577 - INFO - topic #1 (0.124): 0.006*"supply_chain" + 0.005*"scenario" + 0.003*"ethanol" + 0.003*"capacity" + 0.003*"crop" + 0.003*"price" + 0.003*"diﬀerent" + 0.003*"location" + 0.003*"parameter" + 0.003*"period"
+2025-11-15 20:20:22,579 - INFO - topic diff=0.336871, rho=0.437269
+2025-11-15 20:20:22,582 - INFO - PROGRESS: pass 3, at document #100/223
+2025-11-15 20:20:22,709 - INFO - optimized alpha [np.float32(0.14828846), np.float32(0.14031263)]
+2025-11-15 20:20:22,709 - INFO - merging changes from 100 documents into a model of 223 documents
+2025-11-15 20:20:22,711 - INFO - topic #0 (0.148): 0.004*"removal" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.004*"biorefinery" + 0.003*"hydrogen" + 0.003*"biogas" + 0.003*"acid" + 0.003*"efficiency" + 0.003*"reaction" + 0.003*"utilize"
+2025-11-15 20:20:22,711 - INFO - topic #1 (0.140): 0.005*"scenario" + 0.004*"supply_chain" + 0.003*"ethanol" + 0.003*"crop" + 0.003*"policy" + 0.003*"diesel" + 0.003*"price" + 0.003*"unit" + 0.003*"country" + 0.003*"capacity"
+2025-11-15 20:20:22,711 - INFO - topic diff=0.234005, rho=0.400642
+2025-11-15 20:20:22,714 - INFO - PROGRESS: pass 3, at document #200/223
+2025-11-15 20:20:22,855 - INFO - optimized alpha [np.float32(0.17158277), np.float32(0.1624493)]
+2025-11-15 20:20:22,855 - INFO - merging changes from 100 documents into a model of 223 documents
+2025-11-15 20:20:22,857 - INFO - topic #0 (0.172): 0.004*"removal" + 0.004*"hydrogen" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.003*"biorefinery" + 0.003*"biogas" + 0.003*"efficiency" + 0.003*"acid" + 0.003*"accumulation" + 0.003*"reaction"
+2025-11-15 20:20:22,857 - INFO - topic #1 (0.162): 0.004*"scenario" + 0.004*"ethanol" + 0.003*"crop" + 0.003*"policy" + 0.003*"diesel" + 0.003*"country" + 0.003*"supply_chain" + 0.003*"price" + 0.003*"unit" + 0.002*"efﬁciency"
+2025-11-15 20:20:22,857 - INFO - topic diff=0.205647, rho=0.400642
+2025-11-15 20:20:22,947 - INFO - -7.988 per-word bound, 253.9 perplexity estimate based on a held-out corpus of 23 documents with 58046 words
+2025-11-15 20:20:22,947 - INFO - PROGRESS: pass 3, at document #223/223
+2025-11-15 20:20:22,971 - INFO - optimized alpha [np.float32(0.13794257), np.float32(0.1370984)]
+2025-11-15 20:20:22,973 - INFO - merging changes from 23 documents into a model of 223 documents
+2025-11-15 20:20:22,973 - INFO - topic #0 (0.138): 0.004*"removal" + 0.004*"biorefinery" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.003*"reaction" + 0.003*"hydrogen" + 0.003*"synthesis" + 0.003*"utilize" + 0.003*"acid" + 0.003*"fatty_acid"
+2025-11-15 20:20:22,973 - INFO - topic #1 (0.137): 0.006*"supply_chain" + 0.005*"scenario" + 0.003*"ethanol" + 0.003*"capacity" + 0.003*"price" + 0.003*"crop" + 0.003*"diﬀerent" + 0.003*"location" + 0.003*"unit" + 0.003*"parameter"
+2025-11-15 20:20:22,975 - INFO - topic diff=0.291694, rho=0.400642
+2025-11-15 20:20:22,978 - INFO - PROGRESS: pass 4, at document #100/223
+2025-11-15 20:20:23,101 - INFO - optimized alpha [np.float32(0.16595034), np.float32(0.15156117)]
+2025-11-15 20:20:23,101 - INFO - merging changes from 100 documents into a model of 223 documents
+2025-11-15 20:20:23,103 - INFO - topic #0 (0.166): 0.004*"removal" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.004*"hydrogen" + 0.003*"biorefinery" + 0.003*"acid" + 0.003*"biogas" + 0.003*"reaction" + 0.003*"efficiency" + 0.003*"utilize"
+2025-11-15 20:20:23,103 - INFO - topic #1 (0.152): 0.005*"scenario" + 0.004*"supply_chain" + 0.003*"ethanol" + 0.003*"crop" + 0.003*"policy" + 0.003*"diesel" + 0.003*"price" + 0.003*"unit" + 0.003*"country" + 0.003*"capacity"
+2025-11-15 20:20:23,103 - INFO - topic diff=0.208492, rho=0.371904
+2025-11-15 20:20:23,108 - INFO - PROGRESS: pass 4, at document #200/223
+2025-11-15 20:20:23,224 - INFO - optimized alpha [np.float32(0.1936233), np.float32(0.17421348)]
+2025-11-15 20:20:23,224 - INFO - merging changes from 100 documents into a model of 223 documents
+2025-11-15 20:20:23,224 - INFO - topic #0 (0.194): 0.004*"removal" + 0.004*"hydrogen" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.003*"biorefinery" + 0.003*"biogas" + 0.003*"efficiency" + 0.003*"acid" + 0.003*"reaction" + 0.003*"accumulation"
+2025-11-15 20:20:23,225 - INFO - topic #1 (0.174): 0.004*"scenario" + 0.004*"ethanol" + 0.003*"policy" + 0.003*"crop" + 0.003*"diesel" + 0.003*"country" + 0.003*"supply_chain" + 0.003*"price" + 0.003*"unit" + 0.003*"efﬁciency"
+2025-11-15 20:20:23,225 - INFO - topic diff=0.185534, rho=0.371904
+2025-11-15 20:20:23,309 - INFO - -7.981 per-word bound, 252.7 perplexity estimate based on a held-out corpus of 23 documents with 58046 words
+2025-11-15 20:20:23,311 - INFO - PROGRESS: pass 4, at document #223/223
+2025-11-15 20:20:23,334 - INFO - optimized alpha [np.float32(0.15106595), np.float32(0.14618693)]
+2025-11-15 20:20:23,334 - INFO - merging changes from 23 documents into a model of 223 documents
+2025-11-15 20:20:23,336 - INFO - topic #0 (0.151): 0.004*"removal" + 0.004*"catalyst" + 0.004*"biorefinery" + 0.004*"bioresour_technol" + 0.003*"hydrogen" + 0.003*"reaction" + 0.003*"synthesis" + 0.003*"acid" + 0.003*"utilize" + 0.003*"fatty_acid"
+2025-11-15 20:20:23,336 - INFO - topic #1 (0.146): 0.006*"supply_chain" + 0.005*"scenario" + 0.003*"ethanol" + 0.003*"price" + 0.003*"capacity" + 0.003*"crop" + 0.003*"diﬀerent" + 0.003*"location" + 0.003*"unit" + 0.003*"diesel"
+2025-11-15 20:20:23,336 - INFO - topic diff=0.260413, rho=0.371904
+2025-11-15 20:20:23,340 - INFO - PROGRESS: pass 5, at document #100/223
+2025-11-15 20:20:23,462 - INFO - optimized alpha [np.float32(0.18005714), np.float32(0.15982865)]
+2025-11-15 20:20:23,462 - INFO - merging changes from 100 documents into a model of 223 documents
+2025-11-15 20:20:23,463 - INFO - topic #0 (0.180): 0.004*"removal" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.004*"hydrogen" + 0.003*"biorefinery" + 0.003*"acid" + 0.003*"biogas" + 0.003*"reaction" + 0.003*"efficiency" + 0.003*"fatty_acid"
+2025-11-15 20:20:23,463 - INFO - topic #1 (0.160): 0.005*"scenario" + 0.004*"supply_chain" + 0.003*"crop" + 0.003*"ethanol" + 0.003*"policy" + 0.003*"diesel" + 0.003*"price" + 0.003*"unit" + 0.003*"country" + 0.003*"capacity"
+2025-11-15 20:20:23,463 - INFO - topic diff=0.189866, rho=0.348578
+2025-11-15 20:20:23,466 - INFO - PROGRESS: pass 5, at document #200/223
+2025-11-15 20:20:23,578 - INFO - optimized alpha [np.float32(0.20735575), np.float32(0.18139851)]
+2025-11-15 20:20:23,578 - INFO - merging changes from 100 documents into a model of 223 documents
+2025-11-15 20:20:23,579 - INFO - topic #0 (0.207): 0.004*"removal" + 0.004*"hydrogen" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.003*"biorefinery" + 0.003*"biogas" + 0.003*"acid" + 0.003*"efficiency" + 0.003*"reaction" + 0.003*"bioethanol"
+2025-11-15 20:20:23,580 - INFO - topic #1 (0.181): 0.004*"scenario" + 0.004*"policy" + 0.004*"ethanol" + 0.003*"crop" + 0.003*"supply_chain" + 0.003*"diesel" + 0.003*"country" + 0.003*"price" + 0.003*"unit" + 0.003*"efﬁciency"
+2025-11-15 20:20:23,580 - INFO - topic diff=0.170909, rho=0.348578
+2025-11-15 20:20:23,664 - INFO - -7.977 per-word bound, 251.9 perplexity estimate based on a held-out corpus of 23 documents with 58046 words
+2025-11-15 20:20:23,664 - INFO - PROGRESS: pass 5, at document #223/223
+2025-11-15 20:20:23,687 - INFO - optimized alpha [np.float32(0.16016313), np.float32(0.15224926)]
+2025-11-15 20:20:23,687 - INFO - merging changes from 23 documents into a model of 223 documents
+2025-11-15 20:20:23,687 - INFO - topic #0 (0.160): 0.004*"removal" + 0.004*"catalyst" + 0.004*"biorefinery" + 0.004*"bioresour_technol" + 0.004*"hydrogen" + 0.003*"reaction" + 0.003*"synthesis" + 0.003*"acid" + 0.003*"utilize" + 0.003*"fatty_acid"
+2025-11-15 20:20:23,689 - INFO - topic #1 (0.152): 0.006*"supply_chain" + 0.005*"scenario" + 0.003*"ethanol" + 0.003*"price" + 0.003*"capacity" + 0.003*"crop" + 0.003*"diﬀerent" + 0.003*"unit" + 0.003*"location" + 0.003*"diesel"
+2025-11-15 20:20:23,689 - INFO - topic diff=0.237491, rho=0.348578
+2025-11-15 20:20:23,692 - INFO - PROGRESS: pass 6, at document #100/223
+2025-11-15 20:20:23,808 - INFO - optimized alpha [np.float32(0.19075248), np.float32(0.16749217)]
+2025-11-15 20:20:23,809 - INFO - merging changes from 100 documents into a model of 223 documents
+2025-11-15 20:20:23,810 - INFO - topic #0 (0.191): 0.004*"removal" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.004*"hydrogen" + 0.003*"biorefinery" + 0.003*"acid" + 0.003*"reaction" + 0.003*"biogas" + 0.003*"efficiency" + 0.003*"fatty_acid"
+2025-11-15 20:20:23,810 - INFO - topic #1 (0.167): 0.005*"scenario" + 0.004*"supply_chain" + 0.004*"policy" + 0.003*"crop" + 0.003*"ethanol" + 0.003*"diesel" + 0.003*"price" + 0.003*"unit" + 0.003*"country" + 0.003*"capacity"
+2025-11-15 20:20:23,810 - INFO - topic diff=0.175288, rho=0.329154
+2025-11-15 20:20:23,814 - INFO - PROGRESS: pass 6, at document #200/223
+2025-11-15 20:20:23,922 - INFO - optimized alpha [np.float32(0.21735074), np.float32(0.18787658)]
+2025-11-15 20:20:23,922 - INFO - merging changes from 100 documents into a model of 223 documents
+2025-11-15 20:20:23,924 - INFO - topic #0 (0.217): 0.004*"removal" + 0.004*"hydrogen" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.003*"biorefinery" + 0.003*"acid" + 0.003*"biogas" + 0.003*"reaction" + 0.003*"efficiency" + 0.003*"bioethanol"
+2025-11-15 20:20:23,924 - INFO - topic #1 (0.188): 0.004*"scenario" + 0.004*"policy" + 0.004*"ethanol" + 0.003*"crop" + 0.003*"supply_chain" + 0.003*"diesel" + 0.003*"country" + 0.003*"price" + 0.003*"unit" + 0.003*"estimate"
+2025-11-15 20:20:23,924 - INFO - topic diff=0.159527, rho=0.329154
+2025-11-15 20:20:24,012 - INFO - -7.973 per-word bound, 251.3 perplexity estimate based on a held-out corpus of 23 documents with 58046 words
+2025-11-15 20:20:24,012 - INFO - PROGRESS: pass 6, at document #223/223
+2025-11-15 20:20:24,034 - INFO - optimized alpha [np.float32(0.17047897), np.float32(0.16389163)]
+2025-11-15 20:20:24,036 - INFO - merging changes from 23 documents into a model of 223 documents
+2025-11-15 20:20:24,037 - INFO - topic #0 (0.170): 0.004*"removal" + 0.004*"catalyst" + 0.004*"biorefinery" + 0.004*"bioresour_technol" + 0.004*"hydrogen" + 0.003*"reaction" + 0.003*"synthesis" + 0.003*"acid" + 0.003*"utilize" + 0.003*"fatty_acid"
+2025-11-15 20:20:24,037 - INFO - topic #1 (0.164): 0.006*"supply_chain" + 0.005*"scenario" + 0.003*"ethanol" + 0.003*"price" + 0.003*"capacity" + 0.003*"crop" + 0.003*"unit" + 0.003*"diﬀerent" + 0.003*"location" + 0.003*"diesel"
+2025-11-15 20:20:24,037 - INFO - topic diff=0.219745, rho=0.329154
+2025-11-15 20:20:24,040 - INFO - PROGRESS: pass 7, at document #100/223
+2025-11-15 20:20:24,177 - INFO - optimized alpha [np.float32(0.20071128), np.float32(0.1777037)]
+2025-11-15 20:20:24,178 - INFO - merging changes from 100 documents into a model of 223 documents
+2025-11-15 20:20:24,179 - INFO - topic #0 (0.201): 0.004*"removal" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.004*"hydrogen" + 0.003*"biorefinery" + 0.003*"acid" + 0.003*"reaction" + 0.003*"biogas" + 0.003*"efficiency" + 0.003*"fatty_acid"
+2025-11-15 20:20:24,179 - INFO - topic #1 (0.178): 0.005*"scenario" + 0.005*"supply_chain" + 0.004*"policy" + 0.004*"crop" + 0.003*"ethanol" + 0.003*"diesel" + 0.003*"price" + 0.003*"unit" + 0.003*"country" + 0.003*"capacity"
+2025-11-15 20:20:24,179 - INFO - topic diff=0.163600, rho=0.312653
+2025-11-15 20:20:24,183 - INFO - PROGRESS: pass 7, at document #200/223
+2025-11-15 20:20:24,293 - INFO - optimized alpha [np.float32(0.22658317), np.float32(0.19676065)]
+2025-11-15 20:20:24,293 - INFO - merging changes from 100 documents into a model of 223 documents
+2025-11-15 20:20:24,294 - INFO - topic #0 (0.227): 0.004*"removal" + 0.004*"hydrogen" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.003*"biorefinery" + 0.003*"acid" + 0.003*"reaction" + 0.003*"biogas" + 0.003*"efficiency" + 0.003*"bioethanol"
+2025-11-15 20:20:24,294 - INFO - topic #1 (0.197): 0.004*"scenario" + 0.004*"policy" + 0.003*"ethanol" + 0.003*"crop" + 0.003*"supply_chain" + 0.003*"country" + 0.003*"diesel" + 0.003*"price" + 0.003*"unit" + 0.003*"estimate"
+2025-11-15 20:20:24,294 - INFO - topic diff=0.150204, rho=0.312653
+2025-11-15 20:20:24,376 - INFO - -7.970 per-word bound, 250.7 perplexity estimate based on a held-out corpus of 23 documents with 58046 words
+2025-11-15 20:20:24,376 - INFO - PROGRESS: pass 7, at document #223/223
+2025-11-15 20:20:24,397 - INFO - optimized alpha [np.float32(0.177916), np.float32(0.17098221)]
+2025-11-15 20:20:24,398 - INFO - merging changes from 23 documents into a model of 223 documents
+2025-11-15 20:20:24,399 - INFO - topic #0 (0.178): 0.004*"removal" + 0.004*"catalyst" + 0.004*"biorefinery" + 0.004*"bioresour_technol" + 0.004*"hydrogen" + 0.004*"reaction" + 0.003*"synthesis" + 0.003*"acid" + 0.003*"utilize" + 0.003*"fatty_acid"
+2025-11-15 20:20:24,399 - INFO - topic #1 (0.171): 0.006*"supply_chain" + 0.005*"scenario" + 0.003*"price" + 0.003*"ethanol" + 0.003*"capacity" + 0.003*"crop" + 0.003*"unit" + 0.003*"diﬀerent" + 0.003*"location" + 0.003*"diesel"
+2025-11-15 20:20:24,399 - INFO - topic diff=0.205496, rho=0.312653
+2025-11-15 20:20:24,403 - INFO - PROGRESS: pass 8, at document #100/223
+2025-11-15 20:20:24,505 - INFO - optimized alpha [np.float32(0.20753384), np.float32(0.18366505)]
+2025-11-15 20:20:24,506 - INFO - merging changes from 100 documents into a model of 223 documents
+2025-11-15 20:20:24,506 - INFO - topic #0 (0.208): 0.004*"removal" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.004*"hydrogen" + 0.003*"biorefinery" + 0.003*"reaction" + 0.003*"acid" + 0.003*"biogas" + 0.003*"fatty_acid" + 0.003*"efficiency"
+2025-11-15 20:20:24,507 - INFO - topic #1 (0.184): 0.005*"scenario" + 0.005*"supply_chain" + 0.004*"policy" + 0.004*"crop" + 0.003*"ethanol" + 0.003*"price" + 0.003*"diesel" + 0.003*"unit" + 0.003*"country" + 0.003*"capacity"
+2025-11-15 20:20:24,507 - INFO - topic diff=0.153945, rho=0.298408
+2025-11-15 20:20:24,511 - INFO - PROGRESS: pass 8, at document #200/223
+2025-11-15 20:20:24,615 - INFO - optimized alpha [np.float32(0.23578058), np.float32(0.20262776)]
+2025-11-15 20:20:24,616 - INFO - merging changes from 100 documents into a model of 223 documents
+2025-11-15 20:20:24,616 - INFO - topic #0 (0.236): 0.004*"removal" + 0.004*"hydrogen" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.003*"biorefinery" + 0.003*"reaction" + 0.003*"acid" + 0.003*"biogas" + 0.003*"efficiency" + 0.003*"bioethanol"
+2025-11-15 20:20:24,616 - INFO - topic #1 (0.203): 0.004*"scenario" + 0.004*"policy" + 0.004*"supply_chain" + 0.003*"crop" + 0.003*"ethanol" + 0.003*"country" + 0.003*"diesel" + 0.003*"price" + 0.003*"unit" + 0.003*"estimate"
+2025-11-15 20:20:24,616 - INFO - topic diff=0.142238, rho=0.298408
+2025-11-15 20:20:24,698 - INFO - -7.968 per-word bound, 250.3 perplexity estimate based on a held-out corpus of 23 documents with 58046 words
+2025-11-15 20:20:24,698 - INFO - PROGRESS: pass 8, at document #223/223
+2025-11-15 20:20:24,722 - INFO - optimized alpha [np.float32(0.18478623), np.float32(0.17596771)]
+2025-11-15 20:20:24,722 - INFO - merging changes from 23 documents into a model of 223 documents
+2025-11-15 20:20:24,723 - INFO - topic #0 (0.185): 0.004*"removal" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.004*"biorefinery" + 0.004*"hydrogen" + 0.004*"reaction" + 0.003*"synthesis" + 0.003*"acid" + 0.003*"utilize" + 0.003*"fatty_acid"
+2025-11-15 20:20:24,723 - INFO - topic #1 (0.176): 0.006*"supply_chain" + 0.006*"scenario" + 0.003*"price" + 0.003*"ethanol" + 0.003*"crop" + 0.003*"capacity" + 0.003*"unit" + 0.003*"diﬀerent" + 0.003*"location" + 0.003*"policy"
+2025-11-15 20:20:24,723 - INFO - topic diff=0.193747, rho=0.298408
+2025-11-15 20:20:24,726 - INFO - PROGRESS: pass 9, at document #100/223
+2025-11-15 20:20:24,831 - INFO - optimized alpha [np.float32(0.21426958), np.float32(0.18892728)]
+2025-11-15 20:20:24,831 - INFO - merging changes from 100 documents into a model of 223 documents
+2025-11-15 20:20:24,832 - INFO - topic #0 (0.214): 0.004*"removal" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.004*"hydrogen" + 0.003*"reaction" + 0.003*"biorefinery" + 0.003*"acid" + 0.003*"biogas" + 0.003*"fatty_acid" + 0.003*"utilize"
+2025-11-15 20:20:24,832 - INFO - topic #1 (0.189): 0.005*"scenario" + 0.005*"supply_chain" + 0.004*"policy" + 0.004*"crop" + 0.003*"ethanol" + 0.003*"price" + 0.003*"diesel" + 0.003*"unit" + 0.003*"country" + 0.003*"capacity"
+2025-11-15 20:20:24,832 - INFO - topic diff=0.145773, rho=0.285948
+2025-11-15 20:20:24,835 - INFO - PROGRESS: pass 9, at document #200/223
+2025-11-15 20:20:24,935 - INFO - optimized alpha [np.float32(0.24247381), np.float32(0.2081707)]
+2025-11-15 20:20:24,937 - INFO - merging changes from 100 documents into a model of 223 documents
+2025-11-15 20:20:24,937 - INFO - topic #0 (0.242): 0.004*"removal" + 0.004*"hydrogen" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.003*"biorefinery" + 0.003*"reaction" + 0.003*"acid" + 0.003*"biogas" + 0.003*"efficiency" + 0.003*"bioethanol"
+2025-11-15 20:20:24,937 - INFO - topic #1 (0.208): 0.004*"scenario" + 0.004*"policy" + 0.004*"supply_chain" + 0.003*"crop" + 0.003*"ethanol" + 0.003*"country" + 0.003*"price" + 0.003*"diesel" + 0.003*"unit" + 0.003*"estimate"
+2025-11-15 20:20:24,938 - INFO - topic diff=0.135437, rho=0.285948
+2025-11-15 20:20:25,020 - INFO - -7.965 per-word bound, 249.9 perplexity estimate based on a held-out corpus of 23 documents with 58046 words
+2025-11-15 20:20:25,020 - INFO - PROGRESS: pass 9, at document #223/223
+2025-11-15 20:20:25,041 - INFO - optimized alpha [np.float32(0.19047216), np.float32(0.18060717)]
+2025-11-15 20:20:25,042 - INFO - merging changes from 23 documents into a model of 223 documents
+2025-11-15 20:20:25,043 - INFO - topic #0 (0.190): 0.004*"removal" + 0.004*"catalyst" + 0.004*"bioresour_technol" + 0.004*"biorefinery" + 0.004*"hydrogen" + 0.004*"reaction" + 0.003*"synthesis" + 0.003*"acid" + 0.003*"utilize" + 0.003*"fatty_acid"
+2025-11-15 20:20:25,043 - INFO - topic #1 (0.181): 0.006*"supply_chain" + 0.006*"scenario" + 0.003*"price" + 0.003*"ethanol" + 0.003*"crop" + 0.003*"capacity" + 0.003*"unit" + 0.003*"diﬀerent" + 0.003*"location" + 0.003*"policy"
+2025-11-15 20:20:25,043 - INFO - topic diff=0.183860, rho=0.285948
+2025-11-15 20:20:25,046 - INFO - LdaModel lifecycle event {'msg': 'trained LdaModel<num_terms=10167, num_topics=2, decay=0.5, chunksize=100> in 4.60s', 'datetime': '2025-11-15T20:20:25.046448', 'gensim': '4.4.0', 'python': '3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]', 'platform': 'Windows-11-10.0.26100-SP0', 'event': 'created'}
+2025-11-15 20:20:25,046 - INFO - using ParallelWordOccurrenceAccumulator<processes=11, batch_size=64> to estimate probabilities from sliding windows

@@ -1,0 +1,222 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1>Refined Topic Model Knowledge Graph</h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1>Refined Topic Model Knowledge Graph</h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 900px;
+                 background-color: #f5f5f5;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+             #loadingBar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width: 100%;
+                 height: 900px;
+                 background-color:rgba(200,200,200,0.8);
+                 -webkit-transition: all 0.5s ease;
+                 -moz-transition: all 0.5s ease;
+                 -ms-transition: all 0.5s ease;
+                 -o-transition: all 0.5s ease;
+                 transition: all 0.5s ease;
+                 opacity:1;
+             }
+
+             #bar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width:20px;
+                 height:20px;
+                 margin:auto auto auto auto;
+                 border-radius:11px;
+                 border:2px solid rgba(30,30,30,0.05);
+                 background: rgb(0, 173, 246); /* Old browsers */
+                 box-shadow: 2px 0px 4px rgba(0,0,0,0.4);
+             }
+
+             #border {
+                 position:absolute;
+                 top:10px;
+                 left:10px;
+                 width:500px;
+                 height:23px;
+                 margin:auto auto auto auto;
+                 box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+                 border-radius:10px;
+             }
+
+             #text {
+                 position:absolute;
+                 top:8px;
+                 left:530px;
+                 width:30px;
+                 height:50px;
+                 margin:auto auto auto auto;
+                 font-size:22px;
+                 color: #000000;
+             }
+
+             div.outerBorder {
+                 position:relative;
+                 top:400px;
+                 width:600px;
+                 height:44px;
+                 margin:auto auto auto auto;
+                 border:8px solid rgba(0,0,0,0.1);
+                 background: rgb(252,252,252); /* Old browsers */
+                 background: -moz-linear-gradient(top,  rgba(252,252,252,1) 0%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+                 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+                 background: -webkit-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+                 background: -o-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+                 background: -ms-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* IE10+ */
+                 background: linear-gradient(to bottom,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* W3C */
+                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+                 border-radius:72px;
+                 box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+             }
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+            <div id="loadingBar">
+              <div class="outerBorder">
+                <div id="text">0%</div>
+                <div id="border">
+                  <div id="bar"></div>
+                </div>
+              </div>
+            </div>
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#f08080", "font": {"color": "#2c3e50"}, "id": "Topic_0", "label": "T0", "shape": "dot", "size": 30, "title": "Topic 0: biorefinery pretreatment bioresour_technol", "type": "topic"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "biorefinery", "label": "biorefinery", "shape": "dot", "size": 5, "title": "Keyword: biorefinery", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "pretreatment", "label": "pretreatment", "shape": "dot", "size": 5, "title": "Keyword: pretreatment", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "bioresour_technol", "label": "bioresour technol", "shape": "dot", "size": 5, "title": "Keyword: bioresour technol", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "efficiency", "label": "efficiency", "shape": "dot", "size": 5, "title": "Keyword: efficiency", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "fermentation", "label": "fermentation", "shape": "dot", "size": 5, "title": "Keyword: fermentation", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "efficient", "label": "efficient", "shape": "dot", "size": 5, "title": "Keyword: efficient", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "carotenoid", "label": "carotenoid", "shape": "dot", "size": 5, "title": "Keyword: carotenoid", "type": "keyword"}, {"color": "#f08080", "font": {"color": "#2c3e50"}, "id": "Topic_1", "label": "T1", "shape": "dot", "size": 30, "title": "Topic 1: ethanol biochar pyrolysis", "type": "topic"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "ethanol", "label": "ethanol", "shape": "dot", "size": 5, "title": "Keyword: ethanol", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "biochar", "label": "biochar", "shape": "dot", "size": 5, "title": "Keyword: biochar", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "pyrolysis", "label": "pyrolysis", "shape": "dot", "size": 5, "title": "Keyword: pyrolysis", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "biore\ufb01nery", "label": "biore\ufb01nery", "shape": "dot", "size": 5, "title": "Keyword: biore\ufb01nery", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "crop", "label": "crop", "shape": "dot", "size": 5, "title": "Keyword: crop", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "re\ufb01nery", "label": "re\ufb01nery", "shape": "dot", "size": 5, "title": "Keyword: re\ufb01nery", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "lignocellulosic", "label": "lignocellulosic", "shape": "dot", "size": 5, "title": "Keyword: lignocellulosic", "type": "keyword"}, {"color": "#f08080", "font": {"color": "#2c3e50"}, "id": "Topic_2", "label": "T2", "shape": "dot", "size": 30, "title": "Topic 2: carbohydrate bioethanol fermentation", "type": "topic"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "carbohydrate", "label": "carbohydrate", "shape": "dot", "size": 5, "title": "Keyword: carbohydrate", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "bioethanol", "label": "bioethanol", "shape": "dot", "size": 5, "title": "Keyword: bioethanol", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "sewage", "label": "sewage", "shape": "dot", "size": 5, "title": "Keyword: sewage", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "pome", "label": "pome", "shape": "dot", "size": 7, "title": "Keyword: pome", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "biobutanol", "label": "biobutanol", "shape": "dot", "size": 5, "title": "Keyword: biobutanol", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "hydrolysis", "label": "hydrolysis", "shape": "dot", "size": 5, "title": "Keyword: hydrolysis", "type": "keyword"}, {"color": "#f08080", "font": {"color": "#2c3e50"}, "id": "Topic_3", "label": "T3", "shape": "dot", "size": 30, "title": "Topic 3: biogas day bioresour_technol", "type": "topic"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "biogas", "label": "biogas", "shape": "dot", "size": 5, "title": "Keyword: biogas", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "day", "label": "day", "shape": "dot", "size": 5, "title": "Keyword: day", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "reactor", "label": "reactor", "shape": "dot", "size": 5, "title": "Keyword: reactor", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "anaerobic_digestion", "label": "anaerobic digestion", "shape": "dot", "size": 5, "title": "Keyword: anaerobic digestion", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "removal", "label": "removal", "shape": "dot", "size": 5, "title": "Keyword: removal", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "methane", "label": "methane", "shape": "dot", "size": 5, "title": "Keyword: methane", "type": "keyword"}, {"color": "#f08080", "font": {"color": "#2c3e50"}, "id": "Topic_4", "label": "T4", "shape": "dot", "size": 30, "title": "Topic 4: feed market marine", "type": "topic"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "feed", "label": "feed", "shape": "dot", "size": 5, "title": "Keyword: feed", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "market", "label": "market", "shape": "dot", "size": 5, "title": "Keyword: market", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "marine", "label": "marine", "shape": "dot", "size": 5, "title": "Keyword: marine", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "price", "label": "price", "shape": "dot", "size": 5, "title": "Keyword: price", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "aquaculture", "label": "aquaculture", "shape": "dot", "size": 5, "title": "Keyword: aquaculture", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "biotechnology", "label": "biotechnology", "shape": "dot", "size": 5, "title": "Keyword: biotechnology", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "pigment", "label": "pigment", "shape": "dot", "size": 5, "title": "Keyword: pigment", "type": "keyword"}, {"color": "#f08080", "font": {"color": "#2c3e50"}, "id": "Topic_5", "label": "T5", "shape": "dot", "size": 30, "title": "Topic 5: efficiency sequestration fixation", "type": "topic"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "sequestration", "label": "sequestration", "shape": "dot", "size": 5, "title": "Keyword: sequestration", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "fixation", "label": "fixation", "shape": "dot", "size": 5, "title": "Keyword: fixation", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "capture", "label": "capture", "shape": "dot", "size": 5, "title": "Keyword: capture", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "significant", "label": "significant", "shape": "dot", "size": 5, "title": "Keyword: significant", "type": "keyword"}, {"color": "#f08080", "font": {"color": "#2c3e50"}, "id": "Topic_6", "label": "T6", "shape": "dot", "size": 30, "title": "Topic 6: ef\ufb01ciency accumulation ing", "type": "topic"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "ef\ufb01ciency", "label": "ef\ufb01ciency", "shape": "dot", "size": 5, "title": "Keyword: ef\ufb01ciency", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "accumulation", "label": "accumulation", "shape": "dot", "size": 5, "title": "Keyword: accumulation", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "ing", "label": "ing", "shape": "dot", "size": 5, "title": "Keyword: ing", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "pbrs", "label": "pbrs", "shape": "dot", "size": 5, "title": "Keyword: pbrs", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "raceway_pond", "label": "raceway pond", "shape": "dot", "size": 5, "title": "Keyword: raceway pond", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "surface", "label": "surface", "shape": "dot", "size": 5, "title": "Keyword: surface", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "gene", "label": "gene", "shape": "dot", "size": 5, "title": "Keyword: gene", "type": "keyword"}, {"color": "#f08080", "font": {"color": "#2c3e50"}, "id": "Topic_7", "label": "T7", "shape": "dot", "size": 30, "title": "Topic 7: palm pome halophyte", "type": "topic"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "palm", "label": "palm", "shape": "dot", "size": 12, "title": "Keyword: palm", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "halophyte", "label": "halophyte", "shape": "dot", "size": 5, "title": "Keyword: halophyte", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "mill_effluent", "label": "mill effluent", "shape": "dot", "size": 5, "title": "Keyword: mill effluent", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "dimension", "label": "dimension", "shape": "dot", "size": 5, "title": "Keyword: dimension", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "attribute", "label": "attribute", "shape": "dot", "size": 5, "title": "Keyword: attribute", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "index", "label": "index", "shape": "dot", "size": 5, "title": "Keyword: index", "type": "keyword"}, {"color": "#f08080", "font": {"color": "#2c3e50"}, "id": "Topic_8", "label": "T8", "shape": "dot", "size": 30, "title": "Topic 8: hydrogen biohydrogen oxygen", "type": "topic"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "hydrogen", "label": "hydrogen", "shape": "dot", "size": 14, "title": "Keyword: hydrogen", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "biohydrogen", "label": "biohydrogen", "shape": "dot", "size": 5, "title": "Keyword: biohydrogen", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "oxygen", "label": "oxygen", "shape": "dot", "size": 5, "title": "Keyword: oxygen", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "hydrogenase", "label": "hydrogenase", "shape": "dot", "size": 5, "title": "Keyword: hydrogenase", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "dark_fermentation", "label": "dark fermentation", "shape": "dot", "size": 5, "title": "Keyword: dark fermentation", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "int", "label": "int", "shape": "dot", "size": 5, "title": "Keyword: int", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "gasification", "label": "gasification", "shape": "dot", "size": 5, "title": "Keyword: gasification", "type": "keyword"}, {"color": "#f08080", "font": {"color": "#2c3e50"}, "id": "Topic_9", "label": "T9", "shape": "dot", "size": 30, "title": "Topic 9: scenario region biore\ufb01nery", "type": "topic"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "scenario", "label": "scenario", "shape": "dot", "size": 5, "title": "Keyword: scenario", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "region", "label": "region", "shape": "dot", "size": 5, "title": "Keyword: region", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "di\ufb00erent", "label": "di\ufb00erent", "shape": "dot", "size": 5, "title": "Keyword: di\ufb00erent", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "parameter", "label": "parameter", "shape": "dot", "size": 5, "title": "Keyword: parameter", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "in\ufb02uence", "label": "in\ufb02uence", "shape": "dot", "size": 5, "title": "Keyword: in\ufb02uence", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "investment", "label": "investment", "shape": "dot", "size": 5, "title": "Keyword: investment", "type": "keyword"}, {"color": "#f08080", "font": {"color": "#2c3e50"}, "id": "Topic_10", "label": "T10", "shape": "dot", "size": 30, "title": "Topic 10: di\ufb00erent e\ufb03ciency e\ufb00ect", "type": "topic"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "e\ufb03ciency", "label": "e\ufb03ciency", "shape": "dot", "size": 5, "title": "Keyword: e\ufb03ciency", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "e\ufb00ect", "label": "e\ufb00ect", "shape": "dot", "size": 5, "title": "Keyword: e\ufb00ect", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "\ufb02ue_gas", "label": "\ufb02ue gas", "shape": "dot", "size": 5, "title": "Keyword: \ufb02ue gas", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "life_cycle", "label": "life cycle", "shape": "dot", "size": 5, "title": "Keyword: life cycle", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "category", "label": "category", "shape": "dot", "size": 5, "title": "Keyword: category", "type": "keyword"}, {"color": "#f08080", "font": {"color": "#2c3e50"}, "id": "Topic_11", "label": "T11", "shape": "dot", "size": 30, "title": "Topic 11: policy diesel crop", "type": "topic"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "policy", "label": "policy", "shape": "dot", "size": 5, "title": "Keyword: policy", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "diesel", "label": "diesel", "shape": "dot", "size": 5, "title": "Keyword: diesel", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "aviation", "label": "aviation", "shape": "dot", "size": 5, "title": "Keyword: aviation", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "country", "label": "country", "shape": "dot", "size": 5, "title": "Keyword: country", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "project", "label": "project", "shape": "dot", "size": 5, "title": "Keyword: project", "type": "keyword"}, {"color": "#f08080", "font": {"color": "#2c3e50"}, "id": "Topic_12", "label": "T12", "shape": "dot", "size": 30, "title": "Topic 12: digestate anaerobic_digestion biogas", "type": "topic"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "digestate", "label": "digestate", "shape": "dot", "size": 5, "title": "Keyword: digestate", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "anaerobic_digestate", "label": "anaerobic digestate", "shape": "dot", "size": 5, "title": "Keyword: anaerobic digestate", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "digestion", "label": "digestion", "shape": "dot", "size": 5, "title": "Keyword: digestion", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "\ufb01sh", "label": "\ufb01sh", "shape": "dot", "size": 5, "title": "Keyword: \ufb01sh", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "dilution", "label": "dilution", "shape": "dot", "size": 5, "title": "Keyword: dilution", "type": "keyword"}, {"color": "#f08080", "font": {"color": "#2c3e50"}, "id": "Topic_13", "label": "T13", "shape": "dot", "size": 30, "title": "Topic 13: removal bacteria treat", "type": "topic"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "bacteria", "label": "bacteria", "shape": "dot", "size": 5, "title": "Keyword: bacteria", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "treat", "label": "treat", "shape": "dot", "size": 5, "title": "Keyword: treat", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "municipal", "label": "municipal", "shape": "dot", "size": 5, "title": "Keyword: municipal", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "pollutant", "label": "pollutant", "shape": "dot", "size": 5, "title": "Keyword: pollutant", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "cod", "label": "cod", "shape": "dot", "size": 5, "title": "Keyword: cod", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "remove", "label": "remove", "shape": "dot", "size": 5, "title": "Keyword: remove", "type": "keyword"}, {"color": "#f08080", "font": {"color": "#2c3e50"}, "id": "Topic_14", "label": "T14", "shape": "dot", "size": 30, "title": "Topic 14: scenario indicator life_cycle_assessment", "type": "topic"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "indicator", "label": "indicator", "shape": "dot", "size": 5, "title": "Keyword: indicator", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "life_cycle_assessment", "label": "life cycle assessment", "shape": "dot", "size": 5, "title": "Keyword: life cycle assessment", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "estimate", "label": "estimate", "shape": "dot", "size": 5, "title": "Keyword: estimate", "type": "keyword"}, {"color": "#f08080", "font": {"color": "#2c3e50"}, "id": "Topic_15", "label": "T15", "shape": "dot", "size": 30, "title": "Topic 15: biore\ufb01nery vitamin novel", "type": "topic"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "vitamin", "label": "vitamin", "shape": "dot", "size": 5, "title": "Keyword: vitamin", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "novel", "label": "novel", "shape": "dot", "size": 5, "title": "Keyword: novel", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "metabolite", "label": "metabolite", "shape": "dot", "size": 5, "title": "Keyword: metabolite", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "antioxidant", "label": "antioxidant", "shape": "dot", "size": 5, "title": "Keyword: antioxidant", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "fatty_acid", "label": "fatty acid", "shape": "dot", "size": 5, "title": "Keyword: fatty acid", "type": "keyword"}, {"color": "#f08080", "font": {"color": "#2c3e50"}, "id": "Topic_16", "label": "T16", "shape": "dot", "size": 30, "title": "Topic 16: catalyst reaction synthesis", "type": "topic"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "catalyst", "label": "catalyst", "shape": "dot", "size": 5, "title": "Keyword: catalyst", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "reaction", "label": "reaction", "shape": "dot", "size": 5, "title": "Keyword: reaction", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "synthesis", "label": "synthesis", "shape": "dot", "size": 5, "title": "Keyword: synthesis", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "solvent", "label": "solvent", "shape": "dot", "size": 5, "title": "Keyword: solvent", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "acid", "label": "acid", "shape": "dot", "size": 5, "title": "Keyword: acid", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "transesteri\ufb01cation", "label": "transesteri\ufb01cation", "shape": "dot", "size": 5, "title": "Keyword: transesteri\ufb01cation", "type": "keyword"}, {"color": "#f08080", "font": {"color": "#2c3e50"}, "id": "Topic_17", "label": "T17", "shape": "dot", "size": 30, "title": "Topic 17: dioxide day bioresour_technol", "type": "topic"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "dioxide", "label": "dioxide", "shape": "dot", "size": 5, "title": "Keyword: dioxide", "type": "keyword"}, {"color": "#f08080", "font": {"color": "#2c3e50"}, "id": "Topic_18", "label": "T18", "shape": "dot", "size": 30, "title": "Topic 18: supply_chain capacity site", "type": "topic"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "supply_chain", "label": "supply chain", "shape": "dot", "size": 5, "title": "Keyword: supply chain", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "capacity", "label": "capacity", "shape": "dot", "size": 5, "title": "Keyword: capacity", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "site", "label": "site", "shape": "dot", "size": 5, "title": "Keyword: site", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "period", "label": "period", "shape": "dot", "size": 5, "title": "Keyword: period", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "location", "label": "location", "shape": "dot", "size": 5, "title": "Keyword: location", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "uncertainty", "label": "uncertainty", "shape": "dot", "size": 5, "title": "Keyword: uncertainty", "type": "keyword"}, {"color": "#90ee90", "font": {"color": "#2c3e50"}, "id": "network", "label": "network", "shape": "dot", "size": 5, "title": "Keyword: network", "type": "keyword"}, {"color": "#f08080", "font": {"color": "#2c3e50"}, "id": "Topic_19", "label": "T19", "shape": "dot", "size": 30, "title": "Topic 19: biogas anaerobic_digestion removal", "type": "topic"}]);
+                  edges = new vis.DataSet([{"from": "Topic_0", "to": "biorefinery", "width": 0.02197111025452614}, {"from": "Topic_0", "to": "pretreatment", "width": 0.007910937070846558}, {"from": "Topic_0", "to": "bioresour_technol", "width": 0.007500569801777601}, {"from": "Topic_0", "to": "efficiency", "width": 0.0068718986585736275}, {"from": "Topic_0", "to": "fermentation", "width": 0.006343127693980932}, {"from": "Topic_0", "to": "efficient", "width": 0.005982792470604181}, {"from": "Topic_0", "to": "carotenoid", "width": 0.0056211757473647594}, {"from": "Topic_1", "to": "ethanol", "width": 0.019718030467629433}, {"from": "Topic_1", "to": "biochar", "width": 0.017846034839749336}, {"from": "Topic_1", "to": "pyrolysis", "width": 0.013537846505641937}, {"from": "Topic_1", "to": "biore\ufb01nery", "width": 0.01288934238255024}, {"from": "Topic_1", "to": "crop", "width": 0.008962619118392467}, {"from": "Topic_1", "to": "re\ufb01nery", "width": 0.0080381715670228}, {"from": "Topic_1", "to": "lignocellulosic", "width": 0.00730790663510561}, {"from": "Topic_2", "to": "carbohydrate", "width": 0.053811050951480865}, {"from": "Topic_2", "to": "bioethanol", "width": 0.045649945735931396}, {"from": "Topic_2", "to": "fermentation", "width": 0.03897946700453758}, {"from": "Topic_2", "to": "sewage", "width": 0.03480401635169983}, {"from": "Topic_2", "to": "pome", "width": 0.028618138283491135}, {"from": "Topic_2", "to": "biobutanol", "width": 0.023754311725497246}, {"from": "Topic_2", "to": "hydrolysis", "width": 0.02092253603041172}, {"from": "Topic_3", "to": "biogas", "width": 0.008278199471533298}, {"from": "Topic_3", "to": "day", "width": 0.0077592795714735985}, {"from": "Topic_3", "to": "bioresour_technol", "width": 0.005818664096295834}, {"from": "Topic_3", "to": "reactor", "width": 0.005621402990072966}, {"from": "Topic_3", "to": "anaerobic_digestion", "width": 0.00560531672090292}, {"from": "Topic_3", "to": "removal", "width": 0.005515847820788622}, {"from": "Topic_3", "to": "methane", "width": 0.005188130307942629}, {"from": "Topic_4", "to": "feed", "width": 0.011092905886471272}, {"from": "Topic_4", "to": "market", "width": 0.010989708825945854}, {"from": "Topic_4", "to": "marine", "width": 0.005839665420353413}, {"from": "Topic_4", "to": "price", "width": 0.004995870869606733}, {"from": "Topic_4", "to": "aquaculture", "width": 0.004970897454768419}, {"from": "Topic_4", "to": "biotechnology", "width": 0.004641446750611067}, {"from": "Topic_4", "to": "pigment", "width": 0.004550858400762081}, {"from": "Topic_5", "to": "efficiency", "width": 0.010733838193118572}, {"from": "Topic_5", "to": "sequestration", "width": 0.010481651872396469}, {"from": "Topic_5", "to": "fixation", "width": 0.007623928599059582}, {"from": "Topic_5", "to": "capture", "width": 0.007052063010632992}, {"from": "Topic_5", "to": "efficient", "width": 0.006567342672497034}, {"from": "Topic_5", "to": "significant", "width": 0.0058467513881623745}, {"from": "Topic_5", "to": "bioethanol", "width": 0.0057726637460291386}, {"from": "Topic_6", "to": "ef\ufb01ciency", "width": 0.009297357872128487}, {"from": "Topic_6", "to": "accumulation", "width": 0.007515203673392534}, {"from": "Topic_6", "to": "ing", "width": 0.006758731324225664}, {"from": "Topic_6", "to": "pbrs", "width": 0.0058728912845253944}, {"from": "Topic_6", "to": "raceway_pond", "width": 0.005620172247290611}, {"from": "Topic_6", "to": "surface", "width": 0.005149199161678553}, {"from": "Topic_6", "to": "gene", "width": 0.004243857692927122}, {"from": "Topic_7", "to": "palm", "width": 0.15545490384101868}, {"from": "Topic_7", "to": "pome", "width": 0.09558621793985367}, {"from": "Topic_7", "to": "halophyte", "width": 0.04509218782186508}, {"from": "Topic_7", "to": "mill_effluent", "width": 0.02780618891119957}, {"from": "Topic_7", "to": "dimension", "width": 0.02060551568865776}, {"from": "Topic_7", "to": "attribute", "width": 0.01917187310755253}, {"from": "Topic_7", "to": "index", "width": 0.018007462844252586}, {"from": "Topic_8", "to": "hydrogen", "width": 0.18115298449993134}, {"from": "Topic_8", "to": "biohydrogen", "width": 0.05380125343799591}, {"from": "Topic_8", "to": "oxygen", "width": 0.01930038072168827}, {"from": "Topic_8", "to": "hydrogenase", "width": 0.014284907840192318}, {"from": "Topic_8", "to": "dark_fermentation", "width": 0.013291886076331139}, {"from": "Topic_8", "to": "int", "width": 0.013099305331707}, {"from": "Topic_8", "to": "gasification", "width": 0.010378134436905384}, {"from": "Topic_9", "to": "scenario", "width": 0.0156850628554821}, {"from": "Topic_9", "to": "region", "width": 0.011877788230776787}, {"from": "Topic_9", "to": "biore\ufb01nery", "width": 0.010067167691886425}, {"from": "Topic_9", "to": "di\ufb00erent", "width": 0.009947488084435463}, {"from": "Topic_9", "to": "parameter", "width": 0.009875752031803131}, {"from": "Topic_9", "to": "in\ufb02uence", "width": 0.008987060748040676}, {"from": "Topic_9", "to": "investment", "width": 0.00889684446156025}, {"from": "Topic_10", "to": "di\ufb00erent", "width": 0.03205155208706856}, {"from": "Topic_10", "to": "e\ufb03ciency", "width": 0.01916615292429924}, {"from": "Topic_10", "to": "e\ufb00ect", "width": 0.018549667671322823}, {"from": "Topic_10", "to": "\ufb02ue_gas", "width": 0.014150884002447128}, {"from": "Topic_10", "to": "life_cycle", "width": 0.012723438441753387}, {"from": "Topic_10", "to": "bioresour_technol", "width": 0.01079609151929617}, {"from": "Topic_10", "to": "category", "width": 0.01034974679350853}, {"from": "Topic_11", "to": "policy", "width": 0.018260477110743523}, {"from": "Topic_11", "to": "diesel", "width": 0.0094069242477417}, {"from": "Topic_11", "to": "crop", "width": 0.008424485102295876}, {"from": "Topic_11", "to": "ethanol", "width": 0.007639945484697819}, {"from": "Topic_11", "to": "aviation", "width": 0.007044040132313967}, {"from": "Topic_11", "to": "country", "width": 0.006989555433392525}, {"from": "Topic_11", "to": "project", "width": 0.006248391233384609}, {"from": "Topic_12", "to": "digestate", "width": 0.06532926857471466}, {"from": "Topic_12", "to": "anaerobic_digestion", "width": 0.017000146210193634}, {"from": "Topic_12", "to": "biogas", "width": 0.01626025140285492}, {"from": "Topic_12", "to": "anaerobic_digestate", "width": 0.015009471215307713}, {"from": "Topic_12", "to": "digestion", "width": 0.010366377420723438}, {"from": "Topic_12", "to": "\ufb01sh", "width": 0.010145998559892178}, {"from": "Topic_12", "to": "dilution", "width": 0.009864332154393196}, {"from": "Topic_13", "to": "removal", "width": 0.030386589467525482}, {"from": "Topic_13", "to": "bacteria", "width": 0.013097921386361122}, {"from": "Topic_13", "to": "treat", "width": 0.011452365666627884}, {"from": "Topic_13", "to": "municipal", "width": 0.0109718544408679}, {"from": "Topic_13", "to": "pollutant", "width": 0.00938180461525917}, {"from": "Topic_13", "to": "cod", "width": 0.008115348406136036}, {"from": "Topic_13", "to": "remove", "width": 0.007777781691402197}, {"from": "Topic_14", "to": "scenario", "width": 0.057902537286281586}, {"from": "Topic_14", "to": "indicator", "width": 0.027903907001018524}, {"from": "Topic_14", "to": "life_cycle_assessment", "width": 0.02678949013352394}, {"from": "Topic_14", "to": "life_cycle", "width": 0.022948889061808586}, {"from": "Topic_14", "to": "pyrolysis", "width": 0.019925914704799652}, {"from": "Topic_14", "to": "estimate", "width": 0.019189579412341118}, {"from": "Topic_14", "to": "category", "width": 0.018513020128011703}, {"from": "Topic_15", "to": "biore\ufb01nery", "width": 0.03633587062358856}, {"from": "Topic_15", "to": "vitamin", "width": 0.015377450734376907}, {"from": "Topic_15", "to": "novel", "width": 0.014103846624493599}, {"from": "Topic_15", "to": "metabolite", "width": 0.012062912806868553}, {"from": "Topic_15", "to": "fermentation", "width": 0.011828097514808178}, {"from": "Topic_15", "to": "antioxidant", "width": 0.01141330972313881}, {"from": "Topic_15", "to": "fatty_acid", "width": 0.01096101850271225}, {"from": "Topic_16", "to": "catalyst", "width": 0.017246928066015244}, {"from": "Topic_16", "to": "reaction", "width": 0.014634449034929276}, {"from": "Topic_16", "to": "synthesis", "width": 0.011741649359464645}, {"from": "Topic_16", "to": "solvent", "width": 0.007874024100601673}, {"from": "Topic_16", "to": "acid", "width": 0.007370711304247379}, {"from": "Topic_16", "to": "fatty_acid", "width": 0.0065378108993172646}, {"from": "Topic_16", "to": "transesteri\ufb01cation", "width": 0.006522733252495527}, {"from": "Topic_17", "to": "dioxide", "width": 9.848314221017063e-05}, {"from": "Topic_17", "to": "day", "width": 9.845785825746134e-05}, {"from": "Topic_17", "to": "bioresour_technol", "width": 9.844128362601623e-05}, {"from": "Topic_17", "to": "reaction", "width": 9.843979933066294e-05}, {"from": "Topic_17", "to": "catalyst", "width": 9.843384032137692e-05}, {"from": "Topic_17", "to": "efficiency", "width": 9.842121653491631e-05}, {"from": "Topic_17", "to": "biorefinery", "width": 9.841948485700414e-05}, {"from": "Topic_18", "to": "supply_chain", "width": 0.03169732913374901}, {"from": "Topic_18", "to": "capacity", "width": 0.01238636951893568}, {"from": "Topic_18", "to": "site", "width": 0.01151013933122158}, {"from": "Topic_18", "to": "period", "width": 0.011159135960042477}, {"from": "Topic_18", "to": "location", "width": 0.010718954727053642}, {"from": "Topic_18", "to": "uncertainty", "width": 0.009967743419110775}, {"from": "Topic_18", "to": "network", "width": 0.008421792648732662}, {"from": "Topic_19", "to": "biogas", "width": 9.843606676440686e-05}, {"from": "Topic_19", "to": "anaerobic_digestion", "width": 9.841301653068513e-05}, {"from": "Topic_19", "to": "removal", "width": 9.840777784120291e-05}, {"from": "Topic_19", "to": "scenario", "width": 9.840657730819657e-05}, {"from": "Topic_19", "to": "bioresour_technol", "width": 9.839988342719153e-05}, {"from": "Topic_19", "to": "sequestration", "width": 9.83978679869324e-05}, {"from": "Topic_19", "to": "treat", "width": 9.839587437454611e-05}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"nodes": {"font": {"size": 14, "face": "Tahoma"}, "borderWidth": 2, "shadow": true}, "edges": {"color": {"inherit": true, "opacity": 0.4}, "smooth": {"type": "continuous"}}, "physics": {"barnesHut": {"gravitationalConstant": -30000, "centralGravity": 0.3, "springLength": 150, "springConstant": 0.04, "damping": 0.09}, "maxVelocity": 50, "minVelocity": 0.75, "solver": "barnesHut", "stabilization": {"iterations": 150}}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+                      network.on("stabilizationProgress", function(params) {
+                          document.getElementById('loadingBar').removeAttribute("style");
+                          var maxWidth = 496;
+                          var minWidth = 20;
+                          var widthFactor = params.iterations/params.total;
+                          var width = Math.max(minWidth,maxWidth * widthFactor);
+                          document.getElementById('bar').style.width = width + 'px';
+                          document.getElementById('text').innerHTML = Math.round(widthFactor*100) + '%';
+                      });
+                      network.once("stabilizationIterationsDone", function() {
+                          document.getElementById('text').innerHTML = '100%';
+                          document.getElementById('bar').style.width = '496px';
+                          document.getElementById('loadingBar').style.opacity = 0;
+                          // really clean the dom element
+                          setTimeout(function () {document.getElementById('loadingBar').style.display = 'none';}, 500);
+                      });
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
