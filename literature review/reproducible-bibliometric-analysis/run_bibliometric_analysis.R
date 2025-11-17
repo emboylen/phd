@@ -25,12 +25,25 @@
 cat("Loading required libraries...\n")
 
 required_packages <- c("bibliometrix", "writexl", "readxl", "dplyr", "ggplot2")
+optional_packages <- c("wordcloud", "RColorBrewer", "igraph")
 
 for (pkg in required_packages) {
   if (!require(pkg, character.only = TRUE, quietly = TRUE)) {
     cat(paste("Installing package:", pkg, "\n"))
     install.packages(pkg, dependencies = TRUE)
     library(pkg, character.only = TRUE)
+  }
+}
+
+# Install optional packages for enhanced visualizations
+for (pkg in optional_packages) {
+  if (!require(pkg, character.only = TRUE, quietly = TRUE)) {
+    tryCatch({
+      install.packages(pkg, dependencies = TRUE)
+      library(pkg, character.only = TRUE)
+    }, error = function(e) {
+      cat(paste("Optional package", pkg, "not installed:", e$message, "\n"))
+    })
   }
 }
 
@@ -240,6 +253,265 @@ export_standard_tables <- function(summary_obj, output_path) {
   print_status("Standard tables exported")
 }
 
+#' Generate and export visualizations
+#'
+#' @param data Filtered bibliometric data frame
+#' @param results Bibliometric analysis results
+#' @param summary_obj Summary object
+#' @param output_path Output directory path
+export_visualizations <- function(data, results, summary_obj, output_path) {
+  if (!EXPORT_PLOTS) return(NULL)
+  
+  print_status("Generating visualizations...")
+  
+  # Create plots subdirectory
+  plots_dir <- file.path(output_path, "plots")
+  if (!dir.exists(plots_dir)) {
+    dir.create(plots_dir, recursive = TRUE)
+  }
+  
+  tryCatch({
+    # 1. Annual Scientific Production
+    print_status("  Plotting annual production...")
+    png(file.path(plots_dir, "01_Annual_Production.png"), 
+        width = PLOT_WIDTH, height = PLOT_HEIGHT, units = "in", res = PLOT_DPI)
+    plot(results, k = TOP_K, pause = FALSE)
+    dev.off()
+    
+    # 2. Most Productive Authors
+    print_status("  Plotting top authors...")
+    if (!is.null(summary_obj$MostRelAuthors) && nrow(summary_obj$MostRelAuthors) > 0) {
+      png(file.path(plots_dir, "02_Top_Authors.png"), 
+          width = PLOT_WIDTH, height = PLOT_HEIGHT, units = "in", res = PLOT_DPI)
+      
+      top_authors <- head(summary_obj$MostRelAuthors, 20)
+      par(mar = c(5, 8, 4, 2))
+      barplot(rev(as.numeric(top_authors$Articles)), 
+              names.arg = rev(as.character(top_authors$Authors)),
+              horiz = TRUE, las = 1, col = "steelblue",
+              xlab = "Number of Articles",
+              main = "Most Productive Authors")
+      dev.off()
+    }
+    
+    # 3. Most Relevant Sources
+    print_status("  Plotting top sources...")
+    if (!is.null(summary_obj$MostRelSources) && nrow(summary_obj$MostRelSources) > 0) {
+      png(file.path(plots_dir, "03_Top_Sources.png"), 
+          width = PLOT_WIDTH, height = PLOT_HEIGHT, units = "in", res = PLOT_DPI)
+      
+      top_sources <- head(summary_obj$MostRelSources, 15)
+      par(mar = c(5, 22, 4, 2))  # Increased left margin from 18 to 22
+      barplot(rev(as.numeric(top_sources$Articles)), 
+              names.arg = rev(as.character(top_sources$Sources)),
+              horiz = TRUE, las = 1, col = "coral",
+              xlab = "Number of Articles",
+              main = "Most Relevant Sources",
+              cex.names = 0.75)  # Slightly smaller font for readability
+      dev.off()
+    }
+    
+    # 4. Most Cited Papers
+    print_status("  Plotting most cited papers...")
+    if (!is.null(summary_obj$MostCitedPapers) && nrow(summary_obj$MostCitedPapers) > 0) {
+      png(file.path(plots_dir, "04_Most_Cited.png"), 
+          width = PLOT_WIDTH, height = PLOT_HEIGHT, units = "in", res = PLOT_DPI)
+      
+      top_cited <- head(summary_obj$MostCitedPapers, 15)
+      # Create short labels
+      labels <- paste0(substr(as.character(top_cited$Paper), 1, 50), "...")
+      par(mar = c(5, 22, 4, 2))  # Increased left margin from 18 to 22
+      barplot(rev(as.numeric(top_cited$TC)), 
+              names.arg = rev(labels),
+              horiz = TRUE, las = 1, col = "darkgreen",
+              xlab = "Total Citations",
+              main = "Most Globally Cited Documents",
+              cex.names = 0.65)  # Smaller font for long labels
+      dev.off()
+    }
+    
+    # 5. Country Production
+    print_status("  Plotting country production...")
+    if (!is.null(summary_obj$MostProdCountries) && nrow(summary_obj$MostProdCountries) > 0) {
+      png(file.path(plots_dir, "05_Country_Production.png"), 
+          width = PLOT_WIDTH, height = PLOT_HEIGHT, units = "in", res = PLOT_DPI)
+      
+      top_countries <- head(summary_obj$MostProdCountries, 20)
+      par(mar = c(5, 10, 4, 2))  # Increased left margin from 8 to 10
+      barplot(rev(as.numeric(top_countries$Articles)), 
+              names.arg = rev(as.character(top_countries$Country)),
+              horiz = TRUE, las = 1, col = "purple",
+              xlab = "Number of Articles",
+              main = "Scientific Production by Country",
+              cex.names = 0.85)  # Slightly smaller font
+      dev.off()
+    }
+    
+    # 6. Word Cloud (if keywords available)
+    print_status("  Creating word cloud...")
+    if ("DE" %in% names(data) || "ID" %in% names(data)) {
+      tryCatch({
+        # Load stopwords and synonyms
+        stopwords_list <- c()
+        synonyms_map <- list()
+        
+        # Load stopwords if file exists
+        if (file.exists("stopwords.csv")) {
+          tryCatch({
+            stopwords_raw <- readLines("stopwords.csv", warn = FALSE)
+            # Parse comma-separated values from all lines
+            stopwords_list <- tolower(trimws(unlist(strsplit(stopwords_raw, ","))))
+            # Remove empty entries
+            stopwords_list <- stopwords_list[stopwords_list != ""]
+            print_status(paste("    Loaded", length(stopwords_list), "stopwords"))
+          }, error = function(e) {
+            print_status(paste("    Error loading stopwords:", e$message))
+          })
+        }
+        
+        # Load synonyms if file exists
+        if (file.exists("synonyms.csv")) {
+          tryCatch({
+            synonyms_raw <- readLines("synonyms.csv", warn = FALSE)
+            for (line in synonyms_raw) {
+              if (nchar(trimws(line)) > 0) {
+                terms <- tolower(trimws(unlist(strsplit(line, ","))))
+                terms <- terms[terms != ""]  # Remove empty entries
+                if (length(terms) > 1) {
+                  # First term is the canonical form, map all others to it
+                  canonical <- terms[1]
+                  for (term in terms[-1]) {
+                    synonyms_map[[term]] <- canonical
+                  }
+                }
+              }
+            }
+            print_status(paste("    Loaded", length(synonyms_map), "synonym mappings"))
+          }, error = function(e) {
+            print_status(paste("    Error loading synonyms:", e$message))
+          })
+        }
+        
+        png(file.path(plots_dir, "06_Word_Cloud.png"), 
+            width = PLOT_WIDTH, height = PLOT_HEIGHT, units = "in", res = PLOT_DPI)
+        
+        # Use Keywords Plus if available, otherwise Author Keywords
+        keywords_field <- if ("ID" %in% names(data)) "ID" else "DE"
+        
+        # Extract and process keywords
+        keywords <- unlist(strsplit(data[[keywords_field]], ";"))
+        keywords <- tolower(trimws(keywords))
+        keywords <- keywords[!is.na(keywords) & keywords != ""]
+        
+        # Apply synonym mapping
+        if (length(synonyms_map) > 0) {
+          keywords <- sapply(keywords, function(kw) {
+            if (kw %in% names(synonyms_map)) {
+              return(synonyms_map[[kw]])
+            }
+            return(kw)
+          }, USE.NAMES = FALSE)
+        }
+        
+        # Remove stopwords
+        if (length(stopwords_list) > 0) {
+          keywords <- keywords[!keywords %in% stopwords_list]
+        }
+        
+        if (length(keywords) > 0) {
+          keyword_freq <- table(keywords)
+          keyword_freq <- sort(keyword_freq, decreasing = TRUE)
+          keyword_freq <- head(keyword_freq, 100)
+          
+          # Use wordcloud if available, otherwise simple plot
+          if (require(wordcloud, quietly = TRUE) && require(RColorBrewer, quietly = TRUE)) {
+            wordcloud::wordcloud(names(keyword_freq), keyword_freq, 
+                               max.words = 100, random.order = FALSE,
+                               colors = RColorBrewer::brewer.pal(8, "Dark2"),
+                               scale = c(4, 0.5))
+            title(main = "Keyword Word Cloud (Refined)", cex.main = 1.5)
+          } else {
+            # Fallback: top keywords bar chart
+            top_kw <- head(keyword_freq, 20)
+            par(mar = c(5, 10, 4, 2))
+            barplot(rev(top_kw), horiz = TRUE, las = 1, 
+                   col = "orange", main = "Top Keywords (Refined)",
+                   xlab = "Frequency")
+          }
+        }
+        dev.off()
+      }, error = function(e) {
+        print_status(paste("    Word cloud generation skipped:", e$message))
+      })
+    }
+    
+    # 7. Three Fields Plot
+    print_status("  Creating three-fields plot...")
+    tryCatch({
+      png(file.path(plots_dir, "07_Three_Fields_Plot.png"), 
+          width = 14, height = 10, units = "in", res = PLOT_DPI)
+      
+      threeFieldsPlot(data, 
+                     fields = c("AU", "DE", "SO"),
+                     n = c(10, 10, 10))
+      dev.off()
+    }, error = function(e) {
+      print_status(paste("    Three-fields plot skipped:", e$message))
+    })
+    
+    # 8. Collaboration Network (if available)
+    print_status("  Creating collaboration network...")
+    tryCatch({
+      png(file.path(plots_dir, "08_Collaboration_Network.png"), 
+          width = 12, height = 12, units = "in", res = PLOT_DPI)
+      
+      NetMatrix <- biblioNetwork(data, 
+                                 analysis = "collaboration", 
+                                 network = COLLAB_NETWORK_TYPE, 
+                                 sep = FIELD_SEPARATOR)
+      
+      net <- networkPlot(NetMatrix, 
+                        n = 30, 
+                        Title = paste(toupper(COLLAB_NETWORK_TYPE), "Collaboration Network"),
+                        type = "auto",
+                        size = TRUE,
+                        remove.multiple = FALSE,
+                        labelsize = 1,
+                        alpha = 0.7)
+      dev.off()
+    }, error = function(e) {
+      print_status(paste("    Collaboration network skipped:", e$message))
+    })
+    
+    # 9. Historical Direct Citation Network
+    print_status("  Creating historical citation network...")
+    tryCatch({
+      if ("CR" %in% names(data) && sum(!is.na(data$CR)) > 10) {
+        png(file.path(plots_dir, "09_Citation_Network.png"), 
+            width = 12, height = 12, units = "in", res = PLOT_DPI)
+        
+        histResults <- histNetwork(data, min.citations = 5, sep = ";")
+        
+        net <- networkPlot(histResults$histData$NetMatrix, 
+                          n = 20, 
+                          Title = "Historical Direct Citation Network",
+                          type = "auto",
+                          size = TRUE,
+                          labelsize = 1,
+                          alpha = 0.7)
+        dev.off()
+      }
+    }, error = function(e) {
+      print_status(paste("    Citation network skipped:", e$message))
+    })
+    
+    print_status(paste("Visualizations saved to:", plots_dir))
+    
+  }, error = function(e) {
+    warning(paste("Error generating visualizations:", e$message))
+  })
+}
+
 #' Perform and export trend analysis
 #'
 #' @param data Filtered bibliometric data frame
@@ -264,7 +536,7 @@ export_trend_analysis <- function(data, output_path) {
       timespan = timespan,
       min.freq = TREND_MIN_FREQ, 
       n.items = TREND_N_ITEMS, 
-      graph = FALSE
+      graph = TRUE
     )
     
     # Save results
@@ -509,12 +781,39 @@ main <- function() {
   # 6. Export standard tables
   export_standard_tables(biblio_analysis$summary, output_path)
   
-  # 7. Run and export additional analyses
+  # 7. Generate visualizations
+  export_visualizations(data, biblio_analysis$results, biblio_analysis$summary, output_path)
+  
+  # 8. Run and export additional analyses
   trend_results <- export_trend_analysis(data, output_path)
   thematic_results <- export_thematic_map(data, output_path)
   network_results <- export_collaboration_network(data, output_path)
   
-  # 8. Combine all results
+  # 9. Generate trend visualization if available
+  if (!is.null(trend_results) && !is.null(trend_results$graph)) {
+    tryCatch({
+      png(file.path(output_path, "plots", "10_Trend_Topics.png"), 
+          width = PLOT_WIDTH, height = PLOT_HEIGHT, units = "in", res = PLOT_DPI)
+      print(trend_results$graph)
+      dev.off()
+    }, error = function(e) {
+      print_status(paste("Trend plot skipped:", e$message))
+    })
+  }
+  
+  # 10. Generate thematic map visualization if available
+  if (!is.null(thematic_results) && !is.null(thematic_results$map)) {
+    tryCatch({
+      png(file.path(output_path, "plots", "11_Thematic_Map.png"), 
+          width = 12, height = 10, units = "in", res = PLOT_DPI)
+      plot(thematic_results$map)
+      dev.off()
+    }, error = function(e) {
+      print_status(paste("Thematic map plot skipped:", e$message))
+    })
+  }
+  
+  # 11. Combine all results
   all_results <- list(
     data = data,
     results = biblio_analysis$results,
@@ -524,10 +823,10 @@ main <- function() {
     network = network_results
   )
   
-  # 9. Export combined Excel file
+  # 12. Export combined Excel file
   export_combined_excel(all_results, output_path)
   
-  # 10. Generate summary report
+  # 13. Generate summary report
   generate_summary_report(data, all_results, output_path)
   
   # Calculate execution time

@@ -35,6 +35,11 @@ EXPORT_CSV <- TRUE
 EXPORT_EXCEL <- TRUE
 EXPORT_PLOTS <- TRUE
 
+# Plot settings
+PLOT_WIDTH <- 12
+PLOT_HEIGHT <- 8
+PLOT_DPI <- 300
+
 # -----------------------------------------------------------------------------
 # ANALYSIS PARAMETERS
 # -----------------------------------------------------------------------------
