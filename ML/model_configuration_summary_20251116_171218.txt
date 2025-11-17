@@ -1,0 +1,142 @@
+================================================================================
+TOPIC MODEL CONFIGURATION & STATISTICS SUMMARY
+================================================================================
+
+Generated: 2025-11-16 at 17:12:18
+Configuration File: refined-topic-model.py
+Model File: final_best_model_k20.pkl
+
+================================================================================
+MODEL STATISTICS
+================================================================================
+
+Optimal Number of Topics (k):  20
+Final Vocabulary Size:         10,167
+Model Type:                    LDA (Latent Dirichlet Allocation)
+Training Algorithm:            Variational Bayes
+Alpha:                         auto-learned
+Eta:                           auto-learned
+
+================================================================================
+PROCESSING PARAMETERS
+================================================================================
+
+Vocabulary Filtering:
+  MIN_DOC_COUNT:        5 (word must appear in at least this many docs)
+  MAX_DOC_FRACTION:     0.85 (word can't appear in more than this % of docs)
+
+N-gram Detection:
+  BIGRAM_MIN_COUNT:     3
+  BIGRAM_THRESHOLD:     50
+  TRIGRAM_MIN_COUNT:    3
+  TRIGRAM_THRESHOLD:    50
+
+Topic Range Testing:
+  TOPIC_RANGE_START:    2
+  TOPIC_RANGE_END:      51
+  TOPIC_STEP:           2
+  Models Trained:       25
+
+LDA Training:
+  LDA_PASSES:           10 (training iterations)
+  LDA_ITERATIONS:       400 (per-document iterations)
+  CHUNKSIZE:            100 (documents per batch)
+
+================================================================================
+CUSTOM STOP WORDS
+================================================================================
+
+Total Custom Stop Words: ~285 (Generic + Academic + Corpus-specific)
+
+1. GENERIC ENGLISH STOP WORDS
+--------------------------------------------------------------------------------
+   Source: NLTK English stopwords corpus
+   Count: ~198 words
+   Examples: the, is, at, which, on, in, for, with, as, are, was, etc.
+
+2. ACADEMIC & WEB ARTIFACTS
+--------------------------------------------------------------------------------
+   Count: 74 words
+
+   Citation artifacts:
+   et, al, e.g, i.e, etc, cf, ibid, op, cit
+
+   Figure and table references:
+   fig, figure, figs, table, tab, ref, refs, equation, eq
+
+   Web and DOI:
+   http, https, www, doi, com, org, pdf, html, htm, url
+
+   Document structure:
+   introduction, methods, methodology, methodologies, result, results, discussion, conclusion, conclusions, abstract, summary
+
+   Publishing metadata:
+   copyright, author, authors, journal, publisher, pubmed, elsevier, page, pages, vol, volume, no, issue, supplement
+
+   Common academic phrases:
+   study, research, paper, article, review, present, presented, investigate, investigated, demonstrate, demonstrated, shown, approach, method, technique, analysis, analyses, experiment, experimental, data, datum
+
+3. CORPUS-SPECIFIC STOP WORDS (Microalgae/Biofuel Domain)
+--------------------------------------------------------------------------------
+   Count: 14 words
+
+   Words removed:
+   microalgae, microalga, algae, algal, alga, species, strain, strains, model, system, systems, sample, samples, sampling
+
+   Rationale: These terms appear too frequently across all documents
+   to be discriminative for topic modeling.
+
+================================================================================
+TEXT PROCESSING PIPELINE
+================================================================================
+
+Stage 1: Custom Stop-Word List
+  - Generic English (198 words)
+  - Academic artifacts (74 words)
+  - Corpus-specific (14 words)
+  - Total: ~285 stop words
+
+Stage 2: Semantic Normalization
+  - Lemmatization (reduce words to base form)
+  - POS filtering (keep only NOUN, ADJ, VERB, ADV)
+  - Minimum token length: 3 characters
+
+Stage 3: N-gram Detection
+  - Bigram detection (e.g., 'greenhouse_gas')
+  - Trigram detection (e.g., 'life_cycle_assessment')
+  - Pointwise Mutual Information (PMI) scoring
+
+Stage 4: Vocabulary Pruning
+  - Document frequency filtering
+  - Remove very rare and very common terms
+
+Stage 5: Coherence-Based Evaluation
+  - C_v coherence metric
+  - Test multiple k values
+  - Select optimal k automatically
+
+Stage 6: Final Model Training
+  - Train LDA with optimal k
+  - Auto-learn alpha and eta parameters
+  - Multiple passes for convergence
+
+================================================================================
+METHODOLOGY
+================================================================================
+
+Algorithm: Latent Dirichlet Allocation (LDA)
+Implementation: Gensim 4.4.0
+Coherence Metric: C_v (most correlated with human judgment)
+Optimization: Variational Bayes inference
+Hyperparameters: Auto-learned alpha and eta
+
+Key Features:
+  - Hierarchical stop-word filtering
+  - Multi-word expression detection
+  - Automatic optimal topic selection
+  - Model checkpointing for recovery
+  - Coherence-driven evaluation
+
+================================================================================
+END OF SUMMARY
+================================================================================
