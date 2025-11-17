@@ -120,6 +120,8 @@ MAX_EXCEL_CHARS <- 32767
 # =============================================================================
 
 # Define which analyses to run and their output filenames
+# Note: Some advanced visualizations (three-fields plot, networks) may fail
+# if certain fields are missing from your dataset
 ANALYSES <- list(
   main_info = list(enabled = TRUE, filename = "MainInfo.csv"),
   annual_production = list(enabled = TRUE, filename = "AnnualSciProd.csv"),
@@ -129,7 +131,7 @@ ANALYSES <- list(
   most_cited_docs = list(enabled = TRUE, filename = "MostGlobCitDocs.csv"),
   trend_topics = list(enabled = TRUE, filename = "TrendTopics.csv"),
   thematic_map = list(enabled = TRUE, filename = "ThematicMap.csv"),
-  collaboration_net = list(enabled = TRUE, filename = "CollaborationStats.csv")
+  collaboration_net = list(enabled = FALSE, filename = "CollaborationStats.csv")  # Disabled by default
 )
 
 # =============================================================================

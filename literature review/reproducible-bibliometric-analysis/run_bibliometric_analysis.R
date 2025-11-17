@@ -445,42 +445,114 @@ export_visualizations <- function(data, results, summary_obj, output_path) {
       })
     }
     
-    # 7. Three Fields Plot
-    print_status("  Creating three-fields plot...")
+    # 7. Author Production Over Time
+    print_status("  Creating author production over time plot...")
     tryCatch({
-      png(file.path(plots_dir, "07_Three_Fields_Plot.png"), 
-          width = 14, height = 10, units = "in", res = PLOT_DPI)
-      
-      threeFieldsPlot(data, 
-                     fields = c("AU", "DE", "SO"),
-                     n = c(10, 10, 10))
-      dev.off()
+      if ("AU" %in% names(data) && "PY" %in% names(data) && sum(!is.na(data$AU)) > 10 && sum(!is.na(data$PY)) > 5) {
+        png(file.path(plots_dir, "07_Author_Production_Over_Time.png"), 
+            width = PLOT_WIDTH, height = PLOT_HEIGHT, units = "in", res = PLOT_DPI, bg = "white")
+        
+        # Get top authors
+        author_list <- unlist(strsplit(data$AU, FIELD_SEPARATOR))
+        author_freq <- sort(table(author_list), decreasing = TRUE)
+        top_10_authors <- names(head(author_freq, 10))
+        
+        # Create time series for top authors
+        years <- sort(unique(data$PY[!is.na(data$PY)]))
+        author_production <- matrix(0, nrow = length(top_10_authors), ncol = length(years))
+        rownames(author_production) <- top_10_authors
+        colnames(author_production) <- years
+        
+        for (i in 1:nrow(data)) {
+          if (!is.na(data$PY[i]) && !is.na(data$AU[i])) {
+            authors <- unlist(strsplit(data$AU[i], FIELD_SEPARATOR))
+            year_idx <- which(years == data$PY[i])
+            for (author in authors) {
+              author_idx <- which(top_10_authors == author)
+              if (length(author_idx) > 0 && length(year_idx) > 0) {
+                author_production[author_idx, year_idx] <- author_production[author_idx, year_idx] + 1
+              }
+            }
+          }
+        }
+        
+        # Plot
+        colors <- rainbow(length(top_10_authors))
+        plot(years, rep(0, length(years)), type = "n", 
+             ylim = c(0, max(author_production) + 1),
+             xlab = "Year", ylab = "Number of Publications",
+             main = "Top 10 Authors: Production Over Time")
+        
+        for (i in 1:length(top_10_authors)) {
+          lines(years, author_production[i,], col = colors[i], lwd = 2)
+          points(years, author_production[i,], col = colors[i], pch = 19)
+        }
+        
+        legend("topleft", legend = top_10_authors, col = colors, lwd = 2, cex = 0.7)
+        
+        dev.off()
+        print_status("    Author production over time plot created successfully")
+      } else {
+        print_status("    Skipping: insufficient author or year data")
+      }
     }, error = function(e) {
-      print_status(paste("    Three-fields plot skipped:", e$message))
+      if (dev.cur() > 1) dev.off()
+      print_status(paste("    Author production plot error:", e$message))
     })
     
-    # 8. Collaboration Network (if available)
-    print_status("  Creating collaboration network...")
+    # 8. Source Growth Over Time
+    print_status("  Creating source growth over time plot...")
     tryCatch({
-      png(file.path(plots_dir, "08_Collaboration_Network.png"), 
-          width = 12, height = 12, units = "in", res = PLOT_DPI)
-      
-      NetMatrix <- biblioNetwork(data, 
-                                 analysis = "collaboration", 
-                                 network = COLLAB_NETWORK_TYPE, 
-                                 sep = FIELD_SEPARATOR)
-      
-      net <- networkPlot(NetMatrix, 
-                        n = 30, 
-                        Title = paste(toupper(COLLAB_NETWORK_TYPE), "Collaboration Network"),
-                        type = "auto",
-                        size = TRUE,
-                        remove.multiple = FALSE,
-                        labelsize = 1,
-                        alpha = 0.7)
-      dev.off()
+      if ("SO" %in% names(data) && "PY" %in% names(data) && sum(!is.na(data$SO)) > 10 && sum(!is.na(data$PY)) > 5) {
+        png(file.path(plots_dir, "08_Source_Growth_Over_Time.png"), 
+            width = PLOT_WIDTH, height = PLOT_HEIGHT, units = "in", res = PLOT_DPI, bg = "white")
+        
+        # Get top sources
+        source_freq <- sort(table(data$SO), decreasing = TRUE)
+        top_5_sources <- names(head(source_freq, 5))
+        
+        # Create time series for top sources
+        years <- sort(unique(data$PY[!is.na(data$PY)]))
+        source_production <- matrix(0, nrow = length(top_5_sources), ncol = length(years))
+        rownames(source_production) <- top_5_sources
+        colnames(source_production) <- years
+        
+        for (i in 1:nrow(data)) {
+          if (!is.na(data$PY[i]) && !is.na(data$SO[i])) {
+            source_idx <- which(top_5_sources == data$SO[i])
+            year_idx <- which(years == data$PY[i])
+            if (length(source_idx) > 0 && length(year_idx) > 0) {
+              source_production[source_idx, year_idx] <- source_production[source_idx, year_idx] + 1
+            }
+          }
+        }
+        
+        # Plot
+        colors <- c("red", "blue", "green", "purple", "orange")
+        plot(years, rep(0, length(years)), type = "n", 
+             ylim = c(0, max(source_production) + 1),
+             xlab = "Year", ylab = "Number of Publications",
+             main = "Top 5 Sources: Publication Growth Over Time")
+        
+        for (i in 1:length(top_5_sources)) {
+          lines(years, source_production[i,], col = colors[i], lwd = 3)
+          points(years, source_production[i,], col = colors[i], pch = 19, cex = 1.2)
+        }
+        
+        # Truncate long source names for legend
+        legend_labels <- ifelse(nchar(top_5_sources) > 40, 
+                               paste0(substr(top_5_sources, 1, 37), "..."),
+                               top_5_sources)
+        legend("topleft", legend = legend_labels, col = colors, lwd = 3, cex = 0.8)
+        
+        dev.off()
+        print_status("    Source growth over time plot created successfully")
+      } else {
+        print_status("    Skipping: insufficient source or year data")
+      }
     }, error = function(e) {
-      print_status(paste("    Collaboration network skipped:", e$message))
+      if (dev.cur() > 1) dev.off()
+      print_status(paste("    Source growth plot error:", e$message))
     })
     
     # 9. Historical Direct Citation Network
