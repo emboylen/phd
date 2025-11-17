@@ -6,16 +6,30 @@ A comprehensive 6-stage framework for topic modeling with enhanced coherence opt
 
 ```
 ML/
-├── refined-topic-model.py          # Main topic modeling pipeline (RUN THIS FIRST)
-├── create_topic_review_doc.py      # Generate printable topic review (RUN AFTER MAIN)
-├── regenerate_graph.py              # Regenerate knowledge graph if needed
-├── included/                        # Your PDF files go here (223 PDFs)
-├── model_checkpoints/               # Saved models (auto-created)
-├── refined_topics_summary.html      # Interactive topic summary (OUTPUT)
-├── refined_knowledge_graph.html     # Interactive network graph (OUTPUT)
-├── coherence_plot.png               # Topic optimization chart (OUTPUT)
-├── topics_for_manual_review_*.txt   # Printable review document (OUTPUT)
-└── topic_modeling_*.log             # Execution log (OUTPUT)
+├── refined-topic-model.py          # Main topic modeling pipeline (RUN THIS)
+├── README.md                        # This file
+├── run-analysis.ps1                 # Legacy PowerShell runner
+├── run-refined-analysis.ps1         # Current PowerShell runner
+│
+├── included/                        # Your PDF files (223 documents)
+│   └── README.md                    # Data directory documentation
+│
+├── model_checkpoints/               # Saved trained models (auto-created)
+│   └── README.md                    # Model storage documentation
+│
+├── outputs/                         # All generated results
+│   ├── README.md                    # Outputs overview
+│   ├── logs/                        # Execution logs
+│   ├── summaries/                   # Topic reviews & configs
+│   └── visualizations/              # HTML graphs & plots
+│
+├── utilities/                       # Helper scripts
+│   └── README.md                    # Utility scripts documentation
+│
+├── archive/                         # Old versions & development files
+│   └── README.md                    # Archive documentation
+│
+└── venv312/                         # Python virtual environment
 ```
 
 ## 🚀 Quick Start
@@ -23,10 +37,10 @@ ML/
 ### 1. Prerequisites
 
 ```powershell
-# Install required packages (if not already installed)
-pip install pymupdf spacy nltk gensim matplotlib networkx pyvis tqdm
+# Activate virtual environment
+.\venv312\Scripts\Activate.ps1
 
-# Download spaCy language model
+# Verify packages (should already be installed)
 python -m spacy download en_core_web_sm
 ```
 
@@ -40,13 +54,13 @@ Place all PDF files in the `included/` directory (or update `PDF_FOLDER_PATH` in
 python refined-topic-model.py
 ```
 
-**Expected Runtime:** 2-4 hours for 223 documents testing k=2 to k=20
+**Expected Runtime:** 2-4 hours for 223 documents testing k=2 to k=50
 
 **What it does:**
 - Extracts text from all PDFs
 - Preprocesses with lemmatization and POS filtering
-- Detects meaningful bigrams/trigrams
-- Trains 19 LDA models (k=2 to k=20)
+- Detects meaningful bigrams/trigrams (enhanced detection)
+- Trains multiple LDA models (k=2 to k=50 by steps of 2)
 - Selects optimal model using coherence scores
 - Generates interactive HTML visualizations
 
@@ -54,27 +68,23 @@ python refined-topic-model.py
 ```
 Extracting PDF text: 100%|██████████| 223/223 [00:30<00:00]
 Preprocessing documents: 100%|██████████| 223/223 [03:30<00:00]
-Training LDA models: 47%|████████  | 9/19 [15:23<17:42, 106.2s/model]
+Training LDA models: 47%|████████  | 12/25 [15:23<17:42, 106.2s/model]
 ```
 
-### 4. Generate Manual Review Document
+### 4. Generate Outputs for Review
 
 ```powershell
-python create_topic_review_doc.py
+# Export model configuration and statistics
+python utilities/export_model_config.py
+
+# Generate comprehensive print summary
+python utilities/export_print_summary.py
 ```
-
-**What it does:**
-- Loads the final optimized model
-- Extracts top 20 keywords per topic
-- Creates a printable text document for manual categorization
-- Includes space for notes and recommendations
-
-**Output:** `topics_for_manual_review_YYYYMMDD_HHMMSS.txt`
 
 ### 5. Review and Categorize
 
-1. Open the review document in a text editor or Word
-2. Print it for manual annotation
+1. Open the print summary in `outputs/summaries/`
+2. Print for manual annotation
 3. For each topic:
    - Read the keywords
    - Assign a meaningful category name
@@ -83,80 +93,81 @@ python create_topic_review_doc.py
 
 ## 📊 Output Files Explained
 
-### `refined_topics_summary.html`
-**Interactive HTML table** showing:
-- All topics with their keywords
+### Visualizations (`outputs/visualizations/`)
+
+**`refined_topics_summary.html`**
+- Interactive HTML table with all topics and keywords
 - Document counts per topic
 - Top 10 documents assigned to each topic
 - Model statistics and methodology
 
-**How to use:** Open in any web browser, review topic assignments
+**`refined_knowledge_graph.html`**
+- Interactive network visualization
+- Topics (red nodes), Keywords (green), Documents (blue)
+- Drag nodes, zoom, explore relationships
 
-### `refined_knowledge_graph.html`
-**Interactive network visualization** showing:
-- Topics (red nodes)
-- Keywords (green nodes)
-- Documents (blue nodes)
-- Relationships and weights
+**`coherence_plot.png`**
+- Chart showing coherence scores vs. number of topics
+- Peak indicates optimal k value
 
-**How to use:** Open in browser, drag nodes, zoom, explore connections
+### Summaries (`outputs/summaries/`)
 
-### `coherence_plot.png`
-**Chart showing** coherence scores for different numbers of topics (k=2 to k=20)
-- Peak indicates optimal number of topics
-- Used to validate the automated selection
+**`topic_model_print_summary_*.txt`**
+- Comprehensive print-friendly topic summary
+- Top 20 keywords per topic
+- Representative documents
+- Manual categorization forms
+- Quality assessment checklists
 
-### `model_checkpoints/`
-**Saved models** for each k value tested:
-- `lda_model_k2.pkl`, `lda_model_k3.pkl`, ..., `lda_model_k20.pkl`
-- `final_best_model_k{N}.pkl` - The optimal model selected
+**`model_configuration_summary_*.txt`**
+- Complete model statistics
+- All processing parameters
+- Custom stop word lists
+- Training configuration
 
-**Use case:** Load any model for further analysis without retraining
+### Logs (`outputs/logs/`)
 
-### `topics_for_manual_review_*.txt`
-**Human-readable document** with:
-- All topics and their top 20 keywords
-- Relevance scores for each keyword
-- Space for manual categorization
-- Notes section for observations
-
-**Purpose:** Print and annotate for manual topic validation and refinement
-
-### `topic_modeling_*.log`
-**Complete execution log** with timestamps:
-- All processing steps
-- Model training progress
-- Coherence scores
+**`topic_modeling_*.log`**
+- Complete execution log with timestamps
+- All processing steps and progress
+- Coherence scores for each k
 - Errors and warnings
 
-**Use case:** Debugging and tracking what happened during execution
+### Models (`model_checkpoints/`)
+
+**`lda_model_k{N}.pkl`** (and associated files)
+- Saved models for each k value tested
+- Can be loaded for further analysis without retraining
+- Optimal model automatically identified
 
 ## 🔧 Configuration & Refinement
 
 ### Key Parameters (in `refined-topic-model.py`)
 
 ```python
-# Line 48: PDF folder location
+# Line ~48: PDF folder location
 PDF_FOLDER_PATH = r"D:\Github\phd\ML\included"
 
-# Lines 54-60: Vocabulary filtering
+# Lines ~54-62: Vocabulary filtering & N-grams
 MIN_DOC_COUNT = 5          # Word must appear in ≥5 documents
 MAX_DOC_FRACTION = 0.85    # Word can't appear in >85% of documents
-BIGRAM_MIN_COUNT = 5       # Minimum count for phrase detection
-BIGRAM_THRESHOLD = 100     # Threshold for phrase scoring
+BIGRAM_MIN_COUNT = 3       # Bigram detection threshold (lowered for better detection)
+BIGRAM_THRESHOLD = 50      # Bigram scoring threshold (lowered)
+TRIGRAM_MIN_COUNT = 3      # Trigram detection threshold
+TRIGRAM_THRESHOLD = 50     # Trigram scoring threshold
 
-# Lines 59-61: Topic range to test
+# Lines ~64-67: Topic range to test
 TOPIC_RANGE_START = 2      # Start from k=2 topics
-TOPIC_RANGE_END = 21       # Test up to k=20 topics
-TOPIC_STEP = 1             # Test every k value
+TOPIC_RANGE_END = 51       # Test up to k=50 topics
+TOPIC_STEP = 2             # Test every 2nd value (2, 4, 6, 8...)
 
-# Lines 63-65: LDA training parameters
+# Lines ~69-71: LDA training parameters
 LDA_PASSES = 10            # Training iterations (↑ = better quality, slower)
 LDA_ITERATIONS = 400       # Per-document iterations
 LDA_CHUNKSIZE = 100        # Documents per batch
 ```
 
-### Custom Stopwords (Lines 137-142)
+### Custom Stopwords (Lines ~137-180)
 
 Add domain-specific terms that appear too frequently:
 
@@ -166,7 +177,7 @@ corpus_specific = {
     'species', 'strain', 'strains', 
     'model', 'system', 'systems',
     'sample', 'samples', 'sampling',
-    # ADD YOUR TERMS HERE based on manual review
+    # ADD YOUR TERMS based on manual review
 }
 ```
 
@@ -177,25 +188,26 @@ corpus_specific = {
 LDA_PASSES = 5              # Reduce from 10
 LDA_ITERATIONS = 200        # Reduce from 400
 TOPIC_RANGE_START = 5       # Start from k=5
-TOPIC_RANGE_END = 16        # End at k=15
-TOPIC_STEP = 2              # Test every 2nd value (5, 7, 9...)
+TOPIC_RANGE_END = 26        # End at k=25
+TOPIC_STEP = 5              # Test every 5th value (5, 10, 15, 20, 25)
 ```
 
 **To improve quality (slower):**
 ```python
 LDA_PASSES = 15             # Increase from 10
 LDA_ITERATIONS = 600        # Increase from 400
+TOPIC_STEP = 1              # Test every k value
 ```
 
 ## 🔄 Refinement Workflow
 
-1. **Run initial model** → Review outputs
-2. **Generate review document** → Manual categorization
+1. **Run initial model** → Review outputs in `outputs/`
+2. **Generate summaries** → Use utility scripts
 3. **Identify issues:**
-   - Topics too broad → Increase k
-   - Topics too narrow → Decrease k
+   - Topics too broad → Increase k range
+   - Topics too narrow → Decrease k range
    - Topics overlapping → Add stopwords
-   - Poor separation → Adjust MIN_DOC_COUNT
+   - Poor separation → Adjust MIN_DOC_COUNT or n-gram thresholds
 4. **Update parameters** in `refined-topic-model.py`
 5. **Re-run** → Compare results
 6. **Iterate** until satisfied
@@ -215,44 +227,48 @@ LDA_ITERATIONS = 600        # Increase from 400
 **Solution:** Reduce `MIN_DOC_COUNT` or increase `MAX_DOC_FRACTION`.
 
 ### Knowledge graph fails to generate
-**Solution:** Run `regenerate_graph.py` or check that numpy float32 values are converted to float.
+**Solution:** Already fixed - numpy float32 values are converted to Python float/int.
 
-## 📝 Files You DON'T Need to Run
-
-- `refined-topic-model.py.backup` - Backup file, ignore
-- `rebuild.py`, `fix_*.py`, `create_*.py` - Development scripts, ignore
-- `__pycache__/` - Python cache, ignore
+### UnicodeEncodeError when printing
+**Solution:** Files are saved correctly - console display issue only (Windows encoding).
 
 ## 🔬 Methodology
 
 This pipeline implements a 6-stage framework:
 
-1. **Custom Stop-Word List** - Generic + Academic + Domain-specific (285 terms)
+1. **Custom Stop-Word List** - Generic + Academic + Domain-specific (285+ terms)
 2. **Semantic Normalization** - Lemmatization + POS filtering (NOUN, ADJ, VERB, ADV only)
-3. **N-gram Detection** - Bigrams & trigrams (threshold=100)
+3. **N-gram Detection** - Enhanced bigrams & trigrams (lower thresholds for better detection)
 4. **Vocabulary Pruning** - Document frequency filtering (min_df=5, max_df=0.85)
-5. **Coherence-Based Evaluation** - C_v metric across k=2-20
+5. **Coherence-Based Evaluation** - C_v metric across k=2-50
 6. **Optimal Model Training** - Auto-selected k with alpha=auto, eta=auto
 
-## 📚 Citation & References
+## 📚 Technical Details
 
-Based on methodological best practices for topic modeling:
-- Gensim LDA implementation
-- C_v coherence metric for topic evaluation
-- Phrase detection via pointwise mutual information
-- Document frequency filtering for noise reduction
+**Python Version:** 3.12  
+**Key Dependencies:** gensim, spacy, nltk, networkx, pyvis, tqdm  
+**Corpus Size:** 223 scientific papers  
+**LDA Implementation:** Gensim with multicore support (disabled on Windows)  
+**Coherence Metric:** C_v (best for interpretability)
 
 ## 🆘 Support
 
-Check the execution log (`topic_modeling_*.log`) for detailed information about what happened during execution.
+- Check execution logs in `outputs/logs/` for detailed information
+- Review README files in each subdirectory for specific documentation
+- See `archive/` for historical fixes and documentation
 
-For issues with the methodology or parameters, review:
-- `CRITICAL_FIXES_SUMMARY.md` - Technical details on fixes applied
-- `QUICK_REFERENCE.md` - Quick troubleshooting guide
+## 📝 Recent Updates
+
+**2025-11-16:**
+- Extended topic range to k=50 for better optimization
+- Enhanced n-gram detection (lowered thresholds)
+- Fixed JSON serialization issue in knowledge graph
+- Reorganized directory structure for clarity
+- Added comprehensive utility scripts and documentation
+- Fixed Windows multiprocessing compatibility
 
 ---
 
-**Last Updated:** 2025-11-16  
-**Python Version:** 3.12  
-**Corpus Size:** 223 scientific papers
-
+**Last Updated:** 2025-11-17  
+**Status:** Production Ready  
+**Current Optimal Model:** k=8 (from previous run)
