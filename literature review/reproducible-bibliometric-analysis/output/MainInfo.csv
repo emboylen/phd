@@ -6,17 +6,17 @@ MAIN INFORMATION ABOUT DATA
 "
 "Timespan                              2009 : 2025 
 "
-"Sources (Journals, Books, etc)        107 
+"Sources (Journals, Books, etc)        103 
 "
-"Documents                             223 
+"Documents                             216 
 "
 "Annual Growth Rate %                  9.05 
 "
-"Document Average Age                  5.46 
+"Document Average Age                  5.34 
 "
-"Average citations per doc             86.4 
+"Average citations per doc             89.61 
 "
-"Average citations per year per doc    10.72 
+"Average citations per year per doc    11.12 
 "
 "References                            18487 
 "
@@ -29,7 +29,7 @@ DOCUMENT TYPES
 "
 "correspondence                             1 
 "
-"journal article                            58 
+"journal article                            50 
 "
 "journal article; conference paper          3 
 "
@@ -42,27 +42,27 @@ DOCUMENT CONTENTS
 "
 "Keywords Plus (ID)                    1448 
 "
-"Author's Keywords (DE)                727 
+"Author's Keywords (DE)                702 
 "
 "
 AUTHORS
 "
-"Authors                               1042 
+"Authors                               1006 
 "
-"Author Appearances                    1133 
+"Author Appearances                    1098 
 "
 "Authors of single-authored docs       8 
 "
 "
 AUTHORS COLLABORATION
 "
-"Single-authored docs                  8 
+"Single-authored docs                  9 
 "
-"Documents per Author                  0.214 
+"Documents per Author                  0.215 
 "
 "Co-Authors per Doc                    5.08 
 "
-"International co-authorships %        25.11 
+"International co-authorships %        25.93 
 "
 "
 "

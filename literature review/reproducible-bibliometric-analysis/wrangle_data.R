@@ -299,7 +299,26 @@ original_count <- nrow(filtered_data)
 filtered_data <- filtered_data[!duplicated(normalize_titles(filtered_data$TI)), ]
 
 if (nrow(filtered_data) < original_count) {
-  print_status(paste("Removed", original_count - nrow(filtered_data), "duplicate records"))
+  print_status(paste("Removed", original_count - nrow(filtered_data), "duplicate title records"))
+}
+
+# Remove specific known duplicate with incorrect DOI
+# This paper exists in screened list with DOI 10.1016/j.jenvman.2024.122208
+# but also appears in raw data with DOI 10.1016/j.rser.2018.05.052 (incorrect)
+if ("DI" %in% names(filtered_data)) {
+  duplicate_doi <- "10.1016/j.rser.2018.05.052"
+  normalize_doi <- function(dois) {
+    dois <- tolower(trimws(dois))
+    dois <- gsub("https?://doi.org/", "", dois)
+    dois <- gsub("https?://dx.doi.org/", "", dois)
+    return(dois)
+  }
+  
+  data_doi_norm <- normalize_doi(filtered_data$DI)
+  if (duplicate_doi %in% data_doi_norm) {
+    filtered_data <- filtered_data[data_doi_norm != duplicate_doi, ]
+    print_status(paste("Removed duplicate entry with incorrect DOI:", duplicate_doi))
+  }
 }
 
 print_status(paste("Final dataset:", nrow(filtered_data), "unique records"))
