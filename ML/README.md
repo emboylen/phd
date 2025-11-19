@@ -1,274 +1,403 @@
-# Topic Modeling Pipeline for Scientific Literature Analysis
+# Microalgae Biofuel Sustainability - Topic Modeling Analysis
 
-A comprehensive 6-stage framework for topic modeling with enhanced coherence optimization, designed for analyzing scientific literature (specifically microalgae/biofuel research).
-
-## 📁 Directory Structure
-
-```
-ML/
-├── refined-topic-model.py          # Main topic modeling pipeline (RUN THIS)
-├── README.md                        # This file
-├── run-analysis.ps1                 # Legacy PowerShell runner
-├── run-refined-analysis.ps1         # Current PowerShell runner
-│
-├── included/                        # Your PDF files (223 documents)
-│   └── README.md                    # Data directory documentation
-│
-├── model_checkpoints/               # Saved trained models (auto-created)
-│   └── README.md                    # Model storage documentation
-│
-├── outputs/                         # All generated results
-│   ├── README.md                    # Outputs overview
-│   ├── logs/                        # Execution logs
-│   ├── summaries/                   # Topic reviews & configs
-│   └── visualizations/              # HTML graphs & plots
-│
-├── utilities/                       # Helper scripts
-│   └── README.md                    # Utility scripts documentation
-│
-├── archive/                         # Old versions & development files
-│   └── README.md                    # Archive documentation
-│
-└── venv312/                         # Python virtual environment
-```
-
-## 🚀 Quick Start
-
-### 1. Prerequisites
-
-```powershell
-# Activate virtual environment
-.\venv312\Scripts\Activate.ps1
-
-# Verify packages (should already be installed)
-python -m spacy download en_core_web_sm
-```
-
-### 2. Prepare Your Data
-
-Place all PDF files in the `included/` directory (or update `PDF_FOLDER_PATH` in the script).
-
-### 3. Run the Main Pipeline
-
-```powershell
-python refined-topic-model.py
-```
-
-**Expected Runtime:** 2-4 hours for 223 documents testing k=2 to k=50
-
-**What it does:**
-- Extracts text from all PDFs
-- Preprocesses with lemmatization and POS filtering
-- Detects meaningful bigrams/trigrams (enhanced detection)
-- Trains multiple LDA models (k=2 to k=50 by steps of 2)
-- Selects optimal model using coherence scores
-- Generates interactive HTML visualizations
-
-**Progress indicators:**
-```
-Extracting PDF text: 100%|██████████| 223/223 [00:30<00:00]
-Preprocessing documents: 100%|██████████| 223/223 [03:30<00:00]
-Training LDA models: 47%|████████  | 12/25 [15:23<17:42, 106.2s/model]
-```
-
-### 4. Generate Outputs for Review
-
-```powershell
-# Export model configuration and statistics
-python utilities/export_model_config.py
-
-# Generate comprehensive print summary
-python utilities/export_print_summary.py
-```
-
-### 5. Review and Categorize
-
-1. Open the print summary in `outputs/summaries/`
-2. Print for manual annotation
-3. For each topic:
-   - Read the keywords
-   - Assign a meaningful category name
-   - Note quality, overlaps, or issues
-4. Use insights to refine the model (see "Refinement" below)
-
-## 📊 Output Files Explained
-
-### Visualizations (`outputs/visualizations/`)
-
-**`refined_topics_summary.html`**
-- Interactive HTML table with all topics and keywords
-- Document counts per topic
-- Top 10 documents assigned to each topic
-- Model statistics and methodology
-
-**`refined_knowledge_graph.html`**
-- Interactive network visualization
-- Topics (red nodes), Keywords (green), Documents (blue)
-- Drag nodes, zoom, explore relationships
-
-**`coherence_plot.png`**
-- Chart showing coherence scores vs. number of topics
-- Peak indicates optimal k value
-
-### Summaries (`outputs/summaries/`)
-
-**`topic_model_print_summary_*.txt`**
-- Comprehensive print-friendly topic summary
-- Top 20 keywords per topic
-- Representative documents
-- Manual categorization forms
-- Quality assessment checklists
-
-**`model_configuration_summary_*.txt`**
-- Complete model statistics
-- All processing parameters
-- Custom stop word lists
-- Training configuration
-
-### Logs (`outputs/logs/`)
-
-**`topic_modeling_*.log`**
-- Complete execution log with timestamps
-- All processing steps and progress
-- Coherence scores for each k
-- Errors and warnings
-
-### Models (`model_checkpoints/`)
-
-**`lda_model_k{N}.pkl`** (and associated files)
-- Saved models for each k value tested
-- Can be loaded for further analysis without retraining
-- Optimal model automatically identified
-
-## 🔧 Configuration & Refinement
-
-### Key Parameters (in `refined-topic-model.py`)
-
-```python
-# Line ~48: PDF folder location
-PDF_FOLDER_PATH = r"D:\Github\phd\ML\included"
-
-# Lines ~54-62: Vocabulary filtering & N-grams
-MIN_DOC_COUNT = 5          # Word must appear in ≥5 documents
-MAX_DOC_FRACTION = 0.85    # Word can't appear in >85% of documents
-BIGRAM_MIN_COUNT = 3       # Bigram detection threshold (lowered for better detection)
-BIGRAM_THRESHOLD = 50      # Bigram scoring threshold (lowered)
-TRIGRAM_MIN_COUNT = 3      # Trigram detection threshold
-TRIGRAM_THRESHOLD = 50     # Trigram scoring threshold
-
-# Lines ~64-67: Topic range to test
-TOPIC_RANGE_START = 2      # Start from k=2 topics
-TOPIC_RANGE_END = 51       # Test up to k=50 topics
-TOPIC_STEP = 2             # Test every 2nd value (2, 4, 6, 8...)
-
-# Lines ~69-71: LDA training parameters
-LDA_PASSES = 10            # Training iterations (↑ = better quality, slower)
-LDA_ITERATIONS = 400       # Per-document iterations
-LDA_CHUNKSIZE = 100        # Documents per batch
-```
-
-### Custom Stopwords (Lines ~137-180)
-
-Add domain-specific terms that appear too frequently:
-
-```python
-corpus_specific = {
-    'microalgae', 'microalga', 'algae', 'algal', 'alga',
-    'species', 'strain', 'strains', 
-    'model', 'system', 'systems',
-    'sample', 'samples', 'sampling',
-    # ADD YOUR TERMS based on manual review
-}
-```
-
-### Performance Tuning
-
-**To speed up (trade quality for time):**
-```python
-LDA_PASSES = 5              # Reduce from 10
-LDA_ITERATIONS = 200        # Reduce from 400
-TOPIC_RANGE_START = 5       # Start from k=5
-TOPIC_RANGE_END = 26        # End at k=25
-TOPIC_STEP = 5              # Test every 5th value (5, 10, 15, 20, 25)
-```
-
-**To improve quality (slower):**
-```python
-LDA_PASSES = 15             # Increase from 10
-LDA_ITERATIONS = 600        # Increase from 400
-TOPIC_STEP = 1              # Test every k value
-```
-
-## 🔄 Refinement Workflow
-
-1. **Run initial model** → Review outputs in `outputs/`
-2. **Generate summaries** → Use utility scripts
-3. **Identify issues:**
-   - Topics too broad → Increase k range
-   - Topics too narrow → Decrease k range
-   - Topics overlapping → Add stopwords
-   - Poor separation → Adjust MIN_DOC_COUNT or n-gram thresholds
-4. **Update parameters** in `refined-topic-model.py`
-5. **Re-run** → Compare results
-6. **Iterate** until satisfied
-
-## 🐛 Troubleshooting
-
-### Script hangs at "Training LDA models"
-**Solution:** It's not hung, just slow. Check progress bars. Each model takes 3-10 minutes.
-
-### "RuntimeError: multiprocessing"
-**Solution:** Already fixed with `if __name__ == '__main__':` guard and `processes=1` in CoherenceModel.
-
-### "No PDF files found"
-**Solution:** Check `PDF_FOLDER_PATH` points to correct directory with PDF files.
-
-### "Vocabulary is empty"
-**Solution:** Reduce `MIN_DOC_COUNT` or increase `MAX_DOC_FRACTION`.
-
-### Knowledge graph fails to generate
-**Solution:** Already fixed - numpy float32 values are converted to Python float/int.
-
-### UnicodeEncodeError when printing
-**Solution:** Files are saved correctly - console display issue only (Windows encoding).
-
-## 🔬 Methodology
-
-This pipeline implements a 6-stage framework:
-
-1. **Custom Stop-Word List** - Generic + Academic + Domain-specific (285+ terms)
-2. **Semantic Normalization** - Lemmatization + POS filtering (NOUN, ADJ, VERB, ADV only)
-3. **N-gram Detection** - Enhanced bigrams & trigrams (lower thresholds for better detection)
-4. **Vocabulary Pruning** - Document frequency filtering (min_df=5, max_df=0.85)
-5. **Coherence-Based Evaluation** - C_v metric across k=2-50
-6. **Optimal Model Training** - Auto-selected k with alpha=auto, eta=auto
-
-## 📚 Technical Details
-
-**Python Version:** 3.12  
-**Key Dependencies:** gensim, spacy, nltk, networkx, pyvis, tqdm  
-**Corpus Size:** 223 scientific papers  
-**LDA Implementation:** Gensim with multicore support (disabled on Windows)  
-**Coherence Metric:** C_v (best for interpretability)
-
-## 🆘 Support
-
-- Check execution logs in `outputs/logs/` for detailed information
-- Review README files in each subdirectory for specific documentation
-- See `archive/` for historical fixes and documentation
-
-## 📝 Recent Updates
-
-**2025-11-16:**
-- Extended topic range to k=50 for better optimization
-- Enhanced n-gram detection (lowered thresholds)
-- Fixed JSON serialization issue in knowledge graph
-- Reorganized directory structure for clarity
-- Added comprehensive utility scripts and documentation
-- Fixed Windows multiprocessing compatibility
+**PhD Research Project**  
+**Last Updated:** November 19, 2025  
+**Current Methodology:** BERTopic (Transformer-Based Semantic Topic Modeling)
 
 ---
 
-**Last Updated:** 2025-11-17  
-**Status:** Production Ready  
-**Current Optimal Model:** k=8 (from previous run)
+## Quick Start
+
+```bash
+# 1. Install dependencies
+pip install bertopic sentence-transformers umap-learn hdbscan pymupdf pandas
+
+# 2. Run BERTopic analysis
+python run_bertopic_analysis.py
+
+# 3. View results
+# Open bertopic_outputs/intertopic_distance_*.html in your browser
+# Review bertopic_outputs/BERTOPIC_SUMMARY_*.txt
+```
+
+---
+
+## Project Overview
+
+This repository contains a comprehensive topic modeling analysis of **223 peer-reviewed scientific publications** on microalgae biofuel sustainability. The analysis employs **BERTopic**, a state-of-the-art semantic topic modeling framework that leverages transformer-based embeddings to discover coherent thematic structures in scientific literature.
+
+### **Research Questions**
+1. What are the major research themes in microalgae biofuel sustainability literature?
+2. How is research effort distributed across different aspects (production, economics, sustainability, policy)?
+3. What topics are underrepresented and represent potential research gaps?
+4. How do topics cluster hierarchically to reveal higher-order research domains?
+
+### **Key Findings**
+- **6 Major Topics** discovered automatically (no pre-specification required)
+- **30% of literature** focused on fundamental production challenges (Topic 0)
+- **19% on wastewater integration** and circular economy approaches (Topic 1)
+- **29% combined focus** on biorefinery economics and sustainability assessment (Topics 2+3)
+- **12% specialized** in biodiesel production technology (Topic 4)
+- **9% forward-looking** research on next-generation innovations (Topic 5)
+
+---
+
+## Directory Structure
+
+```
+D:\Github\phd\ML\
+│
+├── included/                          # PDF corpus (223 papers)
+│   └── *.pdf                          # Peer-reviewed publications
+│
+├── bertopic_outputs/                  # BERTopic analysis results
+│   ├── topic_info_*.csv               # Topic keywords & statistics
+│   ├── document_topics_*.csv          # Document assignments
+│   ├── intertopic_distance_*.html     # Interactive topic map
+│   ├── hierarchy_*.html               # Topic hierarchy dendrogram
+│   ├── barchart_*.html                # Keyword visualizations
+│   ├── BERTOPIC_SUMMARY_*.txt         # Human-readable summary
+│   ├── raw_extractions_*.csv          # Extracted PDF text
+│   └── bertopic_model_*/              # Trained model (reloadable)
+│
+├── archive/                           # Historical files
+│   ├── lda_analysis/                  # Previous LDA approach (archived)
+│   │   ├── refined-topic-model.py     # LDA pipeline script
+│   │   ├── model_checkpoints/         # LDA models (k=2...50)
+│   │   ├── outputs_*/                 # LDA visualizations & summaries
+│   │   └── README.md                  # LDA archive documentation
+│   └── README.md                      # Archive overview
+│
+├── run_bertopic_analysis.py           # Main BERTopic pipeline
+├── bertopic_pipeline.py               # Reusable BERTopic module
+├── create_bertopic_summary.py         # Summary generation script
+│
+├── BERTOPIC_ANALYSIS_SUMMARY.md       # Comprehensive analysis report
+├── METHODOLOGY_SECTION_FOR_PUBLICATION.md  # Peer-reviewed methodology
+├── README.md                          # This file
+└── included/README.md                 # Corpus documentation
+```
+
+---
+
+## Discovered Topics
+
+### **Topic 0: General Microalgae Biofuel Production & Challenges** (67 docs, 30.0%)
+- **Keywords:** production, microalgae, biofuel, cultivation, biomass, challenges, energy
+- **Focus:** Fundamental research on scalability, cultivation optimization, carbon sequestration
+- **Key Papers:** Reviews on challenges, opportunities, and carbon mitigation potential
+
+### **Topic 1: Wastewater Treatment & Circular Bioeconomy** (43 docs, 19.3%)
+- **Keywords:** wastewater, treatment, biorefinery, circular, bioremediation, phycoremediation
+- **Focus:** Integration with wastewater systems, nutrient recovery, dual-purpose biorefineries
+- **Key Papers:** Wastewater-coupled cultivation, circular economy models, cost reduction
+
+### **Topic 2: Integrated Biorefinery & Value-Added Products** (34 docs, 15.2%)
+- **Keywords:** biorefinery, products, biomass, valorization, co-products, value-added
+- **Focus:** Multi-product strategies, cascading utilization, economic viability through diversification
+- **Key Papers:** Biorefinery design, co-product optimization, holistic valorization
+
+### **Topic 3: Sustainability Assessment & Policy Frameworks** (31 docs, 13.9%)
+- **Keywords:** sustainability, assessment, life cycle, economic, analysis, environmental, policy
+- **Focus:** LCA, TEA, policy barriers, socioeconomic indicators, regulatory frameworks
+- **Key Papers:** Life cycle assessments, techno-economic analyses, policy reviews
+
+### **Topic 4: Biodiesel Production Technology** (27 docs, 12.1%)
+- **Keywords:** biodiesel, lipid, production, conversion, transesterification, fuel
+- **Focus:** Lipid enhancement, extraction methods, fuel quality, aviation applications
+- **Key Papers:** Biodiesel conversion technologies, lipid accumulation, aviation fuel
+
+### **Topic 5: Third-Generation Biofuels & Future Innovations** (21 docs, 9.4%)
+- **Keywords:** third generation, renewable, future, prospects, emerging, innovations
+- **Focus:** Next-generation technologies, emerging trends, long-term viability
+- **Key Papers:** Future prospects, post-pandemic developments, technology roadmaps
+
+---
+
+## Methodology
+
+### **BERTopic Pipeline (6 Stages)**
+
+1. **Text Extraction** - PyMuPDF extracts full text from 223 PDFs
+2. **Lightweight Preprocessing** - Minimal cleaning to preserve context (URLs/DOIs removed, domain terms preserved)
+3. **Embedding Generation** - Sentence-BERT (all-MiniLM-L6-v2) creates 384-dim contextual embeddings
+4. **Dimensionality Reduction** - UMAP reduces to 5 dimensions (n_neighbors=15, cosine metric)
+5. **Density-Based Clustering** - HDBSCAN discovers topics automatically (min_cluster_size=15)
+6. **Topic Representation** - Class-based TF-IDF (c-TF-IDF) generates interpretable keywords
+
+### **Key Advantages Over Traditional LDA**
+✅ **Semantic Understanding** - Captures meaning beyond keyword co-occurrence  
+✅ **Automatic Topic Discovery** - No need to test k=2...50  
+✅ **Domain Term Preservation** - Retains pH, LCA, TEA, chemical symbols  
+✅ **Superior Interpretability** - Clearer thematic boundaries  
+✅ **Interactive Visualizations** - Dynamic exploration of relationships  
+✅ **Confidence Quantification** - Document-level probability distributions  
+
+### **Performance**
+- **Documents Processed:** 223 (19.7M characters)
+- **Average Confidence:** 60.6%
+- **Outlier Rate:** 0% (all documents successfully categorized)
+- **Runtime:** < 1 minute (standard laptop, no GPU)
+
+---
+
+## Usage
+
+### **Running the Analysis**
+
+```python
+# Basic usage
+python run_bertopic_analysis.py
+
+# The script will:
+# 1. Extract text from all PDFs in included/
+# 2. Apply lightweight preprocessing
+# 3. Generate embeddings using Sentence-BERT
+# 4. Perform UMAP + HDBSCAN clustering
+# 5. Create visualizations and export results
+```
+
+### **Loading Saved Model**
+
+```python
+from bertopic import BERTopic
+
+# Load trained model
+model = BERTopic.load("bertopic_outputs/bertopic_model_20251119_130232")
+
+# Get topic info
+topic_info = model.get_topic_info()
+
+# Get topic keywords
+topic_0_keywords = model.get_topic(0)
+print(topic_0_keywords)
+
+# Predict topic for new document
+new_doc = ["Microalgae cultivation for sustainable biofuel production..."]
+topics, probs = model.transform(new_doc)
+```
+
+### **Generating Summary**
+
+```python
+# Create human-readable summary
+python create_bertopic_summary.py
+
+# Output: bertopic_outputs/BERTOPIC_SUMMARY_*.txt
+```
+
+---
+
+## Visualizations
+
+### **Interactive HTML Files** (Open in browser)
+
+1. **Intertopic Distance Map** (`intertopic_distance_*.html`)
+   - 2D visualization of topic relationships
+   - Circle size = topic prevalence
+   - Distance = semantic similarity
+   - Hover for keywords and details
+
+2. **Hierarchical Clustering** (`hierarchy_*.html`)
+   - Dendrogram showing topic relationships
+   - Identify higher-order thematic categories
+   - Explore multi-level structure
+
+3. **Topic Bar Charts** (`barchart_*.html`)
+   - Top keywords per topic with importance scores
+   - C-TF-IDF values for each term
+   - Visual comparison across topics
+
+---
+
+## Data Exports
+
+### **CSV Files**
+
+1. **topic_info_*.csv** - Complete topic information
+   - Topic ID, Count, Name, Representation
+   - Top keywords with c-TF-IDF scores
+   - Topic metadata
+
+2. **document_topics_*.csv** - Document assignments
+   - Filename, assigned topic, confidence score
+   - Use for further analysis (citation networks, trends)
+   - 223 rows (one per document)
+
+3. **raw_extractions_*.csv** - Full extracted text
+   - Original PDF text for validation
+   - Page counts and metadata
+
+---
+
+## Applications
+
+### **1. Literature Review Organization**
+- Use topic assignments to structure thesis chapters
+- Group related papers for thematic synthesis
+- Identify seminal works per topic (high confidence scores)
+
+### **2. Research Gap Identification**
+- **Underrepresented:** Topic 5 (innovations, 9.4%) = opportunity
+- **Oversaturated:** Topic 0 (general challenges, 30%) = limited novelty
+- **Emerging:** Intersection of Topics 1+2 (wastewater biorefineries) = promising
+
+### **3. Citation Strategy**
+- High-confidence papers = essential citations
+- Cross-topic papers = interdisciplinary context
+- Topic-specific = domain expertise demonstration
+
+### **4. Trend Analysis** (if temporal data added)
+- Topic prevalence over time
+- Shifting research priorities
+- Emerging sub-topics
+
+---
+
+## Requirements
+
+### **Python Dependencies**
+```
+bertopic>=0.16.0
+sentence-transformers>=2.2.0
+umap-learn>=0.5.0
+hdbscan>=0.8.0
+pymupdf>=1.23.0
+pandas>=2.1.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+plotly>=5.0.0
+```
+
+### **Installation**
+```bash
+pip install bertopic sentence-transformers umap-learn hdbscan pymupdf pandas plotly
+```
+
+### **System Requirements**
+- **Python:** 3.10+
+- **RAM:** 2+ GB
+- **Storage:** 500+ MB for outputs
+- **GPU:** Optional (faster embedding generation)
+
+---
+
+## Publication Materials
+
+### **Methodology Section**
+See `METHODOLOGY_SECTION_FOR_PUBLICATION.md` for:
+- Complete mathematical formulation (SBERT, UMAP, HDBSCAN, c-TF-IDF)
+- Academic citations (Grootendorst 2022, Reimers & Gurevych 2019, etc.)
+- Justification for methodological choices
+- Comparison with traditional approaches
+- Reproducibility details
+
+### **Comprehensive Report**
+See `BERTOPIC_ANALYSIS_SUMMARY.md` for:
+- Executive summary
+- Detailed topic descriptions
+- Representative papers per topic
+- Research maturity insights
+- Comparison with LDA
+- Applications for PhD research
+- Validation and evaluation
+
+---
+
+## Troubleshooting
+
+### **Common Issues**
+
+**1. Module not found errors**
+```bash
+pip install [missing_module]
+```
+
+**2. PDF extraction fails**
+- Check PDF files are valid (not corrupted)
+- Ensure sufficient disk space
+- Verify file permissions
+
+**3. Memory errors**
+- Reduce batch size in embedding generation
+- Process PDFs in smaller batches
+- Increase system swap file
+
+**4. Slow performance**
+- Install GPU-accelerated PyTorch for embeddings
+- Use fewer documents for testing
+- Reduce UMAP n_neighbors
+
+### **Configuration**
+
+Edit `run_bertopic_analysis.py` to adjust:
+- `PDF_FOLDER`: Source directory for PDFs
+- `HDBSCAN_MIN_CLUSTER_SIZE`: Minimum documents per topic (default: 15)
+- `UMAP_N_NEIGHBORS`: Balance local/global structure (default: 15)
+- `CV_MIN_DF`: Minimum document frequency for terms (default: 2)
+
+---
+
+## Archive
+
+### **Previous LDA Analysis**
+The project originally used Latent Dirichlet Allocation (LDA) with coherence optimization (k=2-50 tested). This approach was replaced by BERTopic for superior semantic understanding and interpretability.
+
+**Archived files:** `archive/lda_analysis/`
+- LDA script, models, outputs, and utilities
+- Comparison summary and rationale for transition
+- See `archive/lda_analysis/README.md` for details
+
+---
+
+## References
+
+**BERTopic Framework:**
+- Grootendorst, M. (2022). BERTopic: Neural topic modeling with a class-based TF-IDF procedure. *arXiv preprint arXiv:2203.05794*.
+
+**Sentence-BERT Embeddings:**
+- Reimers, N., & Gurevych, I. (2019). Sentence-BERT: Sentence embeddings using Siamese BERT-networks. *EMNLP*, 3982-3992.
+
+**UMAP Dimensionality Reduction:**
+- McInnes, L., Healy, J., & Melville, J. (2018). UMAP: Uniform manifold approximation and projection. *arXiv preprint arXiv:1802.03426*.
+
+**HDBSCAN Clustering:**
+- McInnes, L., Healy, J., & Astels, S. (2017). hdbscan: Hierarchical density based clustering. *Journal of Open Source Software*, 2(11), 205.
+
+---
+
+## Citation
+
+If you use this analysis or methodology in your research, please cite:
+
+```bibtex
+@misc{microalgae_bertopic2025,
+  author = {[Your Name]},
+  title = {BERTopic Analysis of Microalgae Biofuel Sustainability Literature},
+  year = {2025},
+  publisher = {GitHub},
+  url = {[Your Repository URL]}
+}
+```
+
+---
+
+## Contact & Support
+
+**Author:** PhD Candidate  
+**Institution:** [Your University]  
+**Email:** [Your Email]  
+
+**Issues:** Please report bugs or request features via GitHub issues  
+**Questions:** See `BERTOPIC_ANALYSIS_SUMMARY.md` for detailed FAQ
+
+---
+
+## License
+
+This project is part of PhD research. Data (published papers) remains under original copyright. Analysis code and methodology are available for academic use with proper citation.
+
+---
+
+**Last Analysis Run:** November 19, 2025  
+**Next Steps:** Temporal analysis, subtopic discovery, integration with bibliometric data

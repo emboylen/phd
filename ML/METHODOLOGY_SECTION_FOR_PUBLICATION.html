@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Methodology Section for Peer-Reviewed Publication</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="methodology-section-for-peer-reviewed-publication">Methodology Section for Peer-Reviewed Publication</h1>
+<h2 id="bertopic-semantic-topic-modeling-for-microalgae-biofuel-sustainability-research">BERTopic: Semantic Topic Modeling for Microalgae Biofuel Sustainability Research</h2>
+<hr>
+<h2 id="3-methods">3. Methods</h2>
+<h3 id="31-data-collection-and-corpus-construction">3.1 Data Collection and Corpus Construction</h3>
+<p>The research corpus consisted of peer-reviewed scientific publications focused on microalgae biofuel sustainability, policy frameworks, and techno-economic analyses. Documents were retrieved from [<em>specify databases: e.g., Scopus, Web of Science, PubMed</em>] using systematic search queries targeting keywords related to microalgae cultivation, biofuel production, life cycle assessment (LCA), techno-economic analysis (TEA), and policy interventions. Only peer-reviewed journal articles and conference proceedings published between [<em>specify date range</em>] were included to ensure research currency and quality.</p>
+<p>Text data were extracted from PDF documents using PyMuPDF (version 1.23.x), with full-text content compiled for each publication. Documents with insufficient extractable text (&lt; 100 characters) or non-English content were excluded from analysis. The final corpus comprised <strong>N</strong> documents representing <strong>M</strong> peer-reviewed publications from <strong>K</strong> unique journals, with abstracts serving as the primary analytical unit to balance semantic richness with computational efficiency.</p>
+<h3 id="32-text-preprocessing">3.2 Text Preprocessing</h3>
+<p>In contrast to traditional bag-of-words approaches (e.g., Latent Dirichlet Allocation), which require extensive preprocessing to reduce vocabulary dimensionality, transformer-based topic modeling benefits from preserving natural language structure to maintain contextual information critical for accurate embeddings (Grootendorst, 2022). A lightweight preprocessing pipeline was therefore implemented:</p>
+<p><strong>Noise Removal</strong>: Regular expressions were employed to identify and remove URLs (http/https patterns), Digital Object Identifiers (DOIs), HTML tags, and email addresses that do not contribute semantic meaning but may introduce noise.</p>
+<p><strong>Character Normalization</strong>: Special characters were selectively removed while preserving domain-critical symbols including chemical notation (e.g., CO₂, NO₃⁻), abbreviations (pH, LCA, TEA), and hyphenated compound terms (e.g., &quot;life-cycle,&quot; &quot;techno-economic&quot;). This domain-specific constraint ensures retention of essential terminology that would be lost under aggressive filtering.</p>
+<p><strong>Critical Design Decision</strong>: Unlike LDA preprocessing, the pipeline explicitly <strong>excludes</strong> lemmatization, stemming, lowercasing, and aggressive stop-word removal. These transformations damage the syntactic and semantic structure upon which transformer models depend for contextualized word representations (Devlin et al., 2019).</p>
+<p>Documents with fewer than 50 characters after cleaning were excluded to ensure sufficient semantic content for meaningful analysis.</p>
+<h3 id="33-semantic-topic-modeling-with-bertopic">3.3 Semantic Topic Modeling with BERTopic</h3>
+<h4 id="331-methodological-framework">3.3.1 Methodological Framework</h4>
+<p>BERTopic (Grootendorst, 2022) represents a paradigm shift from probabilistic generative models (LDA) to a transformer-based semantic clustering approach. The method leverages pre-trained language models to capture contextual word meanings, enabling topic discovery that aligns more closely with human interpretation of thematic coherence. The BERTopic pipeline integrates four sequential stages:</p>
+<ol>
+<li><strong>Contextual Embedding Generation</strong> using Sentence Transformers</li>
+<li><strong>Dimensionality Reduction</strong> via Uniform Manifold Approximation and Projection (UMAP)</li>
+<li><strong>Density-Based Clustering</strong> using Hierarchical DBSCAN (HDBSCAN)</li>
+<li><strong>Topic Representation</strong> through class-based Term Frequency-Inverse Document Frequency (c-TF-IDF)</li>
+</ol>
+<p>This architecture enables discovery of semantically coherent topics while accommodating varying topic sizes and document-topic distributions without requiring prior specification of topic count.</p>
+<h4 id="332-stage-1-document-embedding">3.3.2 Stage 1: Document Embedding</h4>
+<p>Documents were transformed into dense vector representations using Sentence-BERT (SBERT; Reimers &amp; Gurevych, 2019) with the <strong>all-MiniLM-L6-v2</strong> model. This model generates 384-dimensional embeddings optimized for semantic similarity tasks, achieving strong performance with computational efficiency suitable for moderately large corpora (&lt; 100,000 documents).</p>
+<p>SBERT extends BERT's contextualized representations to sentence-level semantics using siamese and triplet network architectures trained on Natural Language Inference (NLI) and Semantic Textual Similarity (STS) benchmarks. The resulting embeddings capture nuanced semantic relationships that transcend simple lexical overlap, enabling clustering of documents by conceptual similarity rather than keyword co-occurrence.</p>
+<p>Formally, each document (d_i) is mapped to embedding (\mathbf{e}_i \in \mathbb{R}^{384}):</p>
+<p>[
+\mathbf{e}_i = \text{SBERT}(d_i)
+]</p>
+<h4 id="333-stage-2-dimensionality-reduction-with-umap">3.3.3 Stage 2: Dimensionality Reduction with UMAP</h4>
+<p>High-dimensional embeddings were reduced to 5 dimensions using UMAP (McInnes et al., 2018), a manifold learning technique that preserves both local and global structure in the data through optimization of fuzzy topological representations.</p>
+<p><strong>UMAP Configuration</strong>:</p>
+<ul>
+<li><strong>n_neighbors = 15</strong>: Balances local neighborhood structure (small values) with global relationships (large values). This setting captures mesoscopic structure appropriate for scientific literature domains.</li>
+<li><strong>n_components = 5</strong>: Reduced dimensionality sufficient for HDBSCAN while preserving topological structure.</li>
+<li><strong>metric = 'cosine'</strong>: Angular distance metric appropriate for normalized text embeddings, focusing on directional similarity rather than magnitude.</li>
+<li><strong>random_state = 42</strong>: Fixed random seed ensuring reproducibility.</li>
+</ul>
+<p>UMAP constructs a weighted k-nearest neighbor graph in the high-dimensional space, converts it to a fuzzy simplicial complex, and optimizes a low-dimensional representation to minimize cross-entropy between fuzzy topological structures:</p>
+<p>[
+\min_{\mathbf{y}} \sum_{i,j} \left[ w_{ij} \log \frac{w_{ij}}{v_{ij}} + (1 - w_{ij}) \log \frac{1 - w_{ij}}{1 - v_{ij}} \right]
+]</p>
+<p>where (w_{ij}) and (v_{ij}) are fuzzy membership strengths in high- and low-dimensional spaces, respectively.</p>
+<h4 id="334-stage-3-hierarchical-density-based-clustering">3.3.4 Stage 3: Hierarchical Density-Based Clustering</h4>
+<p>HDBSCAN (McInnes et al., 2017) was employed to identify topic clusters in the UMAP-reduced space. Unlike centroid-based algorithms (e.g., k-means) that require pre-specification of cluster count and assume spherical cluster geometry, HDBSCAN discovers clusters of varying density and shape, automatically determining the number of topics while classifying noise points (outliers).</p>
+<p><strong>HDBSCAN Configuration</strong>:</p>
+<ul>
+<li><strong>min_cluster_size = 15</strong>: Minimum documents required to form a topic cluster. This threshold balances granularity (small values yield more specific topics) with robustness (large values reduce spurious clusters).</li>
+<li><strong>metric = 'euclidean'</strong>: Standard distance metric for UMAP output space.</li>
+<li><strong>prediction_data = True</strong>: Enables soft clustering and outlier reassignment.</li>
+<li><strong>min_samples = 1</strong>: Conservative setting allowing flexible cluster boundaries.</li>
+</ul>
+<p>HDBSCAN constructs a hierarchy of clusters based on mutual reachability distance, then extracts stable clusters by analyzing cluster persistence across density thresholds. Documents that do not belong to any stable cluster are labeled as outliers (topic = -1).</p>
+<p><strong>Outlier Reduction</strong>: Following initial clustering, outliers were reassigned to the nearest topic using an embedding-based strategy. For each outlier document (d_i) with embedding (\mathbf{e}_i), the nearest topic was determined by cosine similarity to topic centroids:</p>
+<p>[
+\text{topic}(d_i) = \arg\max_{t} \frac{\mathbf{e}_i \cdot \mathbf{c}_t}{|\mathbf{e}_i| |\mathbf{c}_t|}
+]</p>
+<p>where (\mathbf{c}_t) is the centroid of topic (t) computed as the mean embedding of member documents.</p>
+<h4 id="335-stage-4-topic-representation-with-c-tf-idf">3.3.5 Stage 4: Topic Representation with c-TF-IDF</h4>
+<p>While clustering operates on semantic embeddings, topic interpretation requires human-readable keyword representations. BERTopic employs <strong>class-based TF-IDF</strong> (c-TF-IDF), which treats all documents in a topic cluster as a single pseudo-document and calculates term importance relative to other topics:</p>
+<p>[
+\text{c-TF-IDF}(w, t) = \text{tf}(w, t) \times \log \frac{N}{\sum_{t'} \text{tf}(w, t')}
+]</p>
+<p>where:</p>
+<ul>
+<li>(\text{tf}(w, t)) = frequency of word (w) in topic (t) (sum across all documents in topic)</li>
+<li>(N) = total number of topics</li>
+<li>Denominator sums word frequency across all topics</li>
+</ul>
+<p>This approach identifies terms that are frequent within a topic but rare across other topics, producing interpretable keyword sets that distinguish topics from one another.</p>
+<p><strong>Vectorization Configuration</strong>:</p>
+<ul>
+<li><strong>stop_words = &quot;english&quot;</strong>: Removed common function words</li>
+<li><strong>min_df = 2</strong>: Terms must appear in at least 2 documents</li>
+<li><strong>ngram_range = (1, 2)</strong>: Extracted unigrams and bigrams to capture both single concepts and multi-word expressions (e.g., &quot;greenhouse gas,&quot; &quot;life cycle&quot;)</li>
+</ul>
+<h3 id="34-model-validation-and-evaluation">3.4 Model Validation and Evaluation</h3>
+<h4 id="341-topic-coherence">3.4.1 Topic Coherence</h4>
+<p>While BERTopic does not require pre-specification of topic count, the quality of discovered topics was assessed using coherence metrics. Coherence measures quantify the degree of semantic similarity between high-scoring words within topics, with higher values indicating more interpretable topics (Röder et al., 2015).</p>
+<p>[<em>Optional: Include specific coherence scores if computed</em>]</p>
+<h4 id="342-topic-diversity">3.4.2 Topic Diversity</h4>
+<p>Topic diversity was calculated as the percentage of unique words across all topics, ensuring that topics capture distinct themes rather than redundant concepts:</p>
+<p>[
+\text{Diversity} = \frac{|\bigcup_{t=1}^{T} W_t|}{T \times |W_t|}
+]</p>
+<p>where (W_t) is the set of top-N words for topic (t), and (T) is the total number of topics.</p>
+<h4 id="343-qualitative-validation">3.4.3 Qualitative Validation</h4>
+<p>Topic labels and keyword sets were reviewed by domain experts to assess semantic validity and alignment with established research themes in microalgae biofuel sustainability. Topics were manually annotated with descriptive labels based on the top 10 keywords and representative documents.</p>
+<h3 id="35-visualization-and-interpretation">3.5 Visualization and Interpretation</h3>
+<h4 id="351-intertopic-distance-mapping">3.5.1 Intertopic Distance Mapping</h4>
+<p>Topic relationships were visualized using dimensionally-reduced embeddings projected onto a 2D plane via t-SNE or additional UMAP transformation. The resulting intertopic distance map displays topics as circles, with proximity indicating semantic similarity and circle size representing topic prevalence (document count).</p>
+<h4 id="352-hierarchical-topic-clustering">3.5.2 Hierarchical Topic Clustering</h4>
+<p>A dendrogram was constructed to illustrate hierarchical relationships between topics, enabling identification of higher-order thematic categories and sub-topic structure. This visualization supports multi-level interpretation aligned with the hierarchical nature of scientific knowledge domains.</p>
+<h4 id="353-topic-document-assignment">3.5.3 Topic-Document Assignment</h4>
+<p>Each document was assigned a primary topic (highest probability) along with a confidence score. This deterministic assignment facilitates downstream analyses including temporal trend analysis, policy mapping, and cross-topic comparisons.</p>
+<h3 id="36-comparison-to-traditional-approaches">3.6 Comparison to Traditional Approaches</h3>
+<p>The BERTopic framework offers several methodological advantages over traditional LDA for scientific literature analysis:</p>
+<ol>
+<li>
+<p><strong>Semantic Understanding</strong>: Transformer embeddings capture contextual word meanings, enabling discovery of topics defined by semantic coherence rather than lexical co-occurrence.</p>
+</li>
+<li>
+<p><strong>Preservation of Domain Terminology</strong>: Minimal preprocessing retains critical acronyms (LCA, TEA, pH) and technical terminology that would be lost under aggressive normalization.</p>
+</li>
+<li>
+<p><strong>Automatic Topic Discovery</strong>: HDBSCAN eliminates the need for arbitrary selection of topic count, with cluster stability metrics providing principled model selection.</p>
+</li>
+<li>
+<p><strong>Handling of Short Text</strong>: Sentence-level embeddings perform effectively on abstracts and short documents, whereas LDA often requires longer texts for stable topic inference.</p>
+</li>
+<li>
+<p><strong>Dynamic Topic Modeling</strong>: The framework naturally extends to temporal analysis and topic evolution tracking without requiring specialized algorithms.</p>
+</li>
+</ol>
+<h3 id="37-software-and-computational-environment">3.7 Software and Computational Environment</h3>
+<p>All analyses were conducted in Python 3.12 with the following libraries:</p>
+<ul>
+<li><strong>BERTopic 0.16.x</strong>: Topic modeling framework (Grootendorst, 2022)</li>
+<li><strong>Sentence-Transformers 2.2.x</strong>: Pre-trained embedding models (Reimers &amp; Gurevych, 2019)</li>
+<li><strong>UMAP-learn 0.5.x</strong>: Dimensionality reduction (McInnes et al., 2018)</li>
+<li><strong>HDBSCAN 0.8.x</strong>: Clustering algorithm (McInnes et al., 2017)</li>
+<li><strong>Scikit-learn 1.3.x</strong>: Text vectorization and preprocessing</li>
+<li><strong>Pandas 2.1.x</strong>: Data manipulation</li>
+<li><strong>Plotly 5.x</strong>: Interactive visualizations</li>
+</ul>
+<p>Computations were performed on [<em>specify hardware: e.g., Intel Xeon CPU, 32GB RAM, NVIDIA GPU if used</em>]. Embedding generation for the full corpus required approximately [<em>X</em>] hours, with subsequent UMAP and clustering completing in [<em>Y</em>] minutes. All code, configuration parameters, and model artifacts are available in the supplementary materials to ensure full reproducibility.</p>
+<hr>
+<h2 id="references">References</h2>
+<p>Devlin, J., Chang, M.-W., Lee, K., &amp; Toutanova, K. (2019). BERT: Pre-training of deep bidirectional transformers for language understanding. In <em>Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies</em> (pp. 4171-4186).</p>
+<p>Grootendorst, M. (2022). BERTopic: Neural topic modeling with a class-based TF-IDF procedure. <em>arXiv preprint arXiv:2203.05794</em>.</p>
+<p>McInnes, L., Healy, J., &amp; Astels, S. (2017). hdbscan: Hierarchical density based clustering. <em>Journal of Open Source Software</em>, 2(11), 205.</p>
+<p>McInnes, L., Healy, J., &amp; Melville, J. (2018). UMAP: Uniform manifold approximation and projection for dimension reduction. <em>arXiv preprint arXiv:1802.03426</em>.</p>
+<p>Reimers, N., &amp; Gurevych, I. (2019). Sentence-BERT: Sentence embeddings using Siamese BERT-networks. In <em>Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing</em> (pp. 3982-3992).</p>
+<p>Röder, M., Both, A., &amp; Hinneburg, A. (2015). Exploring the space of topic coherence measures. In <em>Proceedings of the eighth ACM international conference on Web search and data mining</em> (pp. 399-408).</p>
+<hr>
+<h2 id="supplementary-materials-checklist">Supplementary Materials Checklist</h2>
+<p>For peer-reviewed publication, include:</p>
+<p>✓ <strong>Complete corpus details</strong>: Document count, date range, journals, search queries<br>
+✓ <strong>Full preprocessing code</strong>: With domain-specific regex patterns<br>
+✓ <strong>Model hyperparameters</strong>: All configuration values in structured format<br>
+✓ <strong>Topic-keyword tables</strong>: Top 15 keywords per topic with c-TF-IDF scores<br>
+✓ <strong>Topic-document assignments</strong>: CSV with document IDs, topics, and probabilities<br>
+✓ <strong>Intertopic distance visualization</strong>: High-resolution interactive HTML<br>
+✓ <strong>Coherence scores</strong>: Validation metrics for model quality<br>
+✓ <strong>Reproducibility package</strong>: GitHub repository with code, environment specifications, and sample data</p>
+<hr>
+<h2 id="notes-for-authors">Notes for Authors</h2>
+<p><strong>Word Count Management</strong>: This methodology section is comprehensive (~2,500 words). For journals with strict limits:</p>
+<ul>
+<li>Condense Section 3.3.3 (HDBSCAN) and 3.3.4 (c-TF-IDF) with references to original papers</li>
+<li>Move detailed configuration parameters to supplementary tables</li>
+<li>Simplify mathematical notation if not required by journal style</li>
+</ul>
+<p><strong>Domain Customization</strong>: Replace bracketed placeholders with:</p>
+<ul>
+<li>Your specific corpus size and date range (Section 3.1)</li>
+<li>Actual computational time estimates (Section 3.7)</li>
+<li>Hardware specifications (Section 3.7)</li>
+<li>Coherence scores if computed (Section 3.4.1)</li>
+</ul>
+<p><strong>Comparative Analysis</strong>: If contrasting with LDA results, add a subsection comparing:</p>
+<ul>
+<li>Topic coherence scores (BERTopic vs. LDA)</li>
+<li>Topic diversity metrics</li>
+<li>Qualitative assessment of keyword interpretability</li>
+<li>Computational efficiency (time and memory)</li>
+</ul>
+<p><strong>Field-Specific Terminology</strong>: Ensure citations include domain-relevant applications of topic modeling in sustainability science, environmental policy analysis, or bioenergy research to strengthen methodological justification.</p>
+
+            
+            
+        </body>
+        </html>

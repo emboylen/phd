@@ -175,7 +175,7 @@ filtered_data_truncated <- truncate_excel_strings(filtered_data)
 # Export the truncated dataset as Excel file ready to import into biblioshiny
 write_xlsx(filtered_data_truncated, "filtered_data_biblioshiny_ready.xlsx")
 
-#bibliometrix::biblioshiny()
-# Run TALL
-# library(tall)
-# tall()
+bibliometrix::biblioshiny()
+Run TALL
+library(tall)
+tall()

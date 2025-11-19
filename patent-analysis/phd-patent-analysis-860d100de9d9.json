@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "phd-patent-analysis",
+  "private_key_id": "860d100de9d9d37e5850f040f844a0125e51d200",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDvnTkWvwTy49SE\nBKTLBxJ/WBG9OeWRTiqxG/GnRCOOsIZvHmTOFid6VMnZoBrSOLZ7JFRHtBshTP7c\nndEHWZ9p9pu1l3R7QGyBkSi5PmLmqGvp54tqNSzpcWNPdaPiVjrNtWy/m4vHm8QK\nA1u1XZ9RQDDLpHAXT996ZB+EZryQmxaD0RF/gyGQgUGBUH6aWaWefTZvdFWZ1cKE\njX8RTARq4F93eUfEt1Ih9Nm4FhRcjGokeSMJYJZ5x6fh8AWdZOLWat6l0BVrNiGP\nfHXTXYKsK/9uBwP0+E0q+Ep/ANu9dCTZ5zAvtWUHCabCaJoukEC5ABZFZUDOJ4kV\ne6J/nOq3AgMBAAECggEAM56cylwrbkILqccwUza6Uum/pJLA9H0w8EezVxP0TwyT\nYYPcNpOKPK3gcDwwGwKxuTSZ3Xqc758dNpzfB6TUlWjVoZi3tMeruHvzmHiqqMM2\nwESsAZzkCIRvXxJaVGu8Lk272EljowRZBskzbA53wHLCMFTD+xmvbLf+HDFfxQzh\nZS3eaoFJ1R35s8fuzgIG21VEESkRaA3ooAtPbPdQCDqejs8kkxar5u/s3JDcFYRg\nG+QGgefrZFy6UJjRtT0P6A4izatsCWxrtFXr4KF9Xlv/N4PtIzIenntoF7181nKp\nNAW6XYqXMCbarBAG9GseeA4schJyvpV4Z6+1JEk01QKBgQD5i1hNnVwjyxSEc0QX\n+tuXfoM0ZX1Lr3uqRxHJhDfUvGoWi7iwwnsj8WqbimK+mr5iY9mJydHZt6NJAXyR\nHxXtg+Q/WW/TT+SSE9W8tg4RXa0aotds6C1kuPZsGAvP5h6gDcFtxzg1vtqEQ5ag\nYIowrlSxlAR60dxRs/+Jc1+q9QKBgQD10B0Yjd61x2LzSvYUGrHoIZ/Y4582yl65\nZn2PKP5finCKcWtlzX41ik6Jfa2FWOtrnGSNhusWpyQYbVhZ1DIpYw/LklzDl4HO\n3A7e7aby5DKnxPkXQHJafspBfgB32NR6WZbaKmMK/GP+UGOWH7CgJ06JwoF/D4mL\nzTl3CVBLewKBgQDs/3xT6llx3ROVX2uSYrtfO9YcUy8WTIlkhK7N9naX4oHW+8fi\niDIvRr77DgkOASVDiJU4Gabl4VSAp5rIsP9AXnzN9YEQ7dWlLpVV7omZ0J/wpit2\n0WMbP9c5ffTp9CGt3KKSQhyOXr5l01Mg6c8UwNzK8kr24o0eQ5cz0ZFQaQKBgQDa\n72Bq1TkuSIcuUG66W0hni0M2xw2wnDAgC1P7pTRi3gf8lqZkRtGJWEU5GlHpedg8\nwU+h6jAKvhVdGE7fuypuSEfyNcsffhrkpoUsMxlGLs+bM8nz1rfDODhmepZqKBqf\nWpoMeEI8r61T/j+kn1cOXdQKyM3T4H/On5v2FLqKbwKBgHtniFGdy9g/ry2NndJ3\n6L/HWs3bDqG8lLW/aVTCgcwOduZq+tDBD9SXA2D68wzokdMsleTVq4NZIBNl0+xd\n6zqXCOq+669DgQ5BpuUPdCX4I/JGQE7o4ZbthD/U+l46Hg11BWPmzIAtyHdQZJVL\nRKRHrxUhuNatzyS1bKLpUSvu\n-----END PRIVATE KEY-----\n",
+  "client_email": "ellen-boylen@phd-patent-analysis.iam.gserviceaccount.com",
+  "client_id": "115980695718724087424",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ellen-boylen%40phd-patent-analysis.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
