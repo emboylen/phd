@@ -236,8 +236,8 @@ export_standard_tables <- function(summary_obj, output_path) {
   
   # Most Relevant Authors
   if (ANALYSES$most_rel_authors$enabled) {
-    if (!is.null(summary_obj$MostRelAuthors)) {
-      save_metric_csv(summary_obj$MostRelAuthors, 
+    if (!is.null(summary_obj$MostProdAuthors)) {
+      save_metric_csv(summary_obj$MostProdAuthors, 
                      ANALYSES$most_rel_authors$filename, output_path)
     }
   }
@@ -280,14 +280,14 @@ export_visualizations <- function(data, results, summary_obj, output_path) {
     
     # 2. Most Productive Authors
     print_status("  Plotting top authors...")
-    if (!is.null(summary_obj$MostRelAuthors) && nrow(summary_obj$MostRelAuthors) > 0) {
+    if (!is.null(summary_obj$MostProdAuthors) && nrow(summary_obj$MostProdAuthors) > 0) {
       png(file.path(plots_dir, "02_Top_Authors.png"), 
           width = PLOT_WIDTH, height = PLOT_HEIGHT, units = "in", res = PLOT_DPI)
       
-      top_authors <- head(summary_obj$MostRelAuthors, 20)
+      top_authors <- head(summary_obj$MostProdAuthors, 20)
       par(mar = c(5, 8, 4, 2))
-      barplot(rev(as.numeric(top_authors$Articles)), 
-              names.arg = rev(as.character(top_authors$Authors)),
+      barplot(rev(as.numeric(top_authors[,2])), 
+              names.arg = rev(as.character(trimws(top_authors[,1]))),
               horiz = TRUE, las = 1, col = "steelblue",
               xlab = "Number of Articles",
               main = "Most Productive Authors")
@@ -555,26 +555,51 @@ export_visualizations <- function(data, results, summary_obj, output_path) {
       print_status(paste("    Source growth plot error:", e$message))
     })
     
-    # 9. Historical Direct Citation Network
-    print_status("  Creating historical citation network...")
+    # 9. Most Cited References (Alternative to Citation Network)
+    print_status("  Creating most cited references plot...")
     tryCatch({
-      if ("CR" %in% names(data) && sum(!is.na(data$CR)) > 10) {
-        png(file.path(plots_dir, "09_Citation_Network.png"), 
-            width = 12, height = 12, units = "in", res = PLOT_DPI)
+      if ("CR" %in% names(data) && sum(!is.na(data$CR)) > 50) {
+        png(file.path(plots_dir, "09_Most_Cited_References.png"), 
+            width = PLOT_WIDTH, height = PLOT_HEIGHT, units = "in", res = PLOT_DPI, bg = "white")
         
-        histResults <- histNetwork(data, min.citations = 5, sep = ";")
+        # Extract and count all cited references
+        all_refs <- unlist(strsplit(data$CR[!is.na(data$CR)], ";"))
+        all_refs <- trimws(all_refs)
+        all_refs <- all_refs[all_refs != "" & !is.na(all_refs)]
         
-        net <- networkPlot(histResults$histData$NetMatrix, 
-                          n = 20, 
-                          Title = "Historical Direct Citation Network",
-                          type = "auto",
-                          size = TRUE,
-                          labelsize = 1,
-                          alpha = 0.7)
+        if (length(all_refs) > 0) {
+          ref_freq <- sort(table(all_refs), decreasing = TRUE)
+          top_refs <- head(ref_freq, 20)
+          
+          # Create short labels (first 60 characters)
+          labels <- sapply(names(top_refs), function(x) {
+            if (nchar(x) > 60) {
+              paste0(substr(x, 1, 57), "...")
+            } else {
+              x
+            }
+          })
+          
+          par(mar = c(5, 25, 4, 2))  # Large left margin for long reference labels
+          barplot(rev(as.numeric(top_refs)), 
+                  names.arg = rev(labels),
+                  horiz = TRUE, las = 1, col = "darkred",
+                  xlab = "Number of Citations",
+                  main = "Most Cited References in Dataset",
+                  cex.names = 0.65)
+          
+          print_status("    Most cited references plot created successfully")
+        } else {
+          print_status("    Skipping: no valid cited references found")
+        }
+        
         dev.off()
+      } else {
+        print_status("    Skipping: insufficient citation data")
       }
     }, error = function(e) {
-      print_status(paste("    Citation network skipped:", e$message))
+      if (dev.cur() > 1) dev.off()
+      print_status(paste("    Cited references plot error:", e$message))
     })
     
     print_status(paste("Visualizations saved to:", plots_dir))
@@ -727,8 +752,8 @@ export_combined_excel <- function(all_results, output_path) {
       excel_list[["Most Rel Sources"]] <- truncate_excel_strings(all_results$summary$MostRelSources)
     }
     
-    if (!is.null(all_results$summary$MostRelAuthors)) {
-      excel_list[["Most Rel Authors"]] <- truncate_excel_strings(all_results$summary$MostRelAuthors)
+    if (!is.null(all_results$summary$MostProdAuthors)) {
+      excel_list[["Most Rel Authors"]] <- truncate_excel_strings(all_results$summary$MostProdAuthors)
     }
     
     if (!is.null(all_results$summary$MostCitedPapers)) {
