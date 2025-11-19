@@ -71,7 +71,9 @@ def main():
             print(f"[{index+1}/{total}] Skipping {overton_id} (Already exists)")
             continue
 
-        print(f"[{index+1}/{total}] Downloading: {row['Title'][:30]}...")
+        # Handle missing or non-string titles
+        title = row['Title'] if isinstance(row['Title'], str) else str(overton_id)
+        print(f"[{index+1}/{total}] Downloading: {title[:30]}...")
         
         if download_pdf(url, filename):
             success_count += 1
