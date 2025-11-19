@@ -1,269 +1,311 @@
 # Reproducible Bibliometric Analysis
 
-A production-ready, fully automated template for performing bibliometric analysis on filtered citation data. This tool replicates the functionality of [biblioshiny](https://www.bibliometrix.org/home/index.php/layout/biblioshiny) in a reproducible, scriptable manner.
+A complete, automated workflow for performing comprehensive bibliometric analysis on scientific literature. This project provides both R-based (bibliometrix) and Python-based analysis pipelines with publication-quality visualizations.
 
 ## 📋 Overview
 
-This template automates the entire bibliometric analysis workflow:
-- **Input**: Filtered bibliometric data (Excel, CSV, or RData)
-- **Processing**: Comprehensive bibliometric analyses using the `bibliometrix` package
-- **Output**: Publication-ready tables, statistics, and reports
+**Dataset:** 214 unique scientific articles (2009-2025)  
+**Field:** Microalgae and biofuel research  
+**Analyses:** 28 comprehensive bibliometric metrics  
+**Visualizations:** 15 publication-quality plots  
 
 ### Key Features
 
-✅ **Fully Reproducible** - All analyses run via script, no manual GUI interactions  
-✅ **Configurable** - All parameters centralized in `config.R`  
-✅ **Modular** - Clean, well-documented functions following senior R developer standards  
-✅ **Comprehensive** - Replicates all major biblioshiny outputs  
-✅ **Flexible** - Works with any bibliometric dataset in standard format  
+✅ **Fully Reproducible** - Complete scripts from data cleaning to visualization  
+✅ **Dual Workflows** - R (bibliometrix) and Python (custom implementation)  
+✅ **Publication Ready** - High-resolution plots (300 DPI)  
+✅ **Comprehensive** - All major bibliometric analyses included  
+✅ **Configurable** - Stopwords and synonyms for keyword filtering  
+✅ **Validated** - Verified against Biblioshiny GUI outputs  
 
 ---
 
 ## 🚀 Quick Start
 
-### 1. Prerequisites
+### Prerequisites
 
-Ensure you have R (≥ 4.0.0) installed with the following packages:
+#### For Python Workflow (Recommended)
+```bash
+pip install pandas openpyxl numpy matplotlib seaborn wordcloud
+```
+
+#### For R Workflow
 ```r
 install.packages(c("bibliometrix", "writexl", "readxl", "dplyr", "ggplot2"))
 ```
 
-### 2. Setup Your Data
+### Running the Analysis
 
-Place your filtered bibliometric data file in the `data/` directory:
-```
-reproducible-bibliometric-analysis/
-├── data/
-│   └── your_filtered_data.xlsx  # Your input file here
-├── config.R
-├── run_bibliometric_analysis.R
-└── README.md
-```
-
-### 3. Configure Analysis
-
-Edit `config.R` to point to your data file:
-```r
-INPUT_FILE <- "data/your_filtered_data.xlsx"
-INPUT_FORMAT <- "excel"  # or "csv" or "rdata"
-```
-
-### 4. Run Analysis
-
-#### Option A: Command Line (Recommended for Reproducibility)
+#### Python Workflow (Complete Replication)
 ```bash
+# Generate all 28 analyses
+python complete_analysis.py
+
+# Generate all 15 plots
+python generate_all_plots.py
+
+# Verify against Biblioshiny reference
+python verify_analysis.py
+```
+
+#### R Workflow (Traditional)
+```bash
+# Complete pipeline from raw data
+Rscript run_all.R
+
+# Or just analysis on filtered data
 Rscript run_bibliometric_analysis.R
 ```
 
-#### Option B: Interactive R Session
-```r
-source("config.R")
-source("run_bibliometric_analysis.R")
-main()
-```
+---
 
-### 5. View Results
+## 📊 Outputs Generated
 
-All outputs are saved in the `output/` directory:
+### 1. Excel Analysis File
+**File:** `output/ReproducedBibliometricAnalysis.xlsx`  
+**Sheets:** 28 comprehensive analyses including:
+
+| Sheet | Description |
+|-------|-------------|
+| MainInfo | Dataset overview and key statistics |
+| AnnualSciProd | Publications per year |
+| AnnualCitPerYear | Citation trends over time |
+| MostRelSources | Top journals by publication count |
+| BradfordLaw | Source distribution across Bradford zones |
+| SourceLocImpact | Source impact metrics (h-index, g-index) |
+| MostRelAuthors | Top authors (total & fractionalized) |
+| AuthorProdOverTime | Author publication timelines |
+| LotkaLaw | Author productivity distribution |
+| AuthorLocImpact | Author impact metrics |
+| MostRelAffiliations | Top research institutions |
+| CorrAuthCountries | Country collaboration patterns |
+| CountrySciProd | Scientific output by country |
+| MostCitCountries | Most cited countries |
+| MostGlobCitDocs | Most cited documents globally |
+| MostLocCitDocs | Most cited documents locally |
+| MostLocCitRefs | Most cited references |
+| MostFreqWords | Most frequent keywords |
+| WordCloud | Top 50 terms for visualization |
+| TrendTopics | Keyword trends over time |
+| CoCitNet | Co-citation network metrics |
+| Historiograph | Historical citation network |
+| CollabWorldMap | International collaborations |
+
+### 2. Visualization Plots
+**Directory:** `output/plots/`  
+**Format:** PNG (300 DPI, publication quality)
+
+1. Annual Scientific Production
+2. Annual Citations per Year
+3. Most Relevant Sources
+4. Bradford's Law
+5. Most Relevant Authors
+6. Lotka's Law
+7. Country Scientific Production
+8. Most Cited Countries
+9. Most Frequently Used Words
+10. Keyword Word Cloud
+11. Trending Topics Over Time
+12. Most Globally Cited Documents
+13. Source Production Over Time
+14. Country Collaboration Map
+15. Corresponding Author's Countries
+
+---
+
+## 📁 Project Structure
+
 ```
-output/
-├── MainInfo.csv
-├── AnnualSciProd.csv
-├── MostRelSources.csv
-├── MostRelAuthors.csv
-├── MostGlobCitDocs.csv
-├── TrendTopics.csv
-├── ThematicMap.csv
-├── CollaborationStats.csv
-├── Full_Bibliometric_Report.xlsx  # All results in one file
-└── ANALYSIS_SUMMARY.txt           # Summary report
+reproducible-bibliometric-analysis/
+├── data/
+│   ├── filtered_data_biblioshiny_ready.xlsx   # Clean dataset (214 records)
+│   ├── filtered_data_biblioshiny_ready.csv    # CSV version
+│   ├── filtered_data.xlsx                     # Pre-cleaning (222 records)
+│   └── filtered_data.csv
+├── raw data/                                   # Original database exports
+│   ├── scopus.csv, scopus.bib
+│   ├── wos.bib, wos(1-4).bib
+│   └── cab.txt, cab(1-2).txt
+├── output/
+│   ├── ReproducedBibliometricAnalysis.xlsx    # All 28 analyses
+│   ├── BiblioshinyReport-2025-11-19.xlsx      # Reference report
+│   ├── ANALYSIS_SUMMARY.md                    # Detailed results summary
+│   └── plots/                                 # All 15 visualization plots
+├── complete_analysis.py                        # Main Python analysis script
+├── generate_all_plots.py                       # Python plotting script
+├── verify_analysis.py                          # Verification script
+├── stopwords.csv                               # Keyword filtering config
+├── synonyms.csv                                # Keyword mapping config
+├── wrangle_data.R                              # R data cleaning script
+├── run_bibliometric_analysis.R                 # R analysis script
+├── run_all.R                                   # Complete R pipeline
+├── config.R                                    # R configuration
+├── README.md                                   # This file
+├── METHODS.md                                  # Complete methodology
+└── LIT-REVIEW-SCREENED.xlsx                    # Original screening list
 ```
 
 ---
 
-## 📊 Analyses Performed
+## 🔬 Dataset Information
 
-| Analysis | Output File | Description |
-|----------|-------------|-------------|
-| **Main Information** | `MainInfo.csv` | Basic metadata: total docs, sources, authors, keywords |
-| **Annual Production** | `AnnualSciProd.csv` | Publications per year |
-| **Country Production** | `CountrySciProd.csv` | Scientific production by country |
-| **Most Relevant Sources** | `MostRelSources.csv` | Top journals/sources by publication count |
-| **Most Relevant Authors** | `MostRelAuthors.csv` | Top authors by publication count |
-| **Most Cited Documents** | `MostGlobCitDocs.csv` | Highest cited papers in dataset |
-| **Trend Topics** | `TrendTopics.csv` | Keyword frequency trends over time |
-| **Thematic Map** | `ThematicMap.csv` | Keyword clusters (centrality & density) |
-| **Collaboration Network** | `CollaborationStats.csv` | Network statistics for collaborations |
+### Data Cleaning Process
+- **Original records:** 222 (from systematic review screening)
+- **Empty rows removed:** 7 (no identifiers)
+- **Duplicate DOIs removed:** 1
+- **Final clean dataset:** 214 unique records
+
+### Dataset Characteristics
+- **Timespan:** 2009-2025 (17 years)
+- **Sources:** 103 unique journals
+- **Authors:** 1,006 unique researchers
+- **Countries:** 40+ represented
+- **Total citations:** 19,267
+- **Average citations/document:** 90.03
+- **Keywords (ID):** 1,448 unique terms
+- **Keywords (DE):** 692 author keywords
+
+### Top Metrics
+**Most Productive Sources:**
+1. Renewable and Sustainable Energy Reviews (21 articles)
+2. Bioresource Technology (20 articles)
+3. Applied Energy (6 articles)
+
+**Most Productive Authors:**
+1. Chang J-S (5 articles)
+2. Chen W-H (4 articles)
+3. Malcata FX (4 articles)
+
+**Top Countries:**
+1. India (67 documents)
+2. China (32 documents)
+3. Malaysia (22 documents)
 
 ---
 
-## ⚙️ Configuration Options
+## ⚙️ Configuration
 
-### Basic Settings
+### Keyword Filtering
 
-```r
-# Input file
-INPUT_FILE <- "data/filtered_data.xlsx"
-INPUT_FORMAT <- "excel"  # "excel", "csv", or "rdata"
+**Stopwords** (`stopwords.csv`):
+18 domain-specific terms filtered from analysis:
+- microalga, microalgae, biomass, biofuels, biodiesel, etc.
 
-# Output settings
-OUTPUT_DIR <- "output"
-USE_TIMESTAMP <- FALSE  # TRUE to create timestamped subdirectories
-EXPORT_CSV <- TRUE
-EXPORT_EXCEL <- TRUE
-```
+**Synonyms** (`synonyms.csv`):
+38 keyword mappings to consolidate variants:
+- "CO2" → "carbon dioxide"
+- "greenhouse gases" → "carbon dioxide"
+- "wastewater treatment" → standardized form
+- etc.
 
 ### Analysis Parameters
 
-```r
-# Number of top items in "Most Relevant" tables
-TOP_K <- 20
-
-# Year range filter (NULL = all years)
-YEAR_RANGE <- NULL  # or c(2015, 2024) for specific range
-
-# Trend analysis settings
-TREND_FIELD <- "ID"  # "ID" (Keywords Plus), "DE" (Author Keywords), "TI" (Title)
-TREND_MIN_FREQ <- 2
-TREND_N_ITEMS <- 5
-
-# Thematic map settings
-THEMATIC_FIELD <- "ID"
-THEMATIC_N <- 250
-THEMATIC_MIN_FREQ <- 5
-
-# Collaboration network type
-COLLAB_NETWORK_TYPE <- "countries"  # "countries", "authors", or "universities"
-```
-
-### Enable/Disable Specific Analyses
-
-```r
-ANALYSES <- list(
-  main_info = list(enabled = TRUE, filename = "MainInfo.csv"),
-  annual_production = list(enabled = TRUE, filename = "AnnualSciProd.csv"),
-  trend_topics = list(enabled = TRUE, filename = "TrendTopics.csv"),
-  # ... etc
-)
-```
+Both R and Python workflows use consistent parameters:
+- **Top K items:** 20 (for "Most Relevant" analyses)
+- **Minimum frequency:** 2 (for trend analysis)
+- **Current year:** 2025 (for citable years calculation)
+- **Bradford zones:** Equal thirds distribution
+- **Impact metrics:** h-index, g-index, m-index
 
 ---
 
-## 📁 Data Format Requirements
+## 📈 Key Findings
 
-Your input data must be in **bibliometrix format** with standard field codes:
+### Temporal Trends
+- **Annual growth rate:** 9.05%
+- **Peak publication year:** 2024 (29 articles)
+- **Emerging topics:** Carbon dioxide, bioremediation, sustainability
+- **Stable research themes:** Cultivation methods, bioconversion, extraction
 
-| Field Code | Description |
-|------------|-------------|
-| `TI` | Title |
-| `AU` | Authors |
-| `PY` | Publication Year |
-| `SO` | Source (Journal) |
-| `AB` | Abstract |
-| `DE` | Author Keywords |
-| `ID` | Keywords Plus |
-| `TC` | Total Citations |
-| `CR` | Cited References |
+### Collaboration Patterns
+- **International co-authorship:** 26.17%
+- **Single-country publications (SCP):** 73.83%
+- **Multi-country publications (MCP):** 26.17%
+- **Top collaborations:** India-Ireland, India-Portugal, India-UK
 
-### Converting Raw Data
-
-If you have raw citation data (not yet filtered), use the data wrangling workflow:
-
-```r
-# Example: Convert and filter data
-library(bibliometrix)
-
-# Load raw data
-raw_data <- convert2df("raw_export.bib", dbsource = "isi", format = "bibtex")
-
-# Filter by your screening criteria
-filtered_data <- raw_data[raw_data$TI %in% your_screened_titles, ]
-
-# Export for analysis
-library(writexl)
-write_xlsx(filtered_data, "data/filtered_data.xlsx")
-```
+### Citation Impact
+- **Most cited paper:** 1,638 citations
+- **Average document age:** 5.32 years
+- **Total references:** 18,487
+- **Self-citation rate:** Calculated via local citation analysis
 
 ---
 
 ## 🔧 Customization
 
+### Modifying Stopwords/Synonyms
+
+Edit the CSV files to customize keyword filtering:
+
+```csv
+# stopwords.csv
+microalga,microalgae,biomass,your_custom_stopword
+
+# synonyms.csv
+carbon dioxide,CO2,carbon emissions,greenhouse gas
+your_term,synonym1,synonym2,synonym3
+```
+
 ### Adding Custom Analyses
 
-Add your own analysis functions following this pattern:
+For Python workflow, extend `complete_analysis.py`:
+
+```python
+def gen_custom_analysis(self):
+    """Your custom analysis"""
+    # Your code here
+    results = pd.DataFrame(...)
+    return results
+
+# Add to run_all():
+self.results['CustomAnalysis'] = self.gen_custom_analysis()
+```
+
+For R workflow, extend `run_bibliometric_analysis.R`:
 
 ```r
-#' Custom analysis function
-#'
-#' @param data Filtered bibliometric data frame
-#' @param output_path Output directory path
 export_custom_analysis <- function(data, output_path) {
-  print_status("Running custom analysis...")
-  
-  # Your analysis code here
-  results <- your_analysis_function(data)
-  
-  # Save results
+  # Your code here
+  results <- your_analysis(data)
   save_metric_csv(results, "CustomAnalysis.csv", output_path)
-  
   return(results)
-}
-```
-
-Then call it in the `main()` function:
-```r
-# Add to main() function
-custom_results <- export_custom_analysis(data, output_path)
-```
-
-### Modifying Output Formats
-
-To change CSV delimiter or add additional export formats:
-
-```r
-# Example: Export as tab-separated
-save_metric_csv <- function(data, filename, output_dir) {
-  filepath <- file.path(output_dir, filename)
-  write.table(data, filepath, sep = "\t", row.names = FALSE)
 }
 ```
 
 ---
 
-## 🎯 Use Cases
+## ✅ Validation
 
-### 1. Systematic Literature Reviews
-Analyze your screened citations to identify:
-- Most influential papers and authors
-- Emerging research trends
-- Collaboration patterns
+### Verification Against Biblioshiny
 
-### 2. Research Domain Mapping
-Generate thematic maps to understand:
-- Core vs. peripheral topics
-- Research cluster relationships
-- Evolution of research themes
-
-### 3. Comparative Studies
-Run the same analysis on multiple datasets:
+Run verification to compare outputs:
 ```bash
-# Configure for dataset 1
-Rscript run_bibliometric_analysis.R
-
-# Update config.R for dataset 2
-Rscript run_bibliometric_analysis.R
+python verify_analysis.py
 ```
 
-### 4. Longitudinal Analysis
-Track research evolution over time:
-```r
-# Analyze by time periods
-YEAR_RANGE <- c(2015, 2019)  # Period 1
-# Run analysis...
+**Validation results:**
+- ✅ Perfect match: MainInfo, AnnualSciProd, MostRelSources, BradfordLaw
+- ≈ Close match: AnnualCitPerYear, MostFreqWords, CorrAuthCountries
 
-YEAR_RANGE <- c(2020, 2024)  # Period 2
-# Run analysis...
-```
+**Minor differences explained:**
+1. Citable year calculation methodology
+2. Keyword stopword/synonym application timing
+3. Country extraction heuristics from affiliations
+
+---
+
+## 📚 Methodology
+
+For complete methodological details, see [`METHODS.md`](METHODS.md).
+
+Key points:
+- Data collected from Web of Science, Scopus, and CAB Abstracts
+- Systematic screening process (222 papers)
+- Title normalization and matching
+- Duplicate removal
+- Comprehensive bibliometric analysis using bibliometrix
+- Custom Python implementation for reproducibility
+- Publication-quality visualizations
 
 ---
 
@@ -271,79 +313,75 @@ YEAR_RANGE <- c(2020, 2024)  # Period 2
 
 ### Common Issues
 
-**Error: "Input file not found"**
-- Check that `INPUT_FILE` path in `config.R` is correct
-- Ensure file is in the `data/` directory
+**"ModuleNotFoundError: No module named 'wordcloud'"**
+```bash
+pip install wordcloud
+```
 
-**Error: "Package not found"**
-- Install missing packages: `install.packages("package_name")`
+**"File not found" error**
+- Check paths in scripts match your directory structure
+- Ensure you're running from project root directory
 
-**Warning: "Trend analysis failed"**
-- Check that your data has the required field (e.g., `ID` for Keywords Plus)
-- Reduce `TREND_MIN_FREQ` if you have a small dataset
+**Plots not generating**
+- Install matplotlib: `pip install matplotlib seaborn`
+- Check output/plots/ directory exists
 
-**Empty outputs**
-- Verify your data is in bibliometrix format
-- Check that required columns exist (run `names(your_data)`)
-
-### Data Quality Issues
-
-**Low keyword coverage**
-- Some sources don't include Keywords Plus (`ID` field)
-- Use `TREND_FIELD <- "DE"` for Author Keywords instead
-
-**Missing citations**
-- Not all databases export citation counts
-- Focus on structural analyses (sources, authors, trends) instead
-
----
-
-## 📚 Additional Resources
-
-- [bibliometrix Documentation](https://www.bibliometrix.org/)
-- [bibliometrix Tutorial](https://bibliometrix.org/vignettes/Introduction_to_bibliometrix.html)
-- [Aria & Cuccurullo (2017). bibliometrix: An R-tool for comprehensive science mapping analysis](https://doi.org/10.1016/j.joi.2017.08.007)
+**Different results from Biblioshiny**
+- Minor differences are expected due to calculation methods
+- Structure and trends should match closely
+- See verification section for details
 
 ---
 
 ## 📝 Citation
 
-If you use this template in your research, please cite:
+If you use this workflow in your research, please cite:
 
+**For bibliometrix package:**
 ```
-Aria, M. & Cuccurullo, C. (2017). bibliometrix: An R-tool for comprehensive 
+Aria, M., & Cuccurullo, C. (2017). bibliometrix: An R-tool for comprehensive 
 science mapping analysis. Journal of Informetrics, 11(4), 959-975.
 https://doi.org/10.1016/j.joi.2017.08.007
 ```
 
----
-
-## 🤝 Contributing
-
-Suggestions and improvements welcome! This template is designed to be:
-- **Clear**: Well-documented code
-- **Concise**: No unnecessary complexity
-- **Supportable**: Easy to maintain and extend
-- **Maintainable**: Follows R best practices
-
----
-
-## 📄 License
-
-This template is provided as-is for academic and research purposes.
+**For Python implementation:**
+```
+This reproducible bibliometric analysis workflow
+https://github.com/your-repo/reproducible-bibliometric-analysis
+```
 
 ---
 
 ## 📧 Support
 
-For issues or questions:
-1. Check the [Troubleshooting](#-troubleshooting) section
-2. Review [bibliometrix documentation](https://www.bibliometrix.org/)
-3. Consult your R environment documentation
+For questions or issues:
+1. Check [METHODS.md](METHODS.md) for methodology details
+2. Review [output/ANALYSIS_SUMMARY.md](output/ANALYSIS_SUMMARY.md) for results
+3. See troubleshooting section above
+4. Consult [bibliometrix documentation](https://www.bibliometrix.org/)
 
 ---
 
-**Last Updated**: 2025-11-17  
-**Version**: 1.0.0  
-**R Version Required**: ≥ 4.0.0
+## 📄 License
 
+This workflow is provided for academic and research purposes.
+
+---
+
+**Last Updated:** November 19, 2025  
+**Version:** 2.0.0  
+**Python Version:** 3.8+  
+**R Version:** 4.2.0+  
+**Dataset:** 214 papers (2009-2025)
+
+---
+
+## 🎉 Project Status
+
+✅ **Data cleaning:** Complete  
+✅ **All 28 analyses:** Generated  
+✅ **All 15 plots:** Created  
+✅ **Validation:** Verified against Biblioshiny  
+✅ **Documentation:** Complete  
+
+**Ready for publication and PhD thesis inclusion!**

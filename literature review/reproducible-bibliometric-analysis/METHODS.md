@@ -2,7 +2,7 @@
 
 ## Complete Methodological Description
 
-This document provides a comprehensive description of the bibliometric analysis methods implemented in this reproducible workflow.
+This document provides a comprehensive description of the bibliometric analysis methods implemented in this reproducible workflow, covering both the R-based (bibliometrix) and Python-based approaches.
 
 ---
 
@@ -10,376 +10,699 @@ This document provides a comprehensive description of the bibliometric analysis 
 
 ### 1.1 Database Sources
 Bibliographic data were retrieved from three major scientific databases:
-- **Web of Science (WoS)**: BibTeX format exports
-- **Scopus**: CSV and BibTeX format exports  
-- **CAB Abstracts**: ISI Web of Science plaintext format exports
+- **Web of Science (WoS)**: BibTeX format exports (5 files)
+- **Scopus**: CSV and BibTeX format exports
+- **CAB Abstracts**: ISI Web of Science plaintext format exports (3 files)
+
+**Search period:** 2008-2025  
+**Raw records:** 8,641 citations across 104 bibliometric fields
 
 ### 1.2 Screening Process
-A systematic screening process was conducted to identify relevant publications. Papers meeting inclusion criteria were recorded in a master screening list (LIT-REVIEW-SCREENED.xlsx) containing:
-- Paper titles
-- Publication year
-- Journal source
-- Authors
-- DOI
-- Inclusion/exclusion status
-- Categorization and key findings
+A systematic screening process was conducted to identify relevant publications:
+- **Screening tool:** Microsoft Excel (`LIT-REVIEW-SCREENED.xlsx`)
+- **Inclusion criteria:** Domain-specific criteria for microalgae/biofuel research
+- **Screening fields:** Title, year, journal, authors, DOI, inclusion status
+- **Result:** 222 papers marked as included
 
-Only papers marked as `included=TRUE` were retained for bibliometric analysis (n=222 papers in screening list).
-
----
-
-## 2. Data Wrangling and Integration
-
-### 2.1 Data Import and Conversion
-Raw bibliographic data files were imported and converted to a standardized format using the `bibliometrix` package (v4.0+) in R (v4.2.0+). The `convert2df()` function was used to parse different file formats:
-
-- **Scopus files**: Processed with `dbsource="scopus"`, `format="csv"` or `format="bibtex"`
-- **Web of Science files**: Processed with `dbsource="isi"`, `format="bibtex"`
-- **CAB Abstracts files**: Processed with `dbsource="isi"`, `format="plaintext"`
-
-### 2.2 Data Consolidation
-Multiple export files from each database were merged using a custom function (`merge_with_all_columns()`) that:
-1. Identified all unique field names across datasets
-2. Added missing fields as NA values to ensure consistent structure
-3. Combined datasets using row-binding (`rbind`)
-
-This resulted in a comprehensive dataset of 8,641 raw citation records across 104 bibliometric fields.
-
-### 2.3 Title Normalization and Matching
-To match screened papers with raw citation data, a robust title normalization procedure was implemented:
+### 1.3 Title Normalization and Matching
+To match screened papers with raw citation data, a robust normalization procedure was implemented:
 
 **Normalization steps:**
 1. Conversion to lowercase
-2. Removal of leading and trailing whitespace
-3. Consolidation of multiple spaces to single spaces
-4. Removal of special characters and punctuation variations
+2. Removal of leading/trailing whitespace
+3. Consolidation of multiple spaces
+4. Removal of special characters and punctuation
 5. Standardization of dash characters (em-dash, en-dash, hyphen)
 
 **Matching strategy:**
-- **Primary method**: Normalized title matching between screened list and raw data
-- **Fallback method**: DOI matching for papers where title matching failed
-- **Match validation**: Manual review of unmatched papers (exported to `unmatched_papers.xlsx`)
+- Primary: Normalized title matching
+- Fallback: DOI matching where title failed
+- Validation: Manual review of unmatched papers
 
-### 2.4 Duplicate Removal
-Duplicate records were identified and removed based on normalized title comparison, retaining the first occurrence of each unique paper. This process removed 269 duplicate records.
-
-### 2.5 Final Dataset Composition
-The final filtered dataset comprised 223 unique records (from 222 screened papers + 1 near-duplicate variant), achieving a match rate of 100.5%.
+**Match rate:** 100.5% (223 matches from 222 screened papers)
 
 ---
 
-## 3. Bibliometric Analysis
+## 2. Data Cleaning and Preparation
 
-All bibliometric analyses were conducted using the `bibliometrix` package (Aria & Cuccurullo, 2017) in R.
+### 2.1 Duplicate Removal
+**Process:**
+- Identification via normalized title comparison
+- DOI-based duplicate detection
+- Retention of first occurrence
 
-### 3.1 Descriptive Statistics
-The `biblioAnalysis()` function was used to calculate comprehensive bibliometric indicators:
+**Results:**
+- Original filtered dataset: 222 records
+- Duplicates found: 1 DOI (10.1007/s10811-015-0720-4)
+- Duplicate removed: 1 record
 
-**Document-level metrics:**
-- Total documents
-- Publication year range and timespan
-- Document types (articles, reviews, etc.)
-- Annual growth rate
+### 2.2 Empty Row Removal
+**Process:**
+- Identification of rows missing all key identifiers (SR, DI, TI, AU, PY)
+- Automated removal of empty rows
 
-**Source-level metrics:**
-- Number of unique sources (journals, books)
-- Most productive sources
-- Source impact based on publication frequency
+**Results:**
+- Empty rows found: 7
+- Empty rows removed: 7
 
-**Author-level metrics:**
-- Total authors and author appearances
-- Single-authored vs. multi-authored documents
-- Co-authors per document
-- Authors of single-authored documents
-- Author fractionalization (accounting for multi-authorship)
+### 2.3 Final Dataset
+**Characteristics:**
+- **Total records:** 214 unique articles
+- **Timespan:** 2009-2025 (17 years)
+- **Sources:** 103 unique journals/books
+- **Authors:** 1,006 unique researchers
+- **Countries:** 40+ represented
+- **Fields:** 104 bibliometric fields maintained
 
-**Citation metrics:**
-- Total citations per document
+**Data quality checks:**
+- ✅ No duplicate DOIs
+- ✅ No empty rows
+- ✅ All records have unique SR (row identifier)
+- ✅ 100% valid year values
+- ✅ All required fields present
+
+---
+
+## 3. Keyword Processing
+
+### 3.1 Stopword Filtering
+A custom stopwords list was created to remove non-informative terms from keyword analyses:
+
+**Stopwords file:** `stopwords.csv`  
+**Count:** 18 domain-specific terms  
+**Examples:** microalga, microalgae, biomass, biofuels, biodiesel, biofuel production, biodiesel production, bioenergy, bioethanol, algae, microorganisms, microalgal biomass, biogas, priority journal
+
+**Application:**
+- Applied to both Keywords Plus (ID) and Author Keywords (DE)
+- Filtered before counting frequencies
+- Reduced noise in trend and word cloud analyses
+
+### 3.2 Synonym Consolidation
+A synonym mapping file was used to consolidate variant terms:
+
+**Synonyms file:** `synonyms.csv`  
+**Mappings:** 38 synonym groups  
+**Examples:**
+- "carbon dioxide" ← CO2, carbon emissions, greenhouse gas
+- "sustainable development" ← sustainability, environmental sustainability
+- "wastewater treatment" ← wastewater, waste water management, bioremediation
+- "biotechnology" ← genetic engineering, bioengineering
+- "life cycle" ← life cycle assessment, life cycle analysis
+
+**Application methodology:**
+- Terms mapped to primary (first) term in each group
+- Applied after stopword filtering
+- Increased keyword consistency and interpretability
+
+---
+
+## 4. Bibliometric Analysis
+
+### 4.1 Dual Implementation Approach
+
+**R-based Analysis (Traditional):**
+- Package: `bibliometrix` v4.0+
+- Functions: `biblioAnalysis()`, `thematicMap()`, `histNetwork()`, etc.
+- Advantage: Standard methods, widely cited
+- Limitation: GUI-dependent for some features
+
+**Python-based Analysis (Reproducible):**
+- Custom implementation matching bibliometrix algorithms
+- Packages: pandas, numpy, collections
+- Advantage: Fully scriptable, no GUI required
+- Validation: Verified against Biblioshiny outputs
+
+### 4.2 Core Analyses (28 Total)
+
+#### Sheet 1: Main Information (MainInfo)
+**Metrics calculated:**
+- Timespan, sources, documents
+- Annual growth rate (CAGR)
+- Document average age
 - Average citations per document
-- Average citations per year per document
-- Normalized total citations (NTC)
-
-**Content metrics:**
-- Keywords Plus (ID field) frequency
-- Author keywords (DE field) frequency
 - Total references
-
-**Collaboration metrics:**
+- Unique keywords (ID and DE)
+- Total authors and appearances
+- Single vs. multi-authored documents
+- Co-authors per document
 - International co-authorship percentage
-- Single country publications (SCP)
-- Multiple country publications (MCP)
-- MCP ratio by country
+- Document types distribution
 
-### 3.2 Temporal Analysis
+**Formula for annual growth rate:**
+```
+CAGR = ((N_final / N_first)^(1 / n_years) - 1) × 100
+```
 
-**Annual scientific production:**
-Time series analysis of publication frequency by year was conducted to identify research output trends and growth patterns.
+**Formula for international co-authorship:**
+```
+Intl_coauth_% = (Docs_with_multiple_countries / Total_docs) × 100
+```
 
-**Trend topics analysis:**
-The `fieldByYear()` function was used to analyze keyword evolution over time with the following parameters:
-- Field: Keywords Plus (ID)
-- Minimum frequency: 2 occurrences
-- Number of items: Top 5 keywords per period
-- Time span: Full dataset range (2008-2025)
+#### Sheet 2: Annual Scientific Production (AnnualSciProd)
+**Method:**
+- Group documents by publication year
+- Count documents per year
+- Sort chronologically
 
-This analysis identified emerging and declining research themes across the study period.
+**Output:** Year, Articles
 
-### 3.3 Thematic Analysis
+#### Sheet 3: Annual Citations per Year (AnnualCitPerYear)
+**Metrics per year:**
+- Mean total citations per article
+- Number of documents (N)
+- Mean citations per year
+- Citable years
 
-**Thematic mapping:**
-The `thematicMap()` function performed keyword clustering analysis to identify:
-- **Motor themes**: High centrality and density (well-developed, important themes)
-- **Niche themes**: Low centrality, high density (specialized, peripheral themes)
-- **Emerging/declining themes**: Low centrality and density
-- **Basic themes**: High centrality, low density (important but underdeveloped)
+**Formula for mean citations per year:**
+```
+MeanTC_per_year = MeanTC_per_art / (Current_year - Publication_year)
+```
 
-Parameters:
-- Field: Keywords Plus (ID)
-- Maximum keywords (n): 250
-- Minimum frequency: 5 occurrences
-- N-grams: 1 (single words)
-- Cluster size: 0.5
-- Repulsion factor: 0.1
+**Current year:** 2025 (as of analysis date)
 
-### 3.4 Citation Network Analysis
+#### Sheets 4-5: Three Fields Plot (Empty)
+Reserved for future network visualizations
 
-**Historical direct citation network:**
-The `histNetwork()` function constructed a citation network of seminal papers within the dataset using:
-- Minimum citations threshold: 5 citations
-- Separator: ";"
-- Network type: Historical direct citations
+#### Sheet 6: Most Relevant Sources (MostRelSources)
+**Method:**
+- Count articles per source (journal)
+- Sort by frequency (descending)
+- List all sources
 
-This identified the intellectual structure and foundational works of the research field.
+**Output:** Sources, Articles
 
-### 3.5 Keyword Refinement
+#### Sheet 7: Bradford's Law (BradfordLaw)
+**Method:**
+- Sort sources by publication frequency
+- Calculate cumulative frequency
+- Divide into three equal zones by cumulative frequency
 
-**Stopword filtering:**
-A custom stopwords list (`stopwords.csv`) was applied to remove common, non-informative terms from keyword analyses. The stopwords list included domain-specific terms deemed too general for meaningful analysis (e.g., "microalgae", "biofuel", "biomass").
+**Zones defined:**
+- Zone 1: Top sources (first third of cumulative publications)
+- Zone 2: Middle sources (second third)
+- Zone 3: Tail sources (final third)
 
-**Synonym consolidation:**
-A synonym mapping file (`synonyms.csv`) was used to consolidate variant terms to their canonical forms. This included:
-- Spelling variations (e.g., "CO2" → "carbon dioxide")
-- Plural/singular forms
-- Acronym expansions
-- Conceptual synonyms (e.g., "greenhouse gases" → "carbon dioxide")
+**Output:** SO, Rank, Freq, cumFreq, Zone
 
-This procedure enhanced the semantic consistency of keyword analyses and improved the interpretability of results.
+#### Sheet 8: Source Local Impact (SourceLocImpact)
+**Metrics per source:**
+- **h-index:** Maximum h where source has h papers cited ≥h times each
+- **g-index:** Maximum g where top g papers have ≥g² citations combined
+- **m-index:** h-index / (current_year - first_publication_year)
+- **TC:** Total citations
+- **NP:** Number of papers
+- **PY_start:** First publication year
+
+**h-index algorithm:**
+```python
+citations_sorted = sorted(citations, reverse=True)
+h = max([i for i, cit in enumerate(citations_sorted, 1) if cit >= i])
+```
+
+**g-index algorithm:**
+```python
+citations_sorted = sorted(citations, reverse=True)
+cumsum = cumulative_sum(citations_sorted)
+g = max([i for i, cum in enumerate(cumsum, 1) if cum >= i²])
+```
+
+#### Sheet 9: Source Production Over Time (SourceProdOverTime)
+**Method:**
+- Select top 5 sources by publication count
+- Count publications per year for each source
+- Create time series matrix
+
+**Output:** Year, [Top 5 source names as columns]
+
+#### Sheet 10: Most Relevant Authors (MostRelAuthors)
+**Metrics:**
+- **Articles:** Total count (integer)
+- **Articles Fractionalized:** Credit distributed by authorship position
+
+**Fractionalization formula:**
+```
+Fractional_credit = 1 / Number_of_coauthors
+```
+
+**Output:** Authors, Articles, Articles Fractionalized
+
+#### Sheet 11: Author Production Over Time (AuthorProdOverTime)
+**Method:**
+- Select top 10 authors by publication count
+- List all publications for each author chronologically
+- Calculate TC per year for each paper
+
+**Formula for TC per year:**
+```
+TCpY = TC / (Current_year - Publication_year)
+```
+
+**Output:** Author, year, TI, SO, DOI, TC, TCpY
+
+#### Sheet 12: Lotka's Law (LotkaLaw)
+**Method:**
+- Count documents per author
+- Calculate observed distribution
+- Calculate theoretical Lotka distribution
+
+**Lotka's Law formula:**
+```
+Proportion(n) = 1 / n² / Σ(1/i² for i=1 to max)
+```
+
+**Output:** Documents written, N. of Authors, Proportion of Authors, Theoretical
+
+#### Sheet 13: Author Local Impact (AuthorLocImpact)
+**Same metrics as SourceLocImpact:**
+- h-index, g-index, m-index per author
+- Based on citations of author's papers in dataset
+
+#### Sheets 14-15: Affiliations
+**Method:**
+- Extract institutions from C1 (affiliation) field
+- Parse by semicolon delimiter
+- Extract institution name (before first comma)
+- Count frequency and track over time
+
+#### Sheets 16-19: Country Analyses
+**Country extraction method:**
+- Parse C1 (affiliation) field
+- Match against 45+ country patterns
+- Handle variants (e.g., "PEOPLES R CHINA" → "CHINA")
+
+**Metrics:**
+- **SCP:** Single-country publications
+- **MCP:** Multi-country publications
+- **MCP %:** (MCP / Total) × 100
+- **Collaboration frequency:** Country pair co-occurrences
+
+#### Sheets 20-21: Most Cited Documents
+**Global citations:** TC field (from database)  
+**Local citations:** Citations from within dataset (CR parsing)
+
+**Normalized citations formula:**
+```
+Normalized_TC = TC / Mean_TC_for_same_year
+```
+
+#### Sheet 22: Most Local Cited References (MostLocCitRefs)
+**Method:**
+- Parse CR (cited references) field
+- Split by semicolon
+- Count reference frequencies across all documents
+
+**Output:** Cited References, Citations
+
+#### Sheets 23-24: Keyword Analyses
+**Processing pipeline:**
+1. Extract keywords from ID and DE fields
+2. Split by semicolon
+3. Convert to lowercase
+4. Apply stopword filtering
+5. Apply synonym consolidation
+6. Count frequencies
+
+**MostFreqWords:** All keywords sorted by frequency  
+**WordCloud:** Top 50 keywords for visualization
+
+#### Sheet 25: Trend Topics (TrendTopics)
+**Method:**
+- Collect publication years for each keyword
+- Calculate quartiles (Q1, Median, Q3)
+- Filter keywords with ≥5 occurrences
+
+**Interpretation:**
+- Low Q1: Recently emerging terms
+- High Q3: Established terms
+- Spread (Q3-Q1): Term evolution rate
+
+#### Sheet 26: Co-Citation Network (CoCitNet)
+**Simplified implementation:**
+- Top 50 most cited references
+- Network metrics: Betweenness, Closeness, PageRank
+- Cluster assignment (simple grouping)
+
+**Note:** Full network analysis requires graph algorithms (future enhancement)
+
+#### Sheet 27: Historiograph
+**Method:**
+- Select highly cited papers (TC > 50)
+- Extract metadata and keywords
+- Calculate local citation score (LCS)
+- Assign to clusters
+
+**Output:** Paper, Title, Author_Keywords, KeywordsPlus, DOI, Year, LCS, GCS, cluster
+
+#### Sheet 28: Collaboration World Map (CollabWorldMap)
+**Method:**
+- Extract countries from each document's affiliations
+- Identify country pairs (multi-country papers)
+- Count collaboration frequency
+
+**Output:** From, To, Frequency
 
 ---
 
-## 4. Visualization Methods
+## 5. Visualization Methods
 
-### 4.1 Bar Charts
-Horizontal bar charts were generated for:
-- Top authors by publication count
-- Top sources by article frequency
-- Most globally cited documents
-- Country production rankings
+### 5.1 Technical Specifications
+**Resolution:** 300 DPI (publication quality)  
+**Format:** PNG with transparent or white background  
+**Dimensions:** 12 × 6 to 16 × 10 inches (varying by plot type)  
+**Color schemes:** 
+- Distinct colors per analysis type
+- Seaborn palettes for consistency
+- Colorblind-friendly options
 
+### 5.2 Plot Types
+
+#### 5.2.1 Bar Charts
+**Used for:**
+- Most relevant sources, authors, countries
+- Most frequent words
+- Citation rankings
+
+**Features:**
+- Horizontal orientation for long labels
+- Top 15-30 items displayed
+- Clear axis labels and titles
+- Grid lines for readability
+
+#### 5.2.2 Time Series
+**Used for:**
+- Annual production
+- Citations over time
+- Source/author production trends
+
+**Features:**
+- Line plots with markers
+- Dual-axis where appropriate
+- Trend lines
+- Clear legends
+
+#### 5.2.3 Bradford's Law Scatter Plot
+**Features:**
+- Color-coded zones (green, orange, red)
+- Cumulative frequency on y-axis
+- Source rank on x-axis
+- Zone boundaries visible
+
+#### 5.2.4 Lotka's Law Log Plot
+**Features:**
+- Logarithmic y-axis
+- Observed vs. theoretical comparison
+- Clear markers for both series
+- Grid for interpretation
+
+#### 5.2.5 Word Cloud
 **Specifications:**
-- Resolution: 300 DPI (publication quality)
-- Dimensions: 12 × 8 inches
-- Format: PNG with white background
-- Color schemes: Distinct colors per metric type
+- Package: `wordcloud` (Python)
+- Max words: 50
+- Color map: viridis
+- Size: Proportional to frequency
+- Layout: Frequency-based (not random)
 
-**Layout adjustments:**
-Left margins were increased (18-22 lines) to accommodate long journal names and document titles without truncation.
+#### 5.2.6 Trend Topics (Range Plot)
+**Features:**
+- Horizontal lines showing Q1-Q3 range
+- Median marked with distinct symbol
+- Terms sorted by frequency
+- Time on x-axis, terms on y-axis
 
-### 4.2 Time Series Plots
+#### 5.2.7 Dual-Metric Plots
+**Examples:**
+- Total citations + Average citations per country
+- Single vs. multi-country publications
+- Articles + fractionalized articles for authors
 
-**Annual production:**
-Line graphs showing publication trends over time, generated using the base R `plot()` function from `biblioAnalysis()` results.
-
-**Author production over time:**
-Multi-line plot tracking the top 10 most productive authors' publication output across years, using rainbow color scheme for differentiation.
-
-**Source growth over time:**
-Multi-line plot showing publication trends for the top 5 most relevant sources over the study period.
-
-### 4.3 Word Cloud
-Keyword word clouds were generated using the `wordcloud` package with the following specifications:
-- Maximum words: 100
-- Random order: FALSE (frequency-based layout)
-- Color palette: RColorBrewer "Dark2" (8 colors)
-- Scale: 4 to 0.5 (largest to smallest)
-- Pre-processing: Stopword removal and synonym consolidation applied
-
-### 4.4 Citation Network Visualization
-Citation networks were visualized using the `networkPlot()` function with:
-- Layout algorithm: Fruchterman-Reingold
-- Node size: Proportional to citation frequency
-- Edge width: Proportional to connection strength
-- Transparency (alpha): 0.7
-- Label size: 0.8-1.0 (depending on network density)
+**Features:**
+- Dual x-axes or twin axes
+- Distinct colors for each metric
+- Clear legends
 
 ---
 
-## 5. Software and Packages
+## 6. Software and Computing Environment
 
-### 5.1 Computing Environment
-- **R version**: 4.2.0+
-- **Operating system**: Windows 10/11
-- **Execution**: Command-line via Rscript (reproducible, non-interactive)
+### 6.1 Python Environment
+**Version:** Python 3.8+  
+**OS:** Windows 10/11  
+**Execution:** Command-line scripts
 
-### 5.2 R Packages (Required)
-- `bibliometrix` (4.0+): Bibliometric analysis and visualization
-- `readxl` (1.4.0+): Reading Excel files
-- `writexl` (1.4.0+): Writing Excel files
-- `dplyr` (1.1.0+): Data manipulation
-- `ggplot2` (3.4.0+): Advanced plotting
-
-### 5.3 R Packages (Optional)
-- `wordcloud` (2.6+): Word cloud generation
-- `RColorBrewer` (1.1-3+): Color palettes
-- `igraph` (1.4.0+): Network analysis
-
-### 5.4 Version Control and Reproducibility
-All analyses were scripted in R with:
-- Configuration parameters centralized in `config.R`
-- Modular functions for each analysis type
-- Comprehensive error handling and logging
-- Timestamped execution logs
-- Deterministic output (seed-based where applicable)
-
----
-
-## 6. Data Export and Reporting
-
-### 6.1 Tabular Outputs
-All analytical results were exported in multiple formats:
-- **CSV files**: Individual tables for each metric type
-- **Excel workbook**: Multi-sheet comprehensive report (`Full_Bibliometric_Report.xlsx`)
-- **Text summary**: Plain-text analysis overview (`ANALYSIS_SUMMARY.txt`)
-
-### 6.2 Excel Formatting
-Excel exports included special handling:
-- String truncation to 32,767 characters (Excel cell limit)
-- Proper encoding of special characters
-- Sheet naming for easy navigation
-- Header preservation
-
-### 6.3 Output Organization
-All outputs were organized in a structured directory:
+**Required packages:**
 ```
-output/
-├── CSV files (individual metrics)
-├── Full_Bibliometric_Report.xlsx (combined results)
-├── ANALYSIS_SUMMARY.txt (overview)
-└── plots/ (all visualizations)
+pandas==2.0+
+numpy==1.24+
+openpyxl==3.1+
+matplotlib==3.7+
+seaborn==0.12+
+wordcloud==1.9+
 ```
+
+**Installation:**
+```bash
+pip install pandas openpyxl numpy matplotlib seaborn wordcloud
+```
+
+### 6.2 R Environment (Optional)
+**Version:** R 4.2.0+  
+**Required packages:**
+```r
+bibliometrix (4.0+)
+readxl (1.4.0+)
+writexl (1.4.0+)
+dplyr (1.1.0+)
+ggplot2 (3.4.0+)
+```
+
+### 6.3 Reproducibility Features
+**Python scripts:**
+- Deterministic algorithms (no random seeds needed)
+- Consistent sorting and ordering
+- Fixed current year (2025) for calculations
+- Identical parameter sets across runs
+
+**Version control:**
+- Git repository
+- Documented code
+- Changelog maintained
 
 ---
 
 ## 7. Quality Control and Validation
 
-### 7.1 Data Validation
-- **Match rate verification**: 100.5% match rate between screened list and raw data
-- **Duplicate checking**: Automated detection and removal of duplicate records
-- **Field completeness**: Validation of required fields (TI, AU, PY, SO, etc.)
-- **Unmatched papers tracking**: Export of unmatched records for manual review
+### 7.1 Data Validation Checks
+✅ **No duplicate SR identifiers** (row names)  
+✅ **No duplicate DOIs** (except intentionally removed)  
+✅ **No empty rows** (all records have ≥1 key field)  
+✅ **Valid year range** (2009-2025, no outliers)  
+✅ **Source consistency** (journal names standardized)
 
 ### 7.2 Analysis Validation
-- **Biblioshiny comparison**: Results verifiable via manual upload to biblioshiny GUI
-- **Consistent parameters**: All analyses use identical settings across runs
-- **Reproducibility**: Complete workflow executable via single command (`Rscript run_all.R`)
 
-### 7.3 Visualization Quality Control
-- **File size checking**: Automated validation of plot file sizes (>50 KB indicates successful generation)
-- **Error logging**: Comprehensive logging of plot generation failures
-- **Fallback methods**: Alternative visualizations when primary methods fail
+**Method:** Comparison with Biblioshiny GUI outputs
+
+**Verification script:** `verify_analysis.py`
+
+**Results:**
+- ✅ **Perfect match:** MainInfo, AnnualSciProd, MostRelSources, BradfordLaw, MostRelAuthors
+- ≈ **Close match:** AnnualCitPerYear (±0.01 difference in averages)
+- ≈ **Close match:** MostFreqWords (different stopword timing)
+- ≈ **Close match:** CorrAuthCountries (country extraction variants)
+
+**Acceptable differences explained:**
+1. **Citable year calculation:** Python uses fixed 2025, Biblioshiny uses current date
+2. **Keyword filtering order:** Stopwords applied before vs. after synonym mapping
+3. **Country extraction:** Heuristic-based matching has minor variants
+
+**Structural validation:** ✅ All sheets match expected format and column names
+
+### 7.3 Plot Quality Control
+**Automated checks:**
+- File size >50 KB (indicates successful generation)
+- File exists in output directory
+- Error logging for failed plots
+
+**Manual verification:**
+- Visual inspection of all 15 plots
+- Axis labels correct
+- Data matches corresponding tables
+- High resolution (300 DPI confirmed)
 
 ---
 
 ## 8. Workflow Automation
 
-### 8.1 Complete Pipeline
-The entire workflow from raw data to final results was automated via `run_all.R`:
+### 8.1 Python Pipeline
+**Execution:**
+```bash
+# Complete workflow
+python complete_analysis.py   # Generates all 28 analyses
+python generate_all_plots.py  # Creates all 15 plots
+python verify_analysis.py     # Validates against reference
+```
 
-**Stage 1: Data Wrangling** (`wrangle_data.R`)
-1. Load screened paper list
-2. Import raw citation files from multiple databases
-3. Normalize titles and DOIs
-4. Match screened papers with raw data
-5. Remove duplicates
-6. Export filtered dataset
+**Execution time:** ~2-3 minutes for 214 papers
 
-**Stage 2: Bibliometric Analysis** (`run_bibliometric_analysis.R`)
-1. Load filtered dataset
-2. Run comprehensive bibliometric analyses
-3. Generate visualizations
-4. Export tabular results
-5. Create summary report
+### 8.2 R Pipeline (Alternative)
+**Execution:**
+```bash
+Rscript run_all.R   # Complete pipeline from raw data
+# OR
+Rscript run_bibliometric_analysis.R   # Analysis only (filtered data)
+```
 
-**Execution time**: Approximately 2-3 minutes for 223 papers
+**Execution time:** ~3-5 minutes
 
-### 8.2 Configuration Management
-All analysis parameters are centralized in `config.R`:
-- Number of top items (TOP_K = 20)
-- Year range filtering (optional)
-- Trend analysis parameters
-- Thematic map parameters
-- Plot dimensions and resolution
-- Enable/disable specific analyses
+### 8.3 Configuration Management
+**Python:** Parameters embedded in scripts (easily modifiable)  
+**R:** Centralized in `config.R` file
 
-This allows for easy customization without modifying core analysis code.
+**Key parameters:**
+- TOP_K = 20 (number of top items)
+- CURRENT_YEAR = 2025 (for calculations)
+- Stopwords file = "stopwords.csv"
+- Synonyms file = "synonyms.csv"
 
 ---
 
 ## 9. Limitations and Considerations
 
-### 9.1 Data Source Dependencies
-- Results depend on completeness of database exports
-- Missing fields (e.g., author affiliations) limit certain network analyses
-- Database-specific formatting variations may affect field availability
+### 9.1 Data-Related Limitations
+- **Citation counts:** Snapshot at export time (not real-time)
+- **Field availability:** Some records missing keywords or affiliations
+- **Database coverage:** Limited to three databases (WoS, Scopus, CAB)
+- **Language:** Primarily English-language publications
 
-### 9.2 Title Matching
-- Normalized title matching achieves high accuracy but may miss papers with significant title variations
-- DOI matching serves as fallback but requires DOI availability in both datasets
+### 9.2 Methodological Considerations
+- **Title matching:** 100.5% rate (1 near-duplicate variant included)
+- **Country extraction:** Heuristic-based, may miss unconventional formats
+- **Local citations:** Limited to citations within dataset
+- **Keyword analysis:** Dependent on quality of database keyword assignment
 
-### 9.3 Keyword Analysis
-- Keywords Plus (ID) and Author Keywords (DE) coverage varies by source
-- Stopword and synonym lists require domain-specific customization
-- Keyword co-occurrence networks depend on sufficient keyword overlap
-
-### 9.4 Citation Data
-- Citation counts reflect snapshot at time of export
-- Self-citations are not distinguished from external citations
-- Citation networks limited to papers citing other papers within the dataset
+### 9.3 Algorithm Differences
+Python implementation approximates bibliometrix algorithms:
+- **Core metrics:** Identical (counts, sums, averages)
+- **Impact metrics:** h-index, g-index calculated identically
+- **Network metrics:** Simplified (full graph analysis not implemented)
+- **Thematic mapping:** Not implemented (complex clustering algorithm)
 
 ---
 
 ## 10. Reproducibility Statement
 
-This analysis is fully reproducible. To replicate results:
+This analysis is **fully reproducible** with the following requirements:
 
-1. **Data**: Use the provided `filtered_data_biblioshiny_ready.xlsx` (223 papers)
-2. **Software**: R version 4.2.0+ with specified packages
-3. **Execution**: Run `Rscript run_all.R` from project directory
-4. **Verification**: Compare outputs with provided results or verify via biblioshiny upload
+### 10.1 Data Requirements
+- **Input file:** `data/filtered_data_biblioshiny_ready.xlsx` (214 records)
+- **Configuration:** `stopwords.csv` and `synonyms.csv`
 
-All analysis code, configuration files, and data are available in the project repository. The workflow adheres to FAIR principles (Findable, Accessible, Interoperable, Reusable) for computational research.
+### 10.2 Software Requirements
+- Python 3.8+ with specified packages
+- OR R 4.2.0+ with bibliometrix package
+
+### 10.3 Execution
+```bash
+# Python workflow (recommended)
+python complete_analysis.py
+python generate_all_plots.py
+
+# R workflow (alternative)
+Rscript run_all.R
+```
+
+### 10.4 Expected Outputs
+- `output/ReproducedBibliometricAnalysis.xlsx` (28 sheets)
+- `output/plots/*.png` (15 PNG files)
+- All outputs match provided reference within validation tolerances
+
+### 10.5 FAIR Principles Compliance
+- **Findable:** DOI assignable, GitHub repository
+- **Accessible:** Open source scripts, standard formats
+- **Interoperable:** Standard bibliometric formats, CSV/Excel outputs
+- **Reusable:** Documented code, clear methodology, MIT license
 
 ---
 
-## References
+## 11. References
+
+### Primary Citations
 
 Aria, M., & Cuccurullo, C. (2017). bibliometrix: An R-tool for comprehensive science mapping analysis. *Journal of Informetrics*, 11(4), 959-975. https://doi.org/10.1016/j.joi.2017.08.007
 
 R Core Team (2022). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/
 
+### Software and Packages
+
+- Python Software Foundation. (2023). Python Language Reference, version 3.8+. https://www.python.org
+- McKinney, W. (2010). Data Structures for Statistical Computing in Python. *Proceedings of the 9th Python in Science Conference*, 56-61.
+- Hunter, J. D. (2007). Matplotlib: A 2D graphics environment. *Computing in Science & Engineering*, 9(3), 90-95.
+- Waskom, M. (2021). seaborn: statistical data visualization. *Journal of Open Source Software*, 6(60), 3021.
+
+### Bibliometric Methods
+
+Bradford, S. C. (1934). Sources of information on specific subjects. *Engineering*, 137, 85-86.
+
+Lotka, A. J. (1926). The frequency distribution of scientific productivity. *Journal of the Washington Academy of Sciences*, 16(12), 317-323.
+
+Hirsch, J. E. (2005). An index to quantify an individual's scientific research output. *Proceedings of the National Academy of Sciences*, 102(46), 16569-16572.
+
 ---
 
-## Citation
+## 12. Appendices
 
-When using this methodology in publications, please cite:
+### Appendix A: Field Code Descriptions
 
-1. The bibliometrix package (Aria & Cuccurullo, 2017)
-2. R software (R Core Team, 2022)
-3. This analysis workflow (if publicly available)
+| Code | Description | Source |
+|------|-------------|--------|
+| TI | Title | All databases |
+| AU | Authors | All databases |
+| AF | Author Full Names | WoS, Scopus |
+| PY | Publication Year | All databases |
+| SO | Source (Journal) | All databases |
+| AB | Abstract | All databases |
+| DE | Author Keywords | All databases |
+| ID | Keywords Plus | WoS |
+| TC | Total Citations | WoS, Scopus |
+| CR | Cited References | WoS, Scopus |
+| C1 | Author Affiliations | All databases |
+| DI | DOI | All databases |
+| NR | Number of References | WoS |
+
+### Appendix B: Country Extraction Patterns
+
+Full list of 45+ country patterns used for affiliation parsing available in source code (`complete_analysis.py`, `extract_country_from_c1()` function).
+
+### Appendix C: Stopwords and Synonyms
+
+Complete lists available in:
+- `stopwords.csv` (18 terms)
+- `synonyms.csv` (38 mappings, 120+ individual terms)
 
 ---
 
-*Document Version: 1.0*  
-*Last Updated: 2025-11-18*  
-*Corresponding to: 223 papers, 2008-2025 timespan*
+## 13. Citation
 
+When using this methodology in publications, cite:
+
+1. **For bibliometrix methods:** Aria & Cuccurullo (2017)
+2. **For R software:** R Core Team (2022)
+3. **For Python implementation:** This repository and workflow
+
+**Recommended citation format:**
+```
+[Your Name]. (2025). Reproducible Bibliometric Analysis: Python and R workflows
+for comprehensive science mapping. GitHub repository. 
+https://github.com/your-username/reproducible-bibliometric-analysis
+```
+
+---
+
+*Document Version: 2.0*  
+*Last Updated: November 19, 2025*  
+*Corresponding to: 214 papers, 2009-2025 timespan*  
+*Analysis Date: November 19, 2025*
+
+---
+
+**End of Methods Document**
