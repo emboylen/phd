@@ -73,7 +73,9 @@ def main():
 
         # Handle missing or non-string titles
         title = row['Title'] if isinstance(row['Title'], str) else str(overton_id)
-        print(f"[{index+1}/{total}] Downloading: {title[:30]}...")
+        # Handle Unicode characters that can't be displayed in Windows console
+        safe_title = title[:30].encode('ascii', 'replace').decode('ascii')
+        print(f"[{index+1}/{total}] Downloading: {safe_title}...")
         
         if download_pdf(url, filename):
             success_count += 1
