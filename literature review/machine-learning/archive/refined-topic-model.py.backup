@@ -1,0 +1,929 @@
+"""
+A Methodological Framework for Enhancing Topic Model Coherence in Scientific Literature Analysis
+Implements a 6-Stage Refinement Pipeline for High-Quality Topic Modeling
+"""
+
+# Fix Unicode encoding issues on Windows
+import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
+
+import fitz  # PyMuPDF
+from pathlib import Path
+import re
+from pprint import pprint
+
+# NLP and Topic Modeling
+import spacy
+from nltk.corpus import stopwords
+import nltk
+from gensim.models import Phrases
+from gensim.models.phrases import Phraser
+from gensim.corpora import Dictionary
+from gensim.models import LdaModel, CoherenceModel
+import matplotlib.pyplot as plt
+
+# Visualization
+import networkx as nx
+from pyvis.network import Network
+
+# Progress bars
+from tqdm import tqdm
+
+# Serialization and file handling
+import pickle
+import os
+import logging
+from datetime import datetime
+
+print("=" * 80)
+print("REFINED TOPIC MODELING PIPELINE - 6-STAGE FRAMEWORK")
+print("=" * 80)
+
+# ==============================================================================
+# CONFIGURATION
+# ==============================================================================
+PDF_FOLDER_PATH = r"D:\Github\phd\ML\included"
+OUTPUT_GRAPH_FILENAME = "refined_knowledge_graph.html"
+OUTPUT_TABLE_FILENAME = "refined_topics_summary.html"
+CHECKPOINT_DIR = "model_checkpoints"
+LOG_FILE = f"topic_modeling_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
+
+# Advanced Parameters
+MIN_DOC_COUNT = 5          # min_df: word must appear in at least 5 documents
+MAX_DOC_FRACTION = 0.85    # max_df: word can't appear in more than 85% of documents
+BIGRAM_MIN_COUNT = 5       # Minimum count for bigram formation
+BIGRAM_THRESHOLD = 100     # Threshold for bigram scoring
+TOPIC_RANGE_START = 2      # Test topics from k=2
+TOPIC_RANGE_END = 21       # Test topics up to k=20
+TOPIC_STEP = 1
+
+# LDA Training Parameters (optimized for balance between quality and speed)
+LDA_PASSES = 10            # Total training passes
+LDA_ITERATIONS = 400       # Iterations per document
+LDA_CHUNKSIZE = 100        # Documents per training chunk
+
+# Create checkpoint directory
+os.makedirs(CHECKPOINT_DIR, exist_ok=True)
+
+# Setup logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler(LOG_FILE, encoding='utf-8'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+logger.info("=" * 80)
+logger.info("REFINED TOPIC MODELING PIPELINE STARTED")
+logger.info("=" * 80)
+
+# Download required NLTK data (run once)
+try:
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    print("Downloading NLTK stopwords...")
+    nltk.download('stopwords', quiet=True)
+
+# Load spaCy model (run once: python -m spacy download en_core_web_sm)
+print("\nLoading spaCy model...")
+try:
+    nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
+    # Set max_length to prevent memory issues with very long documents
+    nlp.max_length = 2000000  # 2 million characters
+    print("✓ spaCy model loaded")
+    logger.info("spaCy model loaded successfully")
+except OSError:
+    error_msg = "ERROR: spaCy model not found. Please run: python -m spacy download en_core_web_sm"
+    print(error_msg)
+    logger.error(error_msg)
+    sys.exit(1)
+
+# ==============================================================================
+# STAGE 1: FOUNDATIONAL TEXT REFINEMENT - CUSTOM STOP-WORD LIST
+# ==============================================================================
+print("\n" + "=" * 80)
+print("STAGE 1: Building Comprehensive Stop-Word List")
+print("=" * 80)
+
+# Layer 1: Generic English stop words
+generic_stopwords = set(stopwords.words('english'))
+
+# Layer 2: Academic & Web Artifacts
+academic_artifacts = {
+    # Citation artifacts
+    'et', 'al', 'e.g', 'i.e', 'etc', 'cf', 'ibid', 'op', 'cit',
+    # Figure and table references
+    'fig', 'figure', 'figs', 'table', 'tab', 'ref', 'refs', 'equation', 'eq',
+    # Web and DOI
+    'http', 'https', 'www', 'doi', 'com', 'org', 'pdf', 'html', 'htm', 'url',
+    # Document structure
+    'introduction', 'methods', 'methodology', 'methodologies', 'result', 'results',
+    'discussion', 'conclusion', 'conclusions', 'abstract', 'summary',
+    # Publishing metadata
+    'copyright', 'author', 'authors', 'journal', 'publisher', 'pubmed', 'elsevier',
+    'page', 'pages', 'vol', 'volume', 'no', 'issue', 'supplement',
+    # Common academic phrases
+    'study', 'research', 'paper', 'article', 'review', 'present', 'presented',
+    'investigate', 'investigated', 'demonstrate', 'demonstrated', 'shown',
+    'approach', 'method', 'technique', 'analysis', 'analyses', 'experiment',
+    'experimental', 'data', 'datum'
+}
+
+# Layer 3: Corpus-Specific Stop Words (microalgae domain)
+corpus_specific = {
+    'microalgae', 'microalga', 'algae', 'algal', 'alga',
+    'species', 'strain', 'strains', 
+    'model', 'system', 'systems',
+    'sample', 'samples', 'sampling'
+}
+
+# Layer 4: Noise patterns (numbers, single characters)
+# These will be handled by regex and POS filtering
+
+# Combine all layers
+custom_stop_words = generic_stopwords.union(academic_artifacts).union(corpus_specific)
+
+print(f"✓ Generic stop words: {len(generic_stopwords)}")
+print(f"✓ Academic artifacts: {len(academic_artifacts)}")
+print(f"✓ Corpus-specific: {len(corpus_specific)}")
+print(f"✓ Total custom stop words: {len(custom_stop_words)}")
+
+# ==============================================================================
+# STAGE 2: SEMANTIC NORMALIZATION - LEMMATIZATION + POS FILTERING
+# ==============================================================================
+print("\n" + "=" * 80)
+print("STAGE 2: Defining Advanced Text Processing Function")
+print("=" * 80)
+
+# Define allowed POS tags (only keep meaningful content words)
+ALLOWED_POSTAGS = {'NOUN', 'ADJ', 'VERB', 'ADV'}
+
+def preprocess_text_spacy(doc_text: str, custom_stops: set) -> list:
+    """
+    Applies lemmatization, POS filtering, and custom stop-word removal.
+    
+    Args:
+        doc_text: Raw text from document
+        custom_stops: Set of custom stop words
+    
+    Returns:
+        List of cleaned, lemmatized tokens
+    """
+    # Remove URLs and DOIs with regex
+    doc_text = re.sub(r'http\S+|www\.\S+|doi:\S+', '', doc_text)
+    
+    # Remove email addresses
+    doc_text = re.sub(r'\S+@\S+', '', doc_text)
+    
+    # Remove standalone numbers and years
+    doc_text = re.sub(r'\b\d+\b', '', doc_text)
+    
+    # Process with spaCy
+    doc = nlp(doc_text.lower())
+    
+    tokens = []
+    for token in doc:
+        # Check conditions:
+        # 1. Token is alphabetic
+        # 2. Not a generic spaCy stop word
+        # 3. Has an allowed POS tag
+        # 4. Length > 2 (avoid 'al', 'et', etc.)
+        if (token.is_alpha and
+            not token.is_stop and
+            token.pos_ in ALLOWED_POSTAGS and
+            len(token.lemma_) > 2):
+            
+            lemma = token.lemma_.lower()
+            
+            # Final check against comprehensive custom stop list
+            if lemma not in custom_stops:
+                tokens.append(lemma)
+    
+    return tokens
+
+print("✓ Text processing function defined")
+print(f"✓ Allowed POS tags: {ALLOWED_POSTAGS}")
+
+# ==============================================================================
+# MAIN EXECUTION
+# ==============================================================================
+if __name__ == '__main__':
+    # Required for Windows multiprocessing support
+    from multiprocessing import freeze_support
+
+        freeze_support()
+
+        # ==============================================================================
+        # DATA LOADING: EXTRACT TEXT FROM PDFs
+        # ==============================================================================
+        print("\n" + "=" * 80)
+        print("DATA LOADING: Extracting Text from PDFs")
+        print("=" * 80)
+
+    # Validate PDF folder
+    pdf_folder = Path(PDF_FOLDER_PATH)
+    if not pdf_folder.exists():
+        error_msg = f"ERROR: PDF folder does not exist: {PDF_FOLDER_PATH}"
+        print(error_msg)
+        logger.error(error_msg)
+        sys.exit(1)
+
+    if not pdf_folder.is_dir():
+        error_msg = f"ERROR: Path is not a directory: {PDF_FOLDER_PATH}"
+        print(error_msg)
+        logger.error(error_msg)
+        sys.exit(1)
+
+    pdf_files = list(pdf_folder.glob("*.pdf"))
+
+    if len(pdf_files) == 0:
+        error_msg = f"ERROR: No PDF files found in '{PDF_FOLDER_PATH}'"
+        print(error_msg)
+        logger.error(error_msg)
+        sys.exit(1)
+
+    print(f"Found {len(pdf_files)} PDF files in '{PDF_FOLDER_PATH}'")
+    logger.info(f"Found {len(pdf_files)} PDF files")
+
+    documents = []
+    doc_names = []
+    failed_files = []
+
+    for pdf_path in tqdm(pdf_files, desc="Extracting PDF text", unit="file"):
+        try:
+            doc = fitz.open(pdf_path)
+            full_text = ""
+        
+            for page_num in range(doc.page_count):
+                page = doc.load_page(page_num)
+                full_text += page.get_text("text")
+        
+            # Validate document has content
+            if len(full_text.strip()) < 100:  # Require at least 100 characters
+                tqdm.write(f"  [Warning] Skipping {pdf_path.name}: insufficient content")
+                logger.warning(f"Skipped {pdf_path.name}: insufficient content")
+                failed_files.append(pdf_path.name)
+            else:
+                documents.append(full_text)
+                doc_names.append(pdf_path.name)
+        
+            doc.close()
+            
+        except Exception as e:
+            error_msg = f"Failed to read {pdf_path.name}: {e}"
+            tqdm.write(f"  [Error] {error_msg}")
+            logger.error(error_msg)
+            failed_files.append(pdf_path.name)
+
+    # Validate we have enough documents
+    if len(documents) == 0:
+        error_msg = "ERROR: No documents were successfully extracted"
+        print(error_msg)
+        logger.error(error_msg)
+        sys.exit(1)
+
+    if len(documents) < MIN_DOC_COUNT:
+        error_msg = f"ERROR: Not enough documents ({len(documents)}) for MIN_DOC_COUNT setting ({MIN_DOC_COUNT})"
+        print(error_msg)
+        logger.error(error_msg)
+        sys.exit(1)
+
+    print(f"✓ Successfully extracted text from {len(documents)} documents")
+    logger.info(f"Successfully extracted {len(documents)} documents")
+    if failed_files:
+        print(f"  ⚠ {len(failed_files)} files failed or skipped")
+        logger.warning(f"{len(failed_files)} files failed: {', '.join(failed_files[:5])}")
+
+    # ==============================================================================
+    # APPLY STAGES 1 & 2: PREPROCESS ALL DOCUMENTS
+    # ==============================================================================
+    print("\n" + "=" * 80)
+    print("APPLYING STAGES 1 & 2: Text Preprocessing")
+    print("=" * 80)
+
+    print("Processing documents (this may take several minutes)...")
+    processed_docs = []
+
+    for doc_text in tqdm(documents, desc="Preprocessing documents", unit="doc"):
+        tokens = preprocess_text_spacy(doc_text, custom_stop_words)
+        processed_docs.append(tokens)
+
+    # Calculate statistics
+    total_tokens = sum(len(doc) for doc in processed_docs)
+    avg_tokens = total_tokens / len(processed_docs) if processed_docs else 0
+    unique_tokens = len(set(token for doc in processed_docs for token in doc))
+
+    print(f"✓ Preprocessing complete")
+    print(f"  Total tokens: {total_tokens:,}")
+    print(f"  Average tokens per document: {avg_tokens:.1f}")
+    print(f"  Unique tokens: {unique_tokens:,}")
+
+    # ==============================================================================
+    # STAGE 3: CONCEPTUAL UNIT DETECTION - N-GRAM COLLOCATION
+    # ==============================================================================
+    print("\n" + "=" * 80)
+    print("STAGE 3: Detecting Bigrams and Trigrams")
+    print("=" * 80)
+
+    # Train bigram model
+    print("Training bigram model...")
+    bigram_model = Phrases(processed_docs, min_count=BIGRAM_MIN_COUNT, threshold=BIGRAM_THRESHOLD)
+    bigram_phraser = Phraser(bigram_model)
+
+    # Apply bigram model
+    docs_with_bigrams = [bigram_phraser[doc] for doc in processed_docs]
+
+    # Train trigram model on bigram output
+    print("Training trigram model...")
+    trigram_model = Phrases(docs_with_bigrams, min_count=BIGRAM_MIN_COUNT, threshold=BIGRAM_THRESHOLD)
+    trigram_phraser = Phraser(trigram_model)
+
+    # Apply trigram model
+    final_processed_docs = [trigram_phraser[doc] for doc in docs_with_bigrams]
+
+    # Show examples of detected phrases
+    print("✓ N-gram detection complete")
+    print("\nSample detected phrases:")
+    all_tokens = [token for doc in final_processed_docs for token in doc]
+    phrases = [token for token in set(all_tokens) if '_' in token]
+    for phrase in sorted(phrases)[:20]:
+        print(f"  • {phrase}")
+
+    # ==============================================================================
+    # STAGE 4: STRATEGIC VOCABULARY PRUNING - DOCUMENT FREQUENCY FILTERING
+    # ==============================================================================
+    print("\n" + "=" * 80)
+    print("STAGE 4: Vocabulary Pruning with Document Frequency Filtering")
+    print("=" * 80)
+
+    # Create dictionary
+    id2word_dictionary = Dictionary(final_processed_docs)
+    print(f"Initial vocabulary size: {len(id2word_dictionary)}")
+
+    # Apply pruning
+    print(f"Applying filters: no_below={MIN_DOC_COUNT}, no_above={MAX_DOC_FRACTION}")
+    logger.info(f"Vocabulary pruning: no_below={MIN_DOC_COUNT}, no_above={MAX_DOC_FRACTION}")
+
+    id2word_dictionary.filter_extremes(
+        no_below=MIN_DOC_COUNT,
+        no_above=MAX_DOC_FRACTION
+    )
+
+    print(f"✓ Final vocabulary size: {len(id2word_dictionary)}")
+    logger.info(f"Final vocabulary size: {len(id2word_dictionary)}")
+
+    # Validate vocabulary is not empty
+    if len(id2word_dictionary) == 0:
+        error_msg = "ERROR: Vocabulary is empty after filtering. Try adjusting MIN_DOC_COUNT or MAX_DOC_FRACTION."
+        print(error_msg)
+        logger.error(error_msg)
+        sys.exit(1)
+
+    if len(id2word_dictionary) < 50:
+        warning_msg = f"WARNING: Very small vocabulary ({len(id2word_dictionary)} terms). Results may be poor."
+        print(f"  ⚠ {warning_msg}")
+        logger.warning(warning_msg)
+
+    # Create bag-of-words corpus
+    final_corpus = [id2word_dictionary.doc2bow(text) for text in final_processed_docs]
+
+    print(f"✓ Corpus created: {len(final_corpus)} documents")
+    logger.info(f"Corpus created with {len(final_corpus)} documents")
+
+    # ==============================================================================
+    # STAGE 5 & 6: OPTIMAL TOPIC DISCOVERY - COHERENCE-BASED TUNING
+    # ==============================================================================
+    print("\n" + "=" * 80)
+    print("STAGES 5 & 6: Finding Optimal Number of Topics via Coherence")
+    print("=" * 80)
+
+    def compute_coherence_values(dictionary, corpus, texts, limit, start=2, step=1):
+        """
+        Compute C_v coherence for various numbers of topics.
+        Saves each model to disk and only keeps the best one in memory.
+    
+        Returns:
+            best_model: The LDA model with highest coherence
+            coherence_values: Coherence values corresponding to each k tested
+            topic_counts: List of k values tested
+        """
+        coherence_values = []
+        topic_counts = []
+        best_coherence = -1
+        best_model = None
+        best_k = None
+    
+        topic_range = range(start, limit, step)
+        print(f"Testing topic counts from k={start} to k={limit-1}...")
+        print(f"Total models to train: {len(list(topic_range))}")
+        print("Note: Each model takes several minutes. Please be patient.")
+        print(f"Checkpoints will be saved to: {CHECKPOINT_DIR}\n")
+        logger.info(f"Training {len(list(topic_range))} models from k={start} to k={limit-1}")
+    
+        # Create progress bar for overall process
+        for num_topics in tqdm(topic_range, desc="Training LDA models", unit="model"):
+            checkpoint_path = os.path.join(CHECKPOINT_DIR, f"lda_model_k{num_topics}.pkl")
+        
+            tqdm.write(f"  → Training LDA with k={num_topics} topics...")
+            logger.info(f"Training model with k={num_topics}")
+        
+            # Train LDA model
+            model = LdaModel(
+                corpus=corpus,
+                id2word=dictionary,
+                num_topics=num_topics,
+                random_state=100,      # For reproducibility
+                chunksize=LDA_CHUNKSIZE,
+                passes=LDA_PASSES,
+                iterations=LDA_ITERATIONS,
+                alpha='auto',          # Auto-learn document-topic density
+                eta='auto',            # Auto-learn topic-word density
+                per_word_topics=True
+            )
+        
+            tqdm.write(f"  → Computing coherence score for k={num_topics}...")
+        
+            # Compute coherence score
+            coherence_model = CoherenceModel(
+                model=model,
+                texts=texts,
+                dictionary=dictionary,
+                coherence='c_v'
+            )
+        
+            coh_score = coherence_model.get_coherence()
+            coherence_values.append(coh_score)
+            topic_counts.append(num_topics)
+        
+            # Save model checkpoint
+            try:
+                model.save(checkpoint_path)
+                tqdm.write(f"  → Checkpoint saved: {checkpoint_path}")
+                logger.info(f"Model checkpoint saved: {checkpoint_path}")
+            except Exception as e:
+                tqdm.write(f"  [Warning] Failed to save checkpoint: {e}")
+                logger.warning(f"Failed to save checkpoint for k={num_topics}: {e}")
+        
+            tqdm.write(f"  ✓ k={num_topics} complete. Coherence: {coh_score:.4f}")
+            logger.info(f"k={num_topics} - Coherence: {coh_score:.4f}")
+        
+            # Keep track of best model in memory
+            if coh_score > best_coherence:
+                if best_model is not None:
+                    # Clear previous best model from memory
+                    del best_model
+                best_coherence = coh_score
+                best_model = model
+                best_k = num_topics
+                tqdm.write(f"  ★ New best model: k={num_topics} (Coherence: {coh_score:.4f})")
+                logger.info(f"New best model: k={num_topics}")
+            else:
+                # Clear current model from memory if it's not the best
+                del model
+        
+            tqdm.write("")  # Empty line for readability
+    
+        logger.info(f"Best model: k={best_k} with coherence {best_coherence:.4f}")
+        return best_model, coherence_values, topic_counts, best_k
+
+    # Run the coherence-tuning loop
+    final_model, coherence_values, topic_counts, optimal_k = compute_coherence_values(
+        dictionary=id2word_dictionary,
+        corpus=final_corpus,
+        texts=final_processed_docs,
+        start=TOPIC_RANGE_START,
+        limit=TOPIC_RANGE_END,
+        step=TOPIC_STEP
+    )
+
+    # Get optimal coherence score
+    optimal_k_index = topic_counts.index(optimal_k)
+    optimal_coherence = coherence_values[optimal_k_index]
+
+    print("\n" + "=" * 80)
+    print(f"✓ OPTIMAL NUMBER OF TOPICS: k={optimal_k}")
+    print(f"✓ COHERENCE SCORE (C_v): {optimal_coherence:.4f}")
+    print("=" * 80)
+    logger.info(f"Optimal k={optimal_k} with coherence {optimal_coherence:.4f}")
+
+    # Plot coherence scores
+    plt.figure(figsize=(12, 6))
+    plt.plot(topic_counts, coherence_values, marker='o', linewidth=2, markersize=8)
+    plt.axvline(x=optimal_k, color='r', linestyle='--', linewidth=2, label=f'Optimal k={optimal_k}')
+    plt.xlabel("Number of Topics (k)", fontsize=12)
+    plt.ylabel("Coherence Score (C_v)", fontsize=12)
+    plt.title("Optimal Number of Topics - Coherence-Based Selection", fontsize=14, fontweight='bold')
+    plt.xticks(topic_counts)
+    plt.legend(fontsize=10)
+    plt.grid(True, alpha=0.3)
+    plt.tight_layout()
+    plt.savefig('coherence_plot.png', dpi=300, bbox_inches='tight')
+    print("\n✓ Coherence plot saved as 'coherence_plot.png'")
+    logger.info("Coherence plot saved")
+
+    # Save the final best model
+    final_model_path = os.path.join(CHECKPOINT_DIR, f"final_best_model_k{optimal_k}.pkl")
+    try:
+        final_model.save(final_model_path)
+        print(f"✓ Final model saved: {final_model_path}")
+        logger.info(f"Final best model saved: {final_model_path}")
+    except Exception as e:
+        print(f"  [Warning] Failed to save final model: {e}")
+        logger.warning(f"Failed to save final model: {e}")
+
+    # ==============================================================================
+    # RESULTS: DISPLAY REFINED TOPICS
+    # ==============================================================================
+    print("\n" + "=" * 80)
+    print("FINAL REFINED TOPICS")
+    print("=" * 80)
+
+    topics = final_model.print_topics(num_topics=optimal_k, num_words=10)
+    for topic_id, topic_words in topics:
+        print(f"\nTopic {topic_id}:")
+        print(f"  {topic_words}")
+
+    # ==============================================================================
+    # CREATE ENHANCED TOPICS SUMMARY HTML TABLE
+    # ==============================================================================
+    print("\n" + "=" * 80)
+    print("Generating Topics Summary Table")
+    print("=" * 80)
+
+    # Get document-topic assignments
+    doc_topics = []
+    for i, bow in enumerate(final_corpus):
+        topic_dist = final_model.get_document_topics(bow)
+        if topic_dist:
+            # Get the dominant topic
+            dominant_topic = max(topic_dist, key=lambda x: x[1])
+            doc_topics.append({
+                'doc_name': doc_names[i],
+                'topic_id': dominant_topic[0],
+                'topic_prob': dominant_topic[1]
+            })
+
+    # Create summary table
+    topic_summary = []
+    for topic_id in range(optimal_k):
+        # Get top words
+        top_words = [word for word, _ in final_model.show_topic(topic_id, topn=15)]
+    
+        # Get documents for this topic
+        topic_docs = [d for d in doc_topics if d['topic_id'] == topic_id]
+    
+        topic_summary.append({
+            'topic_id': topic_id,
+            'keywords': ', '.join(top_words),
+            'doc_count': len(topic_docs),
+            'documents': topic_docs
+        })
+
+    # Generate HTML
+    html_content = f"""<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Refined Topic Analysis Summary</title>
+        <style>
+            body {{
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                margin: 20px;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                min-height: 100vh;
+            }}
+            .container {{
+                max-width: 1400px;
+                margin: 0 auto;
+                background: white;
+                border-radius: 12px;
+                padding: 40px;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            }}
+            h1 {{
+                color: #2c3e50;
+                text-align: center;
+                margin-bottom: 10px;
+                font-size: 32px;
+            }}
+            .subtitle {{
+                text-align: center;
+                color: #7f8c8d;
+                margin-bottom: 30px;
+                font-size: 16px;
+            }}
+            .stats {{
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 25px;
+                border-radius: 8px;
+                margin-bottom: 30px;
+                text-align: center;
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }}
+            .stat-item {{
+                margin: 10px 20px;
+            }}
+            .stat-value {{
+                font-size: 36px;
+                font-weight: bold;
+                display: block;
+            }}
+            .stat-label {{
+                font-size: 14px;
+                opacity: 0.9;
+            }}
+            table {{
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }}
+            thead {{
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+            }}
+            th {{
+                padding: 15px;
+                text-align: left;
+                font-weight: 600;
+                font-size: 14px;
+            }}
+            td {{
+                padding: 15px;
+                border-bottom: 1px solid #ecf0f1;
+                vertical-align: top;
+            }}
+            tr:hover {{
+                background-color: #f8f9fa;
+            }}
+            .topic-id {{
+                font-weight: bold;
+                color: #667eea;
+                font-size: 18px;
+            }}
+            .keywords {{
+                color: #27ae60;
+                font-family: 'Courier New', monospace;
+                font-size: 13px;
+                line-height: 1.6;
+            }}
+            .doc-count {{
+                text-align: center;
+                font-weight: bold;
+                color: #e74c3c;
+                font-size: 20px;
+            }}
+            .documents {{
+                font-size: 12px;
+                color: #34495e;
+                max-height: 150px;
+                overflow-y: auto;
+            }}
+            .doc-item {{
+                padding: 5px 0;
+                border-bottom: 1px solid #ecf0f1;
+            }}
+            .doc-name {{
+                font-weight: 500;
+            }}
+            .doc-prob {{
+                color: #95a5a6;
+                font-size: 11px;
+            }}
+            .methodology {{
+                background: #ecf0f1;
+                padding: 20px;
+                border-radius: 8px;
+                margin: 30px 0;
+                font-size: 13px;
+                line-height: 1.8;
+            }}
+            .methodology h3 {{
+                color: #2c3e50;
+                margin-top: 0;
+            }}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>🔬 Refined Topic Analysis Summary</h1>
+            <div class="subtitle">6-Stage Methodological Framework for Enhanced Coherence</div>
+        
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-value">{optimal_k}</span>
+                    <span class="stat-label">Topics (Optimized)</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">{len(documents)}</span>
+                    <span class="stat-label">Documents Analyzed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">{len(id2word_dictionary)}</span>
+                    <span class="stat-label">Refined Vocabulary</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">{optimal_coherence:.3f}</span>
+                    <span class="stat-label">Coherence Score (C_v)</span>
+                </div>
+            </div>
+        
+            <div class="methodology">
+                <h3>Methodological Framework Applied:</h3>
+                <strong>Stage 1:</strong> Custom stop-word list ({len(custom_stop_words)} terms) - Generic + Academic + Corpus-specific<br>
+                <strong>Stage 2:</strong> Lemmatization + POS filtering (NOUN, ADJ, VERB, ADV only)<br>
+                <strong>Stage 3:</strong> N-gram detection (bigrams & trigrams, threshold={BIGRAM_THRESHOLD})<br>
+                <strong>Stage 4:</strong> Vocabulary pruning (min_df={MIN_DOC_COUNT}, max_df={MAX_DOC_FRACTION})<br>
+                <strong>Stage 5:</strong> Coherence-based evaluation (C_v metric, tested k={TOPIC_RANGE_START}-{TOPIC_RANGE_END-1})<br>
+                <strong>Stage 6:</strong> Optimal model training (k={optimal_k}, alpha=auto, eta=auto, 10 passes)
+            </div>
+        
+            <table>
+                <thead>
+                    <tr>
+                        <th>Topic ID</th>
+                        <th>Top Keywords (Top 15)</th>
+                        <th>Docs</th>
+                        <th>Assigned Documents (Top 10)</th>
+                    </tr>
+                </thead>
+                <tbody>
+    """
+
+    for topic in topic_summary:
+        docs_html = ""
+        for i, doc in enumerate(sorted(topic['documents'], key=lambda x: x['topic_prob'], reverse=True)[:10]):
+            docs_html += f'<div class="doc-item"><span class="doc-name">{doc["doc_name"]}</span> <span class="doc-prob">({doc["topic_prob"]:.2%})</span></div>'
+    
+        if len(topic['documents']) > 10:
+            docs_html += f'<div class="doc-item"><em>... and {len(topic["documents"]) - 10} more documents</em></div>'
+    
+        html_content += f"""
+                    <tr>
+                        <td class="topic-id">Topic {topic['topic_id']}</td>
+                        <td class="keywords">{topic['keywords']}</td>
+                        <td class="doc-count">{topic['doc_count']}</td>
+                        <td class="documents">{docs_html if docs_html else '<em>No documents assigned</em>'}</td>
+                    </tr>
+        """
+
+    html_content += """
+                </tbody>
+            </table>
+        </div>
+    </body>
+    </html>
+    """
+
+    # Save HTML
+    with open(OUTPUT_TABLE_FILENAME, 'w', encoding='utf-8') as f:
+        f.write(html_content)
+
+    print(f"✓ Topics summary table saved to: {Path(OUTPUT_TABLE_FILENAME).resolve()}")
+
+    # ==============================================================================
+    # CREATE KNOWLEDGE GRAPH VISUALIZATION
+    # ==============================================================================
+    print("\n" + "=" * 80)
+    print("Generating Knowledge Graph Visualization")
+    print("=" * 80)
+
+    G = nx.Graph()
+
+    # Add topic nodes
+    for topic_id in range(optimal_k):
+        topic_words = [word for word, _ in final_model.show_topic(topic_id, topn=5)]
+        topic_label = f"Topic {topic_id}: {' '.join(topic_words[:3])}"
+    
+        doc_count = len([d for d in doc_topics if d['topic_id'] == topic_id])
+    
+        G.add_node(
+            f"Topic_{topic_id}",
+            type='topic',
+            size=max(doc_count * 3, 20),
+            title=topic_label,
+            color='#f08080',
+            label=f"T{topic_id}"
+        )
+
+    # Add document nodes and edges
+    for doc_data in doc_topics:
+        doc_name = doc_data['doc_name']
+        topic_id = doc_data['topic_id']
+    
+        G.add_node(
+            doc_name,
+            type='document',
+            size=8,
+            title=doc_name,
+            color='#87ceeb'
+        )
+    
+        G.add_edge(doc_name, f"Topic_{topic_id}", weight=doc_data['topic_prob'])
+
+    # Add top keyword nodes for each topic
+    for topic_id in range(optimal_k):
+        top_words = final_model.show_topic(topic_id, topn=7)
+        for word, score in top_words:
+            # Clean the word for display
+            word_display = word.replace('_', ' ')
+        
+            G.add_node(
+                word,
+                type='keyword',
+                size=max(score * 80, 5),
+                title=f"Keyword: {word_display}",
+                color='#90ee90',
+                label=word_display
+            )
+        
+            G.add_edge(f"Topic_{topic_id}", word, weight=score)
+
+    print(f"✓ Graph created: {G.number_of_nodes()} nodes, {G.number_of_edges()} edges")
+
+    # Create Pyvis visualization
+    nt = Network(notebook=False, height='900px', width='100%', bgcolor='#f5f5f5', 
+                 font_color='#2c3e50', heading='Refined Topic Model Knowledge Graph')
+
+    nt.from_nx(G)
+
+    nt.set_options("""
+    var options = {
+      "nodes": {
+        "font": {
+          "size": 14,
+          "face": "Tahoma"
+        },
+        "borderWidth": 2,
+        "shadow": true
+      },
+      "edges": {
+        "color": {
+          "inherit": true,
+          "opacity": 0.4
+        },
+        "smooth": {
+          "type": "continuous"
+        }
+      },
+      "physics": {
+        "barnesHut": {
+          "gravitationalConstant": -30000,
+          "centralGravity": 0.3,
+          "springLength": 150,
+          "springConstant": 0.04,
+          "damping": 0.09
+        },
+        "maxVelocity": 50,
+        "minVelocity": 0.75,
+        "solver": "barnesHut",
+        "stabilization": {
+          "iterations": 150
+        }
+      }
+    }
+    """)
+
+    # Save visualization
+    html_graph = nt.generate_html()
+    with open(OUTPUT_GRAPH_FILENAME, 'w', encoding='utf-8') as f:
+        f.write(html_graph)
+
+    print(f"✓ Knowledge graph saved to: {Path(OUTPUT_GRAPH_FILENAME).resolve()}")
+
+    # ==============================================================================
+    # FINAL SUMMARY
+    # ==============================================================================
+    print("\n" + "=" * 80)
+    print("✓ REFINED TOPIC MODELING COMPLETE")
+    print("=" * 80)
+    print("\nOutput Files:")
+    print(f"  1. {OUTPUT_TABLE_FILENAME} - Detailed topics summary table")
+    print(f"  2. {OUTPUT_GRAPH_FILENAME} - Interactive knowledge graph")
+    print(f"  3. coherence_plot.png - Coherence scores across topic counts")
+    print(f"  4. {final_model_path} - Final trained model")
+    print(f"  5. {CHECKPOINT_DIR}/ - Individual model checkpoints")
+    print(f"  6. {LOG_FILE} - Execution log")
+    print("\nModel Statistics:")
+    print(f"  • Optimal topics (k): {optimal_k}")
+    print(f"  • Coherence (C_v): {optimal_coherence:.4f}")
+    print(f"  • Final vocabulary: {len(id2word_dictionary)} terms")
+    print(f"  • Documents processed: {len(documents)}")
+    print(f"  • Custom stop words: {len(custom_stop_words)}")
+    print("\n" + "=" * 80)
+
+    logger.info("=" * 80)
+    logger.info("REFINED TOPIC MODELING COMPLETE")
+    logger.info(f"Optimal k: {optimal_k}, Coherence: {optimal_coherence:.4f}")
+    logger.info(f"Output files: {OUTPUT_TABLE_FILENAME}, {OUTPUT_GRAPH_FILENAME}, coherence_plot.png")
+    logger.info(f"Model saved: {final_model_path}")
+    logger.info("=" * 80)
+
