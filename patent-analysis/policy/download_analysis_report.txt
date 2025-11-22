@@ -1,0 +1,126 @@
+================================================================================
+POLICY DOCUMENT DOWNLOAD - COMPREHENSIVE ANALYSIS REPORT
+Generated: 2025-11-21 18:48:11
+================================================================================
+
+================================================================================
+1. OVERALL STATISTICS
+================================================================================
+Total entries processed: 8,575
+
+SUCCESS:  3,408 (39.74%)
+FAILED:   2,554 (29.78%)
+SKIPPED:  2,613 (30.47%)
+
+================================================================================
+2. FILES DOWNLOADED
+================================================================================
+PDF files:  9
+HTML files: 3,399
+TXT files:  0
+TOTAL:      3,408
+
+================================================================================
+3. SUCCESS BREAKDOWN BY CONTENT TYPE
+================================================================================
+text/html; charset=utf-8                            1,981 ( 58.1%)
+text/html;charset=utf-8                             1,160 ( 34.0%)
+text/html                                             254 (  7.5%)
+application/pdf                                         9 (  0.3%)
+text/html; charset=iso-8859-1                           4 (  0.1%)
+
+================================================================================
+4. FAILURE ANALYSIS
+================================================================================
+Total Failures: 2,554
+
+403 Forbidden                   1,946 ( 76.2%)
+404 Not Found                     235 (  9.2%)
+SSL Error                         127 (  5.0%)
+Other Error                       105 (  4.1%)
+Timeout                            99 (  3.9%)
+DNS Resolution Error               31 (  1.2%)
+Connection Error                   11 (  0.4%)
+
+================================================================================
+5. TOP 20 DOMAINS WITH MOST FAILURES
+================================================================================
+www.congress.gov                                      684 failures
+dx.doi.org                                            221 failures
+wedocs.unep.org                                       220 failures
+unesdoc.unesco.org                                    129 failures
+hdl.handle.net                                         69 failures
+apo.org.au                                             66 failures
+publications.gc.ca                                     54 failures
+www.capitol.hawaii.gov                                 37 failures
+crsreports.congress.gov                                37 failures
+purl.fdlp.gov                                          37 failures
+theicct.org                                            30 failures
+www.norden.org                                         28 failures
+www.nrdc.org                                           24 failures
+www.gao.gov                                            20 failures
+www.mass.gov                                           18 failures
+www.publications.parliament.uk                         18 failures
+boardofed.idaho.gov                                    18 failures
+www.weforum.org                                        17 failures
+unece.org                                              17 failures
+repository.unescap.org                                 17 failures
+
+================================================================================
+6. TOP 20 DOMAINS WITH MOST SUCCESSES
+================================================================================
+op.europa.eu                                          792 successes
+openknowledge.fao.org                                 279 successes
+unfccc.int                                            197 successes
+digitallibrary.un.org                                 150 successes
+publications.jrc.ec.europa.eu                         113 successes
+www.gov.uk                                            106 successes
+hdl.handle.net                                         85 successes
+www.iea.org                                            61 successes
+openknowledge.worldbank.org                            56 successes
+www.europarl.europa.eu                                 51 successes
+www.federalregister.gov                                51 successes
+portals.iucn.org                                       49 successes
+purl.fdlp.gov                                          45 successes
+www.osti.gov                                           44 successes
+zenodo.org                                             34 successes
+www.ecologic.eu                                        34 successes
+www.umweltbundesamt.de                                 32 successes
+www.irena.org                                          29 successes
+www.wri.org                                            28 successes
+ieep.eu                                                28 successes
+
+================================================================================
+7. SKIPPED FILES ANALYSIS
+================================================================================
+Total skipped (already downloaded): 2,613
+
+These files were already present from previous download sessions.
+
+================================================================================
+8. DOWNLOAD TIMELINE
+================================================================================
+Start time:  2025-11-21 11:11:08
+End time:    2025-11-21 16:00:57
+Duration:    0 days 04:49:49
+Avg time per entry: 2.03 seconds
+
+================================================================================
+9. SUMMARY & RECOMMENDATIONS
+================================================================================
+
+Key Findings:
+  • Successfully downloaded 3,408 documents (39.7%)
+  • 3,399 HTML pages captured for text analysis
+  • 2,554 attempts failed (29.8%)
+  • Main failure reason: 403 Forbidden (1,946 cases)
+
+Recommendations:
+  1. Most 403 Forbidden errors are likely due to access restrictions
+  2. Consider manual retrieval for high-value failed URLs
+  3. Some domains may require authentication or have usage limits
+  4. Timeout errors may succeed with retry attempts
+
+================================================================================
+END OF REPORT
+================================================================================

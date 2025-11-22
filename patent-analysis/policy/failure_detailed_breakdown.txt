@@ -1,0 +1,1216 @@
+====================================================================================================
+DETAILED FAILURE BREAKDOWN - POLICY DOCUMENT DOWNLOADS
+====================================================================================================
+
+
+====================================================================================================
+403 FORBIDDEN - 1946 CASES
+====================================================================================================
+
+[1] congressionalresearch-5d29df2438d105199d7fe9b10a2758c4
+    URL: https://crsreports.congress.gov/product/pdf/download/R/R42122/R42122.pdf/
+    Error: 403 Client Error: Forbidden for url: https://crsreports.congress.gov/product/pdf/download/R/R42122/R42122.pdf/
+
+[2] nrdc-0267140e8c501bb19de2fe51bc358aaa
+    URL: https://www.nrdc.org/resources/cultivating-clean-energy-promise-algae-biofuels
+    Error: 403 Client Error: Forbidden for url: https://www.nrdc.org/resources/cultivating-clean-energy-promise-algae-biofuels
+
+[3] ukparliament-9977cda792a530bbf0b60b31ca809bc7
+    URL: https://post.parliament.uk/research-briefings/post-pn-384/
+    Error: 403 Client Error: Forbidden for url: https://post.parliament.uk/research-briefings/post-pn-384/
+
+[6] nrdc-0267140e8c501bb19de2fe51bc358aaa
+    URL: https://www.nrdc.org/resources/cultivating-clean-energy-promise-algae-biofuels
+    Error: 403 Client Error: Forbidden for url: https://www.nrdc.org/resources/cultivating-clean-energy-promise-algae-biofuels
+
+[29] committee_house-c81f2d480ccacb2cc8e6cdf36313f29b
+    URL: https://www.congress.gov/event/111th-congress/house-event/LC5644/text
+    Error: 403 Client Error: Forbidden for url: https://www.congress.gov/event/111th-congress/house-event/LC5644/text
+
+[51] gaogov-96533a1c04cff83f4a3129dec16f11c6
+    URL: https://www.gao.gov/products/GAO-10-116
+    Error: 403 Client Error: Forbidden for url: https://www.gao.gov/products/GAO-10-116
+
+[57] oecddiscovery-4989d68b4c0e3ed5ebdf0f364203ad07
+    URL: https://dx.doi.org/10.1787/9789264118461-en
+    Error: 403 Client Error: Forbidden for url: https://www.oecd.org/en/publications/technology-roadmap-biofuels-for-transport_9789264118461-en.html
+
+[63] committee_house-52914e7001e5c8eb6ff3d95b08d90aa7
+    URL: https://www.congress.gov/event/111th-congress/house-event/LC4400/text
+    Error: 403 Client Error: Forbidden for url: https://www.congress.gov/event/111th-congress/house-event/LC4400/text
+
+[65] gaogov-8da4ecb9b321fd1633ec749b2ff36d1f
+    URL: https://www.gao.gov/products/GAO-09-862T
+    Error: 403 Client Error: Forbidden for url: https://www.gao.gov/products/GAO-09-862T
+
+[77] congressionalresearch-b7fb3fc906accd726427dbb6f17d0467
+    URL: https://crsreports.congress.gov/product/pdf/download/R/R42566/R42566.pdf/
+    Error: 403 Client Error: Forbidden for url: https://crsreports.congress.gov/product/pdf/download/R/R42566/R42566.pdf/
+
+[78] icct-0a4f7deaa941952dbd70ae29b83a459c
+    URL: https://theicct.org/publication/eu-energy-council-draft-directive-on-indirect-land-use-change/
+    Error: 403 Client Error: Forbidden for url: https://theicct.org/publication/eu-energy-council-draft-directive-on-indirect-land-use-change/
+
+[82] gpogov-30ea7b0766784ac7d94d0371ec7bcd69
+    URL: https://purl.fdlp.gov/GPO/gpo160118
+    Error: 403 Client Error: Forbidden for url: https://permanent.fdlp.gov/gpo160118/78237.pdf
+
+[84] icct-11f5e184eece98a724c65c70c3528aee
+    URL: https://theicct.org/publication/measuring-and-addressing-investment-risk-in-the-second-generation-biofuels-industry/
+    Error: 403 Client Error: Forbidden for url: https://theicct.org/publication/measuring-and-addressing-investment-risk-in-the-second-generation-biofuels-industry/
+
+[93] congressionalresearch-2f45fb1d5311a7a5ed942959c5030a7a
+    URL: https://crsreports.congress.gov/product/pdf/download/R/R41631/R41631.pdf/
+    Error: 403 Client Error: Forbidden for url: https://crsreports.congress.gov/product/pdf/download/R/R41631/R41631.pdf/
+
+[105] gaogov-cbdf8735f64b26e30f1e444725cee1ea
+    URL: https://www.gao.gov/products/GAO-17-108
+    Error: 403 Client Error: Forbidden for url: https://www.gao.gov/products/GAO-17-108
+
+[113] stateofhawaiigov-efa616ece94a02d87d9e26890d5707b5
+    URL: https://www.capitol.hawaii.gov/session2008/bills/SB1001_.PDF
+    Error: 403 Client Error: Forbidden for url: https://www.capitol.hawaii.gov/session2008/bills/SB1001_.PDF
+
+[118] committee_senate-0d4a21531fe128606a31e784644c7950
+    URL: https://www.congress.gov/event/110th-congress/senate-event/LC9467/text
+    Error: 403 Client Error: Forbidden for url: https://www.congress.gov/event/110th-congress/senate-event/LC9467/text
+
+[122] committee_senate-edac028b37a85bd227503f12228c0237
+    URL: https://www.congress.gov/event/111th-congress/senate-event/LC5645/text?s=1&r=12121
+    Error: 403 Client Error: Forbidden for url: https://www.congress.gov/event/111th-congress/senate-event/LC5645/text?s=1&r=12121
+
+[133] nrdc-f02872bc616f57932daf19c1313a0476
+    URL: https://www.nrdc.org/resources/greener-biofuels-tax-credit-path-better-biofuels
+    Error: 403 Client Error: Forbidden for url: https://www.nrdc.org/resources/greener-biofuels-tax-credit-path-better-biofuels
+
+[135] committee_senate-cc0cca6e9b8a8ef5771e95fc9091b7ab
+    URL: https://www.congress.gov/event/110th-congress/senate-event/LC8953/text
+    Error: 403 Client Error: Forbidden for url: https://www.congress.gov/event/110th-congress/senate-event/LC8953/text
+
+[139] stateofnorthcarolina-fdd128cf57a47fd25b5cd750e01ffa6d
+    URL: https://files.nc.gov/nccommerce/documents/files/GBF-Legislative_Report-FY2010.pdf
+    Error: 403 Client Error: Forbidden for url: https://files.nc.gov/nccommerce/documents/files/GBF-Legislative_Report-FY2010.pdf
+
+[153] ukparliament-420a15f68b27fa525b2f1f566aefcd82
+    URL: https://post.parliament.uk/research-briefings/post-pn-410/
+    Error: 403 Client Error: Forbidden for url: https://post.parliament.uk/research-briefings/post-pn-410/
+
+[165] apo-4171f13dd090a828a19d5327751f5932
+    URL: https://apo.org.au/node/130056
+    Error: 403 Client Error: Forbidden for url: https://apo.org.au/node/130056
+
+[170] committee_senate-711ab880d3affd2fd5af7e3b51b5d244
+    URL: https://www.congress.gov/event/113th-congress/senate-event/LC34441/text?s=1&r=7711
+    Error: 403 Client Error: Forbidden for url: https://www.congress.gov/event/113th-congress/senate-event/LC34441/text?s=1&r=7711
+
+[171] icct-d9cc0b2161651d77a85758298a5d1a65
+    URL: https://theicct.org/publication/leveling-the-playing-field-for-novel-fuel-technologies/
+    Error: 403 Client Error: Forbidden for url: https://theicct.org/publication/leveling-the-playing-field-for-novel-fuel-technologies/
+
+[177] unescap-885d91742d8ea39694514b94f0fe0798
+    URL: https://repository.unescap.org/handle/20.500.12870/4589
+    Error: 403 Client Error: Forbidden for url: https://repository.unescap.org/handle/20.500.12870/4589
+
+[199] congressionalresearch-18e85c85f10b91bda6507f219d1d47bf
+    URL: https://crsreports.congress.gov/product/pdf/download/R/R40529/R40529.pdf/
+    Error: 403 Client Error: Forbidden for url: https://crsreports.congress.gov/product/pdf/download/R/R40529/R40529.pdf/
+
+[201] seise-52212ee22f94109804daf7eea9c6c71e
+    URL: https://www.sei.org/publications/carbon-offsets-aviation/
+    Error: 403 Client Error: Forbidden for url: https://www.sei.org/publications/carbon-offsets-aviation/
+
+[211] bakerinstitute-1e50a5e3ac2ec1cd3dd52c80502a9aa1
+    URL: https://www.bakerinstitute.org/research/evaluating-economic-impacts-renewable-fuel-standards-and-ethanol-quantity-mandate/
+    Error: 403 Client Error: Forbidden for url: https://www.bakerinstitute.org/research/evaluating-economic-impacts-renewable-fuel-standards-and-ethanol-quantity-mandate/
+
+[214] icct-022af2f725759d7304190ee171e7e4d9
+    URL: https://theicct.org/publication/projected-availability-of-fats-oils-and-greases-in-the-u-s/
+    Error: 403 Client Error: Forbidden for url: https://theicct.org/publication/projected-availability-of-fats-oils-and-greases-in-the-u-s/
+
+[224] congressionalresearch-52351a841164bded9b50b77bc810a7c2
+    URL: https://crsreports.congress.gov/product/pdf/download/R/R41282/R41282.pdf/
+    Error: 403 Client Error: Forbidden for url: https://crsreports.congress.gov/product/pdf/download/R/R41282/R41282.pdf/
+
+[243] icct-6cefc8c58f2b320024212e633dfd7f5f
+    URL: https://theicct.org/publication/u-s-epa-renewable-fuel-standard-2/
+    Error: 403 Client Error: Forbidden for url: https://theicct.org/publication/u-s-epa-renewable-fuel-standard-2/
+
+[246] stateofnorthcarolina-b1372c360294186919eb82fa4b719341
+    URL: https://files.nc.gov/nccommerce/documents/files/GBF-Legislative_Report-FY2009.pdf
+    Error: 403 Client Error: Forbidden for url: https://files.nc.gov/nccommerce/documents/files/GBF-Legislative_Report-FY2009.pdf
+
+[253] committee_house-ee84b75c7d3dcbffb894e870ed18f6a3
+    URL: https://www.congress.gov/event/115th-congress/house-event/108464
+    Error: 403 Client Error: Forbidden for url: https://www.congress.gov/event/115th-congress/house-event/108464
+
+[258] bakerinstitute-542a947c7729242ea4f896a5f569bfae
+    URL: https://www.bakerinstitute.org/research/baker-institute-policy-report-43-fundamentals-of-a-sustainable-us-biofuels-policy/
+    Error: 403 Client Error: Forbidden for url: https://www.bakerinstitute.org/research/baker-institute-policy-report-43-fundamentals-of-a-sustainable-us-biofuels-policy/
+
+[259] icct-afb1cb6759398983ff40382c20c000c7
+    URL: https://theicct.org/publication/proposed-amendments-to-eu-fuel-quality-and-renewable-energy-directives/
+    Error: 403 Client Error: Forbidden for url: https://theicct.org/publication/proposed-amendments-to-eu-fuel-quality-and-renewable-energy-directives/
+
+[263] stateofhawaiigov-20853d935e9ece2f2c0a58b990bcdffe
+    URL: https://www.capitol.hawaii.gov/session2009/testimony/SB512_TESTIMONY_WAM_03-02-09_LATE.pdf
+    Error: 403 Client Error: Forbidden for url: https://www.capitol.hawaii.gov/session2009/testimony/SB512_TESTIMONY_WAM_03-02-09_LATE.pdf
+
+[270] committee_house-0989c4a037e99869e61395b1d9d00906
+    URL: https://www.congress.gov/congressional-report/110th-congress/house-report/302/1
+    Error: 403 Client Error: Forbidden for url: https://www.congress.gov/congressional-report/110th-congress/house-report/302/1
+
+[274] ukparliament-ec39b6afe61ccbd42f7fb3809eaacd31
+    URL: https://commonslibrary.parliament.uk/research-briefings/sn03691/
+    Error: 403 Client Error: Forbidden for url: https://commonslibrary.parliament.uk/research-briefings/sn03691/
+
+[275] unenvironment-0143702ce6487a2e29c4cd726a998475
+    URL: https://wedocs.unep.org/20.500.11822/32160
+    Error: 403 Client Error: Forbidden for url: https://wedocs.unep.org/20.500.11822/32160
+
+[278] oakinstitute-36cb242c997a60ce719e83e5e12b5060
+    URL: http://media.oaklandinstitute.org/eco-skies
+    Error: 403 Client Error: Forbidden for url: https://www.oaklandinstitute.org/eco-skies
+
+[279] ukparliament_select-8c07986dd0d0f6beb7ff76c06a50a418
+    URL: https://www.parliament.uk/documents/commons-committees/energy-and-climate-change/Correspondence/REA-to-Chair-heat-transport.pdf
+    Error: 403 Client Error: Forbidden for url: https://www.parliament.uk/documents/commons-committees/energy-and-climate-change/Correspondence/REA-to-Chair-heat-transport.pdf
+
+[282] gpogov-ec0975503939765528485f7ee98e2b4e
+    URL: https://purl.fdlp.gov/GPO/gpo159642
+    Error: 403 Client Error: Forbidden for url: https://permanent.fdlp.gov/gpo159642/79931.pdf
+
+[283] weforum-78bc72c95823a334d99a78c1dc75201a
+    URL: https://www.weforum.org/reports/policies-and-collaborative-partnership-sustainable-aviation
+    Error: 403 Client Error: Forbidden for url: https://www.weforum.org/reports/policies-and-collaborative-partnership-sustainable-aviation
+
+[288] oecddiscovery-582e615b58bebf9973800917a656116d
+    URL: https://dx.doi.org/10.1787/9789264194243-en
+    Error: 403 Client Error: Forbidden for url: https://www.oecd.org/en/publications/marine-biotechnology_9789264194243-en.html
+
+[289] unenvironment-9c5339ac674724a19454c864da7c0cdc
+    URL: https://wedocs.unep.org/20.500.11822/16943
+    Error: 403 Client Error: Forbidden for url: https://wedocs.unep.org/20.500.11822/16943
+
+[294] ecofiscal-6d7f13d0d5bae27b05c7aeacee4a11f9
+    URL: https://ecofiscal.ca/2015/09/30/should-we-take-a-closer-look-at-biofuels-subsidies/
+    Error: 403 Client Error: Forbidden for url: https://ecofiscal.ca/2015/09/30/should-we-take-a-closer-look-at-biofuels-subsidies/
+
+[296] committee_senate-a78448fcac6f746bef718bccada8b8db
+    URL: https://www.congress.gov/event/111th-congress/senate-event/LC4863/text?s=1&r=9733
+    Error: 403 Client Error: Forbidden for url: https://www.congress.gov/event/111th-congress/senate-event/LC4863/text?s=1&r=9733
+
+[299] ecofiscal-fce5a6727a2fdac1edd3d4968be91747
+    URL: https://ecofiscal.ca/2016/01/21/challenges-biofuel-policy-canada/
+    Error: 403 Client Error: Forbidden for url: https://ecofiscal.ca/2016/01/21/challenges-biofuel-policy-canada/
+
+[300] committee_house-9b9f96019458ca4e8c41932e0b3fd744
+    URL: https://www.congress.gov/event/110th-congress/house-event/LC9931/text
+    Error: 403 Client Error: Forbidden for url: https://www.congress.gov/event/110th-congress/house-event/LC9931/text
+
+    ... and 1896 more cases
+
+
+====================================================================================================
+TIMEOUT - 99 CASES
+====================================================================================================
+
+[19] governmentofargentina-235aebbd29f860bc4fb7422c1a0c169e
+    URL: http://www.bioeconomia.mincyt.gob.ar/presentaciones/Simposio_Bioeconomia_2013_11_Gressel.pdf
+    Error: HTTPConnectionPool(host='www.bioeconomia.mincyt.gob.ar', port=80): Max retries exceeded with url: /presentaciones/Simposio_Bioeconomia_2013_11_Gressel.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000023439CB1D00>, 'Connection to www.bioeconomia.mincyt.gob.ar timed out. (connect timeout=15)'))
+
+[43] stateofhawaiigov-2f66149432dfd0c99895ed81512aa3c2
+    URL: https://www.energy.hawaii.gov/wp-content/uploads/2011/10/BiofuelsStudy_Act203_Dec2012.pdf
+    Error: HTTPSConnectionPool(host='www.energy.hawaii.gov', port=443): Max retries exceeded with url: /wp-content/uploads/2011/10/BiofuelsStudy_Act203_Dec2012.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000023439CB3950>, 'Connection to www.energy.hawaii.gov timed out. (connect timeout=15)'))
+
+[48] stateofhawaiigov-4a4d4f499a4ad1feb3bbeabcb57a0a7b
+    URL: https://www.energy.hawaii.gov/wp-content/uploads/2011/10/Hawaii-Biofuels-Assessment-Report.pdf
+    Error: HTTPSConnectionPool(host='www.energy.hawaii.gov', port=443): Max retries exceeded with url: /wp-content/uploads/2011/10/Hawaii-Biofuels-Assessment-Report.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000002343A4690D0>, 'Connection to www.energy.hawaii.gov timed out. (connect timeout=15)'))
+
+[53] stateofidaho-7fb28f3ef5dff3433673d2fac83496bb
+    URL: https://boardofed.idaho.gov/wp-content/uploads/2022/07/BSU-Passero_Feris_Incubation_Fund_-FY2017.pdf
+    Error: HTTPSConnectionPool(host='boardofed.idaho.gov', port=443): Max retries exceeded with url: /wp-content/uploads/2022/07/BSU-Passero_Feris_Incubation_Fund_-FY2017.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000002343A469070>, 'Connection to boardofed.idaho.gov timed out. (connect timeout=15)'))
+
+[70] stateofidaho-a6fe7403d6b4f3602f0e39af855eb0cb
+    URL: https://boardofed.idaho.gov/wp-content/uploads/2022/07/IF-18-001-BSU.pdf
+    Error: HTTPSConnectionPool(host='boardofed.idaho.gov', port=443): Max retries exceeded with url: /wp-content/uploads/2022/07/IF-18-001-BSU.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000023439CB3350>, 'Connection to boardofed.idaho.gov timed out. (connect timeout=15)'))
+
+[104] worldwatch-683ba652385cdd6b02c20301c79d2662
+    URL: http://www.worldwatch.org/bookstore/publication/worldwatch-report-180-red-white-and-green-transforming-us-biofuels
+    Error: HTTPConnectionPool(host='www.worldwatch.org', port=80): Max retries exceeded with url: /bookstore/publication/worldwatch-report-180-red-white-and-green-transforming-us-biofuels (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000002343A46B140>, 'Connection to www.worldwatch.org timed out. (connect timeout=15)'))
+
+[117] illinoisgov-888c337df17adbedac6ede2fb531c4d4
+    URL: https://www2.illinois.gov/ides/xxlmi/ILMR/Energy.pdf
+    Error: HTTPSConnectionPool(host='www2.illinois.gov', port=443): Read timed out. (read timeout=15)
+
+[181] governmentofindonesia-9c54416b092f8e81f3042a30d416f198
+    URL: http://kebudayaan.kemdikbud.go.id/muspres/wp-content/uploads/sites/38/2019/08/pemikiran-kemaritiman-gusdur-Prof.-Dr-Rokhmin-Dahuri.pdf
+    Error: HTTPConnectionPool(host='kebudayaan.kemdikbud.go.id', port=80): Max retries exceeded with url: /muspres/wp-content/uploads/sites/38/2019/08/pemikiran-kemaritiman-gusdur-Prof.-Dr-Rokhmin-Dahuri.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000023439CB2CF0>, 'Connection to kebudayaan.kemdikbud.go.id timed out. (connect timeout=15)'))
+
+[571] stateofidaho-7c057e041b3a8d8473e64b42a2968d6b
+    URL: https://boardofed.idaho.gov/wp-content/uploads/2022/07/FY21-IGEM19-001_Humes_Progress-Report-1-1-2021.pdf
+    Error: HTTPSConnectionPool(host='boardofed.idaho.gov', port=443): Max retries exceeded with url: /wp-content/uploads/2022/07/FY21-IGEM19-001_Humes_Progress-Report-1-1-2021.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000023439CB31D0>, 'Connection to boardofed.idaho.gov timed out. (connect timeout=15)'))
+
+[648] stateofidaho-b8b758dd05338104a603dc3296428c38
+    URL: https://boardofed.idaho.gov/wp-content/uploads/2022/07/FY20-HERC_IGEM_-Annual-Report_June30_2020_Humes_with_Appendices.pdf
+    Error: HTTPSConnectionPool(host='boardofed.idaho.gov', port=443): Max retries exceeded with url: /wp-content/uploads/2022/07/FY20-HERC_IGEM_-Annual-Report_June30_2020_Humes_with_Appendices.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000002343A447CE0>, 'Connection to boardofed.idaho.gov timed out. (connect timeout=15)'))
+
+[664] governmentofargentina-217467ecacff7f8a5105bfc91114a1ae
+    URL: http://www.bioeconomia.mincyt.gob.ar/wp-content/uploads/2017/09/Nordic-Bioeconomy.pdf
+    Error: HTTPConnectionPool(host='www.bioeconomia.mincyt.gob.ar', port=80): Max retries exceeded with url: /wp-content/uploads/2017/09/Nordic-Bioeconomy.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000002343A46AB40>, 'Connection to www.bioeconomia.mincyt.gob.ar timed out. (connect timeout=15)'))
+
+[707] stateofidaho-961dc3225861b3379d9a75d2d21ca2a3
+    URL: https://boardofed.idaho.gov/wp-content/uploads/2022/07/FY19-IGEM-19-001-Annual-Report.pdf
+    Error: HTTPSConnectionPool(host='boardofed.idaho.gov', port=443): Max retries exceeded with url: /wp-content/uploads/2022/07/FY19-IGEM-19-001-Annual-Report.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000023437CC62D0>, 'Connection to boardofed.idaho.gov timed out. (connect timeout=15)'))
+
+[740] govdeptsjapan-3cf5467b73a48ef335fa555fdf7cc8a7
+    URL: https://www.meti.go.jp/committee/kenkyukai/energy_environment/biojet/pdf/001_02_00.pdf
+    Error: HTTPSConnectionPool(host='www.meti.go.jp', port=443): Read timed out. (read timeout=15)
+
+[796] stateofhawaiigov-873e608b8be8a4ab5fcd2105cc0d0d5b
+    URL: https://www.energy.hawaii.gov/wp-content/uploads/2014/11/HSEO_FF_Nov2014.pdf
+    Error: HTTPSConnectionPool(host='www.energy.hawaii.gov', port=443): Max retries exceeded with url: /wp-content/uploads/2014/11/HSEO_FF_Nov2014.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000002343A444290>, 'Connection to www.energy.hawaii.gov timed out. (connect timeout=15)'))
+
+[829] stateofvirginia-b2a62102b225c14bd50446d6ac9f50b6
+    URL: https://dmme.virginia.gov/DE/LinkDocuments/2014_VirginiaEnergyPlan/17Section11AlternativeFuelsandAdvancedVehicleTechnology.pdf
+    Error: HTTPSConnectionPool(host='dmme.virginia.gov', port=443): Max retries exceeded with url: /DE/LinkDocuments/2014_VirginiaEnergyPlan/17Section11AlternativeFuelsandAdvancedVehicleTechnology.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000023439AEA990>, 'Connection to dmme.virginia.gov timed out. (connect timeout=15)'))
+
+[947] govdeptsjapan-5e062c6af9aa5521720931948f7bad3e
+    URL: https://www.meti.go.jp/english/publications/pdf/journal2017_01a.pdf
+    Error: HTTPSConnectionPool(host='www.meti.go.jp', port=443): Read timed out. (read timeout=15)
+
+[973] stateofidaho-b5a6c589ce1690b30f65d51e474d9d6d
+    URL: https://boardofed.idaho.gov/wp-content/uploads/2022/07/FY20-Progress-Report-IGEM-19-001-UI-Humes.pdf
+    Error: HTTPSConnectionPool(host='boardofed.idaho.gov', port=443): Max retries exceeded with url: /wp-content/uploads/2022/07/FY20-Progress-Report-IGEM-19-001-UI-Humes.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000002343A469D60>, 'Connection to boardofed.idaho.gov timed out. (connect timeout=15)'))
+
+[989] governmentofargentina-ded4b22ac64292cf6d67142d06f53cf4
+    URL: http://www.bioeconomia.mincyt.gob.ar/wp-content/uploads/2014/12/3-Desarrollo-de-Combustibles-Celul%C3%B3sicos-Susan-Jenkins.pdf
+    Error: HTTPConnectionPool(host='www.bioeconomia.mincyt.gob.ar', port=80): Max retries exceeded with url: /wp-content/uploads/2014/12/3-Desarrollo-de-Combustibles-Celul%C3%B3sicos-Susan-Jenkins.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000002343A4456D0>, 'Connection to www.bioeconomia.mincyt.gob.ar timed out. (connect timeout=15)'))
+
+[1092] stateofidaho-48e4e8ccd1e188a4a4e846a3ed10c463
+    URL: https://boardofed.idaho.gov/wp-content/uploads/2022/07/FY21-IGEM-19-0001-FINAL-REPORT.pdf
+    Error: HTTPSConnectionPool(host='boardofed.idaho.gov', port=443): Max retries exceeded with url: /wp-content/uploads/2022/07/FY21-IGEM-19-0001-FINAL-REPORT.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000002343A46B2F0>, 'Connection to boardofed.idaho.gov timed out. (connect timeout=15)'))
+
+[1100] governmentoflebanon-10eee9de1626d1aee4bfd917f5d7ad6b
+    URL: http://climatechange.moe.gov.lb/viewfile.aspx?id=56
+    Error: HTTPConnectionPool(host='climatechange.moe.gov.lb', port=80): Max retries exceeded with url: /viewfile.aspx?id=56 (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000002343A446900>, 'Connection to climatechange.moe.gov.lb timed out. (connect timeout=15)'))
+
+[1353] governmentofpoland-4afe5f95fdee0434d195bcb1349e72d7
+    URL: https://ochronaprzyrody.gdos.gov.pl/files/artykuly/5477/Biofuel.pdf
+    Error: HTTPSConnectionPool(host='ochronaprzyrody.gdos.gov.pl', port=443): Max retries exceeded with url: /files/artykuly/5477/Biofuel.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000002343A4698B0>, 'Connection to ochronaprzyrody.gdos.gov.pl timed out. (connect timeout=15)'))
+
+[1381] stateofidaho-db9e62fc65cd29d7696874217da2b3e0
+    URL: https://oemr.idaho.gov/wp-content/uploads/ISEA-Alternative-Fuels-Task-Force-Report_FINAL.pdf
+    Error: HTTPSConnectionPool(host='oemr.idaho.gov', port=443): Max retries exceeded with url: /wp-content/uploads/ISEA-Alternative-Fuels-Task-Force-Report_FINAL.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000002343A4441A0>, 'Connection to oemr.idaho.gov timed out. (connect timeout=15)'))
+
+[1690] governmentofoman-8b10e189a7e7d55f683fbf96dddbc645
+    URL: https://ict.moe.gov.om/book/PDF/12/cls12_cb_12A/files/downloads/cls12_cb_12A.pdf
+    Error: HTTPSConnectionPool(host='ict.moe.gov.om', port=443): Max retries exceeded with url: /book/PDF/12/cls12_cb_12A/files/downloads/cls12_cb_12A.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000002343A4443E0>, 'Connection to ict.moe.gov.om timed out. (connect timeout=15)'))
+
+[1807] governmentofargentina-24f64c4b4d8c181c6ba55486b42a20ca
+    URL: http://www.bioeconomia.mincyt.gob.ar/wp-content/uploads/2014/12/Towards-a-Latin-American-and-Caribbean-1.pdf
+    Error: HTTPConnectionPool(host='www.bioeconomia.mincyt.gob.ar', port=80): Max retries exceeded with url: /wp-content/uploads/2014/12/Towards-a-Latin-American-and-Caribbean-1.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000002343A474710>, 'Connection to www.bioeconomia.mincyt.gob.ar timed out. (connect timeout=15)'))
+
+[1943] stateofvirginia-da6b8bd829ee76a2643be534c947d8ee
+    URL: https://dmme.virginia.gov/DE/LinkDocuments/2014_VirginiaEnergyPlan/14Section8EnergyInfrastructure.pdf
+    Error: HTTPSConnectionPool(host='dmme.virginia.gov', port=443): Max retries exceeded with url: /DE/LinkDocuments/2014_VirginiaEnergyPlan/14Section8EnergyInfrastructure.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000023439CB2C60>, 'Connection to dmme.virginia.gov timed out. (connect timeout=15)'))
+
+[2005] stateofidaho-a2f722577b7f5915fd3f31473c985210
+    URL: https://boardofed.idaho.gov/wp-content/uploads/2022/07/HERC_He_final.pdf
+    Error: HTTPSConnectionPool(host='boardofed.idaho.gov', port=443): Max retries exceeded with url: /wp-content/uploads/2022/07/HERC_He_final.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000023439CB3530>, 'Connection to boardofed.idaho.gov timed out. (connect timeout=15)'))
+
+[2250] governmentofargentina-5b4948cc6de64b74ad8af44e093b4b40
+    URL: http://www.bioeconomia.mincyt.gob.ar/wp-content/uploads/2017/06/bioeconomy_development_in_eu_regions.pdf
+    Error: HTTPConnectionPool(host='www.bioeconomia.mincyt.gob.ar', port=80): Max retries exceeded with url: /wp-content/uploads/2017/06/bioeconomy_development_in_eu_regions.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000023439CB3890>, 'Connection to www.bioeconomia.mincyt.gob.ar timed out. (connect timeout=15)'))
+
+[2408] stateofsouthcarolina-498688ee417066874ac5feb8c585c1b3
+    URL: https://www.energy.sc.gov/files/BiomassConspectus8-5-08.pdf
+    Error: HTTPSConnectionPool(host='www.energy.sc.gov', port=443): Max retries exceeded with url: /files/BiomassConspectus8-5-08.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000023439CB2570>, 'Connection to www.energy.sc.gov timed out. (connect timeout=15)'))
+
+[2430] governmentofethiopia-17b0cf6c314c4de668929833c512ca1f
+    URL: https://elearn.moe.gov.et/storage/biology/text%20book/Grade%207%20&%208/Grade%208/Grade%208_Student%20text%20Book.pdf
+    Error: HTTPSConnectionPool(host='elearn.moe.gov.et', port=443): Max retries exceeded with url: /storage/biology/text%20book/Grade%207%20&%208/Grade%208/Grade%208_Student%20text%20Book.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000023439AEA8D0>, 'Connection to elearn.moe.gov.et timed out. (connect timeout=15)'))
+
+[2460] govdeptsbrazil-de37e61b9391b9309dcc4c5abb673d58
+    URL: http://diretoriopre.mma.gov.br/index.php/category/127-bird-ndc-001-apoio-a-estrategia-de-implementacao-da-ndc?download=925:relatorio-historias-do-dialogo-talanoa-brasil
+    Error: HTTPConnectionPool(host='diretoriopre.mma.gov.br', port=80): Max retries exceeded with url: /index.php/category/127-bird-ndc-001-apoio-a-estrategia-de-implementacao-da-ndc?download=925:relatorio-historias-do-dialogo-talanoa-brasil (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000023439CB2630>, 'Connection to diretoriopre.mma.gov.br timed out. (connect timeout=15)'))
+
+[2467] stateofidaho-b72c6617f234f39bb76dd98a31f3e172
+    URL: https://legislature.idaho.gov/wp-content/uploads/sessioninfo/2016/interim/adminrules/0206021601G8.pdf
+    Error: HTTPSConnectionPool(host='legislature.idaho.gov', port=443): Max retries exceeded with url: /wp-content/uploads/sessioninfo/2016/interim/adminrules/0206021601G8.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000002343980BFB0>, 'Connection to legislature.idaho.gov timed out. (connect timeout=15)'))
+
+[2481] eesceu-8dfaf0dc71b1acaa1af00077951d309d
+    URL: https://webapi2016.eesc.europa.eu/v1/documents/swd418-2016_part1_ext_en.docx/pdf
+    Error: HTTPSConnectionPool(host='webapi2016.eesc.europa.eu', port=443): Read timed out. (read timeout=15)
+
+[2484] stateofvirginia-0371f4eb942ef83a0abcc0dbaa93fd39
+    URL: https://www.dmme.virginia.gov/DE/LinkDocuments/2014_VirginiaEnergyPlan/VEP2014.pdf
+    Error: HTTPSConnectionPool(host='www.dmme.virginia.gov', port=443): Max retries exceeded with url: /DE/LinkDocuments/2014_VirginiaEnergyPlan/VEP2014.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000002343A445DC0>, 'Connection to www.dmme.virginia.gov timed out. (connect timeout=15)'))
+
+[2491] stateofidaho-a187d033c9dc460e263c054d70675384
+    URL: https://legislature.idaho.gov/wp-content/uploads/sessioninfo/2016/interim/adminrules/0206121601G8.pdf
+    Error: HTTPSConnectionPool(host='legislature.idaho.gov', port=443): Max retries exceeded with url: /wp-content/uploads/sessioninfo/2016/interim/adminrules/0206121601G8.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000023439CB3A70>, 'Connection to legislature.idaho.gov timed out. (connect timeout=15)'))
+
+[2492] stateofidaho-086a0772224ac2cca1fefc83906ea5de
+    URL: https://legislature.idaho.gov/wp-content/uploads/sessioninfo/2016/interim/adminrules/0206411601G8.pdf
+    Error: HTTPSConnectionPool(host='legislature.idaho.gov', port=443): Max retries exceeded with url: /wp-content/uploads/sessioninfo/2016/interim/adminrules/0206411601G8.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000023439AEAB40>, 'Connection to legislature.idaho.gov timed out. (connect timeout=15)'))
+
+[2560] governmentofpoland-5ac4cd5cbba4c39282caec98c1408eed
+    URL: https://sdr.gdos.gov.pl/Documents/Wizyty/Belgia%20i%20Holandia/Inwestowanie%20w%20zr%C3%B3wnowa%C5%BCony%20wzrost.pdf
+    Error: HTTPSConnectionPool(host='sdr.gdos.gov.pl', port=443): Max retries exceeded with url: /Documents/Wizyty/Belgia%20i%20Holandia/Inwestowanie%20w%20zr%C3%B3wnowa%C5%BCony%20wzrost.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000023439CB25A0>, 'Connection to sdr.gdos.gov.pl timed out. (connect timeout=15)'))
+
+[2622] provinceofmanitoba-c84878242e776f739761d8fda0f05c59
+    URL: https://uatweb22.gov.mb.ca/asset_library/en/documents/fedprovrelations/northamerica/mga_platform_agreement_2007.pdf
+    Error: HTTPSConnectionPool(host='uatweb22.gov.mb.ca', port=443): Max retries exceeded with url: /asset_library/en/documents/fedprovrelations/northamerica/mga_platform_agreement_2007.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000023439ABED80>, 'Connection to uatweb22.gov.mb.ca timed out. (connect timeout=15)'))
+
+[2824] stateofidaho-a2fbfa86a65cbe2599438d7574219dbc
+    URL: https://boardofed.idaho.gov/meetings/board/archive/2021/061621/03IRSA.pdf
+    Error: HTTPSConnectionPool(host='boardofed.idaho.gov', port=443): Max retries exceeded with url: /meetings/board/archive/2021/061621/03IRSA.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000023439930BC0>, 'Connection to boardofed.idaho.gov timed out. (connect timeout=15)'))
+
+[3180] governmentofethiopia-1e82f7dbc4ccae5944d154726f53da35
+    URL: https://elearn.moe.gov.et/storage/Text%20book%20new/Biology/7.%20Biology%20Grade%209%20Students%20TexrBoook%20Final%20version.pdf
+    Error: HTTPSConnectionPool(host='elearn.moe.gov.et', port=443): Max retries exceeded with url: /storage/Text%20book%20new/Biology/7.%20Biology%20Grade%209%20Students%20TexrBoook%20Final%20version.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000002343A446660>, 'Connection to elearn.moe.gov.et timed out. (connect timeout=15)'))
+
+[3279] stateofidaho-fcee11d70c6e8c19f7742d41d16437c7
+    URL: https://oemr.idaho.gov/wp-content/uploads/2024-Idaho-Energy-Landscape.pdf
+    Error: HTTPSConnectionPool(host='oemr.idaho.gov', port=443): Max retries exceeded with url: /wp-content/uploads/2024-Idaho-Energy-Landscape.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000002343A444620>, 'Connection to oemr.idaho.gov timed out. (connect timeout=15)'))
+
+[3401] worldwatch-f573d8cec9017b213aad2631263e0b47
+    URL: http://www.worldwatch.org/bookstore/publication/worldwatch-report-176-farming-fish-future
+    Error: HTTPConnectionPool(host='www.worldwatch.org', port=80): Max retries exceeded with url: /bookstore/publication/worldwatch-report-176-farming-fish-future (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000023439CB2EA0>, 'Connection to www.worldwatch.org timed out. (connect timeout=15)'))
+
+[3429] mckinsey-7185fb2b5fc5b1d0bb4ebecec0489f63
+    URL: https://www.mckinsey.com/industries/life-sciences/our-insights/the-bio-revolution-innovations-transforming-economies-societies-and-our-lives
+    Error: HTTPSConnectionPool(host='www.mckinsey.com', port=443): Read timed out. (read timeout=15)
+
+[3437] stateofidaho-18b6cc0542630239b9b9b0c2680a7f6d
+    URL: https://gis.idaho.gov/wp-content/uploads/2020/09/FGDC_NatVegClass_200802.pdf
+    Error: HTTPSConnectionPool(host='gis.idaho.gov', port=443): Max retries exceeded with url: /wp-content/uploads/2020/09/FGDC_NatVegClass_200802.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000002343A46A990>, 'Connection to gis.idaho.gov timed out. (connect timeout=15)'))
+
+[3507] stateofwisconsin-a95821ff61b1410ae2db473e27a47bff
+    URL: http://legis.wisconsin.gov/lc/committees/study/2010/nano/files/WTC_still_presentation.pdf
+    Error: HTTPConnectionPool(host='legis.wisconsin.gov', port=80): Max retries exceeded with url: /lc/committees/study/2010/nano/files/WTC_still_presentation.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000002343A447C50>, 'Connection to legis.wisconsin.gov timed out. (connect timeout=15)'))
+
+[3732] stateofidaho-15546afe02edbb2b7f43561084fe5a73
+    URL: https://boardofed.idaho.gov/wp-content/uploads/2022/08/FY19-HERC-Undergraduate-Research-Funding-UI.pdf
+    Error: HTTPSConnectionPool(host='boardofed.idaho.gov', port=443): Max retries exceeded with url: /wp-content/uploads/2022/08/FY19-HERC-Undergraduate-Research-Funding-UI.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000002343A4451C0>, 'Connection to boardofed.idaho.gov timed out. (connect timeout=15)'))
+
+[3851] govdeptsbrazil-d2bd440b53a663c6e297bb762101e138
+    URL: http://diretoriopre.mma.gov.br/index.php/category/127-bird-ndc-001-apoio-a-estrategia-de-implementacao-da-ndc?download=929:relatorio-atividades-de-apoio
+    Error: HTTPConnectionPool(host='diretoriopre.mma.gov.br', port=80): Max retries exceeded with url: /index.php/category/127-bird-ndc-001-apoio-a-estrategia-de-implementacao-da-ndc?download=929:relatorio-atividades-de-apoio (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000002343A469C10>, 'Connection to diretoriopre.mma.gov.br timed out. (connect timeout=15)'))
+
+[3949] governmentofnamibia-94677a22375fbdf7e7492fe833557dfd
+    URL: http://eia.met.gov.na/screening/1409_kelp_blue_eiareport_31aug20_final_to_meft_and_mfmr_f.pdf
+    Error: HTTPConnectionPool(host='eia.met.gov.na', port=80): Max retries exceeded with url: /screening/1409_kelp_blue_eiareport_31aug20_final_to_meft_and_mfmr_f.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000002343A446F90>, 'Connection to eia.met.gov.na timed out. (connect timeout=15)'))
+
+[4590] ieep-276d75967a05bf3052970233e9a06659
+    URL: https://ieep.eu/publications/reflecting-environmental-land-use-needs-into-eu-policy-preserving-and-enhancing-the-environmental--904
+    Error: HTTPSConnectionPool(host='ieep.eu', port=443): Read timed out. (read timeout=15)
+
+[4616] stateofidaho-54dd18af1dd023d8824436d7ba7709e8
+    URL: https://boardofed.idaho.gov/meetings/board/archive/2021/061621/AgendaAll.pdf
+    Error: HTTPSConnectionPool(host='boardofed.idaho.gov', port=443): Max retries exceeded with url: /meetings/board/archive/2021/061621/AgendaAll.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000023439569160>, 'Connection to boardofed.idaho.gov timed out. (connect timeout=15)'))
+
+[4623] mckinsey-4148ff7ebf89e85c22c7f78474e011b4
+    URL: https://www.mckinsey.com/business-functions/sustainability/our-insights/resource-revolution
+    Error: HTTPSConnectionPool(host='www.mckinsey.com', port=443): Read timed out. (read timeout=15)
+
+    ... and 49 more cases
+
+
+====================================================================================================
+404 NOTFOUND - 235 CASES
+====================================================================================================
+
+[71] worldenergycouncil-74261960cecc9478b793d12ca7037080
+    URL: https://www.worldenergy.org/publications/2010/biofuels-policies-standards-and-technologies
+    Error: 404 Client Error: Not Found for url: https://www.worldenergy.org/publications/2010/biofuels-policies-standards-and-technologies
+
+[138] worldenergycouncil-74261960cecc9478b793d12ca7037080
+    URL: https://www.worldenergy.org/publications/2010/biofuels-policies-standards-and-technologies
+    Error: 404 Client Error: Not Found for url: https://www.worldenergy.org/publications/2010/biofuels-policies-standards-and-technologies
+
+[142] nycgov-eeb8cd41c19e01c9b7e6a8e61b59e746
+    URL: https://www1.nyc.gov/html/dep/pdf/jamaica_bay/JBWPP_Update_100110_FINAL.pdf
+    Error: 404 Client Error: Not Found for url: https://www.nyc.gov:443/html/dep/pdf/jamaica_bay/JBWPP_Update_100110_FINAL.pdf
+
+[180] technopolis-c16a50ce805d4ee764e8387feb334beb
+    URL: http://www.technopolis-group.com/report/microalgae-based-products-food-feed-sector-outlook-europe/
+    Error: 404 Client Error: Not Found for url: https://technopolis-group.com/report/microalgae-based-products-food-feed-sector-outlook-europe/
+
+[188] nycgov-3169e268ebc37d581563bb212b89378b
+    URL: http://www.nyc.gov/html/dep/pdf/jamaica_bay/jbwpp_update_10012014.pdf
+    Error: 404 Client Error: Not Found for url: https://www.nyc.gov/html/dep/pdf/jamaica_bay/jbwpp_update_10012014.pdf
+
+[250] nycgov-c06d188282015c168245b7835f6cf114
+    URL: http://www.nyc.gov/html/dep/pdf/jamaica_bay/JBWPP_Update_100112_FINAL.pdf
+    Error: 404 Client Error: Not Found for url: https://www.nyc.gov/html/dep/pdf/jamaica_bay/JBWPP_Update_100112_FINAL.pdf
+
+[292] worldenergycouncil-74261960cecc9478b793d12ca7037080
+    URL: https://www.worldenergy.org/publications/2010/biofuels-policies-standards-and-technologies
+    Error: 404 Client Error: Not Found for url: https://www.worldenergy.org/publications/2010/biofuels-policies-standards-and-technologies
+
+[367] stateofwashington-984c4f409fe003cf3ea0dca46a200e5c
+    URL: https://www.dnr.wa.gov/Publications/em_forestbiomass_pilot_project_list_of_proposers.pdf
+    Error: 404 Client Error: Not Found for url: https://dnr.wa.gov/sites/default/files/publications/em_forestbiomass_pilot_project_list_of_proposers.pdf
+
+[413] stateofhawaiigov-08c322ba1dc30b6d3ffa159a48264996
+    URL: https://energy.hawaii.gov/wp-content/uploads/2022/05/Life_of_Land.pdf
+    Error: 404 Client Error: Not Found for url: https://energy.hawaii.gov/wp-content/uploads/2022/05/Life_of_Land.pdf
+
+[416] govdeptsjapan-37ab9504eef4dbe049d4c4de6e1e079d
+    URL: https://www.mlit.go.jp/kokusai/MEET/documents/scripts/S1-US.pdf
+    Error: 404 Client Error: Not Found for url: https://www.mlit.go.jp/kokusai/MEET/documents/scripts/S1-US.pdf
+
+[418] epagov-4f69c61ad08306368bc4112d3897feb7
+    URL: https://www3.epa.gov/ttnchie1/conference/ei20/session3/hochman.pdf
+    Error: 404 Client Error: Not Found for url: https://www3.epa.gov/ttnchie1/conference/ei20/session3/hochman.pdf
+
+[424] california_state_agencies-e4264e4be4b85f1effd3037964061d79
+    URL: https://awpw.assembly.ca.gov/sites/awpw.assembly.ca.gov/files/SD-CAB%20statement%20to%20Ca%20Asm%20hrg%20salton%20Sea_rev0.pdf
+    Error: 404 Client Error: Not Found for url: https://awpw.assembly.ca.gov/sites/awpw.assembly.ca.gov/files/SD-CAB%20statement%20to%20Ca%20Asm%20hrg%20salton%20Sea_rev0.pdf
+
+[446] worldenergycouncil-74261960cecc9478b793d12ca7037080
+    URL: https://www.worldenergy.org/publications/2010/biofuels-policies-standards-and-technologies
+    Error: 404 Client Error: Not Found for url: https://www.worldenergy.org/publications/2010/biofuels-policies-standards-and-technologies
+
+[449] ieep-74d76fcb37d0068515f1a31b705a9807
+    URL: https://ieep.eu/publications/addressing-iluc-the-european-commission-s-proposal-on-indirect-land-use-change
+    Error: 404 Client Error: Not Found for url: https://ieep.eu/publications/addressing-iluc-the-european-commission-s-proposal-on-indirect-land-use-change
+
+[461] governmentofphillippines-6279785ce211ba066404191c6fd6ffdb
+    URL: https://bsp.dost.gov.ph/data/sci_profiles/2013Diaz.pdf
+    Error: 404 Client Error: Not Found for url: https://bsp.dost.gov.ph/data/sci_profiles/2013Diaz.pdf
+
+[473] texasgov-875b7062477d3778466282b9f1c56c20
+    URL: https://house.texas.gov/_media/pdf/committees/reports/80interim/CommitteeonEnergyResources.pdf
+    Error: 404 Client Error: Not Found for url: https://house.texas.gov/_media/pdf/committees/reports/80interim/CommitteeonEnergyResources.pdf
+
+[596] regeringen-d20f8851c95666e0a5ebfeb243e5fe84
+    URL: https://www.regeringen.se/informationsmaterial/2013/09/m2013.09/
+    Error: 404 Client Error: Not Found for url: https://www.regeringen.se/informationsmaterial/2013/09/m2013.09/
+
+[641] bundesregierung-c38c8150b576eea264a704d5e2841814
+    URL: https://www.bundesregierung.de/breg-de/service/publikationen/bioeconomy-in-germany-730780
+    Error: 404 Client Error: Not Found for url: https://www.bundesregierung.de/breg-de/service/publikationen/bioeconomy-in-germany-730780
+
+[663] arupgroup-67b8ff7008c417089a98c4fc5b49683e
+    URL: https://www.arup.com/perspectives/publications/magazines-and-periodicals/a2/a2-magazine-issue-9
+    Error: 404 Client Error: Not Found for url: https://www.arup.com/insights/all-insights/magazines-and-periodicals/a2/a2-magazine-issue-9/
+
+[666] bundesregierung-8b19cd91a376a673d1a329b7320ac468
+    URL: https://www.bundesregierung.de/breg-de/service/publikationen/national-policy-strategy-on-bioeconomy-735294
+    Error: 404 Client Error: Not Found for url: https://www.bundesregierung.de/breg-de/service/publikationen/national-policy-strategy-on-bioeconomy-735294
+
+[706] worldenergycouncil-74261960cecc9478b793d12ca7037080
+    URL: https://www.worldenergy.org/publications/2010/biofuels-policies-standards-and-technologies
+    Error: 404 Client Error: Not Found for url: https://www.worldenergy.org/publications/2010/biofuels-policies-standards-and-technologies
+
+[783] cityofstockholm-66332ae45c6b69bd6bab3297d77800d7
+    URL: https://www.stockholm.se/Global/Frist%C3%A5ende%20webbplatser/Milj%C3%B6f%C3%B6rvaltningen/Milj%C3%B6bilar/Bilder/best/reports/D4.20%20The%20BEST%20experience%20with%20distribution%20of%20bioethanol.pdf
+    Error: 404 Client Error: Not Found for url: https://www.stockholm.se/Global/Frist%C3%A5ende%20webbplatser/Milj%C3%B6f%C3%B6rvaltningen/Milj%C3%B6bilar/Bilder/best/reports/D4.20%20The%20BEST%20experience%20with%20distribution%20of%20bioethanol.pdf
+
+[799] stateofmissouri-b2e4aaec94e9f9e473d308f2d408b5eb
+    URL: https://meric.mo.gov/sites/meric/files/library/energy_solutions.pdf
+    Error: 404 Client Error: Not Found for url: https://meric.mo.gov/sites/meric/files/library/energy_solutions.pdf
+
+[841] california_state_agencies-844a94db727fd23bb1254ae36516f705
+    URL: https://awpw.assembly.ca.gov/sites/awpw.assembly.ca.gov/files/Salton%20Sea%20WPW%20Background.pdf
+    Error: 404 Client Error: Not Found for url: https://awpw.assembly.ca.gov/sites/awpw.assembly.ca.gov/files/Salton%20Sea%20WPW%20Background.pdf
+
+[843] texasgov-4c0c6cb909a588fe2782760372cfcebb
+    URL: https://tea.texas.gov/student-assessment/staar/released-test-questions/2015-staar-5-science-test.pdf
+    Error: 404 Client Error: Not Found for url: https://tea.texas.gov/student-assessment/staar/released-test-questions/2015-staar-5-science-test.pdf
+
+[877] bathipr-e649c772ee98367ae35d2152e5068630
+    URL: https://www.bath.ac.uk/s/redirect?collection=bath~sp-cms-production-publications&url=https%3A%2F%2Fwww.bath.ac.uk%2Fpublications%2Fgreen-mobility-the-future-of-electric-cars-and-low-carbon-transport&auth=%2BQXPYRcnbCJQKu4KgfLGBA&profile=_default&rank=19&query=%21FunDoesNotExist%3Apadrenull+%7CY%3A%22%24%2B%2B+Policy+brief+%24%2B%2B%22+%7CX%3A%22%24%2B%2B+Institute+for+Policy+Research+%24%2B%2B%22
+    Error: 404 Client Error: Not Found for url: https://www.bath.ac.uk/s/redirect?collection=bath~sp-cms-production-publications&url=https%3A%2F%2Fwww.bath.ac.uk%2Fpublications%2Fgreen-mobility-the-future-of-electric-cars-and-low-carbon-transport&auth=%2BQXPYRcnbCJQKu4KgfLGBA&profile=_default&rank=19&query=%21FunDoesNotExist%3Apadrenull+%7CY%3A%22%24%2B%2B+Policy+brief+%24%2B%2B%22+%7CX%3A%22%24%2B%2B+Institute+for+Policy+Research+%24%2B%2B%22
+
+[880] bathipr-f63d3cfd846601f6016b3bddbfb275f8
+    URL: https://www.bath.ac.uk/s/redirect?collection=uob-cms-production-publications&url=https%3A%2F%2Fwww.bath.ac.uk%2Fpublications%2Fgreen-mobility-the-future-of-electric-cars-and-low-carbon-transport&auth=%2BQXPYRcnbCJQKu4KgfLGBA&profile=_default&rank=19&query=_+%7CX%3A%22%24%2B%2B+Institute+for+Policy+Research+%24%2B%2B%22+%7CY%3A%22%24%2B%2B+Policy+brief+%24%2B%2B%22
+    Error: 404 Client Error: Not Found for url: https://www.bath.ac.uk/s/redirect?collection=uob-cms-production-publications&url=https%3A%2F%2Fwww.bath.ac.uk%2Fpublications%2Fgreen-mobility-the-future-of-electric-cars-and-low-carbon-transport&auth=%2BQXPYRcnbCJQKu4KgfLGBA&profile=_default&rank=19&query=_+%7CX%3A%22%24%2B%2B+Institute+for+Policy+Research+%24%2B%2B%22+%7CY%3A%22%24%2B%2B+Policy+brief+%24%2B%2B%22
+
+[932] arupgroup-5c3f4e4215a1d33dca11ad547613a33d
+    URL: https://www.arup.com/perspectives/publications/research/section/carbon-capture-and-storage
+    Error: 404 Client Error: Not Found for url: https://www.arup.com/insights/all-insights/research/section/carbon-capture-and-storage/
+
+[1019] stateofaragon-f497d15bb4dfee66f6417eb51adeb0f3
+    URL: https://observatoriopoblacion.aragon.es/wp-content/uploads/2018/11/Innovation-in-the-Nordic-bioeconomy.pdf
+    Error: 404 Client Error: Not Found for url: https://observatoriopoblacion.aragon.es/wp-content/uploads/2018/11/Innovation-in-the-Nordic-bioeconomy.pdf
+
+[1052] texasgov-963a76e20bf807c960df7bd6e248e104
+    URL: https://tpwd.texas.gov/huntwild/wild/wildlife_diversity/nongame/tcap/documents/broad_issues_categories.pdf
+    Error: 404 Client Error: Not Found for url: https://tpwd.texas.gov/huntwild/wild/wildlife_diversity/nongame/tcap/documents/broad_issues_categories.pdf
+
+[1084] govsg-e3aa3bfceb18d602821fdb455fd4c382
+    URL: https://www.pub.gov.sg/Documents/RDatAGlance202222042022.pdf
+    Error: 404 Client Error: Not Found for url: https://www.pub.gov.sg/Documents/RDatAGlance202222042022.pdf
+
+[1105] ieep-944678a64c2ae8efdde612b349e5f038
+    URL: https://ieep.eu/publications/shifting-away-from-conventional-biofuels-sustainable-alternatives-for-the-use-of-biomass-in-the-uk
+    Error: 404 Client Error: Not Found for url: https://ieep.eu/publications/shifting-away-from-conventional-biofuels-sustainable-alternatives-for-the-use-of-biomass-in-the-uk
+
+[1211] worldenergycouncil-74261960cecc9478b793d12ca7037080
+    URL: https://www.worldenergy.org/publications/2010/biofuels-policies-standards-and-technologies
+    Error: 404 Client Error: Not Found for url: https://www.worldenergy.org/publications/2010/biofuels-policies-standards-and-technologies
+
+[1227] governmentofindia-5e04102eeafd892c05cfd15d912d8b66
+    URL: https://mnre.gov.in/img/documents/uploads/cb6ae8c0be0448278226262db89c0931.pdf
+    Error: 404 Client Error: Not Found for url: https://mnre.gov.in/img/documents/uploads/cb6ae8c0be0448278226262db89c0931.pdf
+
+[1229] ellenmacarthurfoundation-8e6fa792fb7cd8456d7fb65ee601407f
+    URL: https://www.ellenmacarthurfoundation.org/publications/urban-biocyles
+    Error: 404 Client Error: Not Found for url: https://www.ellenmacarthurfoundation.org/publications/urban-biocyles
+
+[1274] stateofhawaiigov-bfff5dbbd924b5d33fd1cedc40a00cc7
+    URL: https://energy.hawaii.gov/wp-content/uploads/2022/06/2019-FF_Final.pdf
+    Error: 404 Client Error: Not Found for url: https://energy.hawaii.gov/wp-content/uploads/2022/06/2019-FF_Final.pdf
+
+[1296] rijksoverheid-b6c44a391194c0dcf6ab8738e8514dc8
+    URL: https://www.rijksoverheid.nl/documenten/rapporten/2019/04/04/bijlage-1-desk-study-on-technical-corn-oil-finan-report
+    Error: 404 Client Error: Not Found for url: https://www.rijksoverheid.nl/documenten/rapporten/2019/04/04/bijlage-1-desk-study-on-technical-corn-oil-finan-report
+
+[1318] governmentofcanada-6bb2268ac7ce46582e16cc94cdba113a
+    URL: http://publications.gc.ca/site/eng/9.839404/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.839404/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[1329] stateofhessen-b8a010d83b837cf6e60effa8440475b9
+    URL: https://wirtschaft.hessen.de/sites/default/files/media/hmwvl/industrbiotech_e_web.pdf
+    Error: 404 Client Error: Not Found for url: https://wirtschaft.hessen.de/sites/default/files/media/hmwvl/industrbiotech_e_web.pdf
+
+[1330] bathpolicy-03fc1d4d5c088628f2b69d745453fe95
+    URL: https://www.bath.ac.uk/publications/annual-reports/
+    Error: 404 Client Error: Not Found for url: https://www.bath.ac.uk/publications/annual-reports/
+
+[1363] stateofmissouri-f3e1bbfe2587c71baa5086e19d646c1a
+    URL: https://mdc.mo.gov/sites/default/files/downloads/tptjanmarch2012.pdf
+    Error: 404 Client Error: Not Found for url: https://mdc.mo.gov/sites/default/files/downloads/tptjanmarch2012.pdf
+
+[1384] ministrukabinets-d88c89222233bf2ca911c32ab84c9d44
+    URL: https://www.zm.gov.lv/public/ck/files/Philippe%20Mengal%20BBI%20JU.pdf
+    Error: 404 Client Error: Not Found for url: https://www.zm.gov.lv/public/ck/files/Philippe%20Mengal%20BBI%20JU.pdf
+
+[1429] taswiss-b040027a7f6cbad174eecd2f8496c16c
+    URL: https://www.ta-swiss.ch/2010_TA_55A_Fahrt_ins_Gruene.pdf
+    Error: 404 Client Error: Not Found for url: https://www.ta-swiss.ch/2010_TA_55A_Fahrt_ins_Gruene.pdf
+
+[1487] stateofcolorado-f410c39b6dd42e1ac5f621c115051ff9
+    URL: https://www.colorado.gov/pacific/energyoffice/atom/27231
+    Error: 404 Client Error: Not Found for url: https://energyoffice.colorado.gov/atom/27231
+
+[1515] bundesregierung-3de253df25cdd851d9bf77b61e50cfb3
+    URL: https://www.bundesregierung.de/breg-de/service/publikationen/icao-state-action-plan-for-co2-emmissions-reduction-germany--1537914
+    Error: 404 Client Error: Not Found for url: https://www.bundesregierung.de/breg-de/service/publikationen/icao-state-action-plan-for-co2-emmissions-reduction-germany--1537914
+
+[1552] tanzaniaparliament-8d99953e9c096f5bdbd49925579d748a
+    URL: https://www.parliament.go.tz/uploads/documents/1476206536-GN%20191-THE%20ENVIRONMENTAL%20MANAGEMENT%20(FEE%20AND%20CHARGES)%20REGULATIONS,%202016.pdf
+    Error: 404 Client Error: Not Found for url: https://www.parliament.go.tz/uploads/documents/1476206536-GN%20191-THE%20ENVIRONMENTAL%20MANAGEMENT%20(FEE%20AND%20CHARGES)%20REGULATIONS,%202016.pdf
+
+[1577] stateofmaine-66c3bb667e9b735f4c8a0f42252bebec
+    URL: https://www.maine.gov/labor/cwri/publications/pdf/GreenEconomyReport.pdf
+    Error: 404 Client Error: Not Found for url: https://www.maine.gov/labor/cwri/publications/pdf/GreenEconomyReport.pdf
+
+[1621] stateoftasmania-2178911a795e9f539f29c922764270e9
+    URL: https://dpipwe.tas.gov.au/Documents/GMO%20Annual%20Environment%20Scan%20-%20Final%20Report%202015.pdf
+    Error: 404 Client Error: NOT FOUND for url: https://nre.tas.gov.au/Documents/GMO%20Annual%20Environment%20Scan%20-%20Final%20Report%202015.pdf
+
+[1641] stateofmissouri-6f239793281e4cb9ad13f1798f1081a4
+    URL: https://mdc.mo.gov/sites/default/files/downloads/tptjulsept2012.pdf
+    Error: 404 Client Error: Not Found for url: https://mdc.mo.gov/sites/default/files/downloads/tptjulsept2012.pdf
+
+[1649] governmentofturkey-4ee6aa7b486dc63287fe09d6c11a25b3
+    URL: https://arastirma.tarimorman.gov.tr/sumae/Belgeler/CV-EN/cv_ekremcem_cankiriligil-en.pdf
+    Error: 404 Client Error: NOT FOUND for url: https://arastirma.tarimorman.gov.tr/sumae/Belgeler/CV-EN/cv_ekremcem_cankiriligil-en.pdf
+
+    ... and 185 more cases
+
+
+====================================================================================================
+OTHER ERROR - 105 CASES
+====================================================================================================
+
+[88] foundationforeconomiceducation-f68c026a896b9227df8cf7df237e61e5
+    URL: https://fee.org/articles/ethanol-is-terrible-for-health-and-the-environment-but-government-keeps-backing-it/
+    Error: 520 Server Error: <none> for url: https://fee.org/articles/ethanol-is-terrible-for-health-and-the-environment-but-government-keeps-backing-it/
+
+[204] granthaminstituteimperial-cbd82564b4c9769d2d4f9c4c2a922d32
+    URL: https://www.imperial.ac.uk/grantham/publications/all-publications/next-generation-climate-mitigation-technologies.php
+    Error: 502 Server Error: Bad Gateway for url: https://www.imperial.ac.uk/grantham/publications/all-publications/next-generation-climate-mitigation-technologies.php
+
+[343] foundationforeconomiceducation-ae458540a1b46ffbf6c76f097d080c19
+    URL: https://fee.org/articles/algae-evolution-and-the-future-of-biofuels/
+    Error: 520 Server Error: <none> for url: https://fee.org/articles/algae-evolution-and-the-future-of-biofuels/
+
+[371] granthaminstituteimperial-c59a1206f58f8eea84577048dbf66c95
+    URL: https://www.imperial.ac.uk/grantham/publications/all-publications/beccs-deployment-a-reality-check.php
+    Error: 502 Server Error: Bad Gateway for url: https://www.imperial.ac.uk/grantham/publications/all-publications/beccs-deployment-a-reality-check.php
+
+[734] granthaminstituteimperial-4ec063daca87aaffd967f8ddbcd2a89e
+    URL: https://www.imperial.ac.uk/grantham/publications/2016/land-use-futures-in-europe---grantham-briefing-paper-17.php
+    Error: 502 Server Error: Bad Gateway for url: https://www.imperial.ac.uk/grantham/publications/2016/land-use-futures-in-europe---grantham-briefing-paper-17.php
+
+[821] cgiar-8265100a900055585fad791fb887d873
+    URL: https://hdl.handle.net/10947/3328
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10947/3328
+
+[964] cgiar-13d9eaa38bc06529dddad91e9d83e45b
+    URL: https://hdl.handle.net/10568/63725
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/63725
+
+[1026] cgiar-6689bf2d92e013c7d9014d1f53f7739a
+    URL: https://hdl.handle.net/10568/134320
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/134320
+
+[1104] cgiar-9d1c00fb20ae20d658edb017ee8a69d6
+    URL: https://hdl.handle.net/10568/63666
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/63666
+
+[1123] cgiar-6bd982a6cbee85de40de668150287848
+    URL: https://hdl.handle.net/10568/90044
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/90044
+
+[1150] cgiar-e52a35ae6a1bff47c4e0061d744ece49
+    URL: https://hdl.handle.net/10568/153125
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/153125
+
+[1174] cgiar-b93a783d7a23b53cf7ec21d7784371da
+    URL: https://hdl.handle.net/10568/128130
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/128130
+
+[1206] cgiar-6bd982a6cbee85de40de668150287848
+    URL: https://hdl.handle.net/10568/90044
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/90044
+
+[1210] cgiar-1e3c78a611da108590b1870e4f227d95
+    URL: https://hdl.handle.net/10568/99625
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/99625
+
+[1559] stateofwashington-07ec51defc61fb52bebe3fa4971175a7
+    URL: https://fortress.wa.gov/esd/employmentdata/docs/special-reports/biomass-solar-report-2012.pdf
+    Error: 400 Client Error: Bad Request for url: https://fortress.wa.gov/esd/employmentdata/docs/special-reports/biomass-solar-report-2012.pdf
+
+[1626] cgiar-706773ffd3b60f835a285b4bf51919f4
+    URL: https://hdl.handle.net/10568/21521
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/21521
+
+[1768] cgiar-8a82edec64c86c4cb8ef15af2cb0b591
+    URL: https://hdl.handle.net/10568/77222
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/77222
+
+[1833] fao-53bee23b3b017b3846d6cb3e21ff91ec
+    URL: https://openknowledge.fao.org/handle/20.500.14283/i1713e
+    Error: 502 Server Error: Proxy Error for url: https://openknowledge.fao.org/handle/20.500.14283/i1713e
+
+[1913] cgiar-cc74b27bc25bc91a223b189b6f541573
+    URL: https://hdl.handle.net/10568/104880
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/104880
+
+[1990] granthaminstituteimperial-3efd8f6207b19b12fa43f3150d7f779f
+    URL: https://www.imperial.ac.uk/grantham/publications/all-publications/grantham-institute-outlook-2018-19.php
+    Error: 502 Server Error: Bad Gateway for url: https://www.imperial.ac.uk/grantham/publications/all-publications/grantham-institute-outlook-2018-19.php
+
+[1994] ifpri-233b286dcea2a623f54461e74c027056
+    URL: http://ebrary.ifpri.org/digital/collection/p15738coll2/id/129808
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/150345
+
+[1999] cgiar-89b7da4c91b59d6ff947fbd7074b2193
+    URL: https://hdl.handle.net/10568/150345
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/150345
+
+[2148] granthaminstituteimperial-e8520208b1dac8169c225c01241e73b6
+    URL: https://www.imperial.ac.uk/grantham/publications/2014/grantham-institute-outlook-2014.php
+    Error: 502 Server Error: Bad Gateway for url: https://www.imperial.ac.uk/grantham/publications/2014/grantham-institute-outlook-2014.php
+
+[2182] cgiar-7b4403a13d728978a83b4d74f756cc86
+    URL: https://hdl.handle.net/10568/149966
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/149966
+
+[2195] stateoftennessee-0e8508008b7a9ef5d5edd6478ad5f29b
+    URL: https://www.tn.gov/content/dam/tn/twra/documents/swap/tn_swap_references.pdf
+    Error: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+
+[2305] govwales-f673637f66a819523b16ed7a468f3be5
+    URL: https://gov.wales/assessment-potential-aquaculture
+    Error: 503 Server Error: Service Unavailable for url: https://www.gov.wales/assessment-potential-aquaculture
+
+[2375] adminch-44b19ec2cd5ddfc2907c5dbecae9a214
+    URL: https://www.blw.admin.ch/dam/blw/de/dokumente/Politik/Nachaltiges%20Ernaehrungssystem%20CH/Foresight/Foresight_Bericht.pdf.download.pdf/Foresight_Bericht.pdf
+    Error: 502 Server Error: Bad Gateway for url: https://www.blw.admin.ch/dam/blw/de/dokumente/Politik/Nachaltiges%20Ernaehrungssystem%20CH/Foresight/Foresight_Bericht.pdf.download.pdf/Foresight_Bericht.pdf
+
+[2405] adminch-704ef9747235842030bc210a06875579
+    URL: https://www.blw.admin.ch/dam/blw/fr/dokumente/Politik/Nachaltiges%20Ernaehrungssystem%20CH/Foresight/Foresight_Bericht.pdf.download.pdf/Foresight_Bericht.pdf
+    Error: 502 Server Error: Bad Gateway for url: https://www.blw.admin.ch/dam/blw/fr/dokumente/Politik/Nachaltiges%20Ernaehrungssystem%20CH/Foresight/Foresight_Bericht.pdf.download.pdf/Foresight_Bericht.pdf
+
+[2426] civicexchangehk-66fc304ddeb6eebfaf30ea3e98eee551
+    URL: https://civic-exchange.org/report/nature-based-solutions-in-the-northern-metropolis/
+    Error: 520 Server Error: <none> for url: https://civic-exchange.org/report/nature-based-solutions-in-the-northern-metropolis/
+
+[2534] cgiar-257cc1604f90b787c7f689f5682ca973
+    URL: https://hdl.handle.net/10568/90058
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/90058
+
+[2538] cgiar-d662bcad2967ab7aac4bc52f18c322ff
+    URL: https://hdl.handle.net/10568/90064
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/90064
+
+[2581] cgiar-b0b9357c32e4ec543b2907268910cee6
+    URL: https://hdl.handle.net/10568/83059
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/83059
+
+[2596] cgiar-d662bcad2967ab7aac4bc52f18c322ff
+    URL: https://hdl.handle.net/10568/90064
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/90064
+
+[2611] cgiar-e18b4e64111cfaafcc9dc5755b28df14
+    URL: https://hdl.handle.net/10568/99631
+    Error: 500 Server Error: Internal Server Error for url: https://cgspace.cgiar.org/handle/10568/99631
+
+[2704] cgiar-152503ea762220e0d27f20528335c2b6
+    URL: https://hdl.handle.net/10568/116489
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/116489
+
+[3081] cgiar-a9534c29689bffb466a0caca3eec880f
+    URL: https://hdl.handle.net/10947/3374
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10947/3374
+
+[3162] cgiar-6d5e640f3b7d7cf15f336b01271b4f03
+    URL: https://hdl.handle.net/10568/41934
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/41934
+
+[3230] ifpri-aa1dd1bf739d400b642e5409d6bb18c2
+    URL: https://cgspace.cgiar.org/items/0066839e-28df-4534-9765-6fa0323f5a6a
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/items/0066839e-28df-4534-9765-6fa0323f5a6a
+
+[3277] cgiar-0112c337517ab00b1248976f176f1341
+    URL: https://hdl.handle.net/10568/137179
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/137179
+
+[3454] cgiar-e3f02ca9c15ac33893610b49c365d482
+    URL: https://hdl.handle.net/10568/97709
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/97709
+
+[3634] cgiar-41ea39d1015e93165dc2c948b224abac
+    URL: https://hdl.handle.net/10947/4305
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10947/4305
+
+[3647] cgiar-aa313998e2ffb041a66346c70b99e37f
+    URL: https://hdl.handle.net/10568/99006
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/99006
+
+[3654] cgiar-968e31765abb170996c7d5ad05cf3aec
+    URL: https://hdl.handle.net/10568/104872
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/104872
+
+[3762] copenhagenconsensus-486157d03a5bad955370242232ea36e8
+    URL: https://www.copenhagenconsensus.com/publication/fix-climate-advice-policymakers
+    Error: 502 Server Error: Bad Gateway for url: https://copenhagenconsensus.com/publication/fix-climate-advice-policymakers
+
+[3766] cgiar-29645612045dab52a4eece8674bbe9f7
+    URL: https://hdl.handle.net/10568/58335
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/58335
+
+[3775] cgiar-5bdc978fbcd3ff4b463a3d424d1d9a7c
+    URL: https://hdl.handle.net/10568/64814
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/64814
+
+[3809] cgiar-1120c654a70721c66549732514fee304
+    URL: https://hdl.handle.net/10568/144052
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/144052
+
+[3904] cgiar-dd1d9beb7c95be80cb04d04defb11f58
+    URL: https://hdl.handle.net/10947/3327
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10947/3327
+
+[4268] stateoftennessee-d641fc48212713aaab56537c25f7899e
+    URL: https://www.tn.gov/content/dam/tn/twra/documents/invasive-species/Tennessee-Aquatic-Nuisance-Species-Management-Plan.pdf
+    Error: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+
+[4324] cgiar-3619d541fd2227a9a3a1ecf87dcf3a27
+    URL: https://hdl.handle.net/10568/76163
+    Error: 429 Client Error: Too Many Requests for url: https://cgspace.cgiar.org/handle/10568/76163
+
+    ... and 55 more cases
+
+
+====================================================================================================
+DNS ERROR - 31 CASES
+====================================================================================================
+
+[238] governmentofindia-668b017e50ee49ca19ca0f63f5bacd7c
+    URL: http://petroleum.nic.in/sites/default/files/biofuelpolicy2018_2.pdf
+    Error: HTTPConnectionPool(host='petroleum.nic.in', port=80): Max retries exceeded with url: /sites/default/files/biofuelpolicy2018_2.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x000002343A468EF0>: Failed to resolve 'petroleum.nic.in' ([Errno 11001] getaddrinfo failed)"))
+
+[361] cityofjacksonville-a4d09b0a0ecb30c1705b92d8f06923c8
+    URL: https://qa-www10.coj.net/departments/neighborhoods/docs/environmental-quality/uhland-symposium-presentation.aspx
+    Error: HTTPSConnectionPool(host='qa-www10.coj.net', port=443): Max retries exceeded with url: /departments/neighborhoods/docs/environmental-quality/uhland-symposium-presentation.aspx (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002343A446D50>: Failed to resolve 'qa-www10.coj.net' ([Errno 11001] getaddrinfo failed)"))
+
+[1096] governmentofindonesia-3a8a2271ea9f316d49e64c265e55e9cc
+    URL: https://litbang.esdm.go.id/assets/publication/files/Buku_Peta_Jalan_Litbang_BBN_2015.pdf
+    Error: HTTPSConnectionPool(host='litbang.esdm.go.id', port=443): Max retries exceeded with url: /assets/publication/files/Buku_Peta_Jalan_Litbang_BBN_2015.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002343A447770>: Failed to resolve 'litbang.esdm.go.id' ([Errno 11001] getaddrinfo failed)"))
+
+[1194] govdeptsitaly-8ec79076c88fefbb4001334cf2ddcd60
+    URL: http://www.pdc.minambiente.it/sites/default/files/progetti/wassermed_understanding_the_nexus.pdf
+    Error: HTTPConnectionPool(host='www.pdc.minambiente.it', port=80): Max retries exceeded with url: /sites/default/files/progetti/wassermed_understanding_the_nexus.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x000002343A4465D0>: Failed to resolve 'www.pdc.minambiente.it' ([Errno 11001] getaddrinfo failed)"))
+
+[1510] govdeptsbrazil-6cea196186f56f86885e558b4c598834
+    URL: https://repositorio.mctic.gov.br/bitstream/mctic/5118/1/2017_second-generation_sugarcane_bioenergy_biochemicals.pdf
+    Error: HTTPSConnectionPool(host='repositorio.mctic.gov.br', port=443): Max retries exceeded with url: /bitstream/mctic/5118/1/2017_second-generation_sugarcane_bioenergy_biochemicals.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002343A4469F0>: Failed to resolve 'repositorio.mctic.gov.br' ([Errno 11001] getaddrinfo failed)"))
+
+[1878] tanzaniagov-f671264c79922943a55d7fc346a8b9f1
+    URL: http://minigrids.go.tz/files/Energy-Sector-EIA-guidelines.pdf
+    Error: HTTPConnectionPool(host='minigrids.go.tz', port=80): Max retries exceeded with url: /files/Energy-Sector-EIA-guidelines.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x00000234399618B0>: Failed to resolve 'minigrids.go.tz' ([Errno 11001] getaddrinfo failed)"))
+
+[2397] gcoec-38ff59c7b3efbbf3996cf8700e78ec0e
+    URL: https://newclimateeconomy.report/2018/wp-content/uploads/sites/2/2014/08/New-climate-economy_executive-summary_web.pdf
+    Error: HTTPSConnectionPool(host='newclimateeconomy.report', port=443): Max retries exceeded with url: /2018/wp-content/uploads/sites/2/2014/08/New-climate-economy_executive-summary_web.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000023439CB3320>: Failed to resolve 'newclimateeconomy.report' ([Errno 11002] getaddrinfo failed)"))
+
+[2647] gcoec-6ed838d6badba1a25e0d997582777448
+    URL: https://newclimateeconomy.report/workingpapers/wp-content/uploads/sites/5/2016/04/NCE-Aviation-Maritime_final.pdf
+    Error: HTTPSConnectionPool(host='newclimateeconomy.report', port=443): Max retries exceeded with url: /workingpapers/wp-content/uploads/sites/5/2016/04/NCE-Aviation-Maritime_final.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002343A447BF0>: Failed to resolve 'newclimateeconomy.report' ([Errno 11002] getaddrinfo failed)"))
+
+[3355] governmentoftaiwan-a98546c1bda09ded2e70c4024b388c40
+    URL: https://www.most.gov.tw/most/attachments/46d88a4b-d7cb-4909-9975-0546b011c3a1
+    Error: HTTPSConnectionPool(host='www.most.gov.tw', port=443): Max retries exceeded with url: /most/attachments/46d88a4b-d7cb-4909-9975-0546b011c3a1 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002343A446900>: Failed to resolve 'www.most.gov.tw' ([Errno 11001] getaddrinfo failed)"))
+
+[3544] governmentofindonesia-5752e1807b91f4383eeb10bcdb4a7d59
+    URL: http://bppp.kemendag.go.id/media_content/2017/08/ISI_warta_14.pdf
+    Error: HTTPConnectionPool(host='bppp.kemendag.go.id', port=80): Max retries exceeded with url: /media_content/2017/08/ISI_warta_14.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x000002343A468D10>: Failed to resolve 'bppp.kemendag.go.id' ([Errno 11001] getaddrinfo failed)"))
+
+[3593] provinceofquebec-6a224298d1454104ee62a1d7e18bc196
+    URL: http://www.caaaq.gouv.qc.ca/userfiles/File/Dossiers%2012%20fevrier/Rapport%20CAAAQ%20anglais.pdf
+    Error: HTTPConnectionPool(host='www.caaaq.gouv.qc.ca', port=80): Max retries exceeded with url: /userfiles/File/Dossiers%2012%20fevrier/Rapport%20CAAAQ%20anglais.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x000002343A445280>: Failed to resolve 'www.caaaq.gouv.qc.ca' ([Errno 11001] getaddrinfo failed)"))
+
+[3618] provinceofquebec-89c2846213d984e0cc7940157c1ada0b
+    URL: http://www.caaaq.gouv.qc.ca/userfiles/File/Mandats%20etude/Nutshimit%20biocarburants.pdf
+    Error: HTTPConnectionPool(host='www.caaaq.gouv.qc.ca', port=80): Max retries exceeded with url: /userfiles/File/Mandats%20etude/Nutshimit%20biocarburants.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x00000234399DA060>: Failed to resolve 'www.caaaq.gouv.qc.ca' ([Errno 11001] getaddrinfo failed)"))
+
+[3670] gcoec-38ff59c7b3efbbf3996cf8700e78ec0e
+    URL: https://newclimateeconomy.report/2018/wp-content/uploads/sites/2/2014/08/New-climate-economy_executive-summary_web.pdf
+    Error: HTTPSConnectionPool(host='newclimateeconomy.report', port=443): Max retries exceeded with url: /2018/wp-content/uploads/sites/2/2014/08/New-climate-economy_executive-summary_web.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002343980BAA0>: Failed to resolve 'newclimateeconomy.report' ([Errno 11002] getaddrinfo failed)"))
+
+[3820] govdeptsbrazil-c80d04457b7262773c9e758d85ebc56a
+    URL: https://repositorio.mctic.gov.br/bitstream/mctic/4972/1/2021_report_technology_needs_assessment_implementation_climate_action_plans_brazil_mitigation.pdf
+    Error: HTTPSConnectionPool(host='repositorio.mctic.gov.br', port=443): Max retries exceeded with url: /bitstream/mctic/4972/1/2021_report_technology_needs_assessment_implementation_climate_action_plans_brazil_mitigation.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002343A4443B0>: Failed to resolve 'repositorio.mctic.gov.br' ([Errno 11001] getaddrinfo failed)"))
+
+[3883] stateofvirginia-e050454ba125056caa67bb2bb3fdb125
+    URL: https://gismaps.vdem.virginia.gov/Download/Land_Cover/Land_Cover_Use_Case_Scenarios.pdf
+    Error: HTTPSConnectionPool(host='gismaps.vdem.virginia.gov', port=443): Max retries exceeded with url: /Download/Land_Cover/Land_Cover_Use_Case_Scenarios.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000234395C34A0>: Failed to resolve 'gismaps.vdem.virginia.gov' ([Errno 11001] getaddrinfo failed)"))
+
+[4167] provinceofquebec-77ea31d11fa5d93c57c9868cd502a609
+    URL: http://www.frqs.gouv.qc.ca/documents/10191/186011/Synthetic_biology+_dialogue_2010.pdf/c0f16474-8a2b-4d27-9e91-95111f99c292
+    Error: HTTPConnectionPool(host='www.frqs.gouv.qc.ca', port=80): Max retries exceeded with url: /documents/10191/186011/Synthetic_biology+_dialogue_2010.pdf/c0f16474-8a2b-4d27-9e91-95111f99c292 (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x000002343A4687A0>: Failed to resolve 'www.frqs.gouv.qc.ca' ([Errno 11001] getaddrinfo failed)"))
+
+[4357] provinceofquebec-ea05acaba92060b1e4166a594833ec0b
+    URL: http://www.caaaq.gouv.qc.ca/userfiles/File/Memoire%20Laurentides-Montreal%20special/15-02-L-McClintock,Katherine.pdf
+    Error: HTTPConnectionPool(host='www.caaaq.gouv.qc.ca', port=80): Max retries exceeded with url: /userfiles/File/Memoire%20Laurentides-Montreal%20special/15-02-L-McClintock,Katherine.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x000002343A447440>: Failed to resolve 'www.caaaq.gouv.qc.ca' ([Errno 11001] getaddrinfo failed)"))
+
+[4509] govdeptsitaly-050538112c9f11ea527538939b599d5a
+    URL: http://www.pdc.minambiente.it/sites/default/files/progetti/accentplus_effects_of_global_change_during_the_21st_century_on_the_nitrogen_cycle.pdf
+    Error: HTTPConnectionPool(host='www.pdc.minambiente.it', port=80): Max retries exceeded with url: /sites/default/files/progetti/accentplus_effects_of_global_change_during_the_21st_century_on_the_nitrogen_cycle.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x000002343A468C50>: Failed to resolve 'www.pdc.minambiente.it' ([Errno 11001] getaddrinfo failed)"))
+
+[4916] governmentofcambodia-0c54968a45a351536854ed8f93518372
+    URL: http://mih.gov.kh/File/UploadedFiles/7_6_2016_3_50_0.pdf
+    Error: HTTPConnectionPool(host='mih.gov.kh', port=80): Max retries exceeded with url: /File/UploadedFiles/7_6_2016_3_50_0.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x000002343A445B20>: Failed to resolve 'mih.gov.kh' ([Errno 11001] getaddrinfo failed)"))
+
+[5170] governmentoffiji-5952b1c1f2ad436e58a3093978924ed3
+    URL: http://www.economy.gov.fj/images/GGGI/Fiji_Low-Emission-Development--Strategy-2018---2050.pdf
+    Error: HTTPConnectionPool(host='www.economy.gov.fj', port=80): Max retries exceeded with url: /images/GGGI/Fiji_Low-Emission-Development--Strategy-2018---2050.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x000002343977F110>: Failed to resolve 'www.economy.gov.fj' ([Errno 11001] getaddrinfo failed)"))
+
+[5332] governmentofindia-3bece3e9e279dd9d0e1cd165666a7b74
+    URL: http://petroleum.nic.in/sites/default/files/APR_E_1718.pdf
+    Error: HTTPConnectionPool(host='petroleum.nic.in', port=80): Max retries exceeded with url: /sites/default/files/APR_E_1718.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x000002343A447B00>: Failed to resolve 'petroleum.nic.in' ([Errno 11001] getaddrinfo failed)"))
+
+[5628] stateofnorthcarolina-cf79e983bb295d82b1e92dd787983656
+    URL: http://www.climatechange.nc.gov/LCGCC_Final_Report_05-20-10.pdf
+    Error: HTTPConnectionPool(host='www.climatechange.nc.gov', port=80): Max retries exceeded with url: /LCGCC_Final_Report_05-20-10.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x000002343A446F60>: Failed to resolve 'www.climatechange.nc.gov' ([Errno 11001] getaddrinfo failed)"))
+
+[6110] gcoec-38ff59c7b3efbbf3996cf8700e78ec0e
+    URL: https://newclimateeconomy.report/2018/wp-content/uploads/sites/2/2014/08/New-climate-economy_executive-summary_web.pdf
+    Error: HTTPSConnectionPool(host='newclimateeconomy.report', port=443): Max retries exceeded with url: /2018/wp-content/uploads/sites/2/2014/08/New-climate-economy_executive-summary_web.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002343A446510>: Failed to resolve 'newclimateeconomy.report' ([Errno 11002] getaddrinfo failed)"))
+
+[6118] governmentofindia-e9ff8d27e866d00a343940abdd11e2e6
+    URL: http://petroleum.nic.in/sites/default/files/AR09-10.pdf
+    Error: HTTPConnectionPool(host='petroleum.nic.in', port=80): Max retries exceeded with url: /sites/default/files/AR09-10.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x000002343A4457C0>: Failed to resolve 'petroleum.nic.in' ([Errno 11001] getaddrinfo failed)"))
+
+[6171] govdeptsitaly-81bc2e69902ea5df837b5c78273973ee
+    URL: http://www.pdc.minambiente.it/sites/default/files/progetti/manuale_operativo_ecoremed.pdf
+    Error: HTTPConnectionPool(host='www.pdc.minambiente.it', port=80): Max retries exceeded with url: /sites/default/files/progetti/manuale_operativo_ecoremed.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x000002343A444FB0>: Failed to resolve 'www.pdc.minambiente.it' ([Errno 11001] getaddrinfo failed)"))
+
+[6816] stateofnorthcarolina-d42f899c3ef0b68296c20ab887503d68
+    URL: http://www.climatechange.nc.gov/Part_2_Appendices.pdf
+    Error: HTTPConnectionPool(host='www.climatechange.nc.gov', port=80): Max retries exceeded with url: /Part_2_Appendices.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x000002343A447B00>: Failed to resolve 'www.climatechange.nc.gov' ([Errno 11001] getaddrinfo failed)"))
+
+[7230] govdeptsitaly-2147bdd6d754aa50587367513a7e4b23
+    URL: http://www.pdc.minambiente.it/sites/default/files/progetti/accentplus_particulate_matter_air_quality_and_climate_lessons_learned_and_future_needs.pdf
+    Error: HTTPConnectionPool(host='www.pdc.minambiente.it', port=80): Max retries exceeded with url: /sites/default/files/progetti/accentplus_particulate_matter_air_quality_and_climate_lessons_learned_and_future_needs.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x000002343A468B90>: Failed to resolve 'www.pdc.minambiente.it' ([Errno 11001] getaddrinfo failed)"))
+
+[7985] governmentofindia-57392163333a10a88e2e9508bbaf42cc
+    URL: http://petroleum.nic.in/sites/default/files/budget2016.pdf
+    Error: HTTPConnectionPool(host='petroleum.nic.in', port=80): Max retries exceeded with url: /sites/default/files/budget2016.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x0000023439CB3740>: Failed to resolve 'petroleum.nic.in' ([Errno 11001] getaddrinfo failed)"))
+
+[8140] provinceofquebec-9cb2cb3b49b7b16d4c9c29df137c0a2e
+    URL: http://www.caaaq.gouv.qc.ca/userfiles/File/Dossiers%2012%20fevrier/Etudes%20complementaires.pdf
+    Error: HTTPConnectionPool(host='www.caaaq.gouv.qc.ca', port=80): Max retries exceeded with url: /userfiles/File/Dossiers%2012%20fevrier/Etudes%20complementaires.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x000002343A46AF90>: Failed to resolve 'www.caaaq.gouv.qc.ca' ([Errno 11001] getaddrinfo failed)"))
+
+[8189] california_state_agencies-177a6b9a904866d8ea72ad283ce6a06e
+    URL: https://cdnverify.frap.fire.ca.gov/media/4babn5pw/assessment2017.pdf
+    Error: HTTPSConnectionPool(host='cdnverify.frap.fire.ca.gov', port=443): Max retries exceeded with url: /media/4babn5pw/assessment2017.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000023439ABED80>: Failed to resolve 'cdnverify.frap.fire.ca.gov' ([Errno 11002] getaddrinfo failed)"))
+
+[8403] governmentofchile-1974b69cfc05e66abd71d028529a71ea
+    URL: https://ctci.minciencia.gob.cl/wp-content/uploads/2018/04/Unesco-Science-Report-2015.pdf
+    Error: HTTPSConnectionPool(host='ctci.minciencia.gob.cl', port=443): Max retries exceeded with url: /wp-content/uploads/2018/04/Unesco-Science-Report-2015.pdf (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002343851D4C0>: Failed to resolve 'ctci.minciencia.gob.cl' ([Errno 11001] getaddrinfo failed)"))
+
+
+====================================================================================================
+SSL ERROR - 127 CASES
+====================================================================================================
+
+[309] governmentofserbia-fb9022815f05d17d3eaa3e60ba040c8e
+    URL: https://arhiva.mre.gov.rs/doc/efikasnost-izvori/Uredba_o_udelu_biogoriva_na_trzistu_Prilog_III_%20IV_V_ENG.docx.pdf
+    Error: HTTPSConnectionPool(host='arhiva.mre.gov.rs', port=443): Max retries exceeded with url: /doc/efikasnost-izvori/Uredba_o_udelu_biogoriva_na_trzistu_Prilog_III_%20IV_V_ENG.docx.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[355] trmdk-aab20eefd0ea3bb040e99d98747385df
+    URL: http://www.trm.dk/publikationer/2013/roadmap-for-groen-transport-materiale-fra-temaarrangement-om-groen-vaekst/
+    Error: HTTPSConnectionPool(host='www.trm.dk', port=443): Max retries exceeded with url: /publikationer/2013/roadmap-for-groen-transport-materiale-fra-temaarrangement-om-groen-vaekst/ (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[725] globalwaterpartnership-643720e15a87e23bb12efc4373c61163
+    URL: https://www.gwp.org/en/learn/iwrm-toolbox/The-Enabling-Environment/Policies/Policies-with-relation-to-water-resources/
+    Error: HTTPSConnectionPool(host='www.gwptoolbox.org', port=443): Max retries exceeded with url: /learn/iwrm-tools/policies-relation-water-resources (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.gwptoolbox.org'. (_ssl.c:1010)")))
+
+[810] globalwaterpartnership-643720e15a87e23bb12efc4373c61163
+    URL: https://www.gwp.org/en/learn/iwrm-toolbox/The-Enabling-Environment/Policies/Policies-with-relation-to-water-resources/
+    Error: HTTPSConnectionPool(host='www.gwptoolbox.org', port=443): Max retries exceeded with url: /learn/iwrm-tools/policies-relation-water-resources (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.gwptoolbox.org'. (_ssl.c:1010)")))
+
+[811] governmentofcanada-371121a22983ab5c147e8ce70c82c618
+    URL: http://publications.gc.ca/site/eng/9.695938/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.695938/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[1078] eklipsede-e57402d83ace9914b4a9b56f8f23d24c
+    URL: https://eklipse.eu/request-energy/
+    Error: HTTPSConnectionPool(host='eklipse.eu', port=443): Max retries exceeded with url: /request-energy/ (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[1090] governmentofcanada-153115b4d19527db4c548fa3acb4b071
+    URL: http://publications.gc.ca/site/eng/9.698367/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.698367/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[1164] globalwaterpartnership-643720e15a87e23bb12efc4373c61163
+    URL: https://www.gwp.org/en/learn/iwrm-toolbox/The-Enabling-Environment/Policies/Policies-with-relation-to-water-resources/
+    Error: HTTPSConnectionPool(host='www.gwptoolbox.org', port=443): Max retries exceeded with url: /learn/iwrm-tools/policies-relation-water-resources (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.gwptoolbox.org'. (_ssl.c:1010)")))
+
+[1226] governmentofcanada-adae84a9ab79a983394a39a640d19c26
+    URL: http://publications.gc.ca/site/eng/9.676720/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.676720/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[1246] governmentofphillippines-cc67f8a24204d8a1c4e7ca7b62ff94f4
+    URL: https://www.denr.gov.ph/images/DENR_NEWS_ALERTS_2021/DENR_News_Alerts_11_June_2021_Friday_opt.pdf
+    Error: HTTPSConnectionPool(host='www.denr.gov.ph', port=443): Max retries exceeded with url: /images/DENR_NEWS_ALERTS_2021/DENR_News_Alerts_11_June_2021_Friday_opt.pdf (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.denr.gov.ph'. (_ssl.c:1010)")))
+
+[1289] governmentofcanada-a0dcac6f3abc687b5766bdbd4868a8fb
+    URL: http://publications.gc.ca/site/eng/9.676719/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.676719/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[1319] governmentofcanada-953d62672ce3640e73dcf8005c6c06eb
+    URL: http://publications.gc.ca/site/eng/9.697879/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.697879/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[1394] governmentofbosnia-33c3259420afaeb2593fb61a6eb59b9d
+    URL: http://www.mvteo.gov.ba/data/Home/Dokumenti/Energetika/23092021_NREAP_2016_BH_ENG.pdf
+    Error: HTTPSConnectionPool(host='www.mvteo.gov.ba', port=443): Max retries exceeded with url: /data/Home/Dokumenti/Energetika/23092021_NREAP_2016_BH_ENG.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[1413] connlegresearch-5df8df5ccc8b0841cc4e4d943f003f16
+    URL: https://www.cga.ct.gov/2017/rpt/pdf/2017-R-0225.pdf
+    Error: HTTPSConnectionPool(host='www.cga.ct.gov', port=443): Max retries exceeded with url: /2017/rpt/pdf/2017-R-0225.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[1591] globalwaterpartnership-643720e15a87e23bb12efc4373c61163
+    URL: https://www.gwp.org/en/learn/iwrm-toolbox/The-Enabling-Environment/Policies/Policies-with-relation-to-water-resources/
+    Error: HTTPSConnectionPool(host='www.gwptoolbox.org', port=443): Max retries exceeded with url: /learn/iwrm-tools/policies-relation-water-resources (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.gwptoolbox.org'. (_ssl.c:1010)")))
+
+[1644] governmentofcanada-3765ca2c6ed557cd4e26e915064127aa
+    URL: http://publications.gc.ca/site/eng/9.688741/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.688741/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[1697] stateofutah-38f2ad1d9445faea9a4e30e9db126371
+    URL: https://digitallibrary.utah.gov/aw-server/rest/product/purl/USL/s/f1c836f8-7d2b-4ac1-a220-0b0d6d7a361b
+    Error: HTTPSConnectionPool(host='digitallibrary.utah.gov', port=443): Max retries exceeded with url: /aw-server/rest/product/purl/USL/s/f1c836f8-7d2b-4ac1-a220-0b0d6d7a361b (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[2139] governmentofcanada-456ffdad192a718d38ec54e776dcbb72
+    URL: http://publications.gc.ca/site/eng/9.832535/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.832535/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[2198] governmentofcanada-40e33db8573b747354fac5455036c4a0
+    URL: http://publications.gc.ca/site/eng/9.838139/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.838139/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[2280] stateofutah-f35801eaba115b9e8d224b23c2c1fa0a
+    URL: https://digitallibrary.utah.gov/aw-server/rest/product/purl/USL/s/d3529e4f-f49e-4911-aefa-864f6f3e121f
+    Error: HTTPSConnectionPool(host='digitallibrary.utah.gov', port=443): Max retries exceeded with url: /aw-server/rest/product/purl/USL/s/d3529e4f-f49e-4911-aefa-864f6f3e121f (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[2323] governmentofserbia-bcea3a16de8c9ced1989eedc880ca11d
+    URL: https://arhiva.mre.gov.rs/doc/efikasnost-izvori/NREAP%20OF%20REPUBLIC%20OF%20SERBIA%2028_June_2013.pdf
+    Error: HTTPSConnectionPool(host='arhiva.mre.gov.rs', port=443): Max retries exceeded with url: /doc/efikasnost-izvori/NREAP%20OF%20REPUBLIC%20OF%20SERBIA%2028_June_2013.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[2333] governmentofcanada-c88b7db3af89164a44ee286dae654677
+    URL: http://publications.gc.ca/site/eng/9.881083/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.881083/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[2387] governmentofcanada-c4bbd03562311b78c430e0ecb0ce170f
+    URL: http://publications.gc.ca/site/eng/9.688742/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.688742/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[2389] governmentofsouthafrica-492adc0ff2e643555bc53616436b1880
+    URL: https://soer.environment.gov.za/soer/UploadLibraryImages/UploadDocuments/310123114953_southafricas_lowemission_developmentstrategy_dec2018draft.pdf
+    Error: HTTPSConnectionPool(host='soer.environment.gov.za', port=443): Max retries exceeded with url: /soer/UploadLibraryImages/UploadDocuments/310123114953_southafricas_lowemission_developmentstrategy_dec2018draft.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[2400] stateofutah-662bf0eec33c334c3dde063fbd296931
+    URL: https://digitallibrary.utah.gov/aw-server/rest/product/purl/USL/s/69cc1377-8bd9-4cb7-a3ff-31f57a45f0e7
+    Error: HTTPSConnectionPool(host='digitallibrary.utah.gov', port=443): Max retries exceeded with url: /aw-server/rest/product/purl/USL/s/69cc1377-8bd9-4cb7-a3ff-31f57a45f0e7 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[2461] governmentofcanada-0b0bb7ad3cea5ee0a668d83f710d94b5
+    URL: http://publications.gc.ca/site/eng/9.700126/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.700126/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[2536] stateofutah-8ba7a97f8efa7d1612cc052419ccc3df
+    URL: https://digitallibrary.utah.gov/aw-server/rest/product/purl/USL/s/4af7ef4f-4c27-4d33-baa4-15effac48fcc
+    Error: HTTPSConnectionPool(host='digitallibrary.utah.gov', port=443): Max retries exceeded with url: /aw-server/rest/product/purl/USL/s/4af7ef4f-4c27-4d33-baa4-15effac48fcc (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[2627] governmentofcanada-a0241a4d1caa949b08622bcf3c09b444
+    URL: http://publications.gc.ca/site/eng/9.574473/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.574473/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[2632] kdi-5d438543a9a4dde0bb954719573d2aa0
+    URL: https://www.kdi.re.kr/eng/research/reportView?pub_no=11535
+    Error: HTTPSConnectionPool(host='www.kdi.re.kr', port=443): Max retries exceeded with url: /eng/research/reportView?pub_no=11535 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[2685] governmentofcanada-de72ebc558a13fc9df92d02cfa90fa3b
+    URL: http://publications.gc.ca/site/eng/9.580158/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.580158/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[2855] governmentofcanada-3bb483c92169ef3a39371a23ffd46c22
+    URL: http://publications.gc.ca/site/eng/9.567022/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.567022/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[2878] governmentofcanada-9f72888dc763ac12caf5e7534f47280c
+    URL: http://publications.gc.ca/site/eng/9.910359/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.910359/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[2903] cityofsandiego-b6259899d75741c432cce8aa4ebbbdbc
+    URL: https://docs.sandiego.gov/councilcomm_agendas_attach/2013/Rules_131211_4.pdf
+    Error: HTTPSConnectionPool(host='docs.sandiego.gov', port=443): Max retries exceeded with url: /councilcomm_agendas_attach/2013/Rules_131211_4.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[2912] stateofutah-5433039081fed8ee5bd27d46e9b851f4
+    URL: https://digitallibrary.utah.gov/aw-server/rest/product/purl/USL/s/23feda26-12d6-4cea-b933-a624cf910c6d
+    Error: HTTPSConnectionPool(host='digitallibrary.utah.gov', port=443): Max retries exceeded with url: /aw-server/rest/product/purl/USL/s/23feda26-12d6-4cea-b933-a624cf910c6d (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[2980] stateofutah-e363c788feaa1ac7f7821e48e36a6bf2
+    URL: https://digitallibrary.utah.gov/aw-server/rest/product/purl/USL/s/193a18bb-b5a7-4b16-9d3d-bf3097998d62
+    Error: HTTPSConnectionPool(host='digitallibrary.utah.gov', port=443): Max retries exceeded with url: /aw-server/rest/product/purl/USL/s/193a18bb-b5a7-4b16-9d3d-bf3097998d62 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[3036] governmentofcanada-045593b093b93adac515122681169566
+    URL: http://publications.gc.ca/site/eng/9.692506/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.692506/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[3101] stateofutah-a107d7235077e1e6771edfdf2bf7c6c3
+    URL: https://digitallibrary.utah.gov/aw-server/rest/product/purl/USL/s/eeecc63f-3b7f-420c-babf-0464000d4f8c
+    Error: HTTPSConnectionPool(host='digitallibrary.utah.gov', port=443): Max retries exceeded with url: /aw-server/rest/product/purl/USL/s/eeecc63f-3b7f-420c-babf-0464000d4f8c (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[3131] governmentofsouthafrica-3985e1799d9c75036ddbbd341240f705
+    URL: https://www.transport.gov.za/documents/11623/89294/Green_Transport_Strategy_2018_2050_onlineversion.pdf
+    Error: HTTPSConnectionPool(host='www.transport.gov.za', port=443): Max retries exceeded with url: /documents/11623/89294/Green_Transport_Strategy_2018_2050_onlineversion.pdf (Caused by SSLError(SSLError(1, '[SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)')))
+
+[3271] governmentofcanada-915a14af6381d78cb3a50331a8eae5ad
+    URL: http://publications.gc.ca/site/eng/9.565700/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.565700/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[3378] governmentofcanada-1eb0d0c088d086c4ea29e93f914b277f
+    URL: http://publications.gc.ca/site/eng/9.850910/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.850910/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[3427] governmentofcanada-d741167b9ea3d3129f63643e7f5f4d97
+    URL: http://publications.gc.ca/site/eng/9.895735/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.895735/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[3464] govdeptsspain-9875329ca55072af396f031bf0546a70
+    URL: https://www.ciencia.gob.es/stfls/MICINN/Ayudas/PN_2008_2011/LIA_RRHH/FICHERO/RYC_2011/Resumen_CV_Mem_RYC_2011_RES_ELEG.pdf
+    Error: HTTPSConnectionPool(host='www.ciencia.gob.es', port=443): Max retries exceeded with url: /stfls/MICINN/Ayudas/PN_2008_2011/LIA_RRHH/FICHERO/RYC_2011/Resumen_CV_Mem_RYC_2011_RES_ELEG.pdf (Caused by SSLError(SSLError(1, '[SSL: UNSAFE_LEGACY_RENEGOTIATION_DISABLED] unsafe legacy renegotiation disabled (_ssl.c:1010)')))
+
+[3548] governmentofcanada-5cda846b869f458c22c17bf09b0b1e45
+    URL: http://publications.gc.ca/site/eng/9.844443/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.844443/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[3589] governmentofcanada-42983b7f1d1d0397eafdf9d3a2622a40
+    URL: http://publications.gc.ca/site/eng/9.826662/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.826662/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[3642] governmentofchina-6da57749ecd94ab6bdc498c6238df58c
+    URL: http://data.mofcom.gov.cn/report/tir2023_en.pdf
+    Error: HTTPSConnectionPool(host='data.mofcom.gov.cn', port=443): Max retries exceeded with url: /report/tir2023_en.pdf (Caused by SSLError(SSLError(1, '[SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)')))
+
+[3645] governmentofcanada-ba01afd899fb13d78ccb763630fd84ed
+    URL: http://publications.gc.ca/site/eng/9.824196/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.824196/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[3683] california_state_agencies-fa78074df72880d537c72f48f1adc168
+    URL: https://labormarketinfo.edd.ca.gov/SpecialReports/Biotechnology_in_CA_2013.pdf
+    Error: HTTPSConnectionPool(host='labormarketinfo.edd.ca.gov', port=443): Max retries exceeded with url: /SpecialReports/Biotechnology_in_CA_2013.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[3975] governmentofcanada-d3572bba2b5aadb369f195df9ad86290
+    URL: http://publications.gc.ca/site/eng/9.698911/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.698911/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[4280] cafbank-b60be98791eb88dfd9426166a88b35bb
+    URL: https://scioteca.caf.com/handle/123456789/1415
+    Error: HTTPSConnectionPool(host='scioteca.caf.com', port=443): Max retries exceeded with url: /handle/123456789/1415 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+[4307] governmentofcanada-f95646f30887d62d496796062812043d
+    URL: http://publications.gc.ca/site/eng/9.893160/publication.html
+    Error: HTTPSConnectionPool(host='publications.gc.ca', port=443): Max retries exceeded with url: /site/eng/9.893160/publication.html (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+
+    ... and 77 more cases
+
+
+====================================================================================================
+CONNECTION ERROR - 11 CASES
+====================================================================================================
+
+[1259] stateofhawaiigov-229c0fade2b12e1766ee2b8d451cc666
+    URL: http://oeqc2.doh.hawaii.gov/EA_EIS_Library/2019-06-08-HA-DEA-Offshore-Native-Hawaiian-Macroalgae-Demonstration-Project.pdf
+    Error: HTTPConnectionPool(host='oeqc2.doh.hawaii.gov', port=80): Max retries exceeded with url: /EA_EIS_Library/2019-06-08-HA-DEA-Offshore-Native-Hawaiian-Macroalgae-Demonstration-Project.pdf (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000023439CB2930>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+
+[4908] stateofhawaiigov-42cd25b1b52a9b1dfbf057065e171471
+    URL: http://oeqc2.doh.hawaii.gov/Laws/2019-10-Hawaii-EIS-Laws-Unofficial-Compilation.pdf
+    Error: HTTPConnectionPool(host='oeqc2.doh.hawaii.gov', port=80): Max retries exceeded with url: /Laws/2019-10-Hawaii-EIS-Laws-Unofficial-Compilation.pdf (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002343A46A750>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+
+[5048] apecca-5f86ef2672a8743b9a5fd8ba06b2b1e0
+    URL: https://www.apec-econ.ca/private-files/publications/364/file/APEC%20Clean%20Growth%20-%20Full%20Report%20EN.pdf
+    Error: HTTPSConnectionPool(host='www.apec-econ.ca', port=443): Max retries exceeded with url: /private-files/publications/364/file/APEC%20Clean%20Growth%20-%20Full%20Report%20EN.pdf (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000023437C27500>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+
+[5877] stateofhawaiigov-89677084ac84fb4047f1919c44ffb384
+    URL: http://oeqc2.doh.hawaii.gov/EA_EIS_Library/2018-05-23-MA-DEIS-DLNR-Business-Park-Appendices-A-F.pdf
+    Error: HTTPConnectionPool(host='oeqc2.doh.hawaii.gov', port=80): Max retries exceeded with url: /EA_EIS_Library/2018-05-23-MA-DEIS-DLNR-Business-Park-Appendices-A-F.pdf (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002343A46A630>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+
+[5890] stateofhawaiigov-85f0184249798d1a0588736c7bec8e59
+    URL: http://oeqc2.doh.hawaii.gov/EA_EIS_Library/2018-02-23-HA-EISPN-UH-Land-Authorizations-for-Astronomy-on-Maunakea.pdf
+    Error: HTTPConnectionPool(host='oeqc2.doh.hawaii.gov', port=80): Max retries exceeded with url: /EA_EIS_Library/2018-02-23-HA-EISPN-UH-Land-Authorizations-for-Astronomy-on-Maunakea.pdf (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000023439ABD670>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+
+[7776] stateofhawaiigov-0f71fcd69d606b8349fbaa4cdcd70ece
+    URL: http://oeqc2.doh.hawaii.gov/EA_EIS_Library/2018-05-23-MA-DEIS-DLNR-Business-Park.pdf
+    Error: HTTPConnectionPool(host='oeqc2.doh.hawaii.gov', port=80): Max retries exceeded with url: /EA_EIS_Library/2018-05-23-MA-DEIS-DLNR-Business-Park.pdf (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002343A468410>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+
+[8174] texasgov-1a6d0e333c37409e3a2174c7768ff96e
+    URL: https://sao.texas.gov/Reports/Main/20-317.pdf
+    Error: HTTPSConnectionPool(host='sao.texas.gov', port=443): Max retries exceeded with url: /Reports/Main/20-317.pdf (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000002343A46B770>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+
+[8227] texasgov-e4d6e507f21d674e5dac376830fb88fe
+    URL: https://sao.texas.gov/reports/main/21-015.pdf
+    Error: HTTPSConnectionPool(host='sao.texas.gov', port=443): Max retries exceeded with url: /reports/main/21-015.pdf (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000002343A444AA0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+
+[8321] stateofhawaiigov-9fc810843380f7ceb101b50c7866f570
+    URL: http://oeqc2.doh.hawaii.gov/EA_EIS_Library/2019-09-23-MA-DEIS-East-Maui-Water-Lease.pdf
+    Error: HTTPConnectionPool(host='oeqc2.doh.hawaii.gov', port=80): Max retries exceeded with url: /EA_EIS_Library/2019-09-23-MA-DEIS-East-Maui-Water-Lease.pdf (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000023439CB1640>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+
+[8324] stateofhawaiigov-7a833b3330483ba0014c93e58a4c3b13
+    URL: http://oeqc2.doh.hawaii.gov/EA_EIS_Library/2019-09-23-MA-DEIS-East-Maui-Water-Lease.pdf?emci=783318f9-b71b-ea11-828b-2818784d6d68&emdi=ea000000-0000-0000-0000-000000000001&ceid={{ContactsEmailID}}
+    Error: HTTPConnectionPool(host='oeqc2.doh.hawaii.gov', port=80): Max retries exceeded with url: /EA_EIS_Library/2019-09-23-MA-DEIS-East-Maui-Water-Lease.pdf?emci=783318f9-b71b-ea11-828b-2818784d6d68&emdi=ea000000-0000-0000-0000-000000000001&ceid=%7B%7BContactsEmailID%7D%7D (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000023439CB25D0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+
+[8498] texasgov-6cfeb41d0664c06d6442c4fff2aa7c67
+    URL: https://sao.texas.gov/Reports/Main/19-315.pdf
+    Error: HTTPSConnectionPool(host='sao.texas.gov', port=443): Max retries exceeded with url: /Reports/Main/19-315.pdf (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000002343A46B3E0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
