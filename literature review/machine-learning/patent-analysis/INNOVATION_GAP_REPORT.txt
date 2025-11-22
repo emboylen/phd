@@ -1,0 +1,72 @@
+================================================================================
+INNOVATION GAP ANALYSIS REPORT
+Cross-Domain Topic Projection: Scientific Papers vs. Patents
+================================================================================
+
+SUMMARY STATISTICS:
+--------------------------------------------------------------------------------
+Scientific Papers Analyzed: 223
+Patents Analyzed: 24265
+Topics Identified: 6
+Average Gap Index: 0.13
+
+GHOST TOPICS (High Academic Activity, Low Commercial Activity):
+================================================================================
+
+1_the_of_and_in
+--------------------------------------------------------------------------------
+  Gap Index: 0.88
+  Scientific Papers: 43 (19.3%)
+  Patents: 560 (2.3%)
+  Likely Barrier: TECHNICAL INFEASIBILITY
+  Key Terms: the, of, and, in, to
+
+4_the_of_and_biodiesel
+--------------------------------------------------------------------------------
+  Gap Index: 0.81
+  Scientific Papers: 27 (12.1%)
+  Patents: 553 (2.3%)
+  Likely Barrier: TECHNICAL INFEASIBILITY
+  Key Terms: the, of, and, biodiesel, in
+
+0_the_of_and_in
+--------------------------------------------------------------------------------
+  Gap Index: 0.81
+  Scientific Papers: 67 (30.0%)
+  Patents: 1415 (5.8%)
+  Likely Barrier: TECHNICAL INFEASIBILITY
+  Key Terms: the, of, and, in, to
+
+5_of_and_the_in
+--------------------------------------------------------------------------------
+  Gap Index: 0.61
+  Scientific Papers: 21 (9.4%)
+  Patents: 895 (3.7%)
+  Likely Barrier: SCALING CHALLENGE
+  Key Terms: of, and, the, in, to
+
+
+BALANCED TOPICS (Healthy Science-Technology Translation):
+================================================================================
+
+⚠️  NO BALANCED TOPICS FOUND
+This suggests systematic commercialization failure across all areas.
+
+
+KEY FINDINGS:
+================================================================================
+
+1. Overall Innovation Gap: 0.13
+   - 3 topics with CRITICAL gaps (>0.7)
+   - 4 topics with HIGH gaps (>0.5)
+
+2. Barrier Classification:
+   - TECHNICAL INFEASIBILITY: 3 topics
+   - OVER-PATENTED (Patent Thicket): 2 topics
+   - SCALING CHALLENGE: 1 topics
+
+3. Implications for Commercialization:
+
+================================================================================
+END OF REPORT
+================================================================================

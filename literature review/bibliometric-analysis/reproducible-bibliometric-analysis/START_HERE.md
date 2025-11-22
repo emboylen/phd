@@ -24,7 +24,7 @@ reproducible-bibliometric-analysis/
 
 **Option A: Terminal/Command Line (Recommended)** ⚡
 ```powershell
-cd "D:\Github\phd\literature review\reproducible-bibliometric-analysis"
+cd "C:\Github\phd\literature review\bibliometric-analysis\reproducible-bibliometric-analysis"
 Rscript run_all.R
 ```
 

@@ -80,8 +80,8 @@ reproducible-bibliometric-analysis/
 
 **Option 1: From Terminal (Recommended)**
 ```powershell
-cd "D:\Github\phd\literature review\reproducible-bibliometric-analysis"
-& "C:\Program Files\R\R-4.2.0\bin\Rscript.exe" run_all.R
+cd "C:\Github\phd\literature review\bibliometric-analysis\reproducible-bibliometric-analysis"
+Rscript run_all.R
 ```
 
 **Option 2: From R Console**

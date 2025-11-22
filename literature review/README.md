@@ -61,7 +61,21 @@ cd machine-learning/policy-analysis
 python bulk_policy_downloader.py
 ```
 
-## Key Findings
+## Advanced Analyses
+
+### Innovation Gap Analysis (Cross-Domain Topic Projection)
+Projects patent data into scientific topic space to identify "ghost topics" - areas with high academic activity but low commercial translation. Quantifies the commercialization gap.
+
+### Policy Stance Detection
+NLP-based stance detection on policy documents to identify regulatory voids. Compares policy support for first-generation vs. third-generation (algae) biofuels.
+
+### Bibliometric-Enhanced Topic Modeling (BETM)
+- **Dynamic Topic Modeling**: Tracks topic evolution over time to identify "dead topics" and technology shifts
+- **Funding Overlay**: Maps research funding to topics to identify resource misallocation
+
+**See**: `ADVANCED_ANALYSES_IMPLEMENTATION.md` for detailed methodologies and implementation guides.
+
+## Key Research Dimensions
 
 The research addresses barriers across multiple dimensions:
 - **Technical**: Production efficiency, cultivation challenges, harvesting costs
