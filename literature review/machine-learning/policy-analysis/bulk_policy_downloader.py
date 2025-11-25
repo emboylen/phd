@@ -8,7 +8,7 @@ from datetime import datetime
 from urllib.parse import urlparse
 
 # --- CONFIGURATION ---
-CSV_FILE = "policies-export-2025-11-19.csv"
+CSV_FILE = "export-2025-11-25.csv"
 OUTPUT_DIR = "downloaded_policies"
 LOG_FILE = "download_log.csv"
 # Fake browser user-agent to prevent immediate 403 Forbidden errors
