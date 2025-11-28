@@ -1,0 +1,92 @@
+====================================================================================================
+DATASET COMPARISON REPORT
+====================================================================================================
+
+BERTopic documents: 223
+Bibliometric records: 222
+Matched papers: 186
+Only in BERTopic: 37
+Only in Bibliometric: 30
+
+----------------------------------------------------------------------------------------------------
+PAPERS ONLY IN BERTopic
+----------------------------------------------------------------------------------------------------
+
+A critical overview of upstream cultivation and downstream processing of algae-based biofuelsOpportunity, technological barriers and future perspective.pdf
+A review of the strategy to promote microalgae value in CO2 conversion-lipid enrichment-biodiesel production.pdf
+A review on sustainable microalgae based biofuel and bioenergy productionRecent developments.pdf
+A sustainable perspective of microalgal biorefinery for co‐production and.pdf
+Algal biofuel and their impact on agriculture and environment.pdf
+Algal biorefinery culminating multiple value-added productsrecent advances, emerging trends, opportunities, and challenges.pdf
+Algal biorefinery models with self-sustainable closed loop approachtrends and prospective for blue-bioeconomy.pdf
+Assessing sustainability of microalgae-based wastewater treatmentEnvironmental considerations and impacts on human health.pdf
+Bioremediation of water containing pesticides by microalgae mechanisms, methods, and prospects for future research..pdf
+Carbon sequestration using microalgae - a review.pdf
+Co-pyrolysis of sewage sludge with lignocellulosic and algal biomass for sustainable liquid and gaseous fuel productiona life cycle assessment and techno-economic analysis.pdf
+Critical factors in energy generation from microalgae.pdf
+Current perspectives, future challenges and key technologies of biohydrogen production for building a carbon-neutral futura review.pdf
+Current status, issues and developments in microalgae derived biodiesel production.pdf
+Development perspectives of promising lignocellulose feedstocks for production of advanced generation biofuelsA review.pdf
+Economic and policy issues in the production of algae-based biofuels a review..pdf
+Enhanced CO2 fixation and biofuel production via microalgaeRecent developments and future directions.pdf
+Environmental pollution mitigation through utilization of carbon dioxideby microalgae.pdf
+Exploring the potential and progress of microalgae biomass production, harvesting, and pre-treatment for sustainable biofuel production a comprehensive review.pdf
+Microalgae biorefineries  Applications and emerging technologies.pdf
+Microalgae-Based BiorefineriesChallenges and Future Trends to Produce Carbohydrate Enriched Biomass, High-Added Value Products and Bioactive Compounds.pdf
+Microalgal biofuel revisitedAn informatics-based analysis of developments to date and future prospects.pdf
+Microalgal biofuels in ChinaThe past, progress and prospects.pdf
+Microalgal biofuelsChallenges and prospective in the framework of circular bioeconomy.pdf
+Microalgal biomass production as a sustainable feedstock for biodieselCurrent status and perspectives.pdf
+Microalgal cultivation in secondary effluentrecent developments and  future work..pdf
+Microalgal culture strategies for biofuel productionA review.pdf
+Net zero emission in circular bioeconomy from microalgae biochar        production a renewed possibility..pdf
+Promising solutions to solve the bottlenecks in the large-scale cultivation of microalgae for biomassbioenergy production.pdf
+Socioeconomic indicators for sustainable design and commercial        development of algal biofuel systems..pdf
+Sustainable microalgal biomass production in food industry wastewater   for low-cost biorefinery products a review..pdf
+Sustainable technologies for the reclamation of greenhouse gas CO2.pdf
+The potential of microalgae biorefineries in Belgium and IndiaAn environmental techno-economic assessment.pdf
+The urge of algal biomass-based fuels for environmental sustainability against a steady tide of biofuel conflict analysiIs third-generation algal biorefinery a boon.pdf
+Using microalgae to produce liquid transportation biodiesel What is next.pdf
+Wastewater use in algae production for generation of renewable        resources a review and preliminary results..pdf
+Water and emissions nexus for biodiesel in Iran.pdf
+
+----------------------------------------------------------------------------------------------------
+PAPERS ONLY IN BIBLIOMETRIC
+----------------------------------------------------------------------------------------------------
+
+MICROALGAL BIOFUELS: CHALLENGES AND PROSPECTIVE IN THE FRAMEWORK OF CIRCULAR BIOECONOMY
+MARINE ALGAE BIOMASS: A VIABLE AND RENEWABLE RESOURCE FOR BIOFUEL PRODUCTION: A REVIEW
+ASSESSING SUSTAINABILITY OF MICROALGAE-BASED WASTEWATER TREATMENT: ENVIRONMENTAL CONSIDERATIONS AND IMPACTS ON HUMAN HEALTH
+ALGAL BIOREFINERY CULMINATING MULTIPLE VALUE-ADDED PRODUCTS: RECENT ADVANCES, EMERGING TRENDS, OPPORTUNITIES, AND CHALLENGES
+MICROALGAE-BASED BIOREFINERIES: CHALLENGES AND FUTURE TRENDS TO PRODUCE CARBOHYDRATE ENRICHED BIOMASS, HIGH-ADDED VALUE PRODUCTS AND BIOACTIVE COMPOUNDS
+THE VALUE OF EXTERNALITIES FOR BIOFUELS AND IMPLICATIONS FOR POLICY-LED DEVELOPMENT: A DISCRETE CHOICE EXPERIMENT WITH AUSTRALIAN CONSUMERS
+A CRITICAL OVERVIEW OF UPSTREAM CULTIVATION AND DOWNSTREAM PROCESSING OF ALGAE-BASED BIOFUELS: OPPORTUNITY, TECHNOLOGICAL BARRIERS AND FUTURE PERSPECTIVE
+INTEGRATED APPLICATIONS OF MICROALGAE TO WASTEWATER TREATMENT AND BIOREFINERY: RECENT ADVANCES AND OPPORTUNITIES
+A REVIEW OF MICROALGAE-BASED BIOREFINERIES APPROACH FOR PRODUCED WATER TREATMENT: BARRIERS, PRETREATMENTS, SUPPLEMENTATION, AND PERSPECTIVES
+THE URGE OF ALGAL BIOMASS-BASED FUELS FOR ENVIRONMENTAL SUSTAINABILITY AGAINST A STEADY TIDE OF BIOFUEL CONFLICT ANALYSIS: IS THIRD-GENERATION ALGAL BIOREFINERY A BOON?
+DEVELOPMENT PERSPECTIVES OF PROMISING LIGNOCELLULOSE FEEDSTOCKS FOR PRODUCTION OF ADVANCED GENERATION BIOFUELS: A REVIEW
+MICROALGAL BIOFUELS IN CHINA: THE PAST, PROGRESS AND PROSPECTS
+A SUSTAINABLE PERSPECTIVE OF MICROALGAL BIOREFINERY FOR CO-PRODUCTION AND RECOVERY OF HIGH-VALUE CAROTENOID AND BIOFUEL WITH CO2 VALORIZATION
+ALGAL BIOREFINERY MODELS WITH SELF-SUSTAINABLE CLOSED LOOP APPROACH: TRENDS AND PROSPECTIVE FOR BLUE-BIOECONOMY
+A REVIEW ON SUSTAINABLE MICROALGAE BASED BIOFUEL AND BIOENERGY PRODUCTION: RECENT DEVELOPMENTS
+THE POTENTIAL OF MICROALGAE BIOREFINERIES IN BELGIUM AND INDIA: AN ENVIRONMENTAL TECHNO-ECONOMIC ASSESSMENT
+PROMISING SOLUTIONS TO SOLVE THE BOTTLENECKS IN THE LARGE-SCALE CULTIVATION OF MICROALGAE FOR BIOMASS/BIOENERGY PRODUCTION
+MICROALGAL BIOMASS PRODUCTION AS A SUSTAINABLE FEEDSTOCK FOR BIODIESEL: CURRENT STATUS AND PERSPECTIVES
+MICROALGAL BIOFUEL REVISITED: AN INFORMATICS-BASED ANALYSIS OF DEVELOPMENTS TO DATE AND FUTURE PROSPECTS
+MICROALGAL CULTURE STRATEGIES FOR BIOFUEL PRODUCTION: A REVIEW
+ENHANCED CO2 FIXATION AND BIOFUEL PRODUCTION VIA MICROALGAE: RECENT DEVELOPMENTS AND FUTURE DIRECTIONS
+WHY MICROALGAL BIOFUELS WON'T SAVE THE INTERNAL COMBUSTION MACHINE
+nan
+CO-PYROLYSIS OF SEWAGE SLUDGE WITH LIGNOCELLULOSIC AND ALGAL BIOMASS FOR SUSTAINABLE LIQUID AND GASEOUS FUEL PRODUCTION: A LIFE CYCLE ASSESSMENT AND TECHNO-ECONOMIC ANALYSIS.
+nan
+nan
+nan
+ENVIRONMENTAL POLLUTION MITIGATION THROUGH UTILIZATION OF CARBON DIOXIDE BY MICROALGAE.
+nan
+UNLOCKING THE POTENTIAL OF MICROALGAE BIO-FACTORIES FOR CARBON DIOXIDE MITIGATION: A COMPREHENSIVE EXPLORATION OF RECENT ADVANCES, KEY CHALLENGES, AND ENERGY-ECONOMIC INSIGHTS.
+nan
+nan
+TRANSITIONING TO SUSTAINABLE USE OF BIOFUEL IN AUSTRALIA.
+CURRENT PERSPECTIVES, FUTURE CHALLENGES AND KEY TECHNOLOGIES OF BIOHYDROGEN PRODUCTION FOR BUILDING A CARBON-NEUTRAL FUTURE: A REVIEW.
+MICROALGAE BIOREFINERIES: APPLICATIONS AND EMERGING TECHNOLOGIES; [BIOREFINERÍAS DE MICROALGAS: APLICACIONES ACTUALES Y NUEVAS TECNOLOGÍAS EN DESARROLLO]
+1ST INTERNATIONAL COASTAL BIOLOGY CONGRESS, YANTAI, CHINA, 26-30 SEPTEMBER 2014.

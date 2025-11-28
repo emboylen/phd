@@ -1,0 +1,89 @@
+================================================================================
+ENHANCED MULTI-STRATEGY MATCHING STATISTICS
+================================================================================
+
+OVERALL RESULTS
+--------------------------------------------------------------------------------
+Total BERTopic documents:     223
+Total bibliometric records:   222
+Successfully matched:         207 (92.8%)
+Unmatched:                    16 (7.2%)
+
+MATCHING STRATEGY BREAKDOWN
+--------------------------------------------------------------------------------
+Strategy 1 (Exact, >=0.85):   205
+Strategy 2 (Fuzzy, >=0.65):   1
+Strategy 3 (Keywords, >=60%): 1
+
+MATCH QUALITY
+--------------------------------------------------------------------------------
+Average similarity:           0.996
+Minimum similarity:           0.597
+Maximum similarity:           1.000
+
+REMAINING UNMATCHED DOCUMENTS
+--------------------------------------------------------------------------------
+
+Filename: A review of the strategy to promote microalgae value in CO2 conversion-lipid enrichment-biodiesel production.pdf
+  Best similarity: 0.497
+  Closest match: CURRENT TRENDS AND PROSPECTS IN MICROALGAE-BASED BIOENERGY PRODUCTION...
+
+Filename: Algal biofuel and their impact on agriculture and environment.pdf
+  Best similarity: 0.507
+  Closest match: MICROALGAE FOR BIOFUELS, WASTEWATER TREATMENT AND ENVIRONMENTAL MONITORING...
+
+Filename: Bioremediation of water containing pesticides by microalgae mechanisms, methods, and prospects for future research..pdf
+  Best similarity: 0.533
+  Closest match: BIO-MITIGATION OF CARBON DIOXIDE USING MICROALGAL SYSTEMS: ADVANCES AND PERSPECTIVES...
+
+Filename: Carbon sequestration using microalgae - a review.pdf
+  Best similarity: 0.545
+  Closest match: SYSTEM INTEGRATION FOR PRODUCING MICROALGAE AS BIOFUEL FEEDSTOCK...
+
+Filename: Critical factors in energy generation from microalgae.pdf
+  Best similarity: 0.574
+  Closest match: UPCYCLING FOOD WASTE INTO BIOREFINERY PRODUCTION BY MICROALGAE...
+
+Filename: Current status, issues and developments in microalgae derived biodiesel production.pdf
+  Best similarity: 0.707
+  Closest match: CURRENT TRENDS AND PROSPECTS IN MICROALGAE-BASED BIOENERGY PRODUCTION...
+
+Filename: Economic and policy issues in the production of algae-based biofuels a review..pdf
+  Best similarity: 0.575
+  Closest match: DEVELOPMENTS AND CHALLENGES IN BIODIESEL PRODUCTION FROM MICROALGAE: A REVIEW...
+
+Filename: Exploring the potential and progress of microalgae biomass production, harvesting, and pre-treatment for sustainable biofuel production a comprehensive review.pdf
+  Best similarity: 0.547
+  Closest match: INTEGRATION OF MICROALGAE PRODUCTION WITH INDUSTRIAL BIOFUEL FACILITIES: A CRITICAL REVIEW...
+
+Filename: Microalgal cultivation in secondary effluentrecent developments and  future work..pdf
+  Best similarity: 0.562
+  Closest match: MICRO-ALGAE CULTIVATION FOR BIOFUELS: COST, ENERGY BALANCE, ENVIRONMENTAL IMPACTS AND FUTURE PROSPEC...
+
+Filename: Net zero emission in circular bioeconomy from microalgae biochar        production a renewed possibility..pdf
+  Best similarity: 0.534
+  Closest match: USING ATMOSPHERIC EMISSIONS AS CO2SOURCE IN THE CULTIVATION OF MICROALGAE: PRODUCTIVITY AND ECONOMIC...
+
+Filename: Socioeconomic indicators for sustainable design and commercial        development of algal biofuel systems..pdf
+  Best similarity: 0.519
+  Closest match: AN ECONOMIC AND TECHNICAL EVALUATION OF MICROALGAL BIOFUELS....
+
+Filename: Sustainable microalgal biomass production in food industry wastewater   for low-cost biorefinery products a review..pdf
+  Best similarity: 0.568
+  Closest match: SUSTAINABILITY AND CARBON NEUTRALIZATION TRENDS IN MICROALGAE BIOENERGY PRODUCTION FROM WASTEWATER T...
+
+Filename: Sustainable technologies for the reclamation of greenhouse gas CO2.pdf
+  Best similarity: 0.468
+  Closest match: MICROALGAE AS A SUSTAINABLE ENERGY SOURCE FOR BIODIESEL PRODUCTION: A REVIEW...
+
+Filename: Using microalgae to produce liquid transportation biodiesel What is next.pdf
+  Best similarity: 0.554
+  Closest match: MARINE MICROALGAE FOR PRODUCTION OF BIOFUELS AND CHEMICALS...
+
+Filename: Wastewater use in algae production for generation of renewable        resources a review and preliminary results..pdf
+  Best similarity: 0.467
+  Closest match: RECENT ADVANCES IN WASTEWATER MICROALGAE-BASED BIOFUELS PRODUCTION: A STATE-OF-THE-ART REVIEW...
+
+Filename: Water and emissions nexus for biodiesel in Iran.pdf
+  Best similarity: 0.485
+  Closest match: TRANSITIONING TO SUSTAINABLE USE OF BIOFUEL IN AUSTRALIA....
